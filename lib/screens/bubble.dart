@@ -16,7 +16,8 @@ class BubbleAnimation extends StatefulWidget {
     const Color(0xFF2B6FC0),
     const Color(0xFF131C49),
   ];
-  const BubbleAnimation({super.key});
+  final Widget child;
+  const BubbleAnimation({super.key, required this.child});
 
   @override
   State<BubbleAnimation> createState() => _BubbleAnimationState();
@@ -61,7 +62,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
           ClockWidget(
             builder: (context, time) {
               return Text(
-                '${time.hour}:${time.minute}',
+                '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
                 textAlign: TextAlign.right,
                 style: const TextStyle(
                   color: Colors.white,
@@ -98,25 +99,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
               child: Container(
                 // color: Colors.white54,
                 alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      'assets/images/logo.png',
-                      height: 120,
-                      width: 120,
-                    ),
-                    const Text(
-                      "Hello Customer",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                child: widget.child,
               ),
             ),
           ),
