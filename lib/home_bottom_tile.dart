@@ -29,7 +29,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
       },
       borderRadius: BorderRadius.circular(20),
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.5),
           borderRadius: BorderRadius.circular(20),
@@ -39,32 +39,50 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
           ),
         ),
         clipBehavior: Clip.hardEdge,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(widget.icon, size: 80, color: Colors.white),
-            const SizedBox(height: 10),
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                widget.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .displaySmall!
-                    .copyWith(color: Colors.white),
+        child: LayoutBuilder(builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          final height = constraints.maxHeight;
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                height: height * 0.5,
+                child: FittedBox(
+                  alignment: Alignment.center,
+                  fit: BoxFit.contain,
+                  child: Icon(widget.icon, color: Colors.white),
+                ),
               ),
-            ),
-            Text(
-              widget.description,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(color: Colors.white.withOpacity(0.7)),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+              SizedBox(
+                height: height * 0.25,
+                child: FittedBox(
+                  alignment: Alignment.bottomCenter,
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    widget.title,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: height * 0.25,
+                width: width,
+                child: Text(
+                  widget.description,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          );
+        }),
       ),
     );
   }

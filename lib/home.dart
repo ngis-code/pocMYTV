@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -44,100 +44,95 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Stack(
-                    children: [
-                      Icon(
-                        Icons.mail,
-                        size: 40,
-                        color: Colors.white,
-                      ),
-                      Positioned(
-                        bottom: -5,
-                        left: 11,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.red,
-                          radius: 10,
-                          child: Text(
-                            "2",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
+              child: SizedBox(
+                height: 80,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Icon(
+                          Icons.mail,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        Positioned(
+                          bottom: -5,
+                          left: 11,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.red,
+                            radius: 10,
+                            child: Text(
+                              "2",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 100,
-                    child: VerticalDivider(
+                        )
+                      ],
+                    ),
+                    const VerticalDivider(
                       color: Colors.white,
                       thickness: 1,
                     ),
-                  ),
-                  const Column(
-                    children: [
-                      Icon(
-                        Icons.thermostat,
-                        size: 40,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        '24°C',
-                        style: TextStyle(
+                    const Column(
+                      children: [
+                        Icon(
+                          Icons.thermostat,
+                          size: 40,
                           color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 100,
-                    child: VerticalDivider(
+                        Text(
+                          '24°C',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const VerticalDivider(
                       color: Colors.white,
                       thickness: 1,
                     ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      ClockWidget(
-                        builder: (context, time) {
-                          return Text(
-                            '${time.hour}:${time.minute}',
-                            textAlign: TextAlign.right,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        },
-                      ),
-                      Text(
-                        DateFormat('EEEE, MMMM d').format(DateTime.now()),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        ClockWidget(
+                          builder: (context, time) {
+                            return Text(
+                              '${time.hour}:${time.minute}',
+                              textAlign: TextAlign.right,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        Text(
+                          DateFormat('EEEE, MMMM d').format(DateTime.now()),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 140,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 40.0),
               child: Container(
-                width: MediaQuery.of(context).size.width / 2.5,
+                width: MediaQuery.of(context).size.width / 2,
                 alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -146,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     const Text(
-                      "Welcome to our Hotel\nName",
+                      "Welcome to our Hotel Name",
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                         color: Colors.white,
@@ -182,9 +177,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height / 6,
-            ),
-            SizedBox(
               height: MediaQuery.of(context).size.height / 4,
               width: MediaQuery.of(context).size.width,
               child: RawScrollbar(
@@ -196,8 +188,8 @@ class _HomePageState extends State<HomePage> {
                 scrollbarOrientation: ScrollbarOrientation.bottom,
                 thickness: 10, //According to your choice
                 thumbVisibility: true, //
-                child: GridView.extent(
-                  maxCrossAxisExtent: 1000,
+                child: GridView.count(
+                  crossAxisCount: 1,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                   scrollDirection: Axis.horizontal,
