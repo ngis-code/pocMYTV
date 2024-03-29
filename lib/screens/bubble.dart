@@ -29,6 +29,8 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   final List<double> _radius = [];
   final List<Color> _colors = [];
 
+  bool disposed = false;
+
   @override
   void initState() {
     super.initState();
@@ -49,6 +51,12 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
       }
       _update();
     });
+  }
+
+  @override
+  void dispose() {
+    disposed = true;
+    super.dispose();
   }
 
   @override
@@ -140,7 +148,9 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
         _particles[i].y = -margin;
       }
     }
-    setState(() {});
-    _update();
+    if (!disposed) {
+      setState(() {});
+      _update();
+    }
   }
 }
