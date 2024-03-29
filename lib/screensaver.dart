@@ -41,13 +41,14 @@ class _ScreenSaverState extends State<ScreenSaver> {
         primaryEnd: Alignment.bottomLeft,
         secondaryBegin: Alignment.bottomLeft,
         secondaryEnd: Alignment.topRight,
+        duration: Duration(seconds: 5),
         primaryColors: const [
           Color(0xFF061556),
           Color(0xFF0073BB),
         ],
         secondaryColors: const [
           Color(0xFF061556),
-          Color(0xFFFAB60A),
+          Color(0xFF0073BB),
         ],
         child: Center(
           child: Column(
