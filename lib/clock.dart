@@ -29,9 +29,11 @@ class _ClockWidgetState extends State<ClockWidget> {
   }
 
   Future<void> _updateTime() async {
-    while (!disposed) {
+    final millisecTillNextMinute = 60 * 1000 - DateTime.now().millisecond;
+    await Future.delayed(Duration(milliseconds: millisecTillNextMinute));
+    if (!disposed) {
       setState(() {});
-      await Future.delayed(const Duration(seconds: 1));
+      _updateTime();
     }
   }
 }
