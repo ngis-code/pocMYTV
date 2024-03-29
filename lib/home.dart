@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/clock.dart';
-import 'package:pocmytv/home_bottom_tile.dart';
+import 'package:pocmytv/screens/bottom_menu_tiles.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,72 +191,7 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
-                child: RawScrollbar(
-                  thumbColor: Colors.white,
-                  trackColor: Colors.black,
-                  trackVisibility: true,
-                  padding: const EdgeInsets.only(bottom: -20),
-                  controller: scrollController,
-                  scrollbarOrientation: ScrollbarOrientation.bottom,
-                  thickness: 10, //According to your choice
-                  thumbVisibility: true, //
-                  child: GridView.count(
-                    crossAxisCount: 1,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      HomeBottomTile(
-                        description: "Watch your favorite show",
-                        title: "TV",
-                        icon: Icons.tv_rounded,
-                        onTap: () {
-                          log("TV");
-                        },
-                      ),
-                      HomeBottomTile(
-                        description: "Listen to your fav radio",
-                        title: "Radio",
-                        icon: Icons.radio_rounded,
-                        onTap: () {
-                          log("TV");
-                        },
-                      ),
-                      HomeBottomTile(
-                        description: "Know about the hotel",
-                        title: "Hotel Info",
-                        icon: Icons.hotel_rounded,
-                        onTap: () {
-                          log("TV");
-                        },
-                      ),
-                      HomeBottomTile(
-                        description: "Check the weather",
-                        title: "Weather",
-                        icon: Icons.cloud_rounded,
-                        onTap: () {
-                          log("TV");
-                        },
-                      ),
-                      HomeBottomTile(
-                        description: "Browse your favorite place",
-                        title: "Restaurant & Bars",
-                        icon: Icons.restaurant_rounded,
-                        onTap: () {
-                          log("TV");
-                        },
-                      ),
-                      HomeBottomTile(
-                        description: "Don't Miss Any News",
-                        title: "News",
-                        icon: Icons.newspaper_rounded,
-                        onTap: () {
-                          log("TV");
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+                child: BottomMenuTiles(),
               ),
             ),
           ],
