@@ -5,36 +5,24 @@ import 'package:pocmytv/clock.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:vector_math/vector_math.dart' as v;
 
-class TrashScreenSaver extends StatefulWidget {
+class BubbleAnimation extends StatefulWidget {
   // all bright and nice colors
   static List<Color> colors = [
-    Colors.red,
-    Colors.green,
+    const Color(0xFFFEBD11),
+    const Color(0xFF061556),
+    const Color(0xFF0073BB),
     Colors.blue,
-    Colors.yellow,
-    Colors.orange,
-    Colors.purple,
-    Colors.pink,
-    Colors.teal,
-    Colors.cyan,
-    Colors.lime,
-    Colors.amber,
-    Colors.deepOrange,
-    Colors.indigo,
-    Colors.lightBlue,
-    Colors.lightGreen,
-    Colors.deepPurple,
-    Colors.brown,
-    Colors.grey,
-    Colors.blueGrey,
+    Colors.blueAccent,
+    const Color(0xFF2B6FC0),
+    const Color(0xFF131C49),
   ];
-  const TrashScreenSaver({super.key});
+  const BubbleAnimation({super.key});
 
   @override
-  State<TrashScreenSaver> createState() => _TrashScreenSaverState();
+  State<BubbleAnimation> createState() => _BubbleAnimationState();
 }
 
-class _TrashScreenSaverState extends State<TrashScreenSaver> {
+class _BubbleAnimationState extends State<BubbleAnimation> {
   final List<v.Vector2> _particles = [];
   final List<v.Vector2> _velocities = [];
   final List<double> _radius = [];
@@ -55,9 +43,8 @@ class _TrashScreenSaverState extends State<TrashScreenSaver> {
           math.Random().nextDouble() - 0.5,
           math.Random().nextDouble() - 0.5,
         ));
-        _radius.add(math.Random().nextDouble() * 100 + 20);
-        _colors.add(TrashScreenSaver
-            .colors[math.Random().nextInt(TrashScreenSaver.colors.length)]);
+        _radius.add(math.Random().nextDouble() * 150 + 20);
+        _colors.add(BubbleAnimation.colors[i % BubbleAnimation.colors.length]);
       }
       _update();
     });
@@ -99,7 +86,7 @@ class _TrashScreenSaverState extends State<TrashScreenSaver> {
                 width: _radius[_particles.indexOf(p)],
                 decoration: BoxDecoration(
                   color: _colors[
-                      _particles.indexOf(p) % TrashScreenSaver.colors.length],
+                      _particles.indexOf(p) % BubbleAnimation.colors.length],
                   shape: BoxShape.circle,
                 ),
               ),

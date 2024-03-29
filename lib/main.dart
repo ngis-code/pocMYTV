@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screensaver.dart';
 
+import 'screens/bubble.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,8 +20,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const HomePage(),
-      home: const ScreenSaver(),
-      // home: const TrashScreenSaver(),
+      // home: const ScreenSaver(),
+      home: const BubbleAnimation(),
     );
   }
 }
