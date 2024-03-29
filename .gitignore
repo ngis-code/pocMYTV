@@ -42,4 +42,3 @@ app.*.map.json
 
 update.bat
 pubspec.lock
-update.sh
