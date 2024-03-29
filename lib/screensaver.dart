@@ -62,6 +62,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
           const SizedBox(height: 20),
           FocusWidget(
             hasFocus: true,
+            borderColor: Colors.transparent,
             onTap: () {
               Navigator.pop(context);
             },
