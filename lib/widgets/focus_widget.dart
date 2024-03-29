@@ -8,6 +8,7 @@ class FocusWidget extends StatefulWidget {
   final double blur;
   final Color backgroundColor;
   final Color borderColor;
+  final bool hasFocus;
   final Function() onTap;
 
   const FocusWidget({
@@ -19,6 +20,7 @@ class FocusWidget extends StatefulWidget {
     this.blur = 0,
     this.backgroundColor = Colors.transparent,
     this.borderColor = Colors.white,
+    this.hasFocus = false,
   });
 
   @override
@@ -33,6 +35,9 @@ class _FocusWidgetState extends State<FocusWidget> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       hasFocus = focusNode.hasFocus;
+      if (widget.hasFocus) {
+        focusNode.requestFocus();
+      }
     });
     super.initState();
   }
