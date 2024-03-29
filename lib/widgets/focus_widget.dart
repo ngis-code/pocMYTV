@@ -29,6 +29,7 @@ class FocusWidget extends StatefulWidget {
 
 class _FocusWidgetState extends State<FocusWidget> {
   bool hasFocus = false;
+  bool disposed = false;
   final FocusNode focusNode = FocusNode();
 
   @override
@@ -43,14 +44,23 @@ class _FocusWidgetState extends State<FocusWidget> {
   }
 
   @override
+  dispose() {
+    disposed = true;
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       focusNode: focusNode,
       onTap: widget.onTap,
       onFocusChange: (hasFocus) {
-        setState(() {
-          this.hasFocus = hasFocus;
-        });
+        if (!disposed) {
+          setState(() {
+            this.hasFocus = hasFocus;
+          });
+        }
       },
       borderRadius: BorderRadius.circular(widget.borderRadius),
       child: GlassWidget(
