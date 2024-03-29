@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/widgets/focus_widget.dart';
 
 class HomeBottomTile extends StatefulWidget {
   final String title;
@@ -17,29 +18,17 @@ class HomeBottomTile extends StatefulWidget {
 }
 
 class _HomeBottomTileState extends State<HomeBottomTile> {
-  bool hasFocus = false;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return FocusWidget(
       onTap: widget.onTap,
-      onFocusChange: (hasFocus) {
-        setState(() {
-          this.hasFocus = hasFocus;
-        });
-      },
-      borderRadius: BorderRadius.circular(20),
-      child: Container(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: hasFocus ? Colors.white : Colors.transparent,
-            width: 5,
-          ),
-        ),
-        clipBehavior: Clip.hardEdge,
-        child: LayoutBuilder(builder: (context, constraints) {
+      borderRadius: 20,
+      backgroundColor: Colors.black.withOpacity(0.5),
+      borderColor: Colors.white,
+      borderWidth: 5,
+      blur: 3,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
           final width = constraints.maxWidth;
           final height = constraints.maxHeight;
           return Column(
@@ -82,7 +71,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
               ),
             ],
           );
-        }),
+        },
       ),
     );
   }
