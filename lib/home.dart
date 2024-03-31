@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       const Text(
                         "Welcome to our Hotel Name",
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 50,

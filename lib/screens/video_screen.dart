@@ -31,8 +31,9 @@ class _VideoScreenState extends State<VideoScreen> {
       ],
       maxRadius: 100,
       child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Center(
+        padding: const EdgeInsets.all(40),
+        child: SingleChildScrollView(
+          clipBehavior: Clip.none,
           child: Wrap(
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,

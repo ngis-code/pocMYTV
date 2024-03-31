@@ -11,14 +11,16 @@ class GenreTile extends StatefulWidget {
 }
 
 class _GenreTileState extends State<GenreTile> {
-  double padding = 20;
-  double height = 200;
+  static const double maxHeight = 240;
+  static const double maxPadding = 20;
+  double padding = maxPadding;
+  double height = maxHeight - 2 * maxPadding;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 240,
-      height: 240,
+      width: maxHeight,
+      height: maxHeight,
       child: Center(
         child: Padding(
           padding: EdgeInsets.all(padding),
@@ -27,8 +29,8 @@ class _GenreTileState extends State<GenreTile> {
             borderColor: Colors.white30,
             onFocusChange: (hasFocus) {
               setState(() {
-                padding = hasFocus ? 0 : 20;
-                height = hasFocus ? 240 : 200;
+                padding = hasFocus ? 0 : maxPadding;
+                height = hasFocus ? maxHeight : maxHeight - 2 * maxPadding;
               });
             },
             child: AnimatedContainer(
@@ -38,15 +40,15 @@ class _GenreTileState extends State<GenreTile> {
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(.1),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
               ),
               alignment: Alignment.center,
               child: Text(
                 widget.genre.name.split('.').last.toUpperCase(),
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Colors.white),
               ),
             ),
           ),
