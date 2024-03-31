@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 import 'package:video_player/video_player.dart';
 
@@ -35,9 +36,59 @@ class _VideoScreenState extends State<VideoScreen> {
           return FocusWidget(
             focusColor: Colors.transparent,
             onTap: () {},
-            child: VideoCard(
-              assetPath: videos[index],
-              isSelected: _selectedIndex == index,
+            child: Stack(
+              children: [
+                VideoCard(
+                  assetPath: videos[index],
+                  isSelected: _selectedIndex == index,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      end: Alignment.centerLeft,
+                      begin: Alignment.centerRight,
+                      colors: [
+                        Colors.black.withOpacity(0.0),
+                        Colors.black.withOpacity(0.5),
+                        Colors.black.withOpacity(0.8),
+                      ],
+                    ),
+                  ),
+                  width: MediaQuery.of(context).size.width / 3,
+                  height: double.infinity,
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Movie',
+                        style:
+                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                                  color: Colors.white,
+                                ),
+                      ),
+                      Text(
+                        'aliquam ad beatae qui quisquam sapiente neque soluta nostrum natus maxime tempora nisi dolore doloribus',
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  color: Colors.white,
+                                ),
+                      ),
+                      RatingBarIndicator(
+                        rating: 4.2,
+                        itemSize: 14,
+                        itemBuilder: (context, index) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         },
