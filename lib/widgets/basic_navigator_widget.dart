@@ -34,6 +34,7 @@ class _BasicNavigationState extends State<BasicNavigation> {
   bool _handleKeyPress(KeyEvent event) {
     if (disposed || event is KeyDownEvent) return false;
     if (event.logicalKey == LogicalKeyboardKey.escape) {
+      disposed = true;
       Navigator.of(context).pop();
     } else {
       log("Logical Key Pressed: ${event.logicalKey}");
