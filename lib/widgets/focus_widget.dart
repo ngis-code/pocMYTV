@@ -8,6 +8,7 @@ class FocusWidget extends StatefulWidget {
   final double blur;
   final Color backgroundColor;
   final Color borderColor;
+  final Color? focusColor;
   final bool hasFocus;
   final EdgeInsets padding;
   final Function() onTap;
@@ -25,6 +26,7 @@ class FocusWidget extends StatefulWidget {
     this.hasFocus = false,
     this.onFocusChange,
     this.padding = EdgeInsets.zero,
+    this.focusColor,
   });
 
   @override
@@ -57,6 +59,7 @@ class _FocusWidgetState extends State<FocusWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      focusColor: widget.focusColor,
       focusNode: focusNode,
       onTap: widget.onTap,
       onFocusChange: (hasFocus) {
