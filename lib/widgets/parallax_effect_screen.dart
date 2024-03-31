@@ -18,6 +18,7 @@ class _ParallaxEffectScreenState extends State<ParallaxEffectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [

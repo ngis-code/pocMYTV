@@ -14,7 +14,7 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.8);
+    _pageController = PageController(viewportFraction: .95);
   }
 
   @override
@@ -33,7 +33,7 @@ class _VideoScreenState extends State<VideoScreen> {
         itemCount: videos.length,
         itemBuilder: (context, index) {
           return FocusWidget(
-            borderColor: Colors.transparent,
+            focusColor: Colors.transparent,
             onTap: () {},
             child: VideoCard(
               assetPath: videos[index],
@@ -99,9 +99,6 @@ class _VideoCardState extends State<VideoCard> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
-      margin: widget.isSelected
-          ? const EdgeInsets.symmetric(vertical: 16, horizontal: 4)
-          : const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),

@@ -6,7 +6,11 @@ class MovieTile extends StatefulWidget {
   double height;
   double width;
   final Movie movie;
-  MovieTile({super.key, required this.movie, required this.height, required this.width});
+  MovieTile(
+      {super.key,
+      required this.movie,
+      required this.height,
+      required this.width});
 
   @override
   State<MovieTile> createState() => _MovieTileState();
@@ -27,6 +31,9 @@ class _MovieTileState extends State<MovieTile> {
         duration: const Duration(milliseconds: 300),
         height: hasFocus ? widget.height : widget.height - 50,
         width: hasFocus ? widget.width : widget.width - 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
         alignment: Alignment.center,
         child: GridTile(
           footer: GridTileBar(
