@@ -3,9 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/home_bottom_tile.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
+import 'package:pocmytv/screens/video_screen.dart';
 import 'package:pocmytv/widgets/basic_navigator_widget.dart';
-
-import 'vod.dart';
 
 class BottomMenuTiles extends StatelessWidget {
   ScrollController scrollController = ScrollController();
