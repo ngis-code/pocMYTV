@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pocmytv/home_bottom_tile.dart';
+import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
+import 'package:pocmytv/widgets/basic_navigator_widget.dart';
 
 import 'vod.dart';
 
@@ -21,6 +23,7 @@ class BottomMenuTiles extends StatelessWidget {
       thickness: 10, //According to your choice
       thumbVisibility: true, //
       child: GridView.count(
+        controller: scrollController,
         crossAxisCount: 1,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
@@ -40,11 +43,15 @@ class BottomMenuTiles extends StatelessWidget {
             },
           ),
           HomeBottomTile(
-            description: "Listen to your fav radio",
-            title: "Radio",
-            icon: Icons.radio_rounded,
+            description: "Cruise Schedule",
+            title: "Schedule",
+            icon: Icons.timeline,
             onTap: () {
-              log("TV");
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => BasicNavigation(child: CruisSchedule()),
+                ),
+              );
             },
           ),
           HomeBottomTile(
