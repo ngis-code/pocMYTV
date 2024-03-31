@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
-import 'package:pocmytv/clock.dart';
 import 'package:pocmytv/screens/bottom_menu_tiles.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
+import 'package:pocmytv/widgets/clock.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
 class HomePage extends StatefulWidget {

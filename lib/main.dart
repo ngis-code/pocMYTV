@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pocmytv/screensaver.dart';
+import 'package:pocmytv/screens/screensaver.dart';
 
 void main() {
   runApp(const MyApp());

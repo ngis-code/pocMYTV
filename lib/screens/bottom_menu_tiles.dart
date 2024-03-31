@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/home_bottom_tile.dart';
 
-import '../vod.dart';
+import 'vod.dart';
 
 class BottomMenuTiles extends StatelessWidget {
   ScrollController scrollController = ScrollController();
