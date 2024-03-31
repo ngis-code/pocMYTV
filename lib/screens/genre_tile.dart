@@ -26,7 +26,8 @@ class _GenreTileState extends State<GenreTile> {
           padding: EdgeInsets.all(padding),
           child: FocusWidget(
             onTap: () {},
-            borderColor: Colors.white30,
+            blur: 30,
+            borderColor: Colors.white,
             onFocusChange: (hasFocus) {
               setState(() {
                 padding = hasFocus ? 0 : maxPadding;
@@ -39,7 +40,6 @@ class _GenreTileState extends State<GenreTile> {
               curve: Curves.easeInOut,
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               alignment: Alignment.center,
