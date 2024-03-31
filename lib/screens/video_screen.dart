@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/models/genre.dart';
 import 'package:pocmytv/screens/bubble_animation.dart';
 import 'package:pocmytv/screens/genre_tile.dart';
+import 'package:pocmytv/widgets/parallax_effect_screen.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
@@ -40,7 +41,9 @@ class _VideoScreenState extends State<VideoScreen> {
             runAlignment: WrapAlignment.center,
             children: [
               for (int index = 0; index < Genre.values.length; index++)
-                GenreTile(genre: Genre.values[index]),
+                GenreTile(
+                  genre: Genre.values[index],
+                ),
             ],
           ),
         ),

@@ -26,27 +26,19 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: videos.length,
-              itemBuilder: (context, index) {
-                return VideoCard(
-                  assetPath: videos[index],
-                  isSelected: _selectedIndex == index,
-                );
-              },
-              onPageChanged: (i) => setState(
-                () => _selectedIndex = i,
-              ),
-            ),
-          ),
-        ],
+    return SizedBox(
+      child: PageView.builder(
+        controller: _pageController,
+        itemCount: videos.length,
+        itemBuilder: (context, index) {
+          return VideoCard(
+            assetPath: videos[index],
+            isSelected: _selectedIndex == index,
+          );
+        },
+        onPageChanged: (i) => setState(
+          () => _selectedIndex = i,
+        ),
       ),
     );
   }
@@ -125,11 +117,14 @@ class _VideoCardState extends State<VideoCard> {
             backgroundImageKey: _videoKey,
           ),
           children: [
-            AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(
-                _controller,
-                key: _videoKey,
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(
+                  _controller,
+                  key: _videoKey,
+                ),
               ),
             ),
           ],
