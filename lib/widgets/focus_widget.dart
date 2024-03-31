@@ -10,6 +10,7 @@ class FocusWidget extends StatefulWidget {
   final Color borderColor;
   final bool hasFocus;
   final Function() onTap;
+  final Function(bool hasFocus)? onFocusChange;
 
   const FocusWidget({
     super.key,
@@ -21,6 +22,7 @@ class FocusWidget extends StatefulWidget {
     this.backgroundColor = Colors.transparent,
     this.borderColor = Colors.white,
     this.hasFocus = false,
+    this.onFocusChange,
   });
 
   @override
@@ -61,6 +63,7 @@ class _FocusWidgetState extends State<FocusWidget> {
             this.hasFocus = hasFocus;
           });
         }
+        widget.onFocusChange?.call(hasFocus);
       },
       borderRadius: BorderRadius.circular(widget.borderRadius),
       child: GlassWidget(
