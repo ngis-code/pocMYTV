@@ -3,8 +3,10 @@ import 'package:pocmytv/models/movie.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
 class MovieTile extends StatefulWidget {
+  double height;
+  double width;
   final Movie movie;
-  const MovieTile({super.key, required this.movie});
+  MovieTile({super.key, required this.movie, required this.height, required this.width});
 
   @override
   State<MovieTile> createState() => _MovieTileState();
@@ -15,17 +17,17 @@ class _MovieTileState extends State<MovieTile> {
   @override
   Widget build(BuildContext context) {
     return FocusWidget(
-      onTap: () {
+      onFocusChange: (hasFocus) {
         setState(() {
-          hasFocus = !hasFocus;
+          this.hasFocus = hasFocus;
         });
       },
+      onTap: () => {},
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        transform: hasFocus ? Matrix4.identity() : Matrix4.identity()
-          ..scale(0.9),
-        height: hasFocus ? 300 : 200,
-        width: hasFocus ? 200 : 150,
+        height: hasFocus ? widget.height : widget.height - 50,
+        width: hasFocus ? widget.width : widget.width - 50,
+        alignment: Alignment.center,
         child: GridTile(
           footer: GridTileBar(
             backgroundColor: Colors.black45,

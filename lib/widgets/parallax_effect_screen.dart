@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/models/movie.dart';
+import 'package:pocmytv/screens/movie_tile.dart';
 import 'package:pocmytv/screens/vod.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
 
 class ParallaxEffectScreen extends StatefulWidget {
   const ParallaxEffectScreen({super.key});
@@ -28,27 +28,21 @@ class _ParallaxEffectScreenState extends State<ParallaxEffectScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height / 3,
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 150,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                ),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    child: FocusWidget(
-                      child: Image.asset(
-                        Movie.allMovies[index].image,
-                        fit: BoxFit.cover,
-                      ),
-                      onTap: () {},
-                    ),
-                  );
-                },
-                itemCount: Movie.allMovies.length,
+              height: MediaQuery.of(context).size.height / 3 - 10,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      for (int index = 0;
+                          index < Movie.allMovies.length;
+                          index++)
+                        MovieTile(
+                          movie: Movie.allMovies[index],
+                          height: MediaQuery.of(context).size.height / 3 - 10,
+                          width: MediaQuery.of(context).size.width / 3,
+                        ),
+                    ]),
               ),
             ),
           )

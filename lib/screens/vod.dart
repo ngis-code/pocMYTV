@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/widgets/focus_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoScreen extends StatefulWidget {
@@ -31,9 +32,13 @@ class _VideoScreenState extends State<VideoScreen> {
         controller: _pageController,
         itemCount: videos.length,
         itemBuilder: (context, index) {
-          return VideoCard(
-            assetPath: videos[index],
-            isSelected: _selectedIndex == index,
+          return FocusWidget(
+            borderColor: Colors.transparent,
+            onTap: () {},
+            child: VideoCard(
+              assetPath: videos[index],
+              isSelected: _selectedIndex == index,
+            ),
           );
         },
         onPageChanged: (i) => setState(
@@ -98,15 +103,7 @@ class _VideoCardState extends State<VideoCard> {
           ? const EdgeInsets.symmetric(vertical: 16, horizontal: 4)
           : const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            offset: const Offset(0, 6),
-            blurRadius: 8,
-          ),
-        ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
