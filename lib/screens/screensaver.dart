@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/clock.dart';
 import 'package:pocmytv/home.dart';
 import 'package:pocmytv/screens/bubble_animation.dart';
+import 'package:pocmytv/widgets/clock.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
 class ScreenSaver extends StatefulWidget {
