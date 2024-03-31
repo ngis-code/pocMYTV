@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/home_bottom_tile.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_screen.dart';
-import 'package:pocmytv/widgets/basic_navigator_widget.dart';
 
 class BottomMenuTiles extends StatelessWidget {
   ScrollController scrollController = ScrollController();
@@ -48,7 +47,7 @@ class BottomMenuTiles extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => BasicNavigation(child: CruisSchedule()),
+                  builder: (context) => CruisSchedule(),
                 ),
               );
             },

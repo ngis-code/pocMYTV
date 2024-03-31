@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/models/genre.dart';
 import 'package:pocmytv/screens/bubble_animation.dart';
 import 'package:pocmytv/screens/genre_tile.dart';
-import 'package:pocmytv/widgets/basic_navigator_widget.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
@@ -25,21 +24,19 @@ class _VideoScreenState extends State<VideoScreen> {
         Colors.purple,
       ],
       maxRadius: 100,
-      child: BasicNavigation(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Center(
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              runAlignment: WrapAlignment.center,
-              children: [
-                for (int index = 0; index < Genre.values.length; index++)
-                  GenreTile(
-                    genre: Genre.values[index],
-                  ),
-              ],
-            ),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Center(
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            runAlignment: WrapAlignment.center,
+            children: [
+              for (int index = 0; index < Genre.values.length; index++)
+                GenreTile(
+                  genre: Genre.values[index],
+                ),
+            ],
           ),
         ),
       ),
