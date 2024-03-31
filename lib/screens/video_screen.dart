@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/models/movie.dart';
+import 'package:pocmytv/models/genre.dart';
+import 'package:pocmytv/screens/bubble_animation.dart';
+import 'package:pocmytv/screens/genre_tile.dart';
+import 'package:pocmytv/widgets/basic_navigator_widget.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
@@ -11,27 +14,34 @@ class VideoScreen extends StatefulWidget {
 class _VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 100,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-        ),
-        itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Movie.allMovies[index].image),
-                fit: BoxFit.cover,
-              ),
+    return BubbleAnimation(
+      bubbles: 100,
+      minRadius: 20,
+      colors: const [
+        Colors.blue,
+        Colors.red,
+        Colors.green,
+        Colors.yellow,
+        Colors.purple,
+      ],
+      maxRadius: 100,
+      child: BasicNavigation(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              runAlignment: WrapAlignment.center,
+              children: [
+                for (int index = 0; index < Genre.values.length; index++)
+                  GenreTile(
+                    genre: Genre.values[index],
+                  ),
+              ],
             ),
-            // child: Center(
-            //   child: Text('Item $index'),
-            // ),
-          );
-        },
-        itemCount: Movie.allMovies.length,
+          ),
+        ),
       ),
     );
   }
