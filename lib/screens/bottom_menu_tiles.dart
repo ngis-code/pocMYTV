@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/home_bottom_tile.dart';
 
+import '../vod.dart';
+
 class BottomMenuTiles extends StatelessWidget {
   ScrollController scrollController = ScrollController();
   BottomMenuTiles({super.key});
@@ -26,10 +28,15 @@ class BottomMenuTiles extends StatelessWidget {
         children: [
           HomeBottomTile(
             description: "Watch your favorite show",
-            title: "TV",
+            title: "VOD",
             icon: Icons.tv_rounded,
             onTap: () {
-              log("TV");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const VideoScreen(),
+                ),
+              );
             },
           ),
           HomeBottomTile(

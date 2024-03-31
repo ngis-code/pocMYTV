@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/clock.dart';
+import 'package:pocmytv/home.dart';
 import 'package:pocmytv/screens/bubble_animation.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
@@ -90,7 +91,13 @@ class _ScreenSaverState extends State<ScreenSaver> {
                 backgroundColor: Colors.transparent,
                 borderColor: Colors.transparent,
                 onTap: () {
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
                 },
                 child: const Text(
                   "Press any key to continue",
