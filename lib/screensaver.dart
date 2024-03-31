@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/bubble.dart';
+import 'package:pocmytv/clock.dart';
+import 'package:pocmytv/screens/bubble_animation.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
 class ScreenSaver extends StatefulWidget {
@@ -13,69 +14,96 @@ class _ScreenSaverState extends State<ScreenSaver> {
   @override
   Widget build(BuildContext context) {
     return BubbleAnimation(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            'assets/images/logo.png',
-            height: 120,
-            width: 120,
-          ),
-          RichText(
-            textAlign: TextAlign.center,
-            text: const TextSpan(
-              text: "Welcome to your Stateroom ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                // fontWeight: FontWeight.bold,
-              ),
-              children: [
-                TextSpan(
-                  text: 'Landon Byron',
-                  style: TextStyle(
-                    color: Colors.blue,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            ClockWidget(
+              builder: (context, time) {
+                return Text(
+                  '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-                TextSpan(
-                  text: '\nWe hope you enjoy ',
+                );
+              },
+            ),
+            const SizedBox(width: 10),
+          ],
+        ),
+        extendBodyBehindAppBar: true,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                height: 120,
+                width: 120,
+              ),
+              RichText(
+                textAlign: TextAlign.center,
+                text: const TextSpan(
+                  text: "Welcome to your Stateroom ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     // fontWeight: FontWeight.bold,
                   ),
+                  children: [
+                    TextSpan(
+                      text: 'Landon Byron',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nWe hope you enjoy ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        // fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Icon of the seas',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-                TextSpan(
-                  text: 'Icon of the seas',
+              ),
+              const SizedBox(height: 20),
+              FocusWidget(
+                hasFocus: true,
+                backgroundColor: Colors.transparent,
+                borderColor: Colors.transparent,
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  "Press any key to continue",
                   style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 30,
+                    color: Colors.white,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          FocusWidget(
-            hasFocus: true,
-            borderColor: Colors.transparent,
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Text(
-              "Press any key to continue",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

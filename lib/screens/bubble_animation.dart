@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:pocmytv/clock.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:vector_math/vector_math.dart' as v;
 
@@ -63,27 +62,6 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          ClockWidget(
-            builder: (context, time) {
-              return Text(
-                '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
-                textAlign: TextAlign.right,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              );
-            },
-          ),
-          const SizedBox(width: 10),
-        ],
-      ),
-      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           ..._particles.map(
@@ -111,19 +89,6 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
               ),
             ),
           ),
-          // Positioned(
-          //   right: 20,
-          //   top: 20,
-          //   child: ClockWidget(
-          //     builder: (context, time) => Text(
-          //       time.toString(),
-          //       style: const TextStyle(
-          //         fontSize: 14,
-          //         color: Colors.white,
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
@@ -131,6 +96,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
 
   Future<void> _update() async {
     await Future.delayed(const Duration(milliseconds: 1000 ~/ 60));
+    if (!context.mounted) return;
     // update positions of particles
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
