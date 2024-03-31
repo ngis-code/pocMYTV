@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/bubble_animation.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
-import 'package:timelines_plus/timelines_plus.dart';
+import 'package:timelines/timelines.dart';
 
 class CruisSchedule extends StatelessWidget {
   CruisSchedule({super.key});
