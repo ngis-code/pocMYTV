@@ -44,13 +44,16 @@ class _MyAppState extends State<MyApp> {
 
   bool _handleKeyPress(KeyEvent event) {
     if (event is KeyDownEvent) return false;
-    if (event.logicalKey == LogicalKeyboardKey.escape) {
-      if (navigatorKey.currentState!.canPop()) {
-        navigatorKey.currentState!.pop();
-      }
-    } else {
-      log("Logical Key Pressed: ${event.logicalKey}");
-      log("Physical Key Pressed: ${event.physicalKey}");
+    switch (event.logicalKey) {
+      case LogicalKeyboardKey.escape:
+      case LogicalKeyboardKey.backspace:
+        if (navigatorKey.currentState!.canPop()) {
+          navigatorKey.currentState!.pop();
+        }
+        break;
+      default:
+        log("Logical Key Pressed: ${event.logicalKey}");
+        log("Physical Key Pressed: ${event.physicalKey}");
     }
     return true;
   }

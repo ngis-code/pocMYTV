@@ -11,6 +11,7 @@ class BubbleAnimation extends StatefulWidget {
   final int bubbles;
   final int fps;
   final double minRadius;
+  final double blur;
   final double maxRadius;
   final double velocityMultiplier;
   const BubbleAnimation({
@@ -30,6 +31,7 @@ class BubbleAnimation extends StatefulWidget {
     this.maxRadius = 150,
     this.velocityMultiplier = 1,
     this.fps = 60,
+    this.blur = 50,
   });
 
   @override
@@ -95,7 +97,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
           ),
           Positioned.fill(
             child: GlassWidget(
-              blur: 50,
+              blur: widget.blur,
               child: Container(
                 // color: Colors.white54,
                 alignment: Alignment.center,

@@ -13,7 +13,6 @@ class GenreTile extends StatefulWidget {
 class _GenreTileState extends State<GenreTile> {
   double padding = 20;
   double height = 200;
-  Color color = Colors.transparent;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +24,11 @@ class _GenreTileState extends State<GenreTile> {
           padding: EdgeInsets.all(padding),
           child: FocusWidget(
             onTap: () {},
-            borderColor: Colors.transparent,
+            borderColor: Colors.white30,
             onFocusChange: (hasFocus) {
               setState(() {
                 padding = hasFocus ? 0 : 20;
                 height = hasFocus ? 240 : 200;
-                color = hasFocus
-                    ? Colors.white.withOpacity(.1)
-                    : Colors.transparent;
               });
             },
             child: AnimatedContainer(
@@ -41,12 +37,8 @@ class _GenreTileState extends State<GenreTile> {
               curve: Curves.easeInOut,
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.5),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: color,
-                  width: 2,
-                ),
+                color: Colors.white.withOpacity(.1),
+                borderRadius: BorderRadius.circular(20),
               ),
               alignment: Alignment.center,
               child: Text(

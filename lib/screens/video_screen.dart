@@ -16,12 +16,18 @@ class _VideoScreenState extends State<VideoScreen> {
     return BubbleAnimation(
       bubbles: 100,
       minRadius: 20,
+      blur: 50,
       colors: const [
         Colors.blue,
         Colors.red,
         Colors.green,
         Colors.yellow,
         Colors.purple,
+        Colors.orange,
+        Colors.pink,
+        Colors.teal,
+        Colors.cyan,
+        Colors.indigo,
       ],
       maxRadius: 100,
       child: Padding(
@@ -33,9 +39,7 @@ class _VideoScreenState extends State<VideoScreen> {
             runAlignment: WrapAlignment.center,
             children: [
               for (int index = 0; index < Genre.values.length; index++)
-                GenreTile(
-                  genre: Genre.values[index],
-                ),
+                GenreTile(genre: Genre.values[index]),
             ],
           ),
         ),
