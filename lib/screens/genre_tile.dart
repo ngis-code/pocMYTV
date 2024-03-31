@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/models/genre.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
+import '../widgets/parallax_effect_screen.dart';
+
 class GenreTile extends StatefulWidget {
   final Genre genre;
   const GenreTile({super.key, required this.genre});
@@ -25,7 +27,16 @@ class _GenreTileState extends State<GenreTile> {
         child: Padding(
           padding: EdgeInsets.all(padding),
           child: FocusWidget(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ParallaxEffectScreen();
+                  },
+                ),
+              );
+            },
             blur: 30,
             borderColor: Colors.white,
             onFocusChange: (hasFocus) {
