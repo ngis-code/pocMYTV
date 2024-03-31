@@ -5,6 +5,7 @@ import 'package:timelines/timelines.dart';
 
 class CruisSchedule extends StatelessWidget {
   CruisSchedule({super.key});
+
   final ScrollController controller = ScrollController();
 
   @override
