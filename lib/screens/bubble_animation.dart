@@ -6,17 +6,23 @@ import 'package:vector_math/vector_math.dart' as v;
 
 class BubbleAnimation extends StatefulWidget {
   // all bright and nice colors
-  static List<Color> colors = [
-    const Color(0xFFFEBD11),
-    const Color(0xFF061556),
-    const Color(0xFF0073BB),
-    Colors.blue,
-    Colors.blueAccent,
-    const Color(0xFF2B6FC0),
-    const Color(0xFF131C49),
-  ];
+  final List<Color> colors;
   final Widget child;
-  const BubbleAnimation({super.key, required this.child});
+  final int bubbles;
+  const BubbleAnimation({
+    super.key,
+    required this.child,
+    this.colors = const [
+      Color(0xFFFEBD11),
+      Color(0xFF061556),
+      Color(0xFF0073BB),
+      Colors.blue,
+      Colors.blueAccent,
+      Color(0xFF2B6FC0),
+      Color(0xFF131C49),
+    ],
+    this.bubbles = 80,
+  });
 
   @override
   State<BubbleAnimation> createState() => _BubbleAnimationState();
@@ -36,7 +42,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final width = MediaQuery.of(context).size.width;
       final height = MediaQuery.of(context).size.height;
-      for (var i = 0; i < 80; i++) {
+      for (var i = 0; i < widget.bubbles; i++) {
         _particles.add(v.Vector2(
           math.Random().nextDouble() * width,
           math.Random().nextDouble() * height,
@@ -46,7 +52,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
           math.Random().nextDouble() - 0.5,
         ));
         _radius.add(math.Random().nextDouble() * 150 + 20);
-        _colors.add(BubbleAnimation.colors[i % BubbleAnimation.colors.length]);
+        _colors.add(widget.colors[i % widget.colors.length]);
       }
       _update();
     });
@@ -72,8 +78,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
                 height: _radius[_particles.indexOf(p)],
                 width: _radius[_particles.indexOf(p)],
                 decoration: BoxDecoration(
-                  color: _colors[
-                      _particles.indexOf(p) % BubbleAnimation.colors.length],
+                  color: _colors[_particles.indexOf(p) % widget.colors.length],
                   shape: BoxShape.circle,
                 ),
               ),
@@ -96,7 +101,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
 
   Future<void> _update() async {
     await Future.delayed(const Duration(milliseconds: 1000 ~/ 60));
-    if (!context.mounted) return;
+    if (disposed) return;
     // update positions of particles
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
@@ -114,9 +119,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
         _particles[i].y = -margin;
       }
     }
-    if (!disposed) {
-      setState(() {});
-      _update();
-    }
+    setState(() {});
+    _update();
   }
 }

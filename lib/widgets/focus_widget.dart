@@ -9,6 +9,7 @@ class FocusWidget extends StatefulWidget {
   final Color backgroundColor;
   final Color borderColor;
   final bool hasFocus;
+  final EdgeInsets padding;
   final Function() onTap;
   final Function(bool hasFocus)? onFocusChange;
 
@@ -23,6 +24,7 @@ class FocusWidget extends StatefulWidget {
     this.borderColor = Colors.white,
     this.hasFocus = false,
     this.onFocusChange,
+    this.padding = EdgeInsets.zero,
   });
 
   @override
@@ -70,6 +72,7 @@ class _FocusWidgetState extends State<FocusWidget> {
         radius: widget.borderRadius,
         blur: widget.blur,
         child: Container(
+          padding: widget.padding,
           decoration: BoxDecoration(
             color: widget.backgroundColor,
             borderRadius: BorderRadius.circular(widget.borderRadius),

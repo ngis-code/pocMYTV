@@ -42,6 +42,8 @@ dependencies:
   # TODO: remove these packages if no longer needed
   animate_gradient: ^0.0.2+1
   wave: ^0.2.2
+  timelines_plus: ^1.0.2
+  vector_math: ^2.1.4
 
 dev_dependencies:
   flutter_test:
