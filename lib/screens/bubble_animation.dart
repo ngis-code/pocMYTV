@@ -9,6 +9,10 @@ class BubbleAnimation extends StatefulWidget {
   final List<Color> colors;
   final Widget child;
   final int bubbles;
+  final int fps;
+  final double minRadius;
+  final double maxRadius;
+  final double velocityMultiplier;
   const BubbleAnimation({
     super.key,
     required this.child,
@@ -22,6 +26,10 @@ class BubbleAnimation extends StatefulWidget {
       Color(0xFF131C49),
     ],
     this.bubbles = 80,
+    this.minRadius = 20,
+    this.maxRadius = 150,
+    this.velocityMultiplier = 1,
+    this.fps = 60,
   });
 
   @override
@@ -33,7 +41,6 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   final List<v.Vector2> _velocities = [];
   final List<double> _radius = [];
   final List<Color> _colors = [];
-
   bool disposed = false;
 
   @override
@@ -48,10 +55,12 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
           math.Random().nextDouble() * height,
         ));
         _velocities.add(v.Vector2(
-          math.Random().nextDouble() - 0.5,
-          math.Random().nextDouble() - 0.5,
+          (math.Random().nextDouble() - 0.5) * widget.velocityMultiplier,
+          (math.Random().nextDouble() - 0.5) * widget.velocityMultiplier,
         ));
-        _radius.add(math.Random().nextDouble() * 150 + 20);
+        _radius.add(
+            math.Random().nextDouble() * (widget.maxRadius - widget.minRadius) +
+                widget.minRadius);
         _colors.add(widget.colors[i % widget.colors.length]);
       }
       _update();
@@ -100,7 +109,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   }
 
   Future<void> _update() async {
-    await Future.delayed(const Duration(milliseconds: 1000 ~/ 60));
+    await Future.delayed(Duration(milliseconds: 1000 ~/ widget.fps));
     if (disposed) return;
     // update positions of particles
     final width = MediaQuery.of(context).size.width;
