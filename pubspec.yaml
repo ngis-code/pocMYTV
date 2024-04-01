@@ -16,13 +16,14 @@ dependencies:
   intl: ^0.19.0
   flutter_rating_bar: ^4.0.1
   google_fonts: 6.1.0
-  video_player: ^2.8.3
+  vector_math: ^2.1.4
+  timelines: ^0.1.0
+  video_player_tizen: ^2.4.9
+  video_player: ^2.6.0
 
   # TODO: remove these packages if no longer needed
   animate_gradient: ^0.0.2+1
   wave: ^0.2.2
-  vector_math: ^2.1.4
-  timelines: ^0.1.0
 
 dev_dependencies:
   flutter_test:

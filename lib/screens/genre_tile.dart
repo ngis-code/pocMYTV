@@ -37,8 +37,6 @@ class _GenreTileState extends State<GenreTile> {
                 ),
               );
             },
-            blur: 30,
-            borderColor: Colors.white,
             onFocusChange: (hasFocus) {
               setState(() {
                 padding = hasFocus ? 0 : maxPadding;
@@ -52,6 +50,10 @@ class _GenreTileState extends State<GenreTile> {
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: Colors.white30,
+                  width: 2,
+                ),
               ),
               alignment: Alignment.center,
               child: Text(
