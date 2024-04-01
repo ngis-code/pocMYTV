@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/models/genre.dart';
-import 'package:pocmytv/screens/bubble_animation.dart';
 import 'package:pocmytv/screens/genre_tile.dart';
 
 class VideoScreen extends StatefulWidget {
@@ -13,24 +12,9 @@ class VideoScreen extends StatefulWidget {
 class _VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
-    return BubbleAnimation(
-      bubbles: 100,
-      minRadius: 20,
-      blur: 50,
-      colors: const [
-        Colors.blue,
-        Colors.red,
-        Colors.green,
-        Colors.yellow,
-        Colors.purple,
-        Colors.orange,
-        Colors.pink,
-        Colors.teal,
-        Colors.cyan,
-        Colors.indigo,
-      ],
-      maxRadius: 100,
-      child: Padding(
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Padding(
         padding: const EdgeInsets.all(40),
         child: SingleChildScrollView(
           clipBehavior: Clip.none,
