@@ -101,10 +101,8 @@ class _VideoScreenState extends State<VideoScreen> {
 }
 
 final videos = [
-  'assets/videos/1.mp4',
-  'assets/videos/2.mp4',
-  'assets/videos/3.mp4',
-  'assets/videos/4.mp4',
+  'https://onlinetestcase.com/wp-content/uploads/2023/06/15MB.mp4',
+  'https://file-examples.com/storage/fef0ba8e7b660ad2093c8cd/2017/04/file_example_MP4_1280_10MG.mp4',
 ];
 
 class VideoCard extends StatefulWidget {
@@ -130,7 +128,7 @@ class _VideoCardState extends State<VideoCard> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(widget.assetPath);
+    _controller = VideoPlayerController.network(widget.assetPath);
 
     _controller
       ..addListener(() => setState(() {}))
