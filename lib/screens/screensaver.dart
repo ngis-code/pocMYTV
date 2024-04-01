@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pocmytv/home.dart';
 import 'package:pocmytv/screens/bubble_animation.dart';
+import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/widgets/clock.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
 
 class ScreenSaver extends StatefulWidget {
   const ScreenSaver({super.key});
@@ -12,6 +13,18 @@ class ScreenSaver extends StatefulWidget {
 }
 
 class _ScreenSaverState extends State<ScreenSaver> {
+  @override
+  void initState() {
+    KeyBoardService.addHandler(_handler);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    KeyBoardService.removeHandler(_handler);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BubbleAnimation(
@@ -86,25 +99,12 @@ class _ScreenSaverState extends State<ScreenSaver> {
                 ),
               ),
               const SizedBox(height: 20),
-              FocusWidget(
-                hasFocus: true,
-                borderColor: Colors.transparent,
-                onTap: () {
-                  // Navigator.pop(context);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  "Press any key to continue",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
+              const Text(
+                "Press any key to continue",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
@@ -112,6 +112,17 @@ class _ScreenSaverState extends State<ScreenSaver> {
         ),
       ),
     );
+  }
+
+  bool _handler(KeyEvent event) {
+    if (event is KeyDownEvent) return false;
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ),
+    );
+    return false;
   }
 }
 
