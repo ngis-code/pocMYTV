@@ -127,25 +127,21 @@ class _ScreenSaverState extends State<ScreenSaver> {
 }
 
 //   static const _backgroundColor = Color.fromARGB(255, 0, 17, 255);
-
 //   static const _colors = [
 //     Color.fromARGB(255, 64, 254, 244),
 //     Color.fromARGB(255, 0, 212, 249),
 //     Color.fromARGB(255, 0, 249, 187),
 //   ];
-
 //   static const _durations = [
 //     5000,
 //     4000,
 //     6000,
 //   ];
-
 //   static const _heightPercentages = [
 //     0.6,
 //     0.7,
 //     0.8,
 //   ];
-
     // body: Stack(
     //   children: [
     //     WaveWidget(
@@ -181,7 +177,6 @@ class _ScreenSaverState extends State<ScreenSaver> {
     //     ),
     //   ],
     // ),
-
     // body: AnimateGradient(
     //   primaryBegin: Alignment.topCenter,
     //   primaryEnd: Alignment.bottomCenter,
