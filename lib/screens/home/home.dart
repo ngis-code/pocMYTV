@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:pocmytv/screens/home/bottom_menu_tiles.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
+import 'package:pocmytv/widgets/drawer.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +20,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      drawer: const TVDrawer(),
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
