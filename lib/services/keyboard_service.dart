@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,8 +20,8 @@ class KeyBoardService {
         }
         break;
       default:
-        log("Logical Key Pressed: ${event.logicalKey}");
-        log("Physical Key Pressed: ${event.physicalKey}");
+      // log("Logical Key Pressed: ${event.logicalKey}");
+      // log("Physical Key Pressed: ${event.physicalKey}");
     }
     for (final handler in _handlers) {
       if (handler(event)) return true;

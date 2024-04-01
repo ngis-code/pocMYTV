@@ -5,6 +5,7 @@ class CenteredListView extends StatefulWidget {
   final Widget Function(BuildContext context, int index, bool hasFocus)
       itemBuilder;
   final void Function(int index) onTap;
+  final void Function(int index)? onFocusChange;
   final int itemCount;
   final bool infinte;
   final Axis scrollDirection;
@@ -36,6 +37,7 @@ class CenteredListView extends StatefulWidget {
     this.borderColor = Colors.white,
     this.focusColor,
     this.focusedItem,
+    this.onFocusChange,
   });
 
   @override
@@ -103,6 +105,7 @@ class _CenteredListViewState extends State<CenteredListView> {
                   index * widget.itemHeight + widget.expandedItemHeight / 2,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.ease);
+              widget.onFocusChange?.call(index);
             },
           );
         },
