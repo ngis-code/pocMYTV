@@ -16,7 +16,7 @@ class _VideoScreenState extends State<VideoScreen> {
     return BubbleAnimation(
       bubbles: 100,
       minRadius: 20,
-      blur: 0,
+      blur: 50,
       colors: const [
         Colors.blue,
         Colors.red,
