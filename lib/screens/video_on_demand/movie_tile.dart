@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/models/movie.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/models/movie/movie.dart';
 
 class MovieTile extends StatefulWidget {
   double height;

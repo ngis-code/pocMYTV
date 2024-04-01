@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
 import 'package:timelines/timelines.dart';
 
 class CruisSchedule extends StatelessWidget {

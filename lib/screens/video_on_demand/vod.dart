@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoScreen extends StatefulWidget {

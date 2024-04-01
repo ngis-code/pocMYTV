@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 
 class CenteredListView extends StatefulWidget {
   final Widget Function(BuildContext context, int index, bool hasFocus)
@@ -18,6 +18,7 @@ class CenteredListView extends StatefulWidget {
   final Color backgroundColor;
   final Color borderColor;
   final Color? focusColor;
+  final String? focusGroup;
   final int? focusedItem;
 
   const CenteredListView({
@@ -38,6 +39,7 @@ class CenteredListView extends StatefulWidget {
     this.focusColor,
     this.focusedItem,
     this.onFocusChange,
+    this.focusGroup,
   });
 
   @override
@@ -50,15 +52,6 @@ class _CenteredListViewState extends State<CenteredListView> {
   @override
   void initState() {
     super.initState();
-    // if (widget.focusedItem != null) {
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   scrollController.animateTo(
-    //       widget.focusedItem! * widget.itemHeight +
-    //           widget.expandedItemHeight / 2,
-    //       duration: const Duration(milliseconds: 300),
-    //       curve: Curves.ease);
-    // });
-    // }
     scrollController = ScrollController(
       initialScrollOffset: widget.focusedItem != null
           ? widget.focusedItem! * widget.itemHeight +
@@ -90,6 +83,7 @@ class _CenteredListViewState extends State<CenteredListView> {
             index--;
           }
           return CenteredListTile(
+            focusGroup: widget.focusGroup,
             focused: widget.focusedItem == index,
             duration: widget.duration,
             itemHeight: widget.itemHeight,
@@ -135,6 +129,7 @@ class CenteredListTile extends StatefulWidget {
   final Color borderColor;
   final Color? focusColor;
   final bool focused;
+  final String? focusGroup;
 
   const CenteredListTile({
     super.key,
@@ -152,6 +147,7 @@ class CenteredListTile extends StatefulWidget {
     this.focusColor,
     required this.builder,
     this.focused = false,
+    this.focusGroup,
   });
 
   @override
@@ -177,6 +173,7 @@ class _CenteredListTileState extends State<CenteredListTile> {
       backgroundColor: widget.backgroundColor,
       borderColor: widget.borderColor,
       focusColor: widget.focusColor,
+      focusGroup: widget.focusGroup,
       onTap: () {
         widget.onTap();
       },

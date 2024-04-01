@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/models/movie.dart';
+import 'package:pocmytv/models/movie/movie.dart';
 import 'package:pocmytv/screens/video_on_demand/movie_tile.dart';
 import 'package:pocmytv/screens/video_on_demand/vod.dart';
 

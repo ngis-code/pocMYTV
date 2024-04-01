@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
 class FocusWidget extends StatefulWidget {
@@ -11,6 +12,7 @@ class FocusWidget extends StatefulWidget {
   final Color? focusColor;
   final bool hasFocus;
   final EdgeInsets padding;
+  final String? focusGroup;
   final Function() onTap;
   final Function(bool hasFocus)? onFocusChange;
 
@@ -27,6 +29,7 @@ class FocusWidget extends StatefulWidget {
     this.onFocusChange,
     this.padding = EdgeInsets.zero,
     this.focusColor,
+    this.focusGroup,
   });
 
   @override
@@ -40,10 +43,11 @@ class _FocusWidgetState extends State<FocusWidget> {
 
   @override
   void initState() {
+    FocusService.add(widget.focusGroup ?? "unknown", focusNode);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       hasFocus = focusNode.hasFocus;
       if (widget.hasFocus) {
-        focusNode.requestFocus();
+        FocusService.requestFocus(widget.focusGroup ?? "unknown", focusNode);
       }
     });
     super.initState();
@@ -52,6 +56,7 @@ class _FocusWidgetState extends State<FocusWidget> {
   @override
   dispose() {
     disposed = true;
+    FocusService.remove(widget.focusGroup ?? "unknown", focusNode);
     focusNode.dispose();
     super.dispose();
   }
@@ -63,6 +68,10 @@ class _FocusWidgetState extends State<FocusWidget> {
       focusNode: focusNode,
       onTap: widget.onTap,
       onFocusChange: (hasFocus) {
+        if (!FocusService.requestFocus(
+            widget.focusGroup ?? "unknown", focusNode)) {
+          return;
+        }
         if (!disposed) {
           setState(() {
             this.hasFocus = hasFocus;

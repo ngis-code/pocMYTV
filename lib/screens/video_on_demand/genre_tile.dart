@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/models/genre.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/models/movie/genre.dart';
 
 import '../../widgets/parallax_effect_screen.dart';
 
 class GenreTile extends StatefulWidget {
   final Genre genre;
-  const GenreTile({super.key, required this.genre});
+  final void Function(bool hasFocus)? onFocusChange;
+  const GenreTile({
+    super.key,
+    required this.genre,
+    this.onFocusChange,
+  });
 
   @override
   State<GenreTile> createState() => _GenreTileState();
@@ -43,6 +48,7 @@ class _GenreTileState extends State<GenreTile> {
                 padding = hasFocus ? 0 : maxPadding;
                 height = hasFocus ? maxHeight : maxHeight - 2 * maxPadding;
               });
+              widget.onFocusChange?.call(hasFocus);
             },
             child: AnimatedContainer(
               height: height,

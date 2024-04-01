@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

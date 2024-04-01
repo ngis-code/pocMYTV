@@ -1,4 +1,4 @@
-import 'package:pocmytv/models/genre.dart';
+import 'package:pocmytv/models/movie/genre.dart';
 
 class Movie {
   String title;

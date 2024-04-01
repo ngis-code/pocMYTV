@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/widgets/focus_widget.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 
 class HomeBottomTile extends StatefulWidget {
   final String title;
