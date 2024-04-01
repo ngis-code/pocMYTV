@@ -37,6 +37,7 @@ class _TVDrawerState extends State<TVDrawer> {
             expandedItemHeight: 50,
             itemHeight: 90,
             focusedItem: widget.focusedItem,
+            borderColor: Colors.transparent,
             itemBuilder: (context, index, hasFocus) {
               return ListTile(
                 title: Text(
