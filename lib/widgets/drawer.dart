@@ -42,6 +42,7 @@ class _TVDrawerState extends State<TVDrawer> {
                 title: Text(
                   TVDrawer.drawerItems.keys.elementAt(index)[0],
                   style: TextStyle(
+                    fontWeight: hasFocus ? FontWeight.bold : null,
                     color: hasFocus ? Colors.white : Colors.white38,
                     fontSize: hasFocus ? 20 : 20,
                   ),
@@ -52,6 +53,12 @@ class _TVDrawerState extends State<TVDrawer> {
                   size: hasFocus ? 30 : 25,
                 ),
               );
+            },
+            onFocusChange: (index) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) =>
+                    TVDrawer.drawerItems.values.elementAt(index),
+              ));
             },
             onTap: (index) {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
