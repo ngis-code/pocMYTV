@@ -34,8 +34,8 @@ class _TVDrawerState extends State<TVDrawer> {
           width: 200,
           child: CenteredListView(
             duration: const Duration(milliseconds: 200),
-            expandedItemHeight: 80,
-            itemHeight: 50,
+            expandedItemHeight: 100,
+            itemHeight: 80,
             focusedItem: widget.focusedItem,
             itemBuilder: (context, index, hasFocus) {
               return ListTile(

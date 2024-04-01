@@ -92,7 +92,8 @@ class _CenteredListViewState extends State<CenteredListView> {
             duration: widget.duration,
             itemHeight: widget.itemHeight,
             expandedItemHeight: widget.expandedItemHeight,
-            builder: (hasFocus) => widget.itemBuilder(context, index, hasFocus),
+            builder: (hasFocus) =>
+                widget.itemBuilder(context, index, hasFocus),
             onTap: () {
               widget.onTap(index);
             },

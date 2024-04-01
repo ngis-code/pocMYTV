@@ -27,6 +27,7 @@ class _GenreTileState extends State<GenreTile> {
         child: Padding(
           padding: EdgeInsets.all(padding),
           child: FocusWidget(
+            backgroundColor: Colors.grey.withOpacity(.2),
             onTap: () {
               Navigator.push(
                 context,
@@ -51,8 +52,8 @@ class _GenreTileState extends State<GenreTile> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: Colors.white30,
-                  width: 2,
+                  color: Colors.transparent,
+                  // width: 2,
                 ),
               ),
               alignment: Alignment.center,
