@@ -12,6 +12,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() {
+    super.initState();
+    KeyBoardService.init();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: KeyBoardService.navigatorKey,
