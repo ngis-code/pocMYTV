@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/models/genre.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 
-import '../widgets/parallax_effect_screen.dart';
+import '../../widgets/parallax_effect_screen.dart';
 
 class GenreTile extends StatefulWidget {
   final Genre genre;

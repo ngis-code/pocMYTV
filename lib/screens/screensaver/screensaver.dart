@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pocmytv/home.dart';
-import 'package:pocmytv/screens/bubble_animation.dart';
+import 'package:pocmytv/screens/animation/bubble_animation.dart';
+import 'package:pocmytv/screens/home/home.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/widgets/clock.dart';
 

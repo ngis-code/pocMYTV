@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/bubble_animation.dart';
+import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 import 'package:timelines/timelines.dart';
 

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/models/genre.dart';
-import 'package:pocmytv/screens/genre_tile.dart';
+import 'package:pocmytv/screens/video_on_demand/genre_tile.dart';
 
-class VideoScreen extends StatefulWidget {
-  const VideoScreen({super.key});
+class GenreChooseScreen extends StatefulWidget {
+  const GenreChooseScreen({super.key});
 
   @override
-  State<VideoScreen> createState() => _VideoScreenState();
+  State<GenreChooseScreen> createState() => _GenreChooseScreenState();
 }
 
-class _VideoScreenState extends State<VideoScreen> {
+class _GenreChooseScreenState extends State<GenreChooseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

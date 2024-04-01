@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/models/movie.dart';
-import 'package:pocmytv/screens/movie_tile.dart';
-import 'package:pocmytv/screens/vod.dart';
+import 'package:pocmytv/screens/video_on_demand/movie_tile.dart';
+import 'package:pocmytv/screens/video_on_demand/vod.dart';
 
 class ParallaxEffectScreen extends StatefulWidget {
   const ParallaxEffectScreen({super.key});

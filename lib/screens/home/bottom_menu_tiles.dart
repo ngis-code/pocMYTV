@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:pocmytv/home_bottom_tile.dart';
+import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
-import 'package:pocmytv/screens/video_screen.dart';
+import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 
 class BottomMenuTiles extends StatelessWidget {
   ScrollController scrollController = ScrollController();
@@ -35,7 +35,7 @@ class BottomMenuTiles extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const VideoScreen(),
+                  builder: (context) => const GenreChooseScreen(),
                 ),
               );
             },
