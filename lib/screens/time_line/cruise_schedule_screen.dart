@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 import 'package:timelines/timelines.dart';
@@ -56,9 +55,19 @@ class CruisSchedule extends StatelessWidget {
             ),
       ),
     };
-    return BubbleAnimation(
-      colors: const [Colors.deepPurpleAccent],
-      child: DrawerRow(
+    return Scaffold(
+      backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        toolbarHeight: 100,
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        title: Image.asset(
+          'assets/images/logo.png',
+          height: 100,
+        ),
+      ),
+      body: DrawerRow(
         focusedItem: 2,
         child: SingleChildScrollView(
           controller: controller,
@@ -70,7 +79,7 @@ class CruisSchedule extends StatelessWidget {
                   child: Timeline.tileBuilder(
                     shrinkWrap: true,
                     builder: TimelineTileBuilder.fromStyle(
-                      contentsAlign: ContentsAlign.alternating,
+                      contentsAlign: ContentsAlign.basic,
                       contentsBuilder: (context, index) {
                         final key = timelines.keys.elementAt(index);
                         return Padding(
