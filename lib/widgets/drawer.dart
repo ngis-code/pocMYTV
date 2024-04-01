@@ -34,8 +34,8 @@ class _TVDrawerState extends State<TVDrawer> {
           width: 200,
           child: CenteredListView(
             duration: const Duration(milliseconds: 200),
-            expandedItemHeight: 100,
-            itemHeight: 80,
+            expandedItemHeight: 50,
+            itemHeight: 90,
             focusedItem: widget.focusedItem,
             itemBuilder: (context, index, hasFocus) {
               return ListTile(
@@ -44,6 +44,7 @@ class _TVDrawerState extends State<TVDrawer> {
                   style: TextStyle(
                     fontWeight: hasFocus ? FontWeight.bold : null,
                     color: hasFocus ? Colors.white : Colors.white38,
+                    backgroundColor: hasFocus ? Colors.white12 : null,
                     fontSize: hasFocus ? 20 : 20,
                   ),
                 ),
