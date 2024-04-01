@@ -45,7 +45,7 @@ class _MovieTileState extends State<MovieTile> {
               overflow: TextOverflow.fade,
             ),
           ),
-          child: Image.asset(
+          child: Image.network(
             widget.movie.image,
             fit: BoxFit.cover,
           ),

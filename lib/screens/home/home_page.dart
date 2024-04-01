@@ -22,8 +22,8 @@ class _HomePageState extends State<HomePage> {
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-              'assets/images/background.png',
+            image: NetworkImage(
+              'https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg',
             ),
             fit: BoxFit.cover,
           ),
