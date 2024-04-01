@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/home/home.dart';
+import 'package:pocmytv/screens/home/home_page.dart';
+import 'package:pocmytv/widgets/centered_list_view.dart';
+
 import '../screens/time_line/cruise_schedule_screen.dart';
 import '../screens/video_on_demand/genre_choose_screen.dart';
 
 class TVDrawer extends StatefulWidget {
-  const TVDrawer({super.key});
-
-  @override
-  State<TVDrawer> createState() => _TVDrawerState();
-}
-
-class _TVDrawerState extends State<TVDrawer> {
   static final Map<List, Widget> drawerItems = {
     ['Home', Icons.home]: const HomePage(),
     ['Movies', Icons.movie]: const GenreChooseScreen(),
@@ -20,21 +15,54 @@ class _TVDrawerState extends State<TVDrawer> {
     ['Cloud', Icons.cloud_rounded]: const HomePage(),
   };
 
+  final int focusedItem;
+
+  const TVDrawer({super.key, required this.focusedItem});
+
+  @override
+  State<TVDrawer> createState() => _TVDrawerState();
+}
+
+class _TVDrawerState extends State<TVDrawer> {
   @override
   Widget build(BuildContext context) {
-    return Drawer(child: ListView.builder(
-      itemBuilder: (context, index) {
-        index = index % drawerItems.length;
-        return ListTile(
-          title: Text(drawerItems.keys.elementAt(index)[0]),
-          onTap: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => drawerItems.values.elementAt(index),
-            ));
-          },
-          leading: Icon(drawerItems.keys.elementAt(index)[1]),
-        );
-      },
-    ));
+    return Hero(
+      tag: 'tvdrawer',
+      child: Material(
+        color: Colors.transparent,
+        child: SizedBox(
+          width: 200,
+          child: CenteredListView(
+            duration: const Duration(milliseconds: 200),
+            expandedItemHeight: 80,
+            itemHeight: 50,
+            focusedItem: widget.focusedItem,
+            itemBuilder: (context, index, hasFocus) {
+              return ListTile(
+                title: Text(
+                  TVDrawer.drawerItems.keys.elementAt(index)[0],
+                  style: TextStyle(
+                    color: hasFocus ? Colors.white : Colors.white38,
+                    fontSize: hasFocus ? 20 : 20,
+                  ),
+                ),
+                leading: Icon(
+                  TVDrawer.drawerItems.keys.elementAt(index)[1],
+                  color: Colors.white,
+                  size: hasFocus ? 30 : 25,
+                ),
+              );
+            },
+            onTap: (index) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) =>
+                    TVDrawer.drawerItems.values.elementAt(index),
+              ));
+            },
+            itemCount: TVDrawer.drawerItems.length,
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
+import 'package:pocmytv/widgets/drawer_row.dart';
 import 'package:pocmytv/widgets/focus_widget.dart';
 import 'package:timelines/timelines.dart';
 
@@ -57,61 +58,64 @@ class CruisSchedule extends StatelessWidget {
     };
     return BubbleAnimation(
       colors: const [Colors.deepPurpleAccent],
-      child: SingleChildScrollView(
-        controller: controller,
-        child: Column(
-          children: [
-            SizedBox(
-              height: height,
-              child: Center(
-                child: Timeline.tileBuilder(
-                  shrinkWrap: true,
-                  builder: TimelineTileBuilder.fromStyle(
-                    contentsAlign: ContentsAlign.alternating,
-                    contentsBuilder: (context, index) {
-                      final key = timelines.keys.elementAt(index);
-                      return Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: FocusWidget(
-                          onFocusChange: (hasFocus) => controller.animateTo(
-                            0,
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.easeInOut,
-                          ),
-                          padding: const EdgeInsets.all(5),
-                          borderRadius: 0,
-                          borderWidth: 2,
-                          onTap: () {
-                            controller.animateTo(
-                              (index + 1) * height,
+      child: DrawerRow(
+        focusedItem: 2,
+        child: SingleChildScrollView(
+          controller: controller,
+          child: Column(
+            children: [
+              SizedBox(
+                height: height,
+                child: Center(
+                  child: Timeline.tileBuilder(
+                    shrinkWrap: true,
+                    builder: TimelineTileBuilder.fromStyle(
+                      contentsAlign: ContentsAlign.alternating,
+                      contentsBuilder: (context, index) {
+                        final key = timelines.keys.elementAt(index);
+                        return Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: FocusWidget(
+                            onFocusChange: (hasFocus) => controller.animateTo(
+                              0,
                               duration: const Duration(seconds: 1),
                               curve: Curves.easeInOut,
-                            );
-                          },
-                          child: Text(
-                            key,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(
-                                  color: Colors.white,
-                                ),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            borderRadius: 0,
+                            borderWidth: 2,
+                            onTap: () {
+                              controller.animateTo(
+                                (index + 1) * height,
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.easeInOut,
+                              );
+                            },
+                            child: Text(
+                              key,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(
+                                    color: Colors.white,
+                                  ),
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    itemCount: timelines.length,
+                        );
+                      },
+                      itemCount: timelines.length,
+                    ),
                   ),
                 ),
               ),
-            ),
-            ...timelines.values.map(
-              (e) => SizedBox(
-                height: height,
-                child: Center(child: e),
+              ...timelines.values.map(
+                (e) => SizedBox(
+                  height: height,
+                  child: Center(child: e),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
