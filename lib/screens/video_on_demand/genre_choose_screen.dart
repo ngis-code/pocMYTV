@@ -18,14 +18,17 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
         padding: const EdgeInsets.all(40),
         child: SingleChildScrollView(
           clipBehavior: Clip.none,
-          child: Wrap(
-            alignment: WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runAlignment: WrapAlignment.center,
-            children: [
-              for (int index = 0; index < Genre.values.length; index++)
-                GenreTile(genre: Genre.values[index]),
-            ],
+          child: SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              runAlignment: WrapAlignment.center,
+              children: [
+                for (int index = 0; index < Genre.values.length; index++)
+                  GenreTile(genre: Genre.values[index]),
+              ],
+            ),
           ),
         ),
       ),
