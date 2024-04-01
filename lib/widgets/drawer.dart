@@ -56,16 +56,16 @@ class _TVDrawerState extends State<TVDrawer> {
               );
             },
             onFocusChange: (index) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) =>
-                    TVDrawer.drawerItems.values.elementAt(index),
-              ));
-            },
-            onTap: (index) {
               // Navigator.of(context).pushReplacement(MaterialPageRoute(
               //   builder: (context) =>
               //       TVDrawer.drawerItems.values.elementAt(index),
               // ));
+            },
+            onTap: (index) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) =>
+                    TVDrawer.drawerItems.values.elementAt(index),
+              ));
             },
             itemCount: TVDrawer.drawerItems.length,
           ),

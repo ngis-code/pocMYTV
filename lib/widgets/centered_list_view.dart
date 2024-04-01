@@ -93,9 +93,14 @@ class _CenteredListViewState extends State<CenteredListView> {
             focused: widget.focusedItem == index,
             duration: widget.duration,
             itemHeight: widget.itemHeight,
+            borderRadius: widget.borderRadius,
+            borderWidth: widget.borderWidth,
+            blur: widget.blur,
+            backgroundColor: widget.backgroundColor,
+            borderColor: widget.borderColor,
+            focusColor: widget.focusColor,
             expandedItemHeight: widget.expandedItemHeight,
-            builder: (hasFocus) =>
-                widget.itemBuilder(context, index, hasFocus),
+            builder: (hasFocus) => widget.itemBuilder(context, index, hasFocus),
             onTap: () {
               widget.onTap(index);
             },
