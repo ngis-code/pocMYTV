@@ -14,6 +14,7 @@ class TVDrawer extends StatefulWidget {
     ['News', Icons.newspaper]: const HomePage(),
     ['Cloud', Icons.cloud_rounded]: const HomePage(),
   };
+
   final int focusedItem;
 
   const TVDrawer({super.key, required this.focusedItem});
@@ -33,19 +34,15 @@ class _TVDrawerState extends State<TVDrawer> {
           width: 200,
           child: CenteredListView(
             duration: const Duration(milliseconds: 200),
-            expandedItemHeight: 90,
+            expandedItemHeight: 50,
             itemHeight: 90,
-            borderWidth: 0,
-            borderColor: Colors.transparent,
             focusedItem: widget.focusedItem,
             itemBuilder: (context, index, hasFocus) {
               return ListTile(
                 title: Text(
                   TVDrawer.drawerItems.keys.elementAt(index)[0],
                   style: TextStyle(
-                    fontWeight: hasFocus ? FontWeight.bold : null,
                     color: hasFocus ? Colors.white : Colors.white38,
-                    // backgroundColor: hasFocus ? Colors.white12 : null,
                     fontSize: hasFocus ? 20 : 20,
                   ),
                 ),
@@ -55,14 +52,6 @@ class _TVDrawerState extends State<TVDrawer> {
                   size: hasFocus ? 30 : 25,
                 ),
               );
-            },
-            onFocusChange: (index) {
-              if (index != widget.focusedItem) {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //   builder: (context) =>
-                //       TVDrawer.drawerItems.values.elementAt(index),
-                // ));
-              }
             },
             onTap: (index) {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
