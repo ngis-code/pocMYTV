@@ -17,11 +17,11 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
     return BubbleAnimation(
       colors: const [
         Colors.white,
-        Colors.lightBlue,
+        Color(0xFF2B6FC0),
         Color(0xFF2B6FC0),
         Color(0xFF131C49),
       ],
-      bubbles: 30,
+      bubbles: 8,
       child: DrawerRow(
         focusedItem: 1,
         child: Padding(

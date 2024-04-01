@@ -64,21 +64,21 @@ class _VideoScreenState extends State<VideoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Movie',
+                        'ICON',
                         style:
                             Theme.of(context).textTheme.displayMedium!.copyWith(
                                   color: Colors.white,
                                 ),
                       ),
                       Text(
-                        'aliquam ad beatae qui quisquam sapiente neque soluta nostrum natus maxime tempora nisi dolore doloribus',
+                        'Watch ICON Of the Seas Lanuch to Miami!',
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: Colors.white,
                                 ),
                       ),
                       RatingBarIndicator(
-                        rating: 4.2,
+                        rating: 4.5,
                         itemSize: 14,
                         itemBuilder: (context, index) => const Icon(
                           Icons.star,
@@ -101,7 +101,7 @@ class _VideoScreenState extends State<VideoScreen> {
 }
 
 final videos = [
-  'https://onlinetestcase.com/wp-content/uploads/2023/06/15MB.mp4',
+  'https://www.shutterstock.com/shutterstock/videos/3392396905/preview/stock-footage-turku-finland-world-s-largest-cruise-ship-icon-of-the-seas-during-second-sea-trials.webm',
   'https://file-examples.com/storage/fef0ba8e7b660ad2093c8cd/2017/04/file_example_MP4_1280_10MG.mp4',
 ];
 

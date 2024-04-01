@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              'https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg',
+              'https://www.royalcaribbean.com/blog/wp-content/uploads/2017/04/RCI_NV_CC_NMorley_032019_Drone_DJI_0738_RET_CMYK.jpg',
             ),
             fit: BoxFit.cover,
           ),
@@ -37,8 +37,8 @@ class _HomePageState extends State<HomePage> {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     colors: [
-                      Colors.black.withOpacity(1),
-                      Colors.black.withOpacity(0.2),
+                      Colors.black.withOpacity(0.0),
+                      Colors.black.withOpacity(0.0),
                     ],
                   ),
                 ),
@@ -76,8 +76,8 @@ class _HomePageState extends State<HomePage> {
                               clipBehavior: Clip.none,
                               children: [
                                 Icon(
-                                  Icons.mail,
-                                  size: 40,
+                                  Icons.mail_outline_outlined,
+                                  size: 35,
                                   color: Colors.white,
                                 ),
                                 Positioned(
@@ -99,14 +99,15 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           const VerticalDivider(
+                            width: 50,
                             color: Colors.white,
                             thickness: 1,
                           ),
                           const Column(
                             children: [
                               Icon(
-                                Icons.thermostat,
-                                size: 40,
+                                Icons.cloud_outlined,
+                                size: 35,
                                 color: Colors.white,
                               ),
                               Text(
@@ -120,6 +121,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           const VerticalDivider(
+                            width: 50,
                             color: Colors.white,
                             thickness: 1,
                           ),
@@ -158,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 40.0),
+                        padding: const EdgeInsets.only(top: 300.0),
                         child: GlassWidget(
                           blur: 5,
                           radius: 20,
@@ -172,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Text(
-                                  "Welcome to our Hotel Name",
+                                  "Welcome Byron Family",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: Colors.white,
@@ -199,7 +201,7 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                                 const Text(
-                                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                  "We hope you enjoy your stay on ICON Of The Seas.",
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
