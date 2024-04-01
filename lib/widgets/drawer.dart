@@ -44,7 +44,7 @@ class _TVDrawerState extends State<TVDrawer> {
                   style: TextStyle(
                     fontWeight: hasFocus ? FontWeight.bold : null,
                     color: hasFocus ? Colors.white : Colors.white38,
-                    backgroundColor: hasFocus ? Colors.white12 : null,
+                    // backgroundColor: hasFocus ? Colors.white12 : null,
                     fontSize: hasFocus ? 20 : 20,
                   ),
                 ),
@@ -62,10 +62,10 @@ class _TVDrawerState extends State<TVDrawer> {
               ));
             },
             onTap: (index) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) =>
-                    TVDrawer.drawerItems.values.elementAt(index),
-              ));
+              // Navigator.of(context).pushReplacement(MaterialPageRoute(
+              //   builder: (context) =>
+              //       TVDrawer.drawerItems.values.elementAt(index),
+              // ));
             },
             itemCount: TVDrawer.drawerItems.length,
           ),
