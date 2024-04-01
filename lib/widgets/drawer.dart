@@ -36,6 +36,7 @@ class _TVDrawerState extends State<TVDrawer> {
             expandedItemHeight: 90,
             itemHeight: 90,
             borderWidth: 0,
+            borderColor: Colors.transparent,
             focusedItem: widget.focusedItem,
             itemBuilder: (context, index, hasFocus) {
               return ListTile(
@@ -57,10 +58,10 @@ class _TVDrawerState extends State<TVDrawer> {
             },
             onFocusChange: (index) {
               if (index != widget.focusedItem) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) =>
-                      TVDrawer.drawerItems.values.elementAt(index),
-                ));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //   builder: (context) =>
+                //       TVDrawer.drawerItems.values.elementAt(index),
+                // ));
               }
             },
             onTap: (index) {
