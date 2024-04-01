@@ -44,7 +44,7 @@ class _TVDrawerState extends State<TVDrawer> {
                   TVDrawer.drawerItems.keys.elementAt(index)[0],
                   style: TextStyle(
                     color: hasFocus ? Colors.white : Colors.white38,
-                    fontSize: hasFocus ? 20 : 20,
+                    fontSize: hasFocus ? 24 : 20,
                   ),
                 ),
                 leading: Icon(
