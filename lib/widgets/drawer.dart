@@ -14,7 +14,6 @@ class TVDrawer extends StatefulWidget {
     ['News', Icons.newspaper]: const HomePage(),
     ['Cloud', Icons.cloud_rounded]: const HomePage(),
   };
-
   final int focusedItem;
 
   const TVDrawer({super.key, required this.focusedItem});
@@ -56,10 +55,12 @@ class _TVDrawerState extends State<TVDrawer> {
               );
             },
             onFocusChange: (index) {
-              // Navigator.of(context).pushReplacement(MaterialPageRoute(
-              //   builder: (context) =>
-              //       TVDrawer.drawerItems.values.elementAt(index),
-              // ));
+              if (index != widget.focusedItem) {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) =>
+                      TVDrawer.drawerItems.values.elementAt(index),
+                ));
+              }
             },
             onTap: (index) {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
