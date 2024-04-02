@@ -319,57 +319,70 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.white,
                               thickness: 1,
                             ),
-                            GlassWidget(
-                              radius: 10,
-                              child: Container(
+                            Container(
+                              decoration: BoxDecoration(
                                 color: Colors.black45,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'GANGWAY',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                              color: Colors.white,
-                                            ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              clipBehavior: Clip.hardEdge,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          'GANGWAY',
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                color: Colors.white,
+                                              ),
+                                        ),
                                       ),
                                     ),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 4,
-                                        horizontal: 10,
-                                      ),
-                                      color: Colors.white,
-                                      child: Text(
-                                        'DECK 5',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleLarge!
-                                            .copyWith(
-                                              color: Colors.black,
-                                            ),
-                                      ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                      horizontal: 10,
                                     ),
-                                  ],
-                                ),
+                                    color: Colors.white,
+                                    child: Text(
+                                      'DECK 5',
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(
+                                            color: Colors.black,
+                                          ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            GlassWidget(
-                              radius: 10,
-                              child: Container(
+                            const VerticalDivider(
+                              width: 50,
+                              color: Colors.white,
+                              thickness: 1,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
                                 color: Colors.black45,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Center(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              clipBehavior: Clip.hardEdge,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Center(
                                       child: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
@@ -384,35 +397,34 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 4,
-                                        horizontal: 10,
-                                      ),
-                                      color: Colors.white,
-                                      child: RichText(
-                                        text: TextSpan(
-                                          text: '  5:00',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge!
-                                              .copyWith(color: Colors.black),
-                                          children: [
-                                            TextSpan(
-                                              text: ' PM  ',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall!
-                                                  .copyWith(
-                                                      color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                      horizontal: 10,
                                     ),
-                                  ],
-                                ),
+                                    color: Colors.white,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: '  5:00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge!
+                                            .copyWith(color: Colors.black),
+                                        children: [
+                                          TextSpan(
+                                            text: ' PM  ',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(color: Colors.black),
+                                          ),
+                                        ],
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -561,8 +573,8 @@ class _HomePageState extends State<HomePage> {
                                   Image.asset(
                                     'assets/images/qrcode.png',
                                     fit: BoxFit.cover,
-                                    width: 100,
-                                    height: 100,
+                                    width: 200,
+                                    height: 200,
                                   ),
                                 ],
                               ),
