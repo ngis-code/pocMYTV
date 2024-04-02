@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 
-const completeColor = Color(0xff5e6172);
-const inProgressColor = Colors.blue;
-const todoColor = Color(0xffd1d2d7);
+Color completeColor = const Color(0xff5e6172);
+Color inProgressColor = Colors.blue;
+Color todoColor = const Color(0xffd1d2d7);
 
 class ProcessTimelinePage extends StatefulWidget {
   const ProcessTimelinePage({super.key});
@@ -145,7 +145,7 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
                 children: [
                   CustomPaint(
                     size: const Size(30.0, 30.0),
-                    painter: _BezierPainter(
+                    painter: BezierPainter(
                       color: color,
                       drawStart: index > 0,
                       drawEnd: index < _processIndex,
@@ -163,7 +163,7 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
                 children: [
                   CustomPaint(
                     size: const Size(15.0, 15.0),
-                    painter: _BezierPainter(
+                    painter: BezierPainter(
                       color: color,
                       drawEnd: index < timelines.length - 1,
                     ),
@@ -214,8 +214,8 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
   }
 }
 
-class _BezierPainter extends CustomPainter {
-  const _BezierPainter({
+class BezierPainter extends CustomPainter {
+  const BezierPainter({
     required this.color,
     this.drawStart = true,
     this.drawEnd = true,
@@ -247,7 +247,7 @@ class _BezierPainter extends CustomPainter {
     Path path;
 
     if (drawStart) {
-      angle = 3 * pi / 4;
+      angle = pi / 2;
       offset1 = _offset(radius, angle);
       offset2 = _offset(radius, -angle);
       path = Path()
@@ -259,7 +259,7 @@ class _BezierPainter extends CustomPainter {
       canvas.drawPath(path, paint);
     }
     if (drawEnd) {
-      angle = -pi / 4;
+      angle = -pi / 2;
       offset1 = _offset(radius, angle);
       offset2 = _offset(radius, -angle);
 
@@ -275,7 +275,7 @@ class _BezierPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_BezierPainter oldDelegate) {
+  bool shouldRepaint(BezierPainter oldDelegate) {
     return oldDelegate.color != color ||
         oldDelegate.drawStart != drawStart ||
         oldDelegate.drawEnd != drawEnd;
