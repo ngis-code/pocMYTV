@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
@@ -225,6 +226,27 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ),
                                               ),
+                                              RatingBar(
+                                                  ratingWidget: RatingWidget(
+                                                    full: const Icon(Icons.star,
+                                                        color: Colors.amber),
+                                                    half: const Icon(
+                                                        Icons.star_half,
+                                                        color: Colors.amber),
+                                                    empty: const Icon(
+                                                        Icons.star_border,
+                                                        color: Colors.amber),
+                                                  ),
+                                                  initialRating: 3,
+                                                  minRating: 1,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 30,
+                                                  itemPadding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 4.0),
+                                                  onRatingUpdate: (rating) {}),
                                             ],
                                           ),
                                         ),
