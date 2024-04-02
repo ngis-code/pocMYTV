@@ -32,6 +32,7 @@ class _GenreTileState extends State<GenreTile> {
         child: Padding(
           padding: EdgeInsets.all(padding),
           child: FocusWidget(
+            focusGroup: 'genreTiles',
             backgroundColor: Colors.grey.withOpacity(.2),
             onTap: () {
               Navigator.push(

@@ -18,7 +18,9 @@ class FocusGroup {
   }
 
   void focus() {
-    (lastFocusedNode ?? focusNodes.firstOrNull)?.requestFocus();
+    final node = (lastFocusedNode ?? focusNodes.firstOrNull);
+    if (node?.hasFocus == true) return;
+    node?.requestFocus();
   }
 
   void focusNode(FocusNode focusNode) {
@@ -27,6 +29,7 @@ class FocusGroup {
       return;
     }
     lastFocusedNode = focusNode;
+    if (focusNode.hasFocus) return;
     focusNode.requestFocus();
   }
 }

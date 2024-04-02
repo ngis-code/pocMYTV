@@ -21,6 +21,7 @@ class _MovieTileState extends State<MovieTile> {
   @override
   Widget build(BuildContext context) {
     return FocusWidget(
+      focusGroup: 'movieTiles',
       onFocusChange: (hasFocus) {
         setState(() {
           this.hasFocus = hasFocus;

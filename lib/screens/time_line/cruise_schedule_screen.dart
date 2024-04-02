@@ -58,6 +58,7 @@ class CruisSchedule extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: AppBar(
         toolbarHeight: 100,
         surfaceTintColor: Colors.transparent,
@@ -77,43 +78,46 @@ class CruisSchedule extends StatelessWidget {
               // const Text("data"),
               SizedBox(
                 height: 200,
-                child: Timeline.tileBuilder(
-                  shrinkWrap: true,
-                  builder: TimelineTileBuilder.fromStyle(
-                    contentsAlign: ContentsAlign.basic,
-                    contentsBuilder: (context, index) {
-                      final key = timelines.keys.elementAt(index);
-                      return Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: FocusWidget(
-                          onFocusChange: (hasFocus) => controller.animateTo(
-                            0,
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.easeInOut,
-                          ),
-                          padding: const EdgeInsets.all(5),
-                          borderRadius: 0,
-                          borderWidth: 2,
-                          onTap: () {
-                            controller.animateTo(
-                              (index + 1) * height,
+                child: Center(
+                  child: Timeline.tileBuilder(
+                    shrinkWrap: true,
+                    builder: TimelineTileBuilder.fromStyle(
+                      contentsAlign: ContentsAlign.basic,
+                      contentsBuilder: (context, index) {
+                        final key = timelines.keys.elementAt(index);
+                        return Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: FocusWidget(
+                            focusGroup: 'schedule',
+                            onFocusChange: (hasFocus) => controller.animateTo(
+                              0,
                               duration: const Duration(seconds: 1),
                               curve: Curves.easeInOut,
-                            );
-                          },
-                          child: Text(
-                            key,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(
-                                  color: Colors.white,
-                                ),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            borderRadius: 0,
+                            borderWidth: 2,
+                            onTap: () {
+                              controller.animateTo(
+                                (index + 1) * height,
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.easeInOut,
+                              );
+                            },
+                            child: Text(
+                              key,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(
+                                    color: Colors.white,
+                                  ),
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    itemCount: timelines.length,
+                        );
+                      },
+                      itemCount: timelines.length,
+                    ),
                   ),
                 ),
               ),
