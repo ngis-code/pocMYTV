@@ -20,7 +20,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool initialized = false;
-
   late VideoPlayerController controller;
 
   @override
@@ -57,21 +56,28 @@ class _HomePageState extends State<HomePage> {
       'event': ['Dinner', 'Show', 'Dance Party'],
       'location': ['Main Dining Room', 'Theater', 'Pool Deck'],
     };
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body:
-          // DecoratedBox(
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //     image: NetworkImage(
-          //       'https://www.royalcaribbean.com/blog/wp-content/uploads/2017/04/RCI_NV_CC_NMorley_032019_Drone_DJI_0738_RET_CMYK.jpg',
-          //     ),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          // child:
-          Stack(
+      backgroundColor: Colors.black,
+      body: Stack(
+        // DecoratedBox(
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: NetworkImage(
+        //       'https://www.royalcaribbean.com/blog/wp-content/uploads/2017/04/RCI_NV_CC_NMorley_032019_Drone_DJI_0738_RET_CMYK.jpg',
+        //     ),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+        // child:
         children: [
-          if (initialized) VideoPlayer(controller),
+          if (initialized)
+            AspectRatio(
+              // it should cover the whole screen
+              aspectRatio: width / height,
+              child: VideoPlayer(controller),
+            ),
           Positioned.fill(
             child: RotatedBox(
               quarterTurns: 1,
@@ -116,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   child: SizedBox(
-                    height: 80,
+                    height: 90,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -162,20 +168,117 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.white,
                               thickness: 1,
                             ),
-                            const Column(
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(
-                                  Icons.cloud_outlined,
-                                  size: 35,
-                                  color: Colors.white,
+                                Column(
+                                  children: [
+                                    RichText(
+                                      text: TextSpan(
+                                        text: "76°",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium!
+                                            .copyWith(
+                                              color: Colors.white,
+                                            ),
+                                        children: [
+                                          TextSpan(
+                                            text: " / 24°C ",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  color: Colors.white,
+                                                ),
+                                          ),
+                                          const WidgetSpan(
+                                              child: SizedBox(width: 10))
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          color: Colors.white,
+                                          elevation: 0,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: Row(
+                                              children: [
+                                                const Icon(
+                                                  CupertinoIcons.sunrise,
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text('6:30 AM',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall!
+                                                        .copyWith()),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          color: Colors.black26,
+                                          elevation: 0,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: Row(
+                                              children: [
+                                                const Icon(
+                                                  CupertinoIcons.sunset,
+                                                  color: Colors.white,
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text(
+                                                  '8:40 PM',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodySmall!
+                                                      .copyWith(
+                                                        color: Colors.white,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  '24°C',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      CupertinoIcons.sun_max,
+                                      size: 50,
+                                      color: Color(0xffd6e14a),
+                                    ),
+                                    Text(
+                                      'Sunny',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            color: Colors.white,
+                                          ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -184,32 +287,133 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.white,
                               thickness: 1,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                ClockWidget(
-                                  builder: (context, time) {
-                                    return Text(
-                                      '${time.hour}:${time.minute}',
+                            ClockWidget(
+                              builder: (context, time) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
                                       textAlign: TextAlign.right,
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                    );
-                                  },
+                                    ),
+                                    Text(
+                                      DateFormat('EEEE, MMMM d')
+                                          .format(DateTime.now()),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                            const VerticalDivider(
+                              width: 50,
+                              color: Colors.white,
+                              thickness: 1,
+                            ),
+                            GlassWidget(
+                              radius: 10,
+                              child: Container(
+                                color: Colors.black45,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        'GANGWAY',
+                                        textAlign: TextAlign.center,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 4,
+                                        horizontal: 10,
+                                      ),
+                                      color: Colors.white,
+                                      child: Text(
+                                        'DECK 5',
+                                        textAlign: TextAlign.center,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge!
+                                            .copyWith(
+                                              color: Colors.black,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  DateFormat('EEEE, MMMM d')
-                                      .format(DateTime.now()),
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              ),
+                            ),
+                            GlassWidget(
+                              radius: 10,
+                              child: Container(
+                                color: Colors.black45,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          'All Board'.toUpperCase(),
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                color: Colors.white,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 4,
+                                        horizontal: 10,
+                                      ),
+                                      color: Colors.white,
+                                      child: RichText(
+                                        text: TextSpan(
+                                          text: '  5:00',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge!
+                                              .copyWith(color: Colors.black),
+                                          children: [
+                                            TextSpan(
+                                              text: ' PM  ',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodySmall!
+                                                  .copyWith(
+                                                      color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
@@ -226,268 +430,6 @@ class _HomePageState extends State<HomePage> {
                         spacing: 20,
                         runSpacing: 20,
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  HomeTile(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 35),
-                                    child: ClockWidget(
-                                      builder: (context, time) {
-                                        return Column(
-                                          children: [
-                                            Text(
-                                              '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
-                                              textAlign: TextAlign.right,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Text(
-                                              DateFormat('EEEE, MMMM d')
-                                                  .format(DateTime.now()),
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      GlassWidget(
-                                        radius: 10,
-                                        child: Container(
-                                          color: Colors.black45,
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5.0),
-                                                child: Text(
-                                                  'GANGWAY',
-                                                  textAlign: TextAlign.center,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium!
-                                                      .copyWith(
-                                                        color: Colors.white,
-                                                      ),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                  vertical: 4,
-                                                  horizontal: 10,
-                                                ),
-                                                color: Colors.white,
-                                                child: Text(
-                                                  'DECK 5',
-                                                  textAlign: TextAlign.center,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleLarge!
-                                                      .copyWith(
-                                                        color: Colors.black,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      GlassWidget(
-                                        radius: 10,
-                                        child: Container(
-                                          color: Colors.black45,
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5.0),
-                                                child: Text(
-                                                  'All Board'.toUpperCase(),
-                                                  textAlign: TextAlign.center,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium!
-                                                      .copyWith(
-                                                        color: Colors.white,
-                                                      ),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                  vertical: 4,
-                                                  horizontal: 10,
-                                                ),
-                                                color: Colors.white,
-                                                child: RichText(
-                                                  text: TextSpan(
-                                                    text: '  5:00',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .titleLarge!
-                                                        .copyWith(
-                                                            color:
-                                                                Colors.black),
-                                                    children: [
-                                                      TextSpan(
-                                                        text: ' PM  ',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodySmall!
-                                                            .copyWith(
-                                                                color: Colors
-                                                                    .black),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              HomeTile(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          RichText(
-                                            text: TextSpan(
-                                              text: "76°",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium!
-                                                  .copyWith(
-                                                    color: Colors.white,
-                                                  ),
-                                              children: [
-                                                TextSpan(
-                                                  text: " / 24°C ",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleSmall!
-                                                      .copyWith(
-                                                        color: Colors.white,
-                                                      ),
-                                                ),
-                                                const WidgetSpan(
-                                                    child: SizedBox(width: 10))
-                                              ],
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Card(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                color: Colors.white,
-                                                elevation: 0,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(4.0),
-                                                  child: Row(
-                                                    children: [
-                                                      const Icon(
-                                                        CupertinoIcons.sunrise,
-                                                        size: 18,
-                                                      ),
-                                                      const SizedBox(width: 4),
-                                                      Text('6:30 AM',
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodySmall!
-                                                                  .copyWith()),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Card(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                color: Colors.black26,
-                                                elevation: 0,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(4.0),
-                                                  child: Row(
-                                                    children: [
-                                                      const Icon(
-                                                        CupertinoIcons.sunset,
-                                                        color: Colors.white,
-                                                        size: 18,
-                                                      ),
-                                                      const SizedBox(width: 4),
-                                                      Text(
-                                                        '8:40 PM',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodySmall!
-                                                            .copyWith(
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          const Icon(
-                                            CupertinoIcons.sun_max,
-                                            size: 50,
-                                            color: Color(0xffd6e14a),
-                                          ),
-                                          Text(
-                                            'Sunny',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .copyWith(
-                                                  color: Colors.white,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  )),
-                            ],
-                          ),
                           HomeTile(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
