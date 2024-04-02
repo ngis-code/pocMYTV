@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/home/home_tile.dart';
+import 'package:pocmytv/screens/notification/notification_screen.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
@@ -141,117 +141,9 @@ class _HomePageState extends State<HomePage> {
                                   context: context,
                                   barrierColor: Colors.transparent,
                                   builder: (context) {
-                                    return Dialog(
-                                      backgroundColor: Colors.black45,
-                                      child: GlassWidget(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(20.0),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  const Text(
-                                                    'Notifications',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 30,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  FocusWidget(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: const Icon(
-                                                      Icons.close,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              FocusWidget(
-                                                hasFocus: true,
-                                                focusGroup: 'promotionalGroup',
-                                                onTap: () {},
-                                                child: const ListTile(
-                                                  leading: Icon(
-                                                    Icons.mail_outline_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                  title: Text(
-                                                    'AI Promotional Guest',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  subtitle: Text(
-                                                    '20% off on Gucci accessories only for you',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              FocusWidget(
-                                                focusGroup: 'promotionalGroup',
-                                                onTap: () {},
-                                                child: const ListTile(
-                                                  leading: Icon(
-                                                    Icons.mail_outline_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                  title: Text(
-                                                    'AI Promotional Guest',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  subtitle: Text(
-                                                    '20% off on Gucci accessories only for you',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              RatingBar(
-                                                  ratingWidget: RatingWidget(
-                                                    full: const Icon(Icons.star,
-                                                        color: Colors.amber),
-                                                    half: const Icon(
-                                                        Icons.star_half,
-                                                        color: Colors.amber),
-                                                    empty: const Icon(
-                                                        Icons.star_border,
-                                                        color: Colors.amber),
-                                                  ),
-                                                  initialRating: 3,
-                                                  minRating: 1,
-                                                  direction: Axis.horizontal,
-                                                  allowHalfRating: true,
-                                                  itemCount: 5,
-                                                  itemSize: 30,
-                                                  itemPadding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 4.0),
-                                                  onRatingUpdate: (rating) {}),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
+                                    return const Dialog(
+                                        backgroundColor: Colors.black45,
+                                        child: NotificationScreen());
                                   },
                                 );
                               },
