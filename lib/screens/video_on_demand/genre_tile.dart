@@ -62,14 +62,34 @@ class _GenreTileState extends State<GenreTile> {
                   color: Colors.transparent,
                   // width: 2,
                 ),
+                image: DecorationImage(
+                  image: NetworkImage(genreImages[widget.genre]!),
+                  fit: BoxFit.cover,
+                ),
               ),
               alignment: Alignment.center,
-              child: Text(
-                widget.genre.name.split('.').last.toUpperCase(),
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: Colors.white),
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.black.withOpacity(.5),
+                    ),
+                  ),
+                  Center(
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeInOut,
+                      child: Text(
+                        widget.genre.name.split('.').last.toUpperCase(),
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: Colors.white,
+                              fontSize: height == maxHeight ? 30 : 20,
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

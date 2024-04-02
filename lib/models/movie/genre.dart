@@ -18,3 +18,42 @@ enum Genre {
   war,
   western
 }
+
+Map<Genre, String> genreImages = {
+  Genre.action:
+      "https://static.vecteezy.com/system/resources/previews/028/579/798/non_2x/action-shot-with-man-on-the-run-dynamic-scene-in-action-movie-blockbuster-style-generated-ai-photo.jpg",
+  Genre.adventure:
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7d193f19-51a2-4025-a8f4-dadedd0af01a/dfx68wh-b8255150-f7c9-4bdc-9c3b-747f332fda10.jpg/v1/fill/w_1194,h_669,q_70,strp/adventure_movie_scene_epic_drama_4_by_dankushagi_dfx68wh-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzE4IiwicGF0aCI6IlwvZlwvN2QxOTNmMTktNTFhMi00MDI1LWE4ZjQtZGFkZWRkMGFmMDFhXC9kZng2OHdoLWI4MjU1MTUwLWY3YzktNGJkYy05YzNiLTc0N2YzMzJmZGExMC5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.C62Jhox43fpLFl1kpsCZXxxeZRwysYFq9sf5gQ44YNY",
+  Genre.animation:
+      "https://media.timeout.com/images/101547937/750/422/image.webp",
+  Genre.comedy:
+      "https://www.vidio.com/watch/1203718-akshay-kumar-and-johnny-lever-funny-scene-2-comedy-scenes-entertainment-hindi-film",
+  Genre.crime:
+      "https://occ-0-3752-3646.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABWHNRq64uL28xpbVQlXquunYU3GY_iTiHAXem5T9dfKAHzuTDPJvBJiyZualhrTBuLucgTG912wMDRquH60r23h_8XQivAQmaNMTeGBcwVEKG9OnhVqcnxKM.jpg?r=2d8",
+  Genre.drama:
+      "https://cdn.openart.ai/stable_diffusion/eb01187bbe4c8a3d9a677ae85b32143c2763438a_2000x2000.webp",
+  Genre.family:
+      "https://s3.amazonaws.com/static.rogerebert.com/uploads/review/primary_image/reviews/the-family-2013/Family-2013-1.jpg",
+  Genre.fantasy:
+      "https://www.watchmojo.com/uploads/thumbs720/Fi-M-Top10-Fantasy-Battle-Scenes-480i60.jpg",
+  Genre.history:
+      "https://www.journal-topics.com/wp-content/uploads/2020/05/saving-private-ryan.jpg",
+  Genre.horror:
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/Reddit-Scariest-Horror-Movie-Scenes-Featured-Image.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5",
+  Genre.music:
+      "https://static1.moviewebimages.com/wordpress/wp-content/uploads/2022/12/back-to-the-future.png?q=50&fit=contain&w=1140&h=&dpr=1.5",
+  Genre.mystery:
+      "https://media.glamour.com/photos/5ef2657e2cc0e95781b03d03/master/w_1600%2Cc_limit/MCDKNOU_LG002.jpg",
+  Genre.romance:
+      "https://i.pinimg.com/236x/1f/d3/da/1fd3dabcfe549266176e365d830baaea.jpg",
+  Genre.scienceFiction:
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/04/2001-best-sci-fi-movie-scenes-matrix.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5",
+  Genre.tvMovie:
+      "https://media.thenerdstash.com/wp-content/uploads/2021/11/thriller-films-feature-image.jpg.webp",
+  Genre.thriller:
+      "https://www.vidio.com/watch/1203718-akshay-kumar-and-johnny-lever-funny-scene-2-comedy-scenes-entertainment-hindi-film",
+  Genre.war:
+      "https://d3dh6of9cnaq4t.cloudfront.net/Pictures/2000x1125/4/5/0/17450_tomorrowwar_873634.jpg",
+  Genre.western:
+      "https://i0.wp.com/saportareport.com/wp-content/uploads/2021/12/scene-fron-power-of-the-dog.featured.jpeg?w=1200&ssl=1",
+};
