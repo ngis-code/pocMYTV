@@ -135,7 +135,46 @@ class _HomePageState extends State<HomePage> {
                             FocusWidget(
                               focusGroup: 'mailButton',
                               onTap: () {
-                                log("Mail");
+                                // return AlertDialog(
+                                //   backgroundColor:
+                                //       Colors.transparent.withOpacity(.2),
+                                //   title: const Text('AI Promotional Guest'),
+                                //   content: const Column(
+                                //     mainAxisSize: MainAxisSize.min,
+                                //     children: [
+                                //       Text('You have 2 new messages'),
+                                //       Text('Would you like to read them?'),
+                                //     ],
+                                //   ),
+                                // );
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        backgroundColor:
+                                            Colors.transparent.withOpacity(.2),
+                                        surfaceTintColor: Colors.white,
+                                        title:
+                                            const Text('AI Promotional Guest',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                )),
+                                        content: const Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text('15% sale on Addidas shoes',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                )),
+                                            Text(
+                                                '20% off on Gucci accessories only for you',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                )),
+                                          ],
+                                        ),
+                                      );
+                                    });
                               },
                               child: const Stack(
                                 clipBehavior: Clip.none,
