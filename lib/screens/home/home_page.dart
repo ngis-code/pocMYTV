@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                   child: SizedBox(
                     height: 90,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         // const Text(
                         //   "Welcome Byron Family",
