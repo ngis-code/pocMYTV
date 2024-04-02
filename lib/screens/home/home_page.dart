@@ -575,8 +575,8 @@ class _HomePageState extends State<HomePage> {
                                   Image.asset(
                                     'assets/images/qrcode.png',
                                     fit: BoxFit.cover,
-                                    width: 200,
-                                    height: 200,
+                                    width: 100,
+                                    height: 100,
                                   ),
                                 ],
                               ),
