@@ -30,17 +30,18 @@ class Promotion {
       Promotion(
         title: 'AI Promotional Guest',
         description: '20% off on Gucci accessories only for you',
-        imgUrl: 'assets/images/promotion1.jpg',
+        imgUrl: 'https://www.allsgpromo.com/wp-content/uploads/8-11.jpg',
       ),
       Promotion(
         title: 'AI Promotional Guest',
         description: '20% off on Gucci accessories only for you',
-        imgUrl: 'assets/images/promotion2.jpg',
+        imgUrl:
+            'https://www.cruisedeals.co.nz/assets/Uploads/RCI-Cyber-Sale-1__ScaleWidthWzEyMDBd.png',
       ),
       Promotion(
         title: 'AI Promotional Guest',
         description: '20% off on Gucci accessories only for you',
-        imgUrl: 'assets/images/promotion2.jpg',
+        imgUrl: 'https://i.redd.it/gi7jmsnpvb1c1.jpg',
       ),
     ];
   }
