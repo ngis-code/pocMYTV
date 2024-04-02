@@ -40,7 +40,6 @@ class NotificationScreen extends StatelessWidget {
                   ),
                   FocusWidget(
                     hasFocus: true,
-                    focusGroup: 'promotionalGroup',
                     onTap: () {},
                     child: const ListTile(
                       leading: Icon(
@@ -65,7 +64,6 @@ class NotificationScreen extends StatelessWidget {
                     ),
                   ),
                   FocusWidget(
-                    focusGroup: 'promotionalGroup',
                     onTap: () {},
                     child: const ListTile(
                       leading: Icon(
@@ -101,7 +99,6 @@ class NotificationScreen extends StatelessWidget {
                       children: [
                         // some promotional images and text
                         FocusWidget(
-                          focusGroup: 'promotionalAds',
                           onTap: () {},
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -133,7 +130,6 @@ class NotificationScreen extends StatelessWidget {
                           ),
                         ),
                         FocusWidget(
-                          focusGroup: 'promotionalAds',
                           onTap: () {},
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
