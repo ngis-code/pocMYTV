@@ -70,139 +70,172 @@ class CruisSchedule extends StatelessWidget {
           height: 100,
         ),
       ),
-      body: DrawerRow(
-        focusedItem: 3,
-        child: SingleChildScrollView(
-          controller: controller,
-          child: SizedBox(
-            height: height,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: DecoratedBox(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://wallpapers-all.com/uploads/posts/2016-11/4_thailand.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: DrawerRow(
+          focusedItem: 3,
+          child: SingleChildScrollView(
+            controller: controller,
+            child: Column(
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            const Icon(
-                              Icons.sunny,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "33 °C",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .copyWith(
-                                    color: Colors.white,
-                                  ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          children: [
-                            const Icon(
-                              Icons.timeline,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "8:10 AM",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .copyWith(
-                                    color: Colors.white,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "Florida, Miami",
-                      style: TextStyle(
-                          fontSize: 30, color: Colors.yellow.withOpacity(0.4)),
-                    ),
-                    const Text(
-                      "Departure: Aug 12th 07:00",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                        ),
-                        child: Text(
-                          'discover your next destination'.toUpperCase(),
-                          style: const TextStyle(color: Colors.black),
-                        )),
-                  ],
-                ),
                 SizedBox(
-                  width: 350,
-                  child: Timeline.tileBuilder(
-                    shrinkWrap: true,
-                    builder: TimelineTileBuilder.fromStyle(
-                      oppositeContentsBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 2.5),
-                          child: Text(
-                            oppositeContent,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(
-                                  color: Colors.white,
+                  height: height - 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.3),
                                 ),
+                                child: Column(
+                                  children: [
+                                    const Icon(
+                                      Icons.sunny,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "33 °C",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge!
+                                          .copyWith(
+                                            color: Colors.white,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.3),
+                                ),
+                                child: Column(
+                                  children: [
+                                    const Icon(
+                                      Icons.timeline,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "8:10 AM",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge!
+                                          .copyWith(
+                                            color: Colors.white,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                        );
-                      },
-                      contentsAlign: ContentsAlign.basic,
-                      contentsBuilder: (context, index) {
-                        final key = timelines.keys.elementAt(index);
-                        return Padding(
-                          padding: const EdgeInsets.all(24.0),
-                          child: FocusWidget(
-                            focusGroup: 'schedule',
-                            onFocusChange: (hasFocus) => controller.animateTo(
-                              0,
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.easeInOut,
+                          Text(
+                            "Florida, Miami",
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.yellow.withOpacity(0.4)),
+                          ),
+                          const Text(
+                            "Departure: Aug 12th 07:00 PM",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
                             ),
-                            padding: const EdgeInsets.all(5),
-                            borderRadius: 0,
-                            borderWidth: 2,
-                            onTap: () {
-                              controller.animateTo(
-                                (index + 1) * height,
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.easeInOut,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            focusNode: FocusNode(),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.yellow.withOpacity(0.4),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(0),
+                              ),
+                            ),
+                            child: Text(
+                              'discover your next destination'.toUpperCase(),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 350,
+                        child: Timeline.tileBuilder(
+                          shrinkWrap: true,
+                          builder: TimelineTileBuilder.fromStyle(
+                            oppositeContentsBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 2.5),
+                                child: Text(
+                                  oppositeContent,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .copyWith(
+                                        color: Colors.white,
+                                      ),
+                                ),
                               );
                             },
-                            child: Text(
-                              key,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .copyWith(
-                                    color: Colors.white,
+                            contentsAlign: ContentsAlign.basic,
+                            contentsBuilder: (context, index) {
+                              final key = timelines.keys.elementAt(index);
+                              return Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: FocusWidget(
+                                  focusGroup: 'schedule',
+                                  onFocusChange: (hasFocus) =>
+                                      controller.animateTo(
+                                    0,
+                                    duration: const Duration(seconds: 1),
+                                    curve: Curves.easeInOut,
                                   ),
-                            ),
+                                  padding: const EdgeInsets.all(5),
+                                  borderRadius: 0,
+                                  borderWidth: 2,
+                                  onTap: () {
+                                    controller.animateTo(
+                                      (index + 1) * height,
+                                      duration: const Duration(seconds: 1),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  },
+                                  child: Text(
+                                    key,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelLarge!
+                                        .copyWith(
+                                          color: Colors.white,
+                                        ),
+                                  ),
+                                ),
+                              );
+                            },
+                            itemCount: timelines.length,
                           ),
-                        );
-                      },
-                      itemCount: timelines.length,
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
