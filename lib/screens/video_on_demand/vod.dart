@@ -34,6 +34,7 @@ class _VideoScreenState extends State<VideoScreen> {
         itemCount: videos.length,
         itemBuilder: (context, index) {
           return FocusWidget(
+            focusGroup: 'vod',
             focusColor: Colors.transparent,
             onTap: () {},
             child: Stack(

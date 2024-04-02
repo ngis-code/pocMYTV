@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           FocusWidget(
+                            focusGroup: 'mailButton',
                             onTap: () {
                               log("Mail");
                             },

@@ -58,6 +58,7 @@ class CruisSchedule extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: AppBar(
         toolbarHeight: 100,
         surfaceTintColor: Colors.transparent,
@@ -85,6 +86,7 @@ class CruisSchedule extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.all(24.0),
                           child: FocusWidget(
+                            focusGroup: 'schedule',
                             onFocusChange: (hasFocus) => controller.animateTo(
                               0,
                               duration: const Duration(seconds: 1),
