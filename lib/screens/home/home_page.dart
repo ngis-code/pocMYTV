@@ -437,10 +437,11 @@ class _HomePageState extends State<HomePage> {
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.only(bottom: 50.0),
+                      padding: const EdgeInsets.only(bottom: 20.0),
                       child: Wrap(
                         spacing: 20,
                         runSpacing: 20,
+                        runAlignment: WrapAlignment.end,
                         children: [
                           HomeTile(
                             child: Column(
@@ -582,68 +583,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      //   GlassWidget(
-                      //     blur: 5,
-                      //     radius: 20,
-                      //     child: Container(
-                      //       width: MediaQuery.of(context).size.width / 2,
-                      //       padding: const EdgeInsets.all(10),
-                      //       decoration: BoxDecoration(
-                      //         color: Colors.black.withOpacity(0.5),
-                      //       ),
-                      //       child: Column(
-                      //         mainAxisSize: MainAxisSize.min,
-                      //         children: [
-                      //           const Text(
-                      //             "Welcome Byron Family",
-                      //             textAlign: TextAlign.left,
-                      //             style: TextStyle(
-                      //               color: Colors.white,
-                      //               fontSize: 50,
-                      //             ),
-                      //           ),
-                      //           if (false)
-                      //             Row(
-                      //               children: [
-                      //                 RatingBarIndicator(
-                      //                   rating: 5,
-                      //                   itemBuilder: (context, index) =>
-                      //                       const Icon(
-                      //                     Icons.star,
-                      //                     color: Colors.amber,
-                      //                   ),
-                      //                 ),
-                      //                 const SizedBox(
-                      //                   width: 10,
-                      //                 ),
-                      //                 const Text(
-                      //                   '5.0',
-                      //                   style: TextStyle(color: Colors.white),
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           if (false)
-                      //             const Text(
-                      //               "We hope you enjoy your stay on ICON Of The Seas.",
-                      //               style: TextStyle(
-                      //                 color: Colors.white,
-                      //               ),
-                      //             ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
                     ),
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 20.0, bottom: 20),
-                //   child: SizedBox(
-                //     height: MediaQuery.of(context).size.height / 4,
-                //     width: MediaQuery.of(context).size.width,
-                //     child: BottomMenuTiles(),
-                //   ),
-                // ),
               ],
             ),
           ),
