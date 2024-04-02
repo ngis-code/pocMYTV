@@ -126,10 +126,10 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          "Welcome Byron Family",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
+                        // const Text(
+                        //   "Welcome Byron Family",
+                        //   style: TextStyle(color: Colors.white, fontSize: 20),
+                        // ),
                         Row(
                           children: [
                             FocusWidget(

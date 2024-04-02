@@ -40,6 +40,13 @@ class _TVDrawerState extends State<TVDrawer> {
                 height: 100,
                 width: 100,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Welcome Byron Family",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
               Expanded(
                 child: CenteredListView(
                   duration: const Duration(milliseconds: 200),
