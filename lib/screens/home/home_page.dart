@@ -173,6 +173,7 @@ class _HomePageState extends State<HomePage> {
                                                 ],
                                               ),
                                               FocusWidget(
+                                                hasFocus: true,
                                                 focusGroup: 'promotionalGroup',
                                                 onTap: () {},
                                                 child: const ListTile(
