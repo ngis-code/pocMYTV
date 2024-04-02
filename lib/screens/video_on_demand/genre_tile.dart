@@ -20,8 +20,7 @@ class GenreTile extends StatefulWidget {
 class _GenreTileState extends State<GenreTile> {
   static const double maxHeight = 240;
   static const double maxPadding = 20;
-  double padding = maxPadding;
-  double height = maxHeight - 2 * maxPadding;
+  bool hasFocus = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class _GenreTileState extends State<GenreTile> {
       height: maxHeight,
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(padding),
+          padding: EdgeInsets.all(hasFocus ? 0 : maxPadding),
           child: FocusWidget(
             focusGroup: 'genreTiles',
             backgroundColor: Colors.grey.withOpacity(.2),
@@ -46,18 +45,18 @@ class _GenreTileState extends State<GenreTile> {
             },
             onFocusChange: (hasFocus) {
               setState(() {
-                padding = hasFocus ? 0 : maxPadding;
-                height = hasFocus ? maxHeight : maxHeight - 2 * maxPadding;
+                this.hasFocus = hasFocus;
               });
               widget.onFocusChange?.call(hasFocus);
             },
             child: AnimatedContainer(
-              height: height,
-              width: height,
+              height: hasFocus ? maxHeight : maxHeight - maxPadding * 2,
+              width: hasFocus ? maxHeight : maxHeight - maxPadding * 2,
               curve: Curves.easeInOut,
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.transparent,
                 border: Border.all(
                   color: Colors.transparent,
                   // width: 2,
@@ -84,7 +83,7 @@ class _GenreTileState extends State<GenreTile> {
                         widget.genre.name.split('.').last.toUpperCase(),
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                               color: Colors.white,
-                              fontSize: height == maxHeight ? 30 : 20,
+                              fontSize: hasFocus ? 30 : 20,
                             ),
                       ),
                     ),
