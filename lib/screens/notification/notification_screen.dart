@@ -100,171 +100,67 @@ class NotificationScreen extends StatelessWidget {
                       maxCrossAxisExtent: 200,
                       children: [
                         // some promotional images and text
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.transparent,
-                          child: GridTile(
-                            footer: const GridTileBar(
-                              backgroundColor: Colors.black45,
-                              title: Text(
-                                'AI Promotional Guest',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                        FocusWidget(
+                          focusGroup: 'promotionalAds',
+                          onTap: () {},
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: Colors.transparent,
+                            child: GridTile(
+                              footer: const GridTileBar(
+                                backgroundColor: Colors.black45,
+                                title: Text(
+                                  'AI Promotional Guest',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  '20% off on Gucci accessories only for you',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
                                 ),
                               ),
-                              subtitle: Text(
-                                '20% off on Gucci accessories only for you',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
+                              child: Image.network(
+                                'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
+                                fit: BoxFit.cover,
                               ),
-                            ),
-                            child: Image.network(
-                              'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
-                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.transparent,
-                          child: GridTile(
-                            footer: const GridTileBar(
-                              backgroundColor: Colors.black45,
-                              title: Text(
-                                'AI Promotional Guest',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                        FocusWidget(
+                          focusGroup: 'promotionalAds',
+                          onTap: () {},
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: Colors.transparent,
+                            child: GridTile(
+                              footer: const GridTileBar(
+                                backgroundColor: Colors.black45,
+                                title: Text(
+                                  'AI Promotional Guest',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  '20% off on Gucci accessories only for you',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
                                 ),
                               ),
-                              subtitle: Text(
-                                '20% off on Gucci accessories only for you',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
+                              child: Image.network(
+                                'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
+                                fit: BoxFit.cover,
                               ),
-                            ),
-                            child: Image.network(
-                              'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.transparent,
-                          child: GridTile(
-                            footer: const GridTileBar(
-                              backgroundColor: Colors.black45,
-                              title: Text(
-                                'AI Promotional Guest',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '20% off on Gucci accessories only for you',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                            child: Image.network(
-                              'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.transparent,
-                          child: GridTile(
-                            footer: const GridTileBar(
-                              backgroundColor: Colors.black45,
-                              title: Text(
-                                'AI Promotional Guest',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '20% off on Gucci accessories only for you',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                            child: Image.network(
-                              'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.transparent,
-                          child: GridTile(
-                            footer: const GridTileBar(
-                              backgroundColor: Colors.black45,
-                              title: Text(
-                                'AI Promotional Guest',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '20% off on Gucci accessories only for you',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                            child: Image.network(
-                              'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.transparent,
-                          child: GridTile(
-                            footer: const GridTileBar(
-                              backgroundColor: Colors.black45,
-                              title: Text(
-                                'AI Promotional Guest',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '20% off on Gucci accessories only for you',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                            child: Image.network(
-                              'https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1.jpg',
-                              fit: BoxFit.cover,
                             ),
                           ),
                         ),

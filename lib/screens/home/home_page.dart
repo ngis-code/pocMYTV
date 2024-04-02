@@ -137,13 +137,37 @@ class _HomePageState extends State<HomePage> {
                                 // AI Promotional Guest
                                 //20% off on Gucci accessories only for you
                                 // 20% off on Gucci accessories only for you
-                                showDialog(
+                                showGeneralDialog(
                                   context: context,
                                   barrierColor: Colors.transparent,
-                                  builder: (context) {
+                                  pageBuilder: (context,
+                                      Animation<double> animation,
+                                      Animation<double> secondaryAnimation) {
                                     return const Dialog(
                                         backgroundColor: Colors.black45,
                                         child: NotificationScreen());
+                                  },
+                                  barrierDismissible: true,
+                                  barrierLabel:
+                                      MaterialLocalizations.of(context)
+                                          .modalBarrierDismissLabel,
+                                  transitionDuration:
+                                      const Duration(milliseconds: 500),
+                                  transitionBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    return SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: const Offset(0, -1),
+                                        end: Offset.zero,
+                                      ).animate(animation),
+                                      child: SlideTransition(
+                                        position: Tween<Offset>(
+                                          begin: Offset.zero,
+                                          end: const Offset(0, -1),
+                                        ).animate(secondaryAnimation),
+                                        child: child,
+                                      ),
+                                    );
                                   },
                                 );
                               },
