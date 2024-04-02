@@ -27,7 +27,7 @@ Map<Genre, String> genreImages = {
   Genre.animation:
       "https://media.timeout.com/images/101547937/750/422/image.webp",
   Genre.comedy:
-      "https://www.vidio.com/watch/1203718-akshay-kumar-and-johnny-lever-funny-scene-2-comedy-scenes-entertainment-hindi-film",
+      "https://hips.hearstapps.com/hmg-prod/images/home-alone-1585876454.jpg",
   Genre.crime:
       "https://occ-0-3752-3646.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABWHNRq64uL28xpbVQlXquunYU3GY_iTiHAXem5T9dfKAHzuTDPJvBJiyZualhrTBuLucgTG912wMDRquH60r23h_8XQivAQmaNMTeGBcwVEKG9OnhVqcnxKM.jpg?r=2d8",
   Genre.drama:
@@ -35,7 +35,7 @@ Map<Genre, String> genreImages = {
   Genre.family:
       "https://s3.amazonaws.com/static.rogerebert.com/uploads/review/primary_image/reviews/the-family-2013/Family-2013-1.jpg",
   Genre.fantasy:
-      "https://www.watchmojo.com/uploads/thumbs720/Fi-M-Top10-Fantasy-Battle-Scenes-480i60.jpg",
+      "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/06/best-fantasy-movies.jpg",
   Genre.history:
       "https://www.journal-topics.com/wp-content/uploads/2020/05/saving-private-ryan.jpg",
   Genre.horror:
@@ -51,7 +51,7 @@ Map<Genre, String> genreImages = {
   Genre.tvMovie:
       "https://media.thenerdstash.com/wp-content/uploads/2021/11/thriller-films-feature-image.jpg.webp",
   Genre.thriller:
-      "https://www.vidio.com/watch/1203718-akshay-kumar-and-johnny-lever-funny-scene-2-comedy-scenes-entertainment-hindi-film",
+      "https://assets-prd.ignimgs.com/2022/06/17/best-thriller-thumbnail-1655499110276.jpg",
   Genre.war:
       "https://d3dh6of9cnaq4t.cloudfront.net/Pictures/2000x1125/4/5/0/17450_tomorrowwar_873634.jpg",
   Genre.western:
