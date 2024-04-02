@@ -180,7 +180,7 @@ class NotificationScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          RateBar(),
+                          RateBar(minRating: 1),
                         ],
                       ),
                     ),
