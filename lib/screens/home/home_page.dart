@@ -366,11 +366,11 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            const VerticalDivider(
-                              width: 50,
-                              color: Colors.white,
-                              thickness: 1,
-                            ),
+                            // const VerticalDivider(
+                            //   width: 50,
+                            //   color: Colors.white,
+                            //   thickness: 1,
+                            // ),
                             Container(
                               decoration: BoxDecoration(
                                 color: Colors.black45,
