@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/video_on_demand/parallex_flow.dart';
+import 'package:pocmytv/screens/video_on_demand/parallax_flow_delegate.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoCards extends StatefulWidget {

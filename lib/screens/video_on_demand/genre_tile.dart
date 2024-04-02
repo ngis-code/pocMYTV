@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/models/movie/genre.dart';
 
-import '../../widgets/parallax_effect_screen.dart';
+import 'video_screen.dart';
 
 class GenreTile extends StatefulWidget {
   final Genre genre;
@@ -38,7 +38,7 @@ class _GenreTileState extends State<GenreTile> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const ParallaxEffectScreen();
+                    return const VideoScreen();
                   },
                 ),
               );

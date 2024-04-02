@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:pocmytv/focus_system/focus_widget.dart';
-import 'package:pocmytv/screens/video_on_demand/video_cards.dart';
+import 'package:pocmytv/models/movie/movie.dart';
+import 'package:pocmytv/screens/video_on_demand/movie_tile.dart';
+import 'package:pocmytv/screens/video_on_demand/parallex_videos.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
@@ -11,97 +11,57 @@ class VideoScreen extends StatefulWidget {
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-  late PageController _pageController;
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(viewportFraction: .95);
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  int _selectedIndex = 0;
-
+  static const double maxHeight = 240;
+  static const double maxPadding = 20;
+  double padding = maxPadding;
+  double height = maxHeight - 2 * maxPadding;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: PageView.builder(
-        controller: _pageController,
-        itemCount: videos.length,
-        itemBuilder: (context, index) {
-          return FocusWidget(
-            focusGroup: 'vod',
-            focusColor: Colors.transparent,
-            onTap: () {},
-            child: Stack(
-              children: [
-                VideoCards(
-                  assetPath: videos[index],
-                  isSelected: _selectedIndex == index,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      end: Alignment.centerLeft,
-                      begin: Alignment.centerRight,
-                      colors: [
-                        Colors.black.withOpacity(0.0),
-                        Colors.black.withOpacity(0.7),
-                        Colors.black.withOpacity(0.9),
-                      ],
-                    ),
-                  ),
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: double.infinity,
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'ICON',
-                        style:
-                            Theme.of(context).textTheme.displayMedium!.copyWith(
-                                  color: Colors.white,
-                                ),
-                      ),
-                      Text(
-                        'Watch ICON Of the Seas Lanuch to Miami!',
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  color: Colors.white,
-                                ),
-                      ),
-                      RatingBarIndicator(
-                        rating: 4.5,
-                        itemSize: 14,
-                        itemBuilder: (context, index) => const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-        onPageChanged: (i) => setState(
-          () => _selectedIndex = i,
+    return Scaffold(
+      backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: GestureDetector(
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.white,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            height: (MediaQuery.of(context).size.height * 2) / 3,
+            child: const ParallexVideos(),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 3 - 10,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    for (int index = 0; index < Movie.allMovies.length; index++)
+                      MovieTile(
+                        movie: Movie.allMovies[index],
+                        height: MediaQuery.of(context).size.height / 3 - 10,
+                        width: MediaQuery.of(context).size.width / 3,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
 }
-
-final videos = [
-  'https://www.shutterstock.com/shutterstock/videos/3392396905/preview/stock-footage-turku-finland-world-s-largest-cruise-ship-icon-of-the-seas-during-second-sea-trials.webm',
-  'https://file-examples.com/storage/fef0ba8e7b660ad2093c8cd/2017/04/file_example_MP4_1280_10MG.mp4',
-];
