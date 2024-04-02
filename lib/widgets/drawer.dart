@@ -33,51 +33,62 @@ class _TVDrawerState extends State<TVDrawer> {
         color: const Color.fromARGB(211, 13, 13, 13),
         child: SizedBox(
           width: 200,
-          child: CenteredListView(
-            duration: const Duration(milliseconds: 200),
-            expandedItemHeight: 90,
-            itemHeight: 90,
-            focusedItem: widget.focusedItem,
-            focusGroup: 'drawer',
-            focusColor: Colors.transparent,
-            borderColor: Colors.transparent,
-            itemBuilder: (context, index, hasFocus) {
-              return ListTile(
-                title: Text(
-                  TVDrawer.drawerItems.keys.elementAt(index)[0],
-                  style: TextStyle(
-                    color: hasFocus ? Colors.white : Colors.white38,
-                    fontSize: hasFocus ? 15 : 10,
-                  ),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                height: 100,
+                width: 100,
+              ),
+              Expanded(
+                child: CenteredListView(
+                  duration: const Duration(milliseconds: 200),
+                  expandedItemHeight: 90,
+                  itemHeight: 90,
+                  focusedItem: widget.focusedItem,
+                  focusGroup: 'drawer',
+                  focusColor: Colors.transparent,
+                  borderColor: Colors.transparent,
+                  itemBuilder: (context, index, hasFocus) {
+                    return ListTile(
+                      title: Text(
+                        TVDrawer.drawerItems.keys.elementAt(index)[0],
+                        style: TextStyle(
+                          color: hasFocus ? Colors.white : Colors.white38,
+                          fontSize: hasFocus ? 15 : 10,
+                        ),
+                      ),
+                      leading: Icon(
+                        TVDrawer.drawerItems.keys.elementAt(index)[1],
+                        color: Colors.white,
+                        size: hasFocus ? 25 : 20,
+                      ),
+                    );
+                  },
+                  onFocusChange: (index) {
+                    // if (!initialized) {
+                    //   initialized = true;
+                    //   log("Returning without navigating to a different screen");
+                    //   return;
+                    // }
+                    // if (index != widget.focusedItem) {
+                    //   log("Navigating to a different screen");
+                    //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    //     builder: (context) =>
+                    //         TVDrawer.drawerItems.values.elementAt(index),
+                    //   ));
+                    // }
+                  },
+                  onTap: (index) {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) =>
+                          TVDrawer.drawerItems.values.elementAt(index),
+                    ));
+                  },
+                  itemCount: TVDrawer.drawerItems.length,
                 ),
-                leading: Icon(
-                  TVDrawer.drawerItems.keys.elementAt(index)[1],
-                  color: Colors.white,
-                  size: hasFocus ? 25 : 20,
-                ),
-              );
-            },
-            onFocusChange: (index) {
-              // if (!initialized) {
-              //   initialized = true;
-              //   log("Returning without navigating to a different screen");
-              //   return;
-              // }
-              // if (index != widget.focusedItem) {
-              //   log("Navigating to a different screen");
-              //   Navigator.of(context).pushReplacement(MaterialPageRoute(
-              //     builder: (context) =>
-              //         TVDrawer.drawerItems.values.elementAt(index),
-              //   ));
-              // }
-            },
-            onTap: (index) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) =>
-                    TVDrawer.drawerItems.values.elementAt(index),
-              ));
-            },
-            itemCount: TVDrawer.drawerItems.length,
+              ),
+            ],
           ),
         ),
       ),
