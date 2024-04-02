@@ -55,6 +55,7 @@ class CruisSchedule extends StatelessWidget {
             ),
       ),
     };
+    String oppositeContent = 'Demo Opposite Content';
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
@@ -73,15 +74,38 @@ class CruisSchedule extends StatelessWidget {
         focusedItem: 2,
         child: SingleChildScrollView(
           controller: controller,
-          child: Column(
-            children: [
-              // const Text("data"),
-              SizedBox(
-                height: 200,
-                child: Center(
+          child: SizedBox(
+            height: height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "data",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  width: 350,
                   child: Timeline.tileBuilder(
                     shrinkWrap: true,
                     builder: TimelineTileBuilder.fromStyle(
+                      oppositeContentsBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 2.5),
+                          child: Text(
+                            oppositeContent,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                  color: Colors.white,
+                                ),
+                          ),
+                        );
+                      },
                       contentsAlign: ContentsAlign.basic,
                       contentsBuilder: (context, index) {
                         final key = timelines.keys.elementAt(index);
@@ -120,14 +144,8 @@ class CruisSchedule extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              // ...timelines.values.map(
-              //   (e) => SizedBox(
-              //     height: height,
-              //     child: Center(child: e),
-              //   ),
-              // ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
