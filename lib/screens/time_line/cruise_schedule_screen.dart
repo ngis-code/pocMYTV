@@ -182,6 +182,7 @@ class CruisSchedule extends StatelessWidget {
                         child: Timeline.tileBuilder(
                           shrinkWrap: true,
                           builder: TimelineTileBuilder.fromStyle(
+                            
                             oppositeContentsBuilder: (context, index) {
                               return Padding(
                                 padding: const EdgeInsets.only(right: 2.5),
