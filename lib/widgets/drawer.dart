@@ -35,17 +35,24 @@ class _TVDrawerState extends State<TVDrawer> {
           width: 200,
           child: Column(
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               Image.asset(
                 'assets/images/logo.png',
                 height: 100,
                 width: 100,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Text(
                 "Welcome Byron Family",
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
               ),
               Expanded(
                 child: CenteredListView(
