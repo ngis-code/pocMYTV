@@ -162,10 +162,15 @@ class _HomePageState extends State<HomePage> {
                                         content: const Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            Text('15% sale on Addidas shoes',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                )),
+                                            ListTile(
+                                              leading: Icon(
+                                                  CupertinoIcons.sparkles,
+                                                  color: Colors.white),
+                                              title: Text(
+                                                  '20% off on Gucci accessories only for you',
+                                                  style: TextStyle(
+                                                      color: Colors.white)),
+                                            ),
                                             Text(
                                                 '20% off on Gucci accessories only for you',
                                                 style: TextStyle(
