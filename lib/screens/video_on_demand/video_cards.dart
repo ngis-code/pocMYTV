@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/video_on_demand/parallex_flow.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoCard extends StatefulWidget {
-  const VideoCard({
+class VideoCards extends StatefulWidget {
+  const VideoCards({
     super.key,
     required this.assetPath,
     required this.isSelected,
@@ -14,10 +14,10 @@ class VideoCard extends StatefulWidget {
   final bool isSelected;
 
   @override
-  State<VideoCard> createState() => _VideoCardState();
+  State<VideoCards> createState() => _VideoCardsState();
 }
 
-class _VideoCardState extends State<VideoCard> {
+class _VideoCardsState extends State<VideoCards> {
   final GlobalKey _videoKey = GlobalKey();
 
   late VideoPlayerController _controller;

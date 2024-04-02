@@ -39,7 +39,7 @@ class _VideoScreenState extends State<VideoScreen> {
             onTap: () {},
             child: Stack(
               children: [
-                VideoCard(
+                VideoCards(
                   assetPath: videos[index],
                   isSelected: _selectedIndex == index,
                 ),
