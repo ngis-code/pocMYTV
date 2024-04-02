@@ -62,6 +62,7 @@ class CruisSchedule extends StatelessWidget {
         toolbarHeight: 100,
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent,
+        centerTitle: true,
         title: Image.asset(
           'assets/images/logo.png',
           height: 100,
@@ -73,56 +74,55 @@ class CruisSchedule extends StatelessWidget {
           controller: controller,
           child: Column(
             children: [
+              // const Text("data"),
               SizedBox(
-                height: height,
-                child: Center(
-                  child: Timeline.tileBuilder(
-                    shrinkWrap: true,
-                    builder: TimelineTileBuilder.fromStyle(
-                      contentsAlign: ContentsAlign.basic,
-                      contentsBuilder: (context, index) {
-                        final key = timelines.keys.elementAt(index);
-                        return Padding(
-                          padding: const EdgeInsets.all(24.0),
-                          child: FocusWidget(
-                            onFocusChange: (hasFocus) => controller.animateTo(
-                              0,
+                height: 200,
+                child: Timeline.tileBuilder(
+                  shrinkWrap: true,
+                  builder: TimelineTileBuilder.fromStyle(
+                    contentsAlign: ContentsAlign.basic,
+                    contentsBuilder: (context, index) {
+                      final key = timelines.keys.elementAt(index);
+                      return Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: FocusWidget(
+                          onFocusChange: (hasFocus) => controller.animateTo(
+                            0,
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.easeInOut,
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          borderRadius: 0,
+                          borderWidth: 2,
+                          onTap: () {
+                            controller.animateTo(
+                              (index + 1) * height,
                               duration: const Duration(seconds: 1),
                               curve: Curves.easeInOut,
-                            ),
-                            padding: const EdgeInsets.all(5),
-                            borderRadius: 0,
-                            borderWidth: 2,
-                            onTap: () {
-                              controller.animateTo(
-                                (index + 1) * height,
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.easeInOut,
-                              );
-                            },
-                            child: Text(
-                              key,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .copyWith(
-                                    color: Colors.white,
-                                  ),
-                            ),
+                            );
+                          },
+                          child: Text(
+                            key,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                  color: Colors.white,
+                                ),
                           ),
-                        );
-                      },
-                      itemCount: timelines.length,
-                    ),
+                        ),
+                      );
+                    },
+                    itemCount: timelines.length,
                   ),
                 ),
               ),
-              ...timelines.values.map(
-                (e) => SizedBox(
-                  height: height,
-                  child: Center(child: e),
-                ),
-              ),
+              // ...timelines.values.map(
+              //   (e) => SizedBox(
+              //     height: height,
+              //     child: Center(child: e),
+              //   ),
+              // ),
             ],
           ),
         ),
