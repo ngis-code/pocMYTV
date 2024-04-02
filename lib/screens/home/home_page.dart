@@ -535,29 +535,6 @@ class _HomePageState extends State<HomePage> {
                           GlassWidget(
                             radius: 10,
                             child: Container(
-                              color: Colors.black26,
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'CRUISE COMPASS',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(color: Colors.white),
-                                  ),
-                                  Image.asset(
-                                    'assets/images/qrcode.png',
-                                    fit: BoxFit.cover,
-                                    width: 100,
-                                    height: 100,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          GlassWidget(
-                            radius: 10,
-                            child: Container(
                               color: Colors.black45,
                               child: Column(
                                 children: [
@@ -619,6 +596,31 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                     ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          GlassWidget(
+                            radius: 10,
+                            child: Container(
+                              color: Colors.black26,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Connect to Wifi'.toUpperCase(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(color: Colors.white),
+                                  ),
+                                  Image.asset(
+                                    'assets/images/qrcode.png',
+                                    fit: BoxFit.cover,
+                                    width: 100,
+                                    height: 100,
                                   ),
                                 ],
                               ),
