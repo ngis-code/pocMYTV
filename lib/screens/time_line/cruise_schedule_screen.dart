@@ -103,6 +103,9 @@ class CruisSchedule extends StatelessWidget {
                             ),
                           ],
                         ),
+                        const SizedBox(
+                          width: 20,
+                        ),
                         Column(
                           children: [
                             const Icon(
@@ -121,7 +124,28 @@ class CruisSchedule extends StatelessWidget {
                           ],
                         ),
                       ],
-                    )
+                    ),
+                    Text(
+                      "Florida, Miami",
+                      style: TextStyle(
+                          fontSize: 30, color: Colors.yellow.withOpacity(0.4)),
+                    ),
+                    const Text(
+                      "Departure: Aug 12th 07:00",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
+                        child: Text(
+                          'discover your next destination'.toUpperCase(),
+                          style: const TextStyle(color: Colors.black),
+                        )),
                   ],
                 ),
                 SizedBox(
