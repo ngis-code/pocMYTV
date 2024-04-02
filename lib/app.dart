@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pocmytv/screens/screensaver/screensaver.dart';
+import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 
 class MyApp extends StatefulWidget {
@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
         textTheme: GoogleFonts.quicksandTextTheme(),
       ),
-      home: const ScreenSaver(),
+      home: const LiveTvScreen(),
     );
   }
 }
