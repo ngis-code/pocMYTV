@@ -134,9 +134,6 @@ class _HomePageState extends State<HomePage> {
                             FocusWidget(
                               focusGroup: 'mailButton',
                               onTap: () {
-                                // AI Promotional Guest
-                                //20% off on Gucci accessories only for you
-                                // 20% off on Gucci accessories only for you
                                 showGeneralDialog(
                                   context: context,
                                   barrierColor: Colors.transparent,
@@ -159,12 +156,22 @@ class _HomePageState extends State<HomePage> {
                                       position: Tween<Offset>(
                                         begin: const Offset(0, -1),
                                         end: Offset.zero,
-                                      ).animate(animation),
+                                      ).animate(
+                                        CurvedAnimation(
+                                          parent: animation,
+                                          curve: Curves.easeInOut,
+                                        ),
+                                      ),
                                       child: SlideTransition(
                                         position: Tween<Offset>(
                                           begin: Offset.zero,
                                           end: const Offset(0, -1),
-                                        ).animate(secondaryAnimation),
+                                        ).animate(
+                                          CurvedAnimation(
+                                            parent: secondaryAnimation,
+                                            curve: Curves.easeInOut,
+                                          ),
+                                        ),
                                         child: child,
                                       ),
                                     );
