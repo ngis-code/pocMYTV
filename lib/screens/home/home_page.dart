@@ -66,90 +66,98 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(
                       height: 80,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FocusWidget(
-                            focusGroup: 'mailButton',
-                            onTap: () {
-                              log("Mail");
-                            },
-                            child: const Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Icon(
-                                  Icons.mail_outline_outlined,
-                                  size: 35,
-                                  color: Colors.white,
-                                ),
-                                Positioned(
-                                  bottom: -5,
-                                  left: 11,
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.red,
-                                    radius: 10,
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                          const Text(
+                            "Welcome Byron Family",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
-                          const VerticalDivider(
-                            width: 50,
-                            color: Colors.white,
-                            thickness: 1,
-                          ),
-                          const Column(
+                          Row(
                             children: [
-                              Icon(
-                                Icons.cloud_outlined,
-                                size: 35,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                '24°C',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const VerticalDivider(
-                            width: 50,
-                            color: Colors.white,
-                            thickness: 1,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              ClockWidget(
-                                builder: (context, time) {
-                                  return Text(
-                                    '${time.hour}:${time.minute}',
-                                    textAlign: TextAlign.right,
-                                    style: const TextStyle(
+                              FocusWidget(
+                                focusGroup: 'mailButton',
+                                onTap: () {
+                                  log("Mail");
+                                },
+                                child: const Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Icon(
+                                      Icons.mail_outline_outlined,
+                                      size: 35,
                                       color: Colors.white,
-                                      fontSize: 30,
+                                    ),
+                                    Positioned(
+                                      bottom: -5,
+                                      left: 11,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.red,
+                                        radius: 10,
+                                        child: Text(
+                                          "2",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              const VerticalDivider(
+                                width: 50,
+                                color: Colors.white,
+                                thickness: 1,
+                              ),
+                              const Column(
+                                children: [
+                                  Icon(
+                                    Icons.cloud_outlined,
+                                    size: 35,
+                                    color: Colors.white,
+                                  ),
+                                  Text(
+                                    '24°C',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                  );
-                                },
+                                  ),
+                                ],
                               ),
-                              Text(
-                                DateFormat('EEEE, MMMM d')
-                                    .format(DateTime.now()),
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              const VerticalDivider(
+                                width: 50,
+                                color: Colors.white,
+                                thickness: 1,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  ClockWidget(
+                                    builder: (context, time) {
+                                      return Text(
+                                        '${time.hour}:${time.minute}',
+                                        textAlign: TextAlign.right,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  Text(
+                                    DateFormat('EEEE, MMMM d')
+                                        .format(DateTime.now()),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

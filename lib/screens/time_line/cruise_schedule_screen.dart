@@ -80,12 +80,49 @@ class CruisSchedule extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "data",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: [
+                            const Icon(
+                              Icons.sunny,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              "33 °C",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(
+                                    color: Colors.white,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            const Icon(
+                              Icons.timeline,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              "8:10 AM",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(
+                                    color: Colors.white,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
                 ),
                 SizedBox(
                   width: 350,
