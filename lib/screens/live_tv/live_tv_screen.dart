@@ -23,7 +23,8 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
     //   });
     // });
     controller = VideoPlayerController.network(
-        'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4');
+      'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4',
+    );
     controller
       ..addListener(() => setState(() {}))
       ..setLooping(true)
@@ -42,33 +43,32 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          if (initialized)
-            Positioned.fill(
-              child: AspectRatio(
-                aspectRatio: controller.value.aspectRatio,
-                child: VideoPlayer(controller),
-              ),
-            ),
-          DrawerRow(
-            focusedItem: 1,
-            child: Column(
-              children: [
-                Expanded(
-                  child: AnimatedAlign(
-                    alignment:
-                        initialized ? Alignment.center : Alignment.bottomCenter,
-                    duration: const Duration(seconds: 1),
-                    child: Image.asset(
-                      'assets/ship.png',
-                      height: 300,
+          if (initialized) VideoPlayer(controller),
+          Positioned.fill(
+            child: DrawerRow(
+              focusedItem: 1,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: RotatedBox(
+                        quarterTurns: 1,
+                        child: Image.asset(
+                          'assets/ship.png',
+                          width: double.infinity,
+                          height: double.infinity,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
