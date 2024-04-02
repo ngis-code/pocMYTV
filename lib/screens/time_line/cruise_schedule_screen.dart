@@ -12,6 +12,68 @@ class CruisSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    Color completeColor = const Color(0xff5e6172);
+    Color inProgressColor = Colors.blue;
+    Color todoColor = const Color(0xffd1d2d7);
+
+    const int processIndex = 2;
+
+    Color getColor(int index) {
+      if (index == processIndex) {
+        return inProgressColor;
+      } else if (index < processIndex) {
+        return completeColor;
+      } else {
+        return todoColor;
+      }
+    }
+
+    final Map<String, Widget> timelines = {
+      "Day 1": Text(
+        "Day 1",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+      "Day 2": Text(
+        "Day 2",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+      "Day 3": Text(
+        "Day 3",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+      "Day 4": Text(
+        "Day 4",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+      "Day 5": Text(
+        "Day 5",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+      "Day 6": Text(
+        "Day 6",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+      "Day 7": Text(
+        "Day 7",
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+    };
+    String oppositeContent = 'Demo Opposite Content';
+
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
@@ -125,71 +187,131 @@ class CruisSchedule extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                          width: 500,
-                          height: height,
-                          child: const RotatedBox(
-                              quarterTurns: 1, child: ProcessTimelinePage())
-                          // child: Timeline.tileBuilder(
-                          //   shrinkWrap: true,
-                          //   theme: TimelineThemeData(
-                          //     color: Colors.white,
-                          //   ),
-                          //   builder: TimelineTileBuilder.fromStyle(
-                          //     oppositeContentsBuilder: (context, index) {
-                          //       return Padding(
-                          //         padding: const EdgeInsets.only(right: 2.5),
-                          //         child: Text(
-                          //           oppositeContent,
-                          //           style: Theme.of(context)
-                          //               .textTheme
-                          //               .labelLarge!
-                          //               .copyWith(
-                          //                 color: Colors.white,
-                          //                 fontWeight: FontWeight.w600,
-                          //                 fontSize: 20,
-                          //               ),
-                          //         ),
-                          //       );
-                          //     },
-                          //     contentsAlign: ContentsAlign.basic,
-                          //     contentsBuilder: (context, index) {
-                          //       final key = timelines.keys.elementAt(index);
-                          //       return Padding(
-                          //         padding: const EdgeInsets.all(24.0),
-                          //         child: FocusWidget(
-                          //           focusGroup: 'schedule',
-                          //           onFocusChange: (hasFocus) =>
-                          //               controller.animateTo(
-                          //             0,
-                          //             duration: const Duration(seconds: 1),
-                          //             curve: Curves.easeInOut,
-                          //           ),
-                          //           padding: const EdgeInsets.all(5),
-                          //           borderRadius: 0,
-                          //           borderWidth: 2,
-                          //           onTap: () {
-                          //             controller.animateTo(
-                          //               (index + 1) * height,
-                          //               duration: const Duration(seconds: 1),
-                          //               curve: Curves.easeInOut,
-                          //             );
-                          //           },
-                          //           child: Text(
-                          //             key,
-                          //             style: Theme.of(context)
-                          //                 .textTheme
-                          //                 .labelLarge!
-                          //                 .copyWith(
-                          //                   color: Colors.white,
-                          //                 ),
-                          //           ),
-                          //         ),
-                          //       );
-                          //     },
-                          //     itemCount: timelines.length,
-                          //   ),
-                          // ),
+                        width: 500,
+                        height: height,
+                        child: Timeline.tileBuilder(
+                          theme: TimelineThemeData(
+                            direction: Axis.vertical,
+                            connectorTheme: const ConnectorThemeData(
+                              space: 10.0,
+                              thickness: 5.0,
+                            ),
                           ),
+                          builder: TimelineTileBuilder.connected(
+                            connectionDirection: ConnectionDirection.before,
+                            itemExtentBuilder: (_, __) =>
+                                (MediaQuery.of(context).size.height - 100) /
+                                timelines.length,
+                            oppositeContentsBuilder: (context, index) {
+                              return Text(
+                                oppositeContent,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              );
+                            },
+                            contentsBuilder: (context, index) {
+                              return Text(
+                                timelines.keys.toList()[index],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: getColor(index),
+                                ),
+                              );
+                            },
+                            indicatorBuilder: (_, index) {
+                              Color color;
+                              Widget child = Container();
+                              if (index == processIndex) {
+                                color = inProgressColor;
+                                child = const CircularProgressIndicator(
+                                  strokeWidth: 3.0,
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Colors.white),
+                                );
+                              } else if (index < processIndex) {
+                                color = completeColor;
+                                child = const Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                  size: 15.0,
+                                );
+                              } else {
+                                color = todoColor;
+                              }
+                              if (index <= processIndex) {
+                                return Stack(
+                                  children: [
+                                    CustomPaint(
+                                      size: const Size(30.0, 30.0),
+                                      painter: BezierPainter(
+                                        color: color,
+                                        drawStart: index > 0,
+                                        drawEnd: index < processIndex,
+                                      ),
+                                    ),
+                                    DotIndicator(
+                                      size: 30.0,
+                                      color: color,
+                                      child: child,
+                                    )
+                                  ],
+                                );
+                              } else {
+                                return Stack(
+                                  children: [
+                                    CustomPaint(
+                                      size: const Size(15.0, 15.0),
+                                      painter: BezierPainter(
+                                        color: color,
+                                        drawEnd: index < timelines.length - 1,
+                                      ),
+                                    ),
+                                    OutlinedDotIndicator(
+                                      borderWidth: 4.0,
+                                      color: color,
+                                    ),
+                                  ],
+                                );
+                              }
+                            },
+                            connectorBuilder: (_, index, type) {
+                              if (index > 0) {
+                                if (index == processIndex) {
+                                  final prevColor = getColor(index - 1);
+                                  final color = getColor(index);
+                                  List<Color> gradientColors;
+                                  if (type == ConnectorType.start) {
+                                    gradientColors = [
+                                      Color.lerp(prevColor, color, 0.5)!,
+                                      color
+                                    ];
+                                  } else {
+                                    gradientColors = [
+                                      prevColor,
+                                      Color.lerp(prevColor, color, 0.5)!
+                                    ];
+                                  }
+                                  return DecoratedLineConnector(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: gradientColors,
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  return SolidLineConnector(
+                                    indent: 10,
+                                    color: getColor(index),
+                                  );
+                                }
+                              }
+                              return null;
+                            },
+                            itemCount: timelines.length,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
