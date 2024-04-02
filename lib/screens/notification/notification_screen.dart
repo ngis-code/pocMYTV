@@ -89,21 +89,6 @@ class NotificationScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  RatingBar(
-                      ratingWidget: RatingWidget(
-                        full: const Icon(Icons.star, color: Colors.amber),
-                        half: const Icon(Icons.star_half, color: Colors.amber),
-                        empty:
-                            const Icon(Icons.star_border, color: Colors.amber),
-                      ),
-                      initialRating: 3,
-                      minRating: 1,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemSize: 30,
-                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      onRatingUpdate: (rating) {}),
                 ],
               ),
             ),
@@ -286,8 +271,40 @@ class NotificationScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Expanded(
-                    child: Text('Right'),
+                  Expanded(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            'Leave a rating',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          RatingBar(
+                              ratingWidget: RatingWidget(
+                                full:
+                                    const Icon(Icons.star, color: Colors.amber),
+                                half: const Icon(Icons.star_half,
+                                    color: Colors.amber),
+                                empty: const Icon(Icons.star_border,
+                                    color: Colors.amber),
+                              ),
+                              initialRating: 3,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemSize: 30,
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              onRatingUpdate: (rating) {}),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
