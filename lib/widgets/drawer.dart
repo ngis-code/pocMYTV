@@ -9,7 +9,7 @@ class TVDrawer extends StatefulWidget {
   static final Map<List, Widget> drawerItems = {
     ['Home', Icons.home]: const HomePage(),
     ['Live TV', Icons.movie]: const HomePage(),
-    ['Video On Demand', Icons.tv]: GenreChooseScreen(),
+    ['Video On Demand', Icons.tv]: const GenreChooseScreen(),
     ['Ship Information', Icons.settings]: CruisSchedule(),
     ['Safey Information', Icons.newspaper]: const HomePage(),
     ['Account', Icons.cloud_rounded]: const HomePage(),
@@ -29,7 +29,7 @@ class _TVDrawerState extends State<TVDrawer> {
     return Hero(
       tag: 'tvdrawer',
       child: Material(
-        color: Color.fromARGB(211, 13, 13, 13),
+        color: const Color.fromARGB(211, 13, 13, 13),
         child: SizedBox(
           width: 200,
           child: CenteredListView(
@@ -38,6 +38,7 @@ class _TVDrawerState extends State<TVDrawer> {
             itemHeight: 90,
             focusedItem: widget.focusedItem,
             focusGroup: 'drawer',
+            focusColor: Colors.transparent,
             borderColor: Colors.transparent,
             itemBuilder: (context, index, hasFocus) {
               return ListTile(

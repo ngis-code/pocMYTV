@@ -23,7 +23,7 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
       ],
       bubbles: 8,
       child: DrawerRow(
-        focusedItem: 1,
+        focusedItem: 2,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40),
           child: SingleChildScrollView(
