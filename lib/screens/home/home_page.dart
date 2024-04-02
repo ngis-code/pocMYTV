@@ -442,6 +442,7 @@ class _HomePageState extends State<HomePage> {
                         spacing: 20,
                         runSpacing: 20,
                         runAlignment: WrapAlignment.end,
+                        crossAxisAlignment: WrapCrossAlignment.end,
                         children: [
                           HomeTile(
                             child: Column(
