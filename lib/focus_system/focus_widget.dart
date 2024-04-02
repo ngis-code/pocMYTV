@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -69,9 +71,9 @@ class _FocusWidgetState extends State<FocusWidget> {
       onTap: widget.onTap,
       onFocusChange: (hasFocus) {
         if (disposed) return;
-        // log(hasFocus
-        //     ? "Got Focus ${widget.focusGroup ?? 'unknown'}"
-        //     : "Lost Focus ${widget.focusGroup ?? 'unknown'}");
+        log(hasFocus
+            ? "Got Focus ${widget.focusGroup ?? 'unknown'}"
+            : "Lost Focus ${widget.focusGroup ?? 'unknown'}");
         if (hasFocus &&
             !FocusService.requestFocus(
                 widget.focusGroup ?? "unknown", focusNode)) {
