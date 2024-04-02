@@ -1,10 +1,10 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
-import 'package:pocmytv/utils/glass_widget.dart';
+import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/widgets/clock.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
 import 'package:video_player/video_player.dart';
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                                         "2",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 10,
+                                          fontSize: 16,
                                         ),
                                       ),
                                     ),
@@ -212,57 +212,210 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 300.0),
-                      child: GlassWidget(
-                        blur: 5,
-                        radius: 20,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text(
-                                "Welcome Byron Family",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 50,
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  RatingBarIndicator(
-                                    rating: 5,
-                                    itemBuilder: (context, index) => const Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
+                      padding: const EdgeInsets.only(bottom: 50.0),
+                      child: Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: [
+                          HomeTile(
+                            child: ClockWidget(
+                              builder: (context, time) {
+                                return Column(
+                                  children: [
+                                    Text(
+                                      '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
+                                      textAlign: TextAlign.right,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
+                                    Text(
+                                      DateFormat('EEEE, MMMM d')
+                                          .format(DateTime.now()),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                          HomeTile(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Column(
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          text: "76°",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium!
+                                              .copyWith(
+                                                color: Colors.white,
+                                              ),
+                                          children: [
+                                            TextSpan(
+                                              text: " / 24°C ",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .copyWith(
+                                                    color: Colors.white,
+                                                  ),
+                                            ),
+                                            const WidgetSpan(
+                                                child: SizedBox(width: 10))
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Card(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            color: Colors.white,
+                                            elevation: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: Row(
+                                                children: [
+                                                  const Icon(
+                                                    CupertinoIcons.sunrise,
+                                                    size: 18,
+                                                  ),
+                                                  const SizedBox(width: 4),
+                                                  Text('6:30 AM',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodySmall!
+                                                          .copyWith()),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Card(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            color: Colors.black26,
+                                            elevation: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: Row(
+                                                children: [
+                                                  const Icon(
+                                                    CupertinoIcons.sunset,
+                                                    color: Colors.white,
+                                                    size: 18,
+                                                  ),
+                                                  const SizedBox(width: 4),
+                                                  Text(
+                                                    '8:40 PM',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall!
+                                                        .copyWith(
+                                                          color: Colors.white,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  const Text(
-                                    '5.0',
-                                    style: TextStyle(color: Colors.white),
+                                  Column(
+                                    children: [
+                                      const Icon(
+                                        CupertinoIcons.sun_max,
+                                        size: 50,
+                                        color: Color(0xffd6e14a),
+                                      ),
+                                      Text(
+                                        'Sunny',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                 ],
-                              ),
-                              const Text(
-                                "We hope you enjoy your stay on ICON Of The Seas.",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                              )),
+                        ],
                       ),
+                      //   GlassWidget(
+                      //     blur: 5,
+                      //     radius: 20,
+                      //     child: Container(
+                      //       width: MediaQuery.of(context).size.width / 2,
+                      //       padding: const EdgeInsets.all(10),
+                      //       decoration: BoxDecoration(
+                      //         color: Colors.black.withOpacity(0.5),
+                      //       ),
+                      //       child: Column(
+                      //         mainAxisSize: MainAxisSize.min,
+                      //         children: [
+                      //           const Text(
+                      //             "Welcome Byron Family",
+                      //             textAlign: TextAlign.left,
+                      //             style: TextStyle(
+                      //               color: Colors.white,
+                      //               fontSize: 50,
+                      //             ),
+                      //           ),
+                      //           if (false)
+                      //             Row(
+                      //               children: [
+                      //                 RatingBarIndicator(
+                      //                   rating: 5,
+                      //                   itemBuilder: (context, index) =>
+                      //                       const Icon(
+                      //                     Icons.star,
+                      //                     color: Colors.amber,
+                      //                   ),
+                      //                 ),
+                      //                 const SizedBox(
+                      //                   width: 10,
+                      //                 ),
+                      //                 const Text(
+                      //                   '5.0',
+                      //                   style: TextStyle(color: Colors.white),
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           if (false)
+                      //             const Text(
+                      //               "We hope you enjoy your stay on ICON Of The Seas.",
+                      //               style: TextStyle(
+                      //                 color: Colors.white,
+                      //               ),
+                      //             ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
                     ),
                   ),
                 ),
