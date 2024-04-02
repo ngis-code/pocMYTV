@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Positioned(
                                     bottom: -5,
-                                    left: 11,
+                                    left: 10,
                                     child: CircleAvatar(
                                       backgroundColor: Colors.red,
                                       radius: 10,
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                                         "2",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 16,
+                                          fontSize: 12,
                                         ),
                                       ),
                                     ),
