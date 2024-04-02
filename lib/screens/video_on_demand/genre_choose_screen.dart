@@ -22,6 +22,8 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
         Color(0xFF131C49),
       ],
       bubbles: 8,
+      maxRadius: 200,
+      minRadius: 100,
       child: DrawerRow(
         focusedItem: 2,
         child: Padding(
