@@ -14,6 +14,7 @@ class BubbleAnimation extends StatefulWidget {
   final double blur;
   final double maxRadius;
   final double velocityMultiplier;
+  final Color backgroundColor;
   const BubbleAnimation({
     super.key,
     required this.child,
@@ -32,6 +33,7 @@ class BubbleAnimation extends StatefulWidget {
     this.velocityMultiplier = 1,
     this.fps = 60,
     this.blur = 50,
+    this.backgroundColor = Colors.black,
   });
 
   @override
@@ -78,13 +80,13 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: widget.backgroundColor,
       body: Stack(
         children: [
           ..._particles.map(
             (p) => Positioned(
               left: p.x,
-              top: p.y, 
+              top: p.y,
               child: Container(
                 height: _radius[_particles.indexOf(p)],
                 width: _radius[_particles.indexOf(p)],

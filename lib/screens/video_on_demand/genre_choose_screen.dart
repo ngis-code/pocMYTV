@@ -18,13 +18,14 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
     genres.removeWhere((element) =>
         [Genre.western, Genre.war, Genre.tvMovie].contains(element));
     return BubbleAnimation(
+      backgroundColor: const Color(0xff008bd6),
       colors: const [
         Colors.white,
         Color(0xFF2B6FC0),
         Color(0xFF2B6FC0),
         Color(0xFF131C49),
       ],
-      bubbles: 8,
+      bubbles: 10,
       maxRadius: 200,
       minRadius: 100,
       child: DrawerRow(
