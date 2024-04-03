@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/account/account_screen.dart';
-import 'package:pocmytv/screens/animation/animated_page_route.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
@@ -18,8 +17,9 @@ class TVDrawer extends StatefulWidget {
     ['Ship Information', Icons.settings]: CruisSchedule(),
     ['Account', Icons.cloud_rounded]: const AccountScreen(),
   };
-  final int focusedItem;
-  const TVDrawer({super.key, required this.focusedItem});
+  static const double width = 240;
+  final void Function(int index)? onPageChange;
+  const TVDrawer({super.key, this.onPageChange});
 
   @override
   State<TVDrawer> createState() => _TVDrawerState();
@@ -28,6 +28,8 @@ class TVDrawer extends StatefulWidget {
 class _TVDrawerState extends State<TVDrawer> {
   bool initialized = false;
 
+  int focusedItem = 0;
+
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -35,7 +37,7 @@ class _TVDrawerState extends State<TVDrawer> {
       child: Material(
         color: const Color.fromARGB(211, 13, 13, 13),
         child: SizedBox(
-          width: 240,
+          width: TVDrawer.width,
           child: Column(
             children: [
               const SizedBox(
@@ -62,7 +64,7 @@ class _TVDrawerState extends State<TVDrawer> {
                   duration: const Duration(milliseconds: 200),
                   expandedItemHeight: 90,
                   itemHeight: 90,
-                  focusedItem: widget.focusedItem,
+                  focusedItem: focusedItem,
                   focusGroup: 'drawer',
                   focusColor: Colors.transparent,
                   borderColor: Colors.transparent,
@@ -71,19 +73,18 @@ class _TVDrawerState extends State<TVDrawer> {
                       title: Text(
                         TVDrawer.drawerItems.keys.elementAt(index)[0],
                         style: TextStyle(
-                            color: hasFocus || widget.focusedItem == index
+                            color: hasFocus || focusedItem == index
                                 ? Colors.white
                                 : Colors.white38,
-                            fontSize: hasFocus || widget.focusedItem == index
-                                ? 15
-                                : 10,
+                            fontSize:
+                                hasFocus || focusedItem == index ? 15 : 10,
                             fontWeight:
                                 hasFocus ? FontWeight.bold : FontWeight.normal),
                       ),
                       leading: Icon(
                         TVDrawer.drawerItems.keys.elementAt(index)[1],
                         color: Colors.white,
-                        size: hasFocus || widget.focusedItem == index ? 25 : 20,
+                        size: hasFocus || focusedItem == index ? 25 : 20,
                       ),
                     );
                   },
@@ -93,7 +94,7 @@ class _TVDrawerState extends State<TVDrawer> {
                     //   log("Returning without navigating to a different screen");
                     //   return;
                     // }
-                    // if (index != widget.focusedItem) {
+                    // if (index != focusedItem) {
                     //   log("Navigating to a different screen");
                     //   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     //     builder: (context) =>
@@ -102,11 +103,12 @@ class _TVDrawerState extends State<TVDrawer> {
                     // }
                   },
                   onTap: (index) {
-                    Navigator.of(context).pushReplacement(animatedPageRoute(
-                      child: TVDrawer.drawerItems.values.elementAt(index),
-                      begin: Offset(0, widget.focusedItem > index ? -1 : 1),
-                      end: Offset.zero,
-                    ));
+                    // Navigator.of(context).pushReplacement(animatedPageRoute(
+                    //   child: TVDrawer.drawerItems.values.elementAt(index),
+                    //   begin: Offset(0, focusedItem > index ? -1 : 1),
+                    //   end: Offset.zero,
+                    // ));
+                    widget.onPageChange?.call(index);
                   },
                   itemCount: TVDrawer.drawerItems.length,
                 ),

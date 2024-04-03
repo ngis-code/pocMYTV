@@ -3,9 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pocmytv/screens/screensaver/screensaver.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 
-import 'screens/safety/safety_screen.dart';
-import 'widgets/bezierpainter.dart';
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -31,8 +28,8 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
         textTheme: GoogleFonts.quicksandTextTheme(),
       ),
-      // home: const ScreenSaver(),
-      home: const SafetyScreen(),
+      home: const ScreenSaver(),
+      // home: const SafetyScreen(),
       // home: ProcessTimelinePage(),
     );
   }

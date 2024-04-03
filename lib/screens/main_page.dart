@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
 class MainPage extends StatelessWidget {
@@ -8,8 +9,15 @@ class MainPage extends StatelessWidget {
     Container(
       color: Colors.red,
     ),
-    Container(
-      color: Colors.blue,
+    BubbleAnimation(
+      colors: const [
+        Colors.white,
+      ],
+      bubbles: 10,
+      minRadius: 10,
+      maxRadius: 20,
+      velocityMultiplier: 4,
+      child: Container(),
     ),
     Container(
       color: Colors.green,
@@ -24,13 +32,13 @@ class MainPage extends StatelessWidget {
       color: Colors.purple,
     ),
   ];
-  const MainPage({super.key});
+  MainPage({super.key});
+  final controller = PageController();
+  final controller2 = PageController();
 
   @override
   Widget build(BuildContext context) {
-    final controller = PageController();
     final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SizedBox(
@@ -40,7 +48,7 @@ class MainPage extends StatelessWidget {
           children: [
             Positioned.fill(
               child: PageView.builder(
-                controller: controller,
+                controller: controller2,
                 itemBuilder: (context, index) {
                   if (index >= backgrounds.length) {
                     log("WARNING: Backgrounds list is too short, repeating backgrounds.");
@@ -69,6 +77,11 @@ class MainPage extends StatelessWidget {
               child: TVDrawer(
                 onPageChange: (index) {
                   controller.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeInOut,
+                  );
+                  controller2.animateToPage(
                     index,
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeInOut,

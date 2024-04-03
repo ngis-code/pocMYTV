@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
-import 'package:pocmytv/widgets/drawer_row.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -15,15 +14,12 @@ class AccountScreen extends StatelessWidget {
         Colors.yellow,
         Colors.purple,
       ],
-      child: DrawerRow(
-        focusedItem: 5,
-        child: Center(
-          child: Text(
-            'Coming Soon...',
-            style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                  color: Colors.white,
-                ),
-          ),
+      child: Center(
+        child: Text(
+          'Coming Soon...',
+          style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                color: Colors.white,
+              ),
         ),
       ),
     );
