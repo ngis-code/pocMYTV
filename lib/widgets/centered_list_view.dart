@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 
@@ -66,7 +67,7 @@ class _CenteredListViewState extends State<CenteredListView> {
       final width = constraints.maxWidth;
       final height = constraints.maxHeight;
       return ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
+        physics: kDebugMode ? const NeverScrollableScrollPhysics() : null,
         controller: scrollController,
         scrollDirection: widget.scrollDirection,
         itemBuilder: (context, index) {
