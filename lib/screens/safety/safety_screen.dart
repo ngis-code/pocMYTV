@@ -54,6 +54,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -113,7 +114,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                               borderRadius: BorderRadius.circular(20),
                               child: Image.network(
                                 'https://deeplink.recruitpick.com/uploads/lifejacket_img',
-                                height: 170,
+                                height: height / 4,
                               ),
                             ),
                             const Text(
@@ -189,7 +190,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                     borderRadius: BorderRadius.circular(20),
                                     child: Image.network(
                                       'https://deeplink.recruitpick.com/uploads/lifejacket_img',
-                                      height: 170,
+                                      height: height / 4,
                                     ),
                                   ),
                                   const Text(
@@ -259,7 +260,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.network(
                                         'https://deeplink.recruitpick.com/uploads/lifejacket_img',
-                                        height: 170,
+                                        height: height / 4,
                                       ),
                                     ),
                                     const Text(
@@ -329,7 +330,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 children: [
                                   Image.network(
                                     'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
-                                    height: 170,
+                                    height: height / 4,
                                   ),
                                   const Text(
                                     'Your assembly station',
@@ -392,7 +393,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                   children: [
                                     Image.network(
                                       'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
-                                      height: 170,
+                                      height: height / 4,
                                     ),
                                     const Text(
                                       'Your assembly station',
