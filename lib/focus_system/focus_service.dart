@@ -30,7 +30,8 @@ class FocusService {
       // name: "FocusService.requestFocus")
       _lastFocusedGroup = group;
       _focusGroups[group]?.focus();
-      return focusNode.hasFocus;
+      return _focusGroups[group]?.lastFocusedNode?.hasFocus == true &&
+          focusNode.hasFocus;
     }
     // log("Focus was not changed", name: "FocusService.requestFocus");
     _focusGroups[group]?.focusNode(focusNode);

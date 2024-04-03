@@ -20,6 +20,7 @@ class FocusGroup {
   void focus() {
     final node = (lastFocusedNode ?? focusNodes.firstOrNull);
     if (node?.hasFocus == true) return;
+    log("Focus wasn't on the last focused node", name: 'FocusGroup.focus');
     node?.requestFocus();
   }
 

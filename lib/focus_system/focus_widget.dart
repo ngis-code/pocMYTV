@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -77,6 +79,7 @@ class _FocusWidgetState extends State<FocusWidget> {
                 widget.focusGroup ?? "unknown", focusNode)) {
           return;
         }
+        log("Animating Focus: $hasFocus ${widget.focusGroup ?? 'unknown'}");
         setState(() {
           this.hasFocus = hasFocus;
         });
