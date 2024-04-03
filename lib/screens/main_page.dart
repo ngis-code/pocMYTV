@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/widgets/drawer.dart';
+import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
   static late final List<Widget> backgrounds;
@@ -15,6 +16,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final pageController = PageController();
   final bgPageController = PageController();
+  bool initialized = false;
+  late VideoPlayerController controller;
 
   @override
   void initState() {
@@ -69,12 +72,35 @@ class _MainPageState extends State<MainPage> {
         child: Container(),
       ),
     ];
+
+    controller = VideoPlayerController.network(
+      'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4',
+    );
+    controller
+      ..addListener(() => setState(() {}))
+      ..setLooping(true)
+      ..setVolume(0)
+      ..initialize().then((_) => setState(() {
+            initialized = true;
+            final width = MediaQuery.of(context).size.width;
+            final height = MediaQuery.of(context).size.height;
+            final video = AspectRatio(
+              aspectRatio: width / height,
+              child: VideoPlayer(controller),
+            );
+            MainPage.backgrounds.removeAt(0);
+            MainPage.backgrounds.insert(0, video);
+            MainPage.backgrounds.removeAt(2);
+            MainPage.backgrounds.insert(0, video);
+          }))
+      ..play();
   }
 
   @override
   void dispose() {
     pageController.dispose();
     bgPageController.dispose();
+    controller.dispose();
     super.dispose();
   }
 

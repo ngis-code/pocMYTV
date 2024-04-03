@@ -8,7 +8,6 @@ import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
-import 'package:video_player/video_player.dart';
 
 class LiveTvScreen extends StatefulWidget {
   const LiveTvScreen({super.key});
@@ -18,36 +17,6 @@ class LiveTvScreen extends StatefulWidget {
 }
 
 class _LiveTvScreenState extends State<LiveTvScreen> {
-  bool initialized = false;
-  late VideoPlayerController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   setState(() {
-    //     initialized = true;
-    //   });
-    // });
-    controller = VideoPlayerController.network(
-      'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4',
-    );
-    controller
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..setVolume(0)
-      ..initialize().then((_) => setState(() {
-            initialized = true;
-          }))
-      ..play();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final Map<String, List<String>> data = {
@@ -69,7 +38,7 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
         // ),
         // child:
         children: [
-          if (initialized) VideoPlayer(controller),
+          // if (initialized) VideoPlayer(controller),
           Positioned.fill(
             child: RotatedBox(
               quarterTurns: 1,

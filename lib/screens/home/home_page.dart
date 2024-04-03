@@ -7,7 +7,6 @@ import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/screens/notification/notification_screen.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
-import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,31 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool initialized = false;
-  late VideoPlayerController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = VideoPlayerController.network(
-      'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4',
-    );
-    controller
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..setVolume(0)
-      ..initialize().then((_) => setState(() {
-            initialized = true;
-          }))
-      ..play();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final Map<String, List<String>> data = {
@@ -54,22 +28,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
-        // DecoratedBox(
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: NetworkImage(
-        //       'https://www.royalcaribbean.com/blog/wp-content/uploads/2017/04/RCI_NV_CC_NMorley_032019_Drone_DJI_0738_RET_CMYK.jpg',
-        //     ),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-        // child:
         children: [
-          if (initialized)
-            AspectRatio(
-              aspectRatio: width / height,
-              child: VideoPlayer(controller),
-            ),
           Positioned.fill(
             child: RotatedBox(
               quarterTurns: 1,
