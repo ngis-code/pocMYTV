@@ -23,11 +23,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   setState(() {
-    //     initialized = true;
-    //   });
-    // });
     controller = VideoPlayerController.network(
       'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4',
     );
@@ -70,12 +65,6 @@ class _HomePageState extends State<HomePage> {
         // ),
         // child:
         children: [
-          if (initialized)
-            AspectRatio(
-              // it should cover the whole screen
-              aspectRatio: width / height,
-              child: VideoPlayer(controller),
-            ),
           Positioned.fill(
             child: RotatedBox(
               quarterTurns: 1,

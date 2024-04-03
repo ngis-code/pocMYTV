@@ -56,7 +56,7 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
       'location': ['Main Dining Room', 'Theater', 'Pool Deck'],
     };
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.transparent,
       body: Stack(
         // DecoratedBox(
         // decoration: const BoxDecoration(
