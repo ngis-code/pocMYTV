@@ -73,18 +73,15 @@ class _TVDrawerState extends State<TVDrawer> {
                       title: Text(
                         TVDrawer.drawerItems.keys.elementAt(index)[0],
                         style: TextStyle(
-                            color: hasFocus || focusedItem == index
-                                ? Colors.white
-                                : Colors.white38,
-                            fontSize:
-                                hasFocus || focusedItem == index ? 15 : 10,
+                            color: hasFocus ? Colors.white : Colors.white38,
+                            fontSize: hasFocus ? 15 : 10,
                             fontWeight:
                                 hasFocus ? FontWeight.bold : FontWeight.normal),
                       ),
                       leading: Icon(
                         TVDrawer.drawerItems.keys.elementAt(index)[1],
                         color: Colors.white,
-                        size: hasFocus || focusedItem == index ? 25 : 20,
+                        size: hasFocus ? 25 : 20,
                       ),
                     );
                   },

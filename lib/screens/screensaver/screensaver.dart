@@ -119,7 +119,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MainPage(),
+        builder: (context) => const MainPage(),
       ),
     );
     return false;

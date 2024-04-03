@@ -4,37 +4,85 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
-class MainPage extends StatelessWidget {
-  static final List<Widget> backgrounds = [
-    Container(
-      color: Colors.red,
-    ),
-    BubbleAnimation(
-      colors: const [
-        Colors.white,
-      ],
-      bubbles: 10,
-      minRadius: 10,
-      maxRadius: 20,
-      velocityMultiplier: 4,
-      child: Container(),
-    ),
-    Container(
-      color: Colors.green,
-    ),
-    Container(
-      color: Colors.yellow,
-    ),
-    Container(
-      color: Colors.purple,
-    ),
-    Container(
-      color: Colors.purple,
-    ),
-  ];
-  MainPage({super.key});
-  final controller = PageController();
-  final controller2 = PageController();
+class MainPage extends StatefulWidget {
+  static late final List<Widget> backgrounds;
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final pageController = PageController();
+  final bgPageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    MainPage.backgrounds = [
+      // HOME PAGE
+      Container(),
+      // SAFETY INFORMATION
+      const BubbleAnimation(
+        colors: [
+          Colors.white,
+        ],
+        bubbles: 10,
+        minRadius: 10,
+        maxRadius: 20,
+        velocityMultiplier: 4,
+        child: SizedBox(),
+      ),
+      // LIVE TV
+      BubbleAnimation(
+        colors: const [
+          Colors.red,
+          Colors.blue,
+          Colors.green,
+          Colors.yellow,
+          Colors.purple,
+        ],
+        child: Container(),
+      ),
+      // VOD
+      BubbleAnimation(
+        backgroundColor: const Color(0xff008bd6),
+        colors: const [
+          Colors.white,
+          Color(0xFF2B6FC0),
+          Color(0xFF2B6FC0),
+          Color(0xFF131C49),
+        ],
+        bubbles: 10,
+        maxRadius: 200,
+        minRadius: 100,
+        child: Container(),
+      ),
+      // Ship INFO
+      Image.network(
+        'https://wallpapers-all.com/uploads/posts/2016-11/4_thailand.jpg',
+        fit: BoxFit.cover,
+      ),
+      // Account
+      BubbleAnimation(
+        colors: const [
+          Colors.red,
+          Colors.blue,
+          Colors.green,
+          Colors.yellow,
+          Colors.purple,
+        ],
+        child: Container(),
+      ),
+    ];
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    bgPageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +95,20 @@ class MainPage extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
               child: PageView.builder(
-                controller: controller2,
+                scrollDirection: Axis.vertical,
+                allowImplicitScrolling: false,
+                controller: bgPageController,
                 itemBuilder: (context, index) {
-                  if (index >= backgrounds.length) {
+                  if (index >= MainPage.backgrounds.length) {
                     log("WARNING: Backgrounds list is too short, repeating backgrounds.");
                   }
-                  return backgrounds[index % backgrounds.length];
+                  return MainPage
+                      .backgrounds[index % MainPage.backgrounds.length];
                 },
               ),
             ),
@@ -63,7 +118,9 @@ class MainPage extends StatelessWidget {
               top: 0,
               bottom: 0,
               child: PageView.builder(
-                controller: controller,
+                scrollDirection: Axis.vertical,
+                allowImplicitScrolling: false,
+                controller: pageController,
                 itemBuilder: (context, index) {
                   return TVDrawer.drawerItems.entries.elementAt(index).value;
                 },
@@ -76,12 +133,12 @@ class MainPage extends StatelessWidget {
               bottom: 0,
               child: TVDrawer(
                 onPageChange: (index) {
-                  controller.animateToPage(
+                  pageController.animateToPage(
                     index,
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeInOut,
                   );
-                  controller2.animateToPage(
+                  bgPageController.animateToPage(
                     index,
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeInOut,
