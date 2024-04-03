@@ -112,7 +112,9 @@ class _TVDrawerState extends State<TVDrawer> {
                     //   end: Offset.zero,
                     // ));
                     if (index != focusedItem) {
-                      focusedItem = index;
+                      setState(() {
+                        focusedItem = index;
+                      });
                       widget.onPageChange?.call(focusedItem);
                     }
                   },
