@@ -3,7 +3,7 @@ import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
 import 'package:timelines/timelines.dart';
 
-import '../../widgets/process_time_line.dart';
+import '../../widgets/bezierpainter.dart';
 
 class CruisSchedule extends StatelessWidget {
   CruisSchedule({super.key});

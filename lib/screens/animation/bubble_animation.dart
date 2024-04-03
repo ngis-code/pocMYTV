@@ -84,7 +84,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
           ..._particles.map(
             (p) => Positioned(
               left: p.x,
-              top: p.y,
+              top: p.y, 
               child: Container(
                 height: _radius[_particles.indexOf(p)],
                 width: _radius[_particles.indexOf(p)],

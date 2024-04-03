@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pocmytv/screens/screensaver/screensaver.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 
-import 'widgets/process_time_line.dart';
+import 'widgets/bezierpainter.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
