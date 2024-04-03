@@ -313,7 +313,7 @@ class CruisSchedule extends StatelessWidget {
                                   );
                                 } else {
                                   return SolidLineConnector(
-                                    indent: 10,
+                                    indent: 0,
                                     color: getColor(index),
                                   );
                                 }
