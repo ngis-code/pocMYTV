@@ -27,7 +27,7 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
       child: DrawerRow(
         focusedItem: 2,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: SingleChildScrollView(
             clipBehavior: Clip.none,
             child: SizedBox(

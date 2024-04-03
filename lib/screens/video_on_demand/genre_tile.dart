@@ -18,8 +18,8 @@ class GenreTile extends StatefulWidget {
 }
 
 class _GenreTileState extends State<GenreTile> {
-  static const double maxHeight = 240;
-  static const double maxPadding = 20;
+  static const double maxHeight = 200;
+  static const double maxPadding = 10;
   bool hasFocus = false;
 
   @override
