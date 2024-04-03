@@ -47,16 +47,16 @@ class CenteredListView extends StatefulWidget {
 }
 
 class _CenteredListViewState extends State<CenteredListView> {
-  late final scrollController;
+  late final ScrollController scrollController;
 
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController(
-      initialScrollOffset: widget.focusedItem != null
-          ? widget.focusedItem! * widget.itemHeight +
-              widget.expandedItemHeight / 2
-          : 0,
+      initialScrollOffset: widget.focusedItem == null
+          ? 0
+          : widget.focusedItem! * widget.itemHeight +
+              widget.expandedItemHeight / 2,
     );
   }
 
@@ -99,7 +99,6 @@ class _CenteredListViewState extends State<CenteredListView> {
               widget.onTap(index);
             },
             onReceiveFocus: () {
-              // scrolling the listview to this element
               scrollController.animateTo(
                   index * widget.itemHeight + widget.expandedItemHeight / 2,
                   duration: const Duration(milliseconds: 300),

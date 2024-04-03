@@ -43,6 +43,7 @@ class FocusWidget extends StatefulWidget {
 class _FocusWidgetState extends State<FocusWidget> {
   bool hasFocus = false;
   bool disposed = false;
+  bool rejection = false;
   final FocusNode focusNode = FocusNode();
 
   @override
@@ -73,13 +74,21 @@ class _FocusWidgetState extends State<FocusWidget> {
       onTap: widget.enabled ? widget.onTap : null,
       onFocusChange: (hasFocus) {
         if (disposed) return;
+        if (rejection) {
+          rejection = false;
+          return;
+        }
         // log(hasFocus
         //     ? "Got Focus ${widget.focusGroup ?? 'unknown'}"
         //     : "Lost Focus ${widget.focusGroup ?? 'unknown'}");
-        if (hasFocus &&
-            !FocusService.requestFocus(
-                widget.focusGroup ?? "unknown", focusNode)) {
-          return;
+        if (hasFocus) {
+          final request = FocusService.requestFocus(
+              widget.focusGroup ?? "unknown", focusNode);
+          log("Request ${request ? 'approved' : 'rejected'}");
+          if (!request) {
+            rejection = true;
+            return;
+          }
         }
         log("Animating Focus: $hasFocus ${widget.focusGroup ?? 'unknown'}");
         setState(() {

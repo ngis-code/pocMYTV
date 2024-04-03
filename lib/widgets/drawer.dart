@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/account/account_screen.dart';
+import 'package:pocmytv/screens/animation/animated_page_route.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
@@ -101,9 +102,10 @@ class _TVDrawerState extends State<TVDrawer> {
                     // }
                   },
                   onTap: (index) {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) =>
-                          TVDrawer.drawerItems.values.elementAt(index),
+                    Navigator.of(context).pushReplacement(animatedPageRoute(
+                      child: TVDrawer.drawerItems.values.elementAt(index),
+                      begin: Offset(0, widget.focusedItem > index ? -1 : 1),
+                      end: Offset.zero,
                     ));
                   },
                   itemCount: TVDrawer.drawerItems.length,

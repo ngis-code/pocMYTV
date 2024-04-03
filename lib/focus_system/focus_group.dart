@@ -17,11 +17,13 @@ class FocusGroup {
     focusNodes.remove(focusNode);
   }
 
-  void focus() {
+  bool? focus() {
     final node = (lastFocusedNode ?? focusNodes.firstOrNull);
-    if (node?.hasFocus == true) return;
+    if (node?.hasFocus == true) return true;
     log("Focus wasn't on the last focused node", name: 'FocusGroup.focus');
-    node?.requestFocus();
+    Future.delayed(const Duration(seconds: 1), () => node?.requestFocus());
+    // node?.requestFocus();
+    return node?.hasFocus;
   }
 
   void focusNode(FocusNode focusNode) {
@@ -31,6 +33,7 @@ class FocusGroup {
     }
     lastFocusedNode = focusNode;
     if (focusNode.hasFocus) return;
-    focusNode.requestFocus();
+    Future.delayed(const Duration(seconds: 1), () => focusNode.requestFocus());
+    // focusNode.requestFocus();
   }
 }
