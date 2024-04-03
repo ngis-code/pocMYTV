@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class SafetyVideoScreen extends StatefulWidget {
-  const SafetyVideoScreen({super.key});
+  final Function onVideoCompleted;
+  const SafetyVideoScreen({super.key, required this.onVideoCompleted});
 
   @override
   State<SafetyVideoScreen> createState() => _SafetyVideoScreenState();
@@ -14,11 +15,28 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-        'https://deeplink.recruitpick.com/uploads/LifeJacket_EN_072021.mp4')
+        'https://deeplink.recruitpick.com/uploads/LifeJacket_EN_072021.mp4',
+        videoPlayerOptions: VideoPlayerOptions(allowBackgroundPlayback: false))
       ..initialize().then((_) {
         setState(() {});
       })
-      ..play();
+      ..play()
+      ..setLooping(false)
+      ..addListener(checkVideo);
+  }
+
+  void checkVideo() {
+    if (_controller.value.position == _controller.value.duration) {
+      widget.onVideoCompleted();
+      Navigator.pop(context);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(checkVideo); // Remove the listener
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
