@@ -29,8 +29,8 @@ class FocusService {
       // log("Focus was changed to from group: $_lastFocusedGroup to group: $group",
       // name: "FocusService.requestFocus")
       _lastFocusedGroup = group;
-      _focusGroups[group]?.focus();
-      return focusNode.hasFocus;
+      return _focusGroups[group]?.focus() ?? false;
+      // return focusNode.hasFocus;
       // return _focusGroups[group]?.lastFocusedNode?.hasFocus == true &&
       //     focusNode.hasFocus;
     }
