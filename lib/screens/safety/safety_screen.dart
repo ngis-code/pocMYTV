@@ -1,8 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
+import 'package:pocmytv/screens/safety/safety_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
+import 'package:video_player/video_player.dart';
 
 class SafetyScreen extends StatefulWidget {
   const SafetyScreen({super.key});
@@ -98,8 +100,12 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 height: 40,
                               ),
                               ElevatedButton(
-                                onPressed: () async {
-                                  await player.stop();
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SafetyVideoScreen()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.grey,
