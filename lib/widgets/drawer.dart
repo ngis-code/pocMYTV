@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
+import 'package:pocmytv/screens/safety/safety_screen.dart';
 import 'package:pocmytv/widgets/centered_list_view.dart';
 
 import '../screens/time_line/cruise_schedule_screen.dart';
@@ -12,8 +14,8 @@ class TVDrawer extends StatefulWidget {
     ['Live TV', Icons.movie]: const LiveTvScreen(),
     ['Video On Demand', Icons.tv]: const GenreChooseScreen(),
     ['Ship Information', Icons.settings]: CruisSchedule(),
-    ['Safey Information', Icons.newspaper]: const HomePage(),
-    ['Account', Icons.cloud_rounded]: const HomePage(),
+    ['Safety Information', Icons.newspaper]: const SafetyScreen(),
+    ['Account', Icons.cloud_rounded]: const AccountScreen(),
   };
   final int focusedItem;
   const TVDrawer({super.key, required this.focusedItem});
