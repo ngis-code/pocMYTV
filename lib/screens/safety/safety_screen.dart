@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/safety/safety_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -86,26 +87,29 @@ class _SafetyScreenState extends State<SafetyScreen> {
                           const SizedBox(
                             height: 40,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
+                          FocusWidget(
+                            borderColor: Colors.black,
+                            onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SafetyVideoScreen()));
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.grey,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(1),
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SafetyVideoScreen(),
                                 ),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                            ),
-                            child: Text(
-                              'Watch the Tutorial'.toUpperCase(),
-                              style: const TextStyle(
-                                color: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 10),
+                              child: Text(
+                                'Watch the Tutorial'.toUpperCase(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -151,23 +155,24 @@ class _SafetyScreenState extends State<SafetyScreen> {
                           const SizedBox(
                             height: 40,
                           ),
-                          ElevatedButton(
-                            onPressed: () async {
+                          FocusWidget(
+                            borderColor: Colors.black,
+                            onTap: () async {
                               await playAudioFromUrl(
                                   "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
                             },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.grey,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(1),
-                                ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                            ),
-                            child: Text(
-                              'play horn sound'.toUpperCase(),
-                              style: const TextStyle(
-                                color: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 10),
+                              child: Text(
+                                'play horn sound'.toUpperCase(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -210,21 +215,22 @@ class _SafetyScreenState extends State<SafetyScreen> {
                           const SizedBox(
                             height: 40,
                           ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.grey,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(1),
-                                ),
+                          FocusWidget(
+                            borderColor: Colors.black,
+                            onTap: () {},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                            ),
-                            child: Text(
-                              'find your station'.toUpperCase(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 10),
+                              child: Text(
+                                'find your station'.toUpperCase(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
