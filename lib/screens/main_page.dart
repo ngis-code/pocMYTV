@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> {
             MainPage.backgrounds.removeAt(0);
             MainPage.backgrounds.insert(0, video);
             MainPage.backgrounds.removeAt(2);
-            MainPage.backgrounds.insert(0, video);
+            MainPage.backgrounds.insert(2, video);
           }))
       ..play();
   }
