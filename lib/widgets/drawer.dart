@@ -27,7 +27,6 @@ class TVDrawer extends StatefulWidget {
 
 class _TVDrawerState extends State<TVDrawer> {
   bool initialized = false;
-
   int focusedItem = 0;
 
   @override
@@ -98,6 +97,10 @@ class _TVDrawerState extends State<TVDrawer> {
                     //         TVDrawer.drawerItems.values.elementAt(index),
                     //   ));
                     // }
+                    if (index != focusedItem) {
+                      focusedItem = index;
+                      widget.onPageChange?.call(focusedItem);
+                    }
                   },
                   onTap: (index) {
                     // Navigator.of(context).pushReplacement(animatedPageRoute(
@@ -105,7 +108,10 @@ class _TVDrawerState extends State<TVDrawer> {
                     //   begin: Offset(0, focusedItem > index ? -1 : 1),
                     //   end: Offset.zero,
                     // ));
-                    widget.onPageChange?.call(index);
+                    if (index != focusedItem) {
+                      focusedItem = index;
+                      widget.onPageChange?.call(focusedItem);
+                    }
                   },
                   itemCount: TVDrawer.drawerItems.length,
                 ),

@@ -34,16 +34,7 @@ class _MainPageState extends State<MainPage> {
         child: Container(),
       ),
       // LIVE TV
-      BubbleAnimation(
-        colors: const [
-          Colors.red,
-          Colors.blue,
-          Colors.green,
-          Colors.yellow,
-          Colors.purple,
-        ],
-        child: Container(),
-      ),
+      Container(),
       // VOD
       BubbleAnimation(
         backgroundColor: const Color(0xff008bd6),
