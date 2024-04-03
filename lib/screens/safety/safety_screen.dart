@@ -1,7 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
-import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/safety/safety_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
