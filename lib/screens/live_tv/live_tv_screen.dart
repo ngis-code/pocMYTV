@@ -96,7 +96,7 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
             ),
           ),
           DrawerRow(
-            focusedItem: 1,
+            focusedItem: 2,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,

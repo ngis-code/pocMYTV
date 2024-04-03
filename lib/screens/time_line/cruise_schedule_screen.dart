@@ -88,7 +88,7 @@ class CruisSchedule extends StatelessWidget {
           ),
         ),
         child: DrawerRow(
-          focusedItem: 3,
+          focusedItem: 4,
           child: SingleChildScrollView(
             controller: controller,
             child: Column(

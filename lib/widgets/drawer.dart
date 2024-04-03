@@ -11,10 +11,10 @@ import '../screens/video_on_demand/genre_choose_screen.dart';
 class TVDrawer extends StatefulWidget {
   static final Map<List, Widget> drawerItems = {
     ['Home', Icons.home]: const HomePage(),
+    ['Safety Information', Icons.newspaper]: const SafetyScreen(),
     ['Live TV', Icons.movie]: const LiveTvScreen(),
     ['Video On Demand', Icons.tv]: const GenreChooseScreen(),
     ['Ship Information', Icons.settings]: CruisSchedule(),
-    ['Safety Information', Icons.newspaper]: const SafetyScreen(),
     ['Account', Icons.cloud_rounded]: const AccountScreen(),
   };
   final int focusedItem;
@@ -34,7 +34,7 @@ class _TVDrawerState extends State<TVDrawer> {
       child: Material(
         color: const Color.fromARGB(211, 13, 13, 13),
         child: SizedBox(
-          width: 200,
+          width: 240,
           child: Column(
             children: [
               const SizedBox(
@@ -70,14 +70,17 @@ class _TVDrawerState extends State<TVDrawer> {
                       title: Text(
                         TVDrawer.drawerItems.keys.elementAt(index)[0],
                         style: TextStyle(
-                          color: hasFocus ? Colors.white : Colors.white38,
-                          fontSize: hasFocus ? 15 : 10,
+                          color: hasFocus || widget.focusedItem == index
+                              ? Colors.white
+                              : Colors.white38,
+                          fontSize:
+                              hasFocus || widget.focusedItem == index ? 15 : 10,
                         ),
                       ),
                       leading: Icon(
                         TVDrawer.drawerItems.keys.elementAt(index)[1],
                         color: Colors.white,
-                        size: hasFocus ? 25 : 20,
+                        size: hasFocus || widget.focusedItem == index ? 25 : 20,
                       ),
                     );
                   },

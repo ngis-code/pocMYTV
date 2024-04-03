@@ -28,7 +28,7 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
       maxRadius: 200,
       minRadius: 100,
       child: DrawerRow(
-        focusedItem: 2,
+        focusedItem: 3,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: SingleChildScrollView(
