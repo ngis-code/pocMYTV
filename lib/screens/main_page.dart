@@ -160,11 +160,11 @@ class _MainPageState extends State<MainPage> {
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeInOut,
                   );
-                  bgPageController.animateToPage(
-                    index,
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeInOut,
-                  );
+                  // bgPageController.animateToPage(
+                  //   index,
+                  //   duration: const Duration(milliseconds: 200),
+                  //   curve: Curves.easeInOut,
+                  // );
                 },
               ),
             )
