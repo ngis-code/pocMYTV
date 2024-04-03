@@ -49,8 +49,6 @@ class _HomePageState extends State<HomePage> {
       'event': ['Dinner', 'Show', 'Dance Party'],
       'location': ['Main Dining Room', 'Theater', 'Pool Deck'],
     };
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
