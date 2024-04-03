@@ -22,6 +22,12 @@ class _ParallerPromotionalAdsState extends State<ParallerPromotionalAds> {
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       controller: controller,
@@ -40,12 +46,14 @@ class _ParallerPromotionalAdsState extends State<ParallerPromotionalAds> {
 
   Future<void> scroll() async {
     await Future.delayed(const Duration(seconds: 1));
+    if (!controller.hasClients) return;
     await controller.animateTo(
       controller.position.maxScrollExtent,
       duration: const Duration(seconds: 40),
       curve: Curves.linear,
     );
     await Future.delayed(const Duration(seconds: 1));
+    if (!controller.hasClients) return;
     await controller.animateTo(
       controller.position.minScrollExtent,
       duration: const Duration(seconds: 40),
