@@ -49,6 +49,8 @@ class _HomePageState extends State<HomePage> {
       'event': ['Dinner', 'Show', 'Dance Party'],
       'location': ['Main Dining Room', 'Theater', 'Pool Deck'],
     };
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -63,6 +65,11 @@ class _HomePageState extends State<HomePage> {
         // ),
         // child:
         children: [
+          if (initialized)
+            AspectRatio(
+              aspectRatio: width / height,
+              child: VideoPlayer(controller),
+            ),
           Positioned.fill(
             child: RotatedBox(
               quarterTurns: 1,

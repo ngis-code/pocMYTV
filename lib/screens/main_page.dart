@@ -24,13 +24,16 @@ class _MainPageState extends State<MainPage> {
       Container(),
       // SAFETY INFORMATION
       BubbleAnimation(
+        backgroundColor: const Color(0xff008bd6),
         colors: const [
-          Colors.red,
-          Colors.blue,
-          Colors.green,
-          Colors.yellow,
-          Colors.purple,
+          Colors.white,
+          Color(0xFF2B6FC0),
+          Color(0xFF2B6FC0),
+          Color(0xFF131C49),
         ],
+        bubbles: 10,
+        maxRadius: 200,
+        minRadius: 100,
         child: Container(),
       ),
       // LIVE TV
