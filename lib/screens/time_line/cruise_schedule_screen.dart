@@ -248,12 +248,15 @@ class CruisSchedule extends StatelessWidget {
                               if (index <= processIndex) {
                                 return Stack(
                                   children: [
-                                    CustomPaint(
-                                      size: const Size(30.0, 30.0),
-                                      painter: BezierPainter(
-                                        color: color,
-                                        drawStart: index > 0,
-                                        drawEnd: index < processIndex,
+                                    RotatedBox(
+                                      quarterTurns: 1,
+                                      child: CustomPaint(
+                                        size: const Size(30.0, 30.0),
+                                        painter: BezierPainter(
+                                          color: color,
+                                          drawStart: index > 0,
+                                          drawEnd: index < processIndex,
+                                        ),
                                       ),
                                     ),
                                     DotIndicator(
@@ -266,11 +269,14 @@ class CruisSchedule extends StatelessWidget {
                               } else {
                                 return Stack(
                                   children: [
-                                    CustomPaint(
-                                      size: const Size(15.0, 15.0),
-                                      painter: BezierPainter(
-                                        color: color,
-                                        drawEnd: index < timelines.length - 1,
+                                    RotatedBox(
+                                      quarterTurns: 1,
+                                      child: CustomPaint(
+                                        size: const Size(15.0, 15.0),
+                                        painter: BezierPainter(
+                                          color: color,
+                                          drawEnd: index < timelines.length - 1,
+                                        ),
                                       ),
                                     ),
                                     OutlinedDotIndicator(

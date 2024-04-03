@@ -1,11 +1,14 @@
+import 'dart:developer';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 
-Color completeColor = const Color(0xff5e6172);
-Color inProgressColor = Colors.blue;
-Color todoColor = const Color(0xffd1d2d7);
+const kTileHeight = 50.0;
+
+const completeColor = Color(0xff5e6172);
+const inProgressColor = Color(0xff5ec792);
+const todoColor = Color(0xffd1d2d7);
 
 class ProcessTimelinePage extends StatefulWidget {
   const ProcessTimelinePage({super.key});
@@ -15,7 +18,7 @@ class ProcessTimelinePage extends StatefulWidget {
 }
 
 class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
-  final int _processIndex = 2;
+  int _processIndex = 2;
 
   Color getColor(int index) {
     if (index == _processIndex) {
@@ -29,88 +32,38 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Widget> timelines = {
-      "Day 1": Text(
-        "Day 1",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 2": Text(
-        "Day 2",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 3": Text(
-        "Day 3",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 4": Text(
-        "Day 4",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 5": Text(
-        "Day 5",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 6": Text(
-        "Day 6",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 7": Text(
-        "Day 7",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-    };
-    String oppositeContent = 'Demo Opposite Content';
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       body: Timeline.tileBuilder(
         theme: TimelineThemeData(
           direction: Axis.horizontal,
           connectorTheme: const ConnectorThemeData(
-            space: 10.0,
+            space: 30.0,
             thickness: 5.0,
           ),
         ),
         builder: TimelineTileBuilder.connected(
           connectionDirection: ConnectionDirection.before,
           itemExtentBuilder: (_, __) =>
-              MediaQuery.of(context).size.width / timelines.length,
+              MediaQuery.of(context).size.width / _processes.length,
           oppositeContentsBuilder: (context, index) {
-            return RotatedBox(
-              quarterTurns: 3,
-              child: Text(
-                timelines.keys.toList()[index],
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: getColor(index),
-                ),
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 15.0),
+              child: Image.asset(
+                'assets/images/process_timeline/status${index + 1}.png',
+                width: 50.0,
+                color: getColor(index),
               ),
             );
           },
           contentsBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(top: 15.0),
-              child: RotatedBox(
-                quarterTurns: 3,
-                child: Text(
-                  oppositeContent,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: getColor(index),
-                  ),
+              child: Text(
+                _processes[index],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: getColor(index),
                 ),
               ),
             );
@@ -129,17 +82,15 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
               );
             } else if (index < _processIndex) {
               color = completeColor;
-              child = const RotatedBox(
-                quarterTurns: 3,
-                child: Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 15.0,
-                ),
+              child = const Icon(
+                Icons.check,
+                color: Colors.white,
+                size: 15.0,
               );
             } else {
               color = todoColor;
             }
+
             if (index <= _processIndex) {
               return Stack(
                 children: [
@@ -165,7 +116,7 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
                     size: const Size(15.0, 15.0),
                     painter: BezierPainter(
                       color: color,
-                      drawEnd: index < timelines.length - 1,
+                      drawEnd: index < _processes.length - 1,
                     ),
                   ),
                   OutlinedDotIndicator(
@@ -199,7 +150,6 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
                 );
               } else {
                 return SolidLineConnector(
-                  indent: 10,
                   color: getColor(index),
                 );
               }
@@ -207,13 +157,24 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
               return null;
             }
           },
-          itemCount: timelines.length,
+          itemCount: _processes.length,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _processIndex = (_processIndex + 1) % _processes.length;
+          });
+        },
+        backgroundColor: inProgressColor,
+        child: const Icon(Icons.fork_right),
       ),
     );
   }
 }
 
+/// hardcoded bezier painter
+/// TODO: Bezier curve into package component
 class BezierPainter extends CustomPainter {
   const BezierPainter({
     required this.color,
@@ -247,26 +208,27 @@ class BezierPainter extends CustomPainter {
     Path path;
 
     if (drawStart) {
-      angle = pi / 2;
+      angle = 3 * pi / 4;
       offset1 = _offset(radius, angle);
       offset2 = _offset(radius, -angle);
       path = Path()
         ..moveTo(offset1.dx, offset1.dy)
-        ..quadraticBezierTo(0.0, size.height / 2, -radius, radius)
+        ..quadraticBezierTo(0.0, size.height / 2, -radius,
+            radius) // TODO connector start & gradient
         ..quadraticBezierTo(0.0, size.height / 2, offset2.dx, offset2.dy)
         ..close();
 
       canvas.drawPath(path, paint);
     }
     if (drawEnd) {
-      angle = -pi / 2;
+      angle = -pi / 4;
       offset1 = _offset(radius, angle);
       offset2 = _offset(radius, -angle);
 
       path = Path()
         ..moveTo(offset1.dx, offset1.dy)
-        ..quadraticBezierTo(
-            size.width, size.height / 2, size.width + radius, radius)
+        ..quadraticBezierTo(size.width, size.height / 2, size.width + radius,
+            radius) // TODO connector end & gradient
         ..quadraticBezierTo(size.width, size.height / 2, offset2.dx, offset2.dy)
         ..close();
 
@@ -281,3 +243,11 @@ class BezierPainter extends CustomPainter {
         oldDelegate.drawEnd != drawEnd;
   }
 }
+
+final _processes = [
+  'Prospect',
+  'Tour',
+  'Offer',
+  'Contract',
+  'Settled',
+];
