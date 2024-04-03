@@ -72,8 +72,8 @@ class _MainPageState extends State<MainPage> {
         child: Container(),
       ),
     ];
-    controller = VideoPlayerController.network(
-      'https://deeplink.recruitpick.com/uploads/090878816-animated-deep-blue-background-.mp4',
+    controller = VideoPlayerController.asset(
+      'assets/videos/bg.mp4',
     );
     controller
       ..addListener(() => setState(() {}))
