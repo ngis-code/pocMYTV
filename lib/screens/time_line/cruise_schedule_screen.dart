@@ -203,19 +203,25 @@ class CruisSchedule extends StatelessWidget {
                                 (MediaQuery.of(context).size.height - 100) /
                                 timelines.length,
                             oppositeContentsBuilder: (context, index) {
-                              return Text(
-                                oppositeContent,
-                                style: const TextStyle(
-                                  color: Colors.white,
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 10.0),
+                                child: Text(
+                                  timelines.keys.toList()[index],
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
                               );
                             },
                             contentsBuilder: (context, index) {
-                              return Text(
-                                timelines.keys.toList()[index],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: getColor(index),
+                              return Padding(
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: Text(
+                                  oppositeContent,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: getColor(index),
+                                  ),
                                 ),
                               );
                             },
@@ -224,10 +230,10 @@ class CruisSchedule extends StatelessWidget {
                               Widget child = Container();
                               if (index == processIndex) {
                                 color = inProgressColor;
-                                child = const CircularProgressIndicator(
-                                  strokeWidth: 3.0,
-                                  valueColor:
-                                      AlwaysStoppedAnimation(Colors.white),
+                                child = const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Icon(Icons.directions_boat,
+                                      color: Colors.white, size: 15.0),
                                 );
                               } else if (index < processIndex) {
                                 color = completeColor;
