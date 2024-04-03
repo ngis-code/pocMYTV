@@ -15,6 +15,7 @@ class FocusWidget extends StatefulWidget {
   final bool hasFocus;
   final EdgeInsets padding;
   final String? focusGroup;
+  final bool enabled;
   final Function() onTap;
   final Function(bool hasFocus)? onFocusChange;
 
@@ -32,6 +33,7 @@ class FocusWidget extends StatefulWidget {
     this.padding = EdgeInsets.zero,
     this.focusColor,
     this.focusGroup,
+    this.enabled = true,
   });
 
   @override
@@ -68,7 +70,7 @@ class _FocusWidgetState extends State<FocusWidget> {
     return InkWell(
       focusColor: widget.focusColor,
       focusNode: focusNode,
-      onTap: widget.onTap,
+      onTap: widget.enabled ? widget.onTap : null,
       onFocusChange: (hasFocus) {
         if (disposed) return;
         // log(hasFocus
