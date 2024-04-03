@@ -152,12 +152,12 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 ),
                               ),
                               const Text(
-                                'Life Jacket Tutorial',
+                                'Emergency horn',
                                 style:
                                     TextStyle(fontSize: 20, color: Colors.blue),
                               ),
                               const Text(
-                                'Learn how to wear a life jacket properly',
+                                'In an emergency the captain will sound seven short and one long emergency blast',
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
@@ -179,7 +179,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                   ),
                                 ),
                                 child: Text(
-                                  'Watch the Tutorial'.toUpperCase(),
+                                  'play horn sound'.toUpperCase(),
                                   style: const TextStyle(
                                     color: Colors.white,
                                   ),
