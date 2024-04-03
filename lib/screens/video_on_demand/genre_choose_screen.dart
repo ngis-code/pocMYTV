@@ -14,6 +14,9 @@ class GenreChooseScreen extends StatefulWidget {
 class _GenreChooseScreenState extends State<GenreChooseScreen> {
   @override
   Widget build(BuildContext context) {
+    var genres = Genre.values.map((e) => e).toList();
+    genres.removeWhere((element) =>
+        [Genre.western, Genre.war, Genre.tvMovie].contains(element));
     return BubbleAnimation(
       colors: const [
         Colors.white,
@@ -37,10 +40,11 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 runAlignment: WrapAlignment.center,
                 children: [
-                  for (int index = 0; index < Genre.values.length; index++)
-                    GenreTile(
-                      genre: Genre.values[index],
+                  ...genres.map(
+                    (e) => GenreTile(
+                      genre: e,
                     ),
+                  )
                 ],
               ),
             ),
