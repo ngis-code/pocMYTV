@@ -91,6 +91,7 @@ class _MainPageState extends State<MainPage> {
               top: 0,
               bottom: 0,
               child: PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 allowImplicitScrolling: false,
                 controller: bgPageController,
@@ -109,6 +110,7 @@ class _MainPageState extends State<MainPage> {
               top: 0,
               bottom: 0,
               child: PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 allowImplicitScrolling: false,
                 controller: pageController,
