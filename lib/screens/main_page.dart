@@ -23,15 +23,15 @@ class _MainPageState extends State<MainPage> {
       // HOME PAGE
       Container(),
       // SAFETY INFORMATION
-      const BubbleAnimation(
-        colors: [
-          Colors.white,
+      BubbleAnimation(
+        colors: const [
+          Colors.red,
+          Colors.blue,
+          Colors.green,
+          Colors.yellow,
+          Colors.purple,
         ],
-        bubbles: 10,
-        minRadius: 10,
-        maxRadius: 20,
-        velocityMultiplier: 4,
-        child: SizedBox(),
+        child: Container(),
       ),
       // LIVE TV
       BubbleAnimation(
