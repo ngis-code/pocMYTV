@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/drawer_row.dart';
 import 'package:timelines/timelines.dart';
 
@@ -12,8 +13,8 @@ class CruisSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    Color completeColor = const Color(0xff5e6172);
-    Color inProgressColor = Colors.blue;
+    Color completeColor = const Color.fromARGB(255, 162, 164, 179);
+    Color inProgressColor = Colors.blueAccent;
     Color todoColor = const Color(0xffd1d2d7);
 
     const int processIndex = 2;
@@ -96,98 +97,104 @@ class CruisSchedule extends StatelessWidget {
                   height: height - 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.3),
+                      GlassWidget(
+                        padding: const EdgeInsets.all(20.0),
+                        backgroundColor: Colors.black26,
+                        radius: 20,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.3),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      const Icon(
+                                        Icons.sunny,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "33 °C",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge!
+                                            .copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                child: Column(
-                                  children: [
-                                    const Icon(
-                                      Icons.sunny,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      "33 °C",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge!
-                                          .copyWith(
-                                            color: Colors.white,
-                                          ),
-                                    ),
-                                  ],
+                                const SizedBox(
+                                  width: 20,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.3),
+                                Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.3),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      const Icon(
+                                        Icons.timeline,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "8:10 AM",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge!
+                                            .copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                child: Column(
-                                  children: [
-                                    const Icon(
-                                      Icons.timeline,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      "8:10 AM",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge!
-                                          .copyWith(
-                                            color: Colors.white,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Text(
-                            "Florida, Miami",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color(0xFFfdde6c),
+                              ],
                             ),
-                          ),
-                          const Text(
-                            "Departure: Aug 12th 07:00 PM",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            focusNode: FocusNode(),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFfdde6c),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(0),
+                            const Text(
+                              "Florida, Miami",
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFFfdde6c),
                               ),
                             ),
-                            child: Text(
-                              'discover your next destination'.toUpperCase(),
-                              style: const TextStyle(color: Colors.black),
+                            const Text(
+                              "Departure: Aug 12th 07:00 PM",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
+                            ElevatedButton(
+                              onPressed: () {},
+                              focusNode: FocusNode(),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFFfdde6c),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
+                              ),
+                              child: Text(
+                                'discover your next destination'.toUpperCase(),
+                                style: const TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
-                        width: 500,
+                        width: 400,
                         height: height,
                         child: Timeline.tileBuilder(
                           theme: TimelineThemeData(
@@ -203,19 +210,28 @@ class CruisSchedule extends StatelessWidget {
                                 (MediaQuery.of(context).size.height - 100) /
                                 timelines.length,
                             oppositeContentsBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(right: 10.0),
+                              return GlassWidget(
+                                blur: 0,
+                                radius: 20,
+                                backgroundColor: Colors.black45,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 5),
                                 child: Text(
                                   timelines.keys.toList()[index],
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                  style: TextStyle(
+                                    color: getColor(index),
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               );
                             },
                             contentsBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
+                              return GlassWidget(
+                                blur: 0,
+                                backgroundColor: Colors.black45,
+                                radius: 20,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 5),
                                 child: Text(
                                   oppositeContent,
                                   style: TextStyle(
