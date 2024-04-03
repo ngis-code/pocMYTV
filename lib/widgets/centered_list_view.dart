@@ -66,6 +66,7 @@ class _CenteredListViewState extends State<CenteredListView> {
       final width = constraints.maxWidth;
       final height = constraints.maxHeight;
       return ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         controller: scrollController,
         scrollDirection: widget.scrollDirection,
         itemBuilder: (context, index) {

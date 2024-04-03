@@ -6,7 +6,7 @@ import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static late final List<Widget> backgrounds;
+  static List<Widget> backgrounds = [];
   const MainPage({super.key});
 
   @override
@@ -72,9 +72,8 @@ class _MainPageState extends State<MainPage> {
         child: Container(),
       ),
     ];
-
     controller = VideoPlayerController.network(
-      'https://videos.pond5.com/animated-deep-blue-background-ocean-footage-090878816_main_xxl.mp4',
+      'https://deeplink.recruitpick.com/uploads/090878816-animated-deep-blue-background-.mp4',
     );
     controller
       ..addListener(() => setState(() {}))
