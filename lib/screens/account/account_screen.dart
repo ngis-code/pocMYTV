@@ -62,19 +62,23 @@ class AccountScreen extends StatelessWidget {
                       shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisExtent: 100,
                               crossAxisCount: 2,
+                              mainAxisExtent: 80,
                               crossAxisSpacing: 40,
                               mainAxisSpacing: 20),
                       itemCount: gridItems.length,
                       itemBuilder: (context, index) {
-                        return Text(
-                          '• ${gridItems[index]}',
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        return FittedBox(
+                          alignment: Alignment.centerLeft,
+                          fit: BoxFit.contain,
+                          child: Text(
+                            '• ${gridItems[index]}',
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         );
                       }),
