@@ -27,23 +27,7 @@ class AccountScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.transparent.withOpacity(.5),
                   borderRadius: BorderRadius.circular(15),
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.blue.withOpacity(.5),
-                      Colors.white.withOpacity(.1),
-                      Colors.blue.withOpacity(.9),
-                    ],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  )
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color: Colors.grey.withOpacity(0.5),
-                  //     spreadRadius: 5,
-                  //     blurRadius: 7,
-                  //     offset: const Offset(0, 3),
-                  //   ),
-                  // ],
+                  
                   ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,8 +98,8 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Image.network(
                           'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
-                          height: 150,
-                          width: 150,
+                          height: 100,
+                          width: 100,
                         ),
                         const SizedBox(
                           height: 15,
@@ -159,8 +143,8 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Image.network(
                           'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
-                          height: 150,
-                          width: 150,
+                          height: 100,
+                          width: 100,
                         ),
                         const SizedBox(
                           height: 15,
