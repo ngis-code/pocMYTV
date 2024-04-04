@@ -1,12 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static List<Widget> backgrounds = [];
+  static late Widget backgroundVideo;
   const MainPage({super.key});
 
   @override
@@ -22,56 +19,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    MainPage.backgrounds = [
-      // HOME PAGE
-      Container(),
-      // SAFETY INFORMATION
-      BubbleAnimation(
-        backgroundColor: const Color(0xff008bd6),
-        colors: const [
-          Colors.white,
-          Color(0xFF2B6FC0),
-          Color(0xFF2B6FC0),
-          Color(0xFF131C49),
-        ],
-        bubbles: 10,
-        maxRadius: 200,
-        minRadius: 100,
-        child: Container(),
-      ),
-      // LIVE TV
-      Container(),
-      // VOD
-      BubbleAnimation(
-        backgroundColor: const Color(0xff008bd6),
-        colors: const [
-          Colors.white,
-          Color(0xFF2B6FC0),
-          Color(0xFF2B6FC0),
-          Color(0xFF131C49),
-        ],
-        bubbles: 10,
-        maxRadius: 200,
-        minRadius: 100,
-        child: Container(),
-      ),
-      // Ship INFO
-      Image.network(
-        'https://wallpapers-all.com/uploads/posts/2016-11/4_thailand.jpg',
-        fit: BoxFit.cover,
-      ),
-      // Account
-      BubbleAnimation(
-        colors: const [
-          Colors.red,
-          Colors.blue,
-          Colors.green,
-          Colors.yellow,
-          Colors.purple,
-        ],
-        child: Container(),
-      ),
-    ];
     controller = VideoPlayerController.network(
       'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
     );
@@ -83,14 +30,10 @@ class _MainPageState extends State<MainPage> {
             initialized = true;
             final width = MediaQuery.of(context).size.width;
             final height = MediaQuery.of(context).size.height;
-            final video = AspectRatio(
+            MainPage.backgroundVideo = AspectRatio(
               aspectRatio: width / height,
               child: VideoPlayer(controller),
             );
-            MainPage.backgrounds.removeAt(0);
-            MainPage.backgrounds.insert(0, video);
-            MainPage.backgrounds.removeAt(2);
-            MainPage.backgrounds.insert(2, video);
           }))
       ..play();
   }
@@ -124,11 +67,7 @@ class _MainPageState extends State<MainPage> {
                 allowImplicitScrolling: false,
                 controller: bgPageController,
                 itemBuilder: (context, index) {
-                  if (index >= MainPage.backgrounds.length) {
-                    log("WARNING: Backgrounds list is too short, repeating backgrounds.");
-                  }
-                  return MainPage
-                      .backgrounds[index % MainPage.backgrounds.length];
+                  return MainPage.backgroundVideo;
                 },
               ),
             ),
