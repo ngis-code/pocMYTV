@@ -11,12 +11,12 @@ enum Genre {
   horror,
   music,
   mystery,
-  romance,
-  scienceFiction,
-  tvMovie,
-  thriller,
-  war,
-  western
+  // romance,
+  // scienceFiction,
+  // tvMovie,
+  // thriller,
+  // war,
+  // western
 }
 
 Map<Genre, String> genreImages = {
@@ -44,16 +44,4 @@ Map<Genre, String> genreImages = {
       "https://static1.moviewebimages.com/wordpress/wp-content/uploads/2022/12/back-to-the-future.png?q=50&fit=contain&w=1140&h=&dpr=1.5",
   Genre.mystery:
       "https://media.glamour.com/photos/5ef2657e2cc0e95781b03d03/master/w_1600%2Cc_limit/MCDKNOU_LG002.jpg",
-  Genre.romance:
-      "https://i.pinimg.com/236x/1f/d3/da/1fd3dabcfe549266176e365d830baaea.jpg",
-  Genre.scienceFiction:
-      "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/04/2001-best-sci-fi-movie-scenes-matrix.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5",
-  Genre.tvMovie:
-      "https://media.thenerdstash.com/wp-content/uploads/2021/11/thriller-films-feature-image.jpg.webp",
-  Genre.thriller:
-      "https://assets-prd.ignimgs.com/2022/06/17/best-thriller-thumbnail-1655499110276.jpg",
-  Genre.war:
-      "https://d3dh6of9cnaq4t.cloudfront.net/Pictures/2000x1125/4/5/0/17450_tomorrowwar_873634.jpg",
-  Genre.western:
-      "https://i0.wp.com/saportareport.com/wp-content/uploads/2021/12/scene-fron-power-of-the-dog.featured.jpeg?w=1200&ssl=1",
 };
