@@ -25,12 +25,12 @@ class AccountScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.transparent.withOpacity(.2),
+                  color: Colors.transparent.withOpacity(.5),
                   borderRadius: BorderRadius.circular(15),
                   gradient: LinearGradient(
                     colors: [
                       Colors.blue.withOpacity(.5),
-                      Colors.yellow.withOpacity(.1),
+                      Colors.white.withOpacity(.1),
                       Colors.blue.withOpacity(.9),
                     ],
                     begin: Alignment.centerLeft,
