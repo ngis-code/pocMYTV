@@ -17,21 +17,22 @@ class AccountScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.transparent.withOpacity(.2),
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Colors.grey.withOpacity(0.5),
+                //     spreadRadius: 5,
+                //     blurRadius: 7,
+                //     offset: const Offset(0, 3),
+                //   ),
+                // ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +65,7 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 100,
             ),
             Row(
               children: [
@@ -89,6 +90,9 @@ class AccountScreen extends StatelessWidget {
                         'https://png.pngtree.com/png-clipart/20220301/ourmid/pngtree-d-rendering-male-character-profile-with-green-mint-sweater-blue-eyes-png-image_4466258.png',
                         height: 200,
                         width: 200,
+                      ),
+                      const SizedBox(
+                        height: 15,
                       ),
                       Text(
                         "Male".toUpperCase(),
@@ -122,6 +126,9 @@ class AccountScreen extends StatelessWidget {
                         'https://png.pngtree.com/png-clipart/20220403/ourmid/pngtree-d-rendering-cute-female-character-avatar-wearing-teal-turtle-neck-and-png-image_4525921.png',
                         height: 200,
                         width: 200,
+                      ),
+                      const SizedBox(
+                        height: 15,
                       ),
                       Text(
                         "Female".toUpperCase(),
