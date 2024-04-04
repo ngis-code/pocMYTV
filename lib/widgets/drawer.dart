@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
@@ -20,8 +19,7 @@ class TVDrawer extends StatefulWidget {
   };
   static const double width = 240;
   final void Function(int index)? onPageChange;
-  static final ValueNotifier<bool> safetyLocked =
-      ValueNotifier(kDebugMode ? false : true);
+  static final ValueNotifier<bool> safetyLocked = ValueNotifier(true);
   const TVDrawer({super.key, this.onPageChange});
 
   @override
