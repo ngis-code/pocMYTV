@@ -18,22 +18,22 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    controller = VideoPlayerController.network(
-      'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
-    );
-    controller
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..setVolume(0)
-      ..initialize().then((_) => setState(() {
-            final width = MediaQuery.of(context).size.width;
-            final height = MediaQuery.of(context).size.height;
-            MainPage.backgroundVideo = AspectRatio(
-              aspectRatio: width / height,
-              child: VideoPlayer(controller),
-            );
-          }))
-      ..play();
+    // controller = VideoPlayerController.network(
+    //   'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
+    // );
+    // controller
+    //   ..addListener(() => setState(() {}))
+    //   ..setLooping(true)
+    //   ..setVolume(0)
+    //   ..initialize().then((_) => setState(() {
+    //         final width = MediaQuery.of(context).size.width;
+    //         final height = MediaQuery.of(context).size.height;
+    //         MainPage.backgroundVideo = AspectRatio(
+    //           aspectRatio: width / height,
+    //           child: VideoPlayer(controller),
+    //         );
+    //       }))
+    //   ..play();
   }
 
   @override
