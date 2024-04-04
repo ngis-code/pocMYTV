@@ -88,6 +88,7 @@ class AccountScreen extends StatelessWidget {
             Row(
               children: [
                 FocusWidget(
+                  borderColor: Colors.blue,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -132,6 +133,7 @@ class AccountScreen extends StatelessWidget {
                   width: 10,
                 ),
                 FocusWidget(
+                  borderColor: Colors.blue,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
