@@ -13,12 +13,12 @@ class _AccountInformationState extends State<AccountInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Account Information'),
         backgroundColor: Colors.transparent.withOpacity(.1),
+        centerTitle: true,
       ),
-      extendBodyBehindAppBar: true,
-      extendBody: true,
       body: Stack(
         children: [
           Positioned.fill(child: MainPage.backgroundVideo),

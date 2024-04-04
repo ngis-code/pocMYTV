@@ -66,7 +66,7 @@ class AccountScreen extends StatelessWidget {
                               mainAxisExtent: 50,
                               crossAxisCount: 2,
                               crossAxisSpacing: 40,
-                              mainAxisSpacing: 5),
+                              mainAxisSpacing: 10),
                       itemCount: gridItems.length,
                       itemBuilder: (context, index) {
                         return Text(
