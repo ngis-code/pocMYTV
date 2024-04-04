@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/utils/shader_widget.dart';
 import 'package:video_player/video_player.dart';
@@ -20,6 +22,11 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
         videoPlayerOptions: VideoPlayerOptions(allowBackgroundPlayback: false))
       ..initialize().then((_) {
         setState(() {});
+      }).onError((error, stackTrace) {
+        log("Error Loading Video: $error");
+        log("Moving on to the next screen...");
+        widget.onVideoCompleted();
+        Navigator.pop(context);
       })
       ..play()
       ..setLooping(false)
