@@ -21,6 +21,7 @@ class CenteredListView extends StatefulWidget {
   final Color? focusColor;
   final String? focusGroup;
   final int? focusedItem;
+  final List<bool> disabledItems;
 
   const CenteredListView({
     super.key,
@@ -41,6 +42,7 @@ class CenteredListView extends StatefulWidget {
     this.focusedItem,
     this.onFocusChange,
     this.focusGroup,
+    this.disabledItems = const [],
   });
 
   @override
@@ -85,6 +87,9 @@ class _CenteredListViewState extends State<CenteredListView> {
             index--;
           }
           return CenteredListTile(
+            enabled: widget.disabledItems.length > index
+                ? !widget.disabledItems[index]
+                : true,
             focusGroup: widget.focusGroup,
             focused: widget.focusedItem == index,
             duration: widget.duration,
@@ -131,6 +136,7 @@ class CenteredListTile extends StatefulWidget {
   final Color? focusColor;
   final bool focused;
   final String? focusGroup;
+  final bool enabled;
 
   const CenteredListTile({
     super.key,
@@ -149,6 +155,7 @@ class CenteredListTile extends StatefulWidget {
     required this.builder,
     this.focused = false,
     this.focusGroup,
+    this.enabled = true,
   });
 
   @override
@@ -167,6 +174,7 @@ class _CenteredListTileState extends State<CenteredListTile> {
   @override
   Widget build(BuildContext context) {
     return FocusWidget(
+      enabled: widget.enabled,
       hasFocus: widget.focused,
       borderRadius: widget.borderRadius,
       borderWidth: widget.borderWidth,

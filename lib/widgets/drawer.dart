@@ -19,6 +19,7 @@ class TVDrawer extends StatefulWidget {
   };
   static const double width = 240;
   final void Function(int index)? onPageChange;
+  static final ValueNotifier<bool> safetyLocked = ValueNotifier(true);
   const TVDrawer({super.key, this.onPageChange});
 
   @override
@@ -27,104 +28,122 @@ class TVDrawer extends StatefulWidget {
 
 class _TVDrawerState extends State<TVDrawer> {
   bool initialized = false;
-  int focusedItem = 0;
+  int focusedItem = TVDrawer.safetyLocked.value ? 1 : 0;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.onPageChange?.call(focusedItem);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: 'tvdrawer',
-      child: Material(
-        color: const Color.fromARGB(211, 13, 13, 13),
-        child: SizedBox(
-          width: TVDrawer.width,
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
+    return ValueListenableBuilder(
+      valueListenable: TVDrawer.safetyLocked,
+      builder: (context, safetyLocked, child) {
+        return Hero(
+          tag: 'tvdrawer',
+          child: Material(
+            color: const Color.fromARGB(211, 13, 13, 13),
+            child: SizedBox(
+              width: TVDrawer.width,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Image.asset(
+                    'assets/images/logo.png',
+                    height: 100,
+                    width: 100,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Welcome Byron Family",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Expanded(
+                    child: CenteredListView(
+                      disabledItems: safetyLocked
+                          ? [true, false, true, true, true, true, true]
+                          : [],
+                      duration: const Duration(milliseconds: 200),
+                      expandedItemHeight: 80,
+                      itemHeight: 80,
+                      focusedItem: focusedItem,
+                      focusGroup: 'drawer',
+                      focusColor: Colors.transparent,
+                      borderColor: Colors.transparent,
+                      itemBuilder: (context, index, hasFocus) {
+                        return ListTile(
+                          title: Text(
+                            TVDrawer.drawerItems.keys.elementAt(index)[0],
+                            style: TextStyle(
+                                color: TVDrawer.safetyLocked.value &&
+                                        focusedItem == index
+                                    ? Colors.red
+                                    : hasFocus || focusedItem == index
+                                        ? Colors.white
+                                        : Colors.white38,
+                                fontSize:
+                                    hasFocus || focusedItem == index ? 15 : 10,
+                                fontWeight: hasFocus
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                          leading: Icon(
+                            TVDrawer.drawerItems.keys.elementAt(index)[1],
+                            color: Colors.white,
+                            size: hasFocus || focusedItem == index ? 25 : 20,
+                          ),
+                        );
+                      },
+                      onFocusChange: (index) {
+                        // if (!initialized) {
+                        //   initialized = true;
+                        //   log("Returning without navigating to a different screen");
+                        //   return;
+                        // }
+                        // if (index != focusedItem) {
+                        //   log("Navigating to a different screen");
+                        //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        //     builder: (context) =>
+                        //         TVDrawer.drawerItems.values.elementAt(index),
+                        //   ));
+                        // }
+                        if (index != focusedItem) {
+                          focusedItem = index;
+                          widget.onPageChange?.call(focusedItem);
+                        }
+                      },
+                      onTap: (index) {
+                        // Navigator.of(context).pushReplacement(animatedPageRoute(
+                        //   child: TVDrawer.drawerItems.values.elementAt(index),
+                        //   begin: Offset(0, focusedItem > index ? -1 : 1),
+                        //   end: Offset.zero,
+                        // ));
+                        if (index != focusedItem) {
+                          setState(() {
+                            focusedItem = index;
+                          });
+                          widget.onPageChange?.call(focusedItem);
+                        }
+                      },
+                      itemCount: TVDrawer.drawerItems.length,
+                    ),
+                  ),
+                ],
               ),
-              Image.asset(
-                'assets/images/logo.png',
-                height: 100,
-                width: 100,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Welcome Byron Family",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-              Expanded(
-                child: CenteredListView(
-                  duration: const Duration(milliseconds: 200),
-                  expandedItemHeight: 80,
-                  itemHeight: 80,
-                  focusedItem: focusedItem,
-                  focusGroup: 'drawer',
-                  focusColor: Colors.transparent,
-                  borderColor: Colors.transparent,
-                  itemBuilder: (context, index, hasFocus) {
-                    return ListTile(
-                      title: Text(
-                        TVDrawer.drawerItems.keys.elementAt(index)[0],
-                        style: TextStyle(
-                            color: hasFocus || focusedItem == index
-                                ? Colors.white
-                                : Colors.white38,
-                            fontSize:
-                                hasFocus || focusedItem == index ? 15 : 10,
-                            fontWeight:
-                                hasFocus ? FontWeight.bold : FontWeight.normal),
-                      ),
-                      leading: Icon(
-                        TVDrawer.drawerItems.keys.elementAt(index)[1],
-                        color: Colors.white,
-                        size: hasFocus || focusedItem == index ? 25 : 20,
-                      ),
-                    );
-                  },
-                  onFocusChange: (index) {
-                    // if (!initialized) {
-                    //   initialized = true;
-                    //   log("Returning without navigating to a different screen");
-                    //   return;
-                    // }
-                    // if (index != focusedItem) {
-                    //   log("Navigating to a different screen");
-                    //   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    //     builder: (context) =>
-                    //         TVDrawer.drawerItems.values.elementAt(index),
-                    //   ));
-                    // }
-                    if (index != focusedItem) {
-                      focusedItem = index;
-                      widget.onPageChange?.call(focusedItem);
-                    }
-                  },
-                  onTap: (index) {
-                    // Navigator.of(context).pushReplacement(animatedPageRoute(
-                    //   child: TVDrawer.drawerItems.values.elementAt(index),
-                    //   begin: Offset(0, focusedItem > index ? -1 : 1),
-                    //   end: Offset.zero,
-                    // ));
-                    if (index != focusedItem) {
-                      setState(() {
-                        focusedItem = index;
-                      });
-                      widget.onPageChange?.call(focusedItem);
-                    }
-                  },
-                  itemCount: TVDrawer.drawerItems.length,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
-import 'package:pocmytv/screens/safety/safety_screen.dart';
+import 'package:pocmytv/screens/main_page.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/widgets/clock.dart';
 
@@ -119,7 +119,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const SafetyScreen(alreadySeen: false),
+        builder: (context) => const MainPage(),
       ),
     );
     return false;

@@ -1,16 +1,14 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
-import 'package:pocmytv/screens/animation/animated_page_route.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
-import 'package:pocmytv/screens/main_page.dart';
 import 'package:pocmytv/screens/safety/safety_image.dart';
 import 'package:pocmytv/screens/safety/safety_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
+import 'package:pocmytv/widgets/drawer.dart';
 
 class SafetyScreen extends StatefulWidget {
-  final bool alreadySeen;
-  const SafetyScreen({super.key, this.alreadySeen = true});
+  const SafetyScreen({super.key});
 
   @override
   State<SafetyScreen> createState() => _SafetyScreenState();
@@ -49,8 +47,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
       hornColor = Colors.green;
       _isButton3Active = true;
     });
-    Navigator.of(context).pushAndRemoveUntil(
-        animatedPageRoute(child: const MainPage()), (route) => false);
+    TVDrawer.safetyLocked.value = false;
   }
 
   safetyColorChange() {
@@ -62,9 +59,9 @@ class _SafetyScreenState extends State<SafetyScreen> {
   @override
   void initState() {
     super.initState();
-    _isButton2Active = widget.alreadySeen;
-    _isButton3Active = widget.alreadySeen;
-    if (widget.alreadySeen) {
+    _isButton2Active = !TVDrawer.safetyLocked.value;
+    _isButton3Active = !TVDrawer.safetyLocked.value;
+    if (!TVDrawer.safetyLocked.value) {
       buttonColor = Colors.green;
       hornColor = Colors.green;
       safetyColor = Colors.green;
@@ -510,7 +507,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
         ),
       ),
     );
-    if (widget.alreadySeen) {
+    if (TVDrawer.safetyLocked.value) {
       return child;
     } else {
       return BubbleAnimation(child: child);
