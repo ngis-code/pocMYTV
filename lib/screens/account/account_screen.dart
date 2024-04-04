@@ -131,37 +131,45 @@ class AccountScreen extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  padding: const EdgeInsets.only(
-                      top: 5, bottom: 20, left: 10, right: 10),
-                  child: Column(
-                    children: [
-                      Image.network(
-                        'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
-                        height: 200,
-                        width: 200,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        "Female".toUpperCase(),
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                FocusWidget(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const AccountInformation();
+                    }));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.only(
+                        top: 5, bottom: 20, left: 10, right: 10),
+                    child: Column(
+                      children: [
+                        Image.network(
+                          'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
+                          height: 200,
+                          width: 200,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "Female".toUpperCase(),
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
