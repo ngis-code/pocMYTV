@@ -83,7 +83,7 @@ class CruisSchedule extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                'https://wallpapers-all.com/uploads/posts/2016-11/4_thailand.jpg'),
+                'http://54.242.44.19/v1/storage/buckets/PHOTOS/files/660f12f9984b9c8400bc/view?project=65f31e0dee7417a5dc36'),
             fit: BoxFit.cover,
           ),
         ),
