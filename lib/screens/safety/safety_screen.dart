@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
@@ -237,8 +239,13 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         FocusWidget(
                                           borderColor: Colors.black,
                                           onTap: () async {
-                                            await playAudioFromUrl(
-                                                "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                            try {
+                                              await playAudioFromUrl(
+                                                  "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                            } catch (e) {
+                                              log("Error playing audio: $e");
+                                              log("Moving onto next");
+                                            }
                                             hornColorChange();
                                           },
                                           child: Container(
