@@ -147,7 +147,6 @@ class _Tile extends StatelessWidget {
   final String subtitle;
   final Function() onTap;
   _Tile({
-    super.key,
     required this.image,
     required this.title,
     required this.subtitle,
