@@ -3,7 +3,7 @@ import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static late Widget backgroundVideo;
+  static Widget backgroundVideo = Container();
   const MainPage({super.key});
 
   @override
@@ -13,7 +13,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final pageController = PageController();
   final bgPageController = PageController();
-  bool initialized = false;
   late VideoPlayerController controller;
 
   @override
@@ -27,7 +26,6 @@ class _MainPageState extends State<MainPage> {
       ..setLooping(true)
       ..setVolume(0)
       ..initialize().then((_) => setState(() {
-            initialized = true;
             final width = MediaQuery.of(context).size.width;
             final height = MediaQuery.of(context).size.height;
             MainPage.backgroundVideo = AspectRatio(
