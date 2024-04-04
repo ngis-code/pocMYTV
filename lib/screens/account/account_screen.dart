@@ -113,8 +113,8 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Image.network(
                           'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
-                          height: 200,
-                          width: 200,
+                          height: 150,
+                          width: 150,
                         ),
                         const SizedBox(
                           height: 15,
@@ -157,8 +157,8 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Image.network(
                           'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
-                          height: 200,
-                          width: 200,
+                          height: 150,
+                          width: 150,
                         ),
                         const SizedBox(
                           height: 15,
