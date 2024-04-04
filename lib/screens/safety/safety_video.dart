@@ -28,7 +28,7 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
 
   void checkVideo() {
     if (_controller.value.isInitialized &&
-        _controller.value.position == _controller.value.duration) {
+        _controller.value.position >= _controller.value.duration) {
       widget.onVideoCompleted();
       Navigator.pop(context);
     }
