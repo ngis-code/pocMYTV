@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/utils/shader_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class SafetyVideoScreen extends StatefulWidget {
@@ -54,7 +55,13 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
           },
         ),
       ),
-      body: VideoPlayer(_controller),
+      body: _controller.value.isInitialized
+          ? VideoPlayer(_controller)
+          : const Center(
+              child: ShaderWidget(
+                child: Text('Your Video is Loading...'),
+              ),
+            ),
     );
   }
 }
