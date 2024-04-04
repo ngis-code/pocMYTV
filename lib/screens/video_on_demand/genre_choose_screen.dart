@@ -15,23 +15,25 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
     var genres = Genre.values.map((e) => e).toList();
     genres.removeWhere((element) =>
         [Genre.western, Genre.war, Genre.tvMovie].contains(element));
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: SingleChildScrollView(
-        clipBehavior: Clip.none,
-        child: SizedBox(
-          width: double.infinity,
-          child: Wrap(
-            alignment: WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runAlignment: WrapAlignment.center,
-            children: [
-              ...genres.map(
-                (e) => GenreTile(
-                  genre: e,
-                ),
-              )
-            ],
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: SingleChildScrollView(
+          clipBehavior: Clip.none,
+          child: SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              runAlignment: WrapAlignment.center,
+              children: [
+                ...genres.map(
+                  (e) => GenreTile(
+                    genre: e,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
