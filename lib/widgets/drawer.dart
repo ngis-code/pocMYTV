@@ -71,73 +71,80 @@ class _TVDrawerState extends State<TVDrawer> {
                     ),
                   ),
                   Expanded(
-                    child: CenteredListView(
-                      disabledItems: safetyLocked
-                          ? [true, false, true, true, true, true, true]
-                          : [],
-                      duration: const Duration(milliseconds: 200),
-                      expandedItemHeight: 80,
-                      itemHeight: 80,
-                      focusedItem: focusedItem,
-                      focusGroup: 'drawer',
-                      focusColor: Colors.transparent,
-                      borderColor: Colors.transparent,
-                      itemBuilder: (context, index, hasFocus) {
-                        return ListTile(
-                          title: Text(
-                            TVDrawer.drawerItems.keys.elementAt(index)[0],
-                            style: TextStyle(
-                                color: TVDrawer.safetyLocked.value &&
-                                        focusedItem == index
-                                    ? Colors.red
-                                    : hasFocus || focusedItem == index
-                                        ? Colors.white
-                                        : Colors.white38,
-                                fontSize:
-                                    hasFocus || focusedItem == index ? 15 : 10,
-                                fontWeight: hasFocus
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
-                          ),
-                          leading: Icon(
-                            TVDrawer.drawerItems.keys.elementAt(index)[1],
-                            color: Colors.white,
-                            size: hasFocus || focusedItem == index ? 25 : 20,
-                          ),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        final height = constraints.maxHeight;
+                        return CenteredListView(
+                          disabledItems: safetyLocked
+                              ? [true, false, true, true, true, true, true]
+                              : [],
+                          duration: const Duration(milliseconds: 200),
+                          expandedItemHeight: height / 6,
+                          itemHeight: height / 6,
+                          focusedItem: focusedItem,
+                          focusGroup: 'drawer',
+                          focusColor: Colors.transparent,
+                          borderColor: Colors.transparent,
+                          itemBuilder: (context, index, hasFocus) {
+                            return ListTile(
+                              title: Text(
+                                TVDrawer.drawerItems.keys.elementAt(index)[0],
+                                style: TextStyle(
+                                    color: TVDrawer.safetyLocked.value &&
+                                            focusedItem == index
+                                        ? Colors.red
+                                        : hasFocus || focusedItem == index
+                                            ? Colors.white
+                                            : Colors.white38,
+                                    fontSize: hasFocus || focusedItem == index
+                                        ? 15
+                                        : 10,
+                                    fontWeight: hasFocus
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                              leading: Icon(
+                                TVDrawer.drawerItems.keys.elementAt(index)[1],
+                                color: Colors.white,
+                                size:
+                                    hasFocus || focusedItem == index ? 25 : 20,
+                              ),
+                            );
+                          },
+                          onFocusChange: (index) {
+                            // if (!initialized) {
+                            //   initialized = true;
+                            //   log("Returning without navigating to a different screen");
+                            //   return;
+                            // }
+                            // if (index != focusedItem) {
+                            //   log("Navigating to a different screen");
+                            //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         TVDrawer.drawerItems.values.elementAt(index),
+                            //   ));
+                            // }
+                            if (index != focusedItem) {
+                              focusedItem = index;
+                              widget.onPageChange?.call(focusedItem);
+                            }
+                          },
+                          onTap: (index) {
+                            // Navigator.of(context).pushReplacement(animatedPageRoute(
+                            //   child: TVDrawer.drawerItems.values.elementAt(index),
+                            //   begin: Offset(0, focusedItem > index ? -1 : 1),
+                            //   end: Offset.zero,
+                            // ));
+                            if (index != focusedItem) {
+                              setState(() {
+                                focusedItem = index;
+                              });
+                              widget.onPageChange?.call(focusedItem);
+                            }
+                          },
+                          itemCount: TVDrawer.drawerItems.length,
                         );
                       },
-                      onFocusChange: (index) {
-                        // if (!initialized) {
-                        //   initialized = true;
-                        //   log("Returning without navigating to a different screen");
-                        //   return;
-                        // }
-                        // if (index != focusedItem) {
-                        //   log("Navigating to a different screen");
-                        //   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         TVDrawer.drawerItems.values.elementAt(index),
-                        //   ));
-                        // }
-                        if (index != focusedItem) {
-                          focusedItem = index;
-                          widget.onPageChange?.call(focusedItem);
-                        }
-                      },
-                      onTap: (index) {
-                        // Navigator.of(context).pushReplacement(animatedPageRoute(
-                        //   child: TVDrawer.drawerItems.values.elementAt(index),
-                        //   begin: Offset(0, focusedItem > index ? -1 : 1),
-                        //   end: Offset.zero,
-                        // ));
-                        if (index != focusedItem) {
-                          setState(() {
-                            focusedItem = index;
-                          });
-                          widget.onPageChange?.call(focusedItem);
-                        }
-                      },
-                      itemCount: TVDrawer.drawerItems.length,
                     ),
                   ),
                 ],
