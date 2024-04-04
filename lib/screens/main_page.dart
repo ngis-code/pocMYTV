@@ -3,7 +3,7 @@ import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static Widget backgroundVideo = Container();
+  static Widget backgroundVideo = const SizedBox(height: 20, width: 20);
   const MainPage({super.key});
 
   @override
