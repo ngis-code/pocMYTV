@@ -57,9 +57,14 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
       ),
       body: _controller.value.isInitialized
           ? VideoPlayer(_controller)
-          : const Center(
+          : Center(
               child: ShaderWidget(
-                child: Text('Your Video is Loading...'),
+                colors: const [
+                  Colors.white,
+                  Colors.blue,
+                ],
+                child: Text('Your Video is Loading...',
+                    style: Theme.of(context).textTheme.displayLarge),
               ),
             ),
     );

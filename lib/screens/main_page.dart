@@ -3,7 +3,7 @@ import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static Widget backgroundVideo = Container();
+  static Widget backgroundVideo = const Text("Background");
   const MainPage({super.key});
 
   @override
@@ -18,22 +18,22 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    controller = VideoPlayerController.network(
-      'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
-    );
-    controller
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..setVolume(0)
-      ..initialize().then((_) => setState(() {
-            final width = MediaQuery.of(context).size.width;
-            final height = MediaQuery.of(context).size.height;
-            MainPage.backgroundVideo = AspectRatio(
-              aspectRatio: width / height,
-              child: VideoPlayer(controller),
-            );
-          }))
-      ..play();
+    // controller = VideoPlayerController.network(
+    //   'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
+    // );
+    // controller
+    //   ..addListener(() => setState(() {}))
+    //   ..setLooping(true)
+    //   ..setVolume(0)
+    //   ..initialize().then((_) => setState(() {
+    //         final width = MediaQuery.of(context).size.width;
+    //         final height = MediaQuery.of(context).size.height;
+    //         MainPage.backgroundVideo = AspectRatio(
+    //           aspectRatio: width / height,
+    //           child: VideoPlayer(controller),
+    //         );
+    //       }))
+    //   ..play();
   }
 
   @override
@@ -84,11 +84,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
             ),
-            Positioned(
-              right: width - TVDrawer.width,
-              left: 0,
-              top: 0,
-              bottom: 0,
+            SizedBox(
+              width: TVDrawer.width,
               child: TVDrawer(
                 onPageChange: (index) {
                   pageController.animateToPage(
