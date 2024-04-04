@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-      'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
+      'https://deeplink.recruitpick.com/uploads/bg.avi',
     );
     _controller
         .initialize()
