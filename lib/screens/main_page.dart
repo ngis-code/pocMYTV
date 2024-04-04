@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
@@ -21,19 +23,22 @@ class _MainPageState extends State<MainPage> {
     _controller = VideoPlayerController.network(
       'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
     );
-    _controller.initialize().then((_) => setState(() {
-          _controller
-            ..addListener(() => setState(() {}))
-            ..setLooping(true)
-            ..setVolume(0)
-            ..play();
-          final width = MediaQuery.of(context).size.width;
-          final height = MediaQuery.of(context).size.height;
-          MainPage.backgroundVideo = AspectRatio(
-            aspectRatio: width / height,
-            child: VideoPlayer(_controller),
-          );
-        }));
+    _controller
+        .initialize()
+        .then((_) => setState(() {
+              _controller
+                ..addListener(() => setState(() {}))
+                ..setLooping(true)
+                ..setVolume(0)
+                ..play();
+              final width = MediaQuery.of(context).size.width;
+              final height = MediaQuery.of(context).size.height;
+              MainPage.backgroundVideo = AspectRatio(
+                aspectRatio: width / height,
+                child: VideoPlayer(_controller),
+              );
+            }))
+        .onError((error, stackTrace) => log("Error Loading Video: $error"));
   }
 
   @override

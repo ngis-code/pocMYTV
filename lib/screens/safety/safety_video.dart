@@ -59,10 +59,6 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
           ? VideoPlayer(_controller)
           : Center(
               child: ShaderWidget(
-                colors: const [
-                  Colors.white,
-                  Colors.blue,
-                ],
                 child: Text('Your Video is Loading...',
                     style: Theme.of(context).textTheme.displayLarge),
               ),

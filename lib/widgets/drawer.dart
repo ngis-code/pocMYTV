@@ -33,7 +33,9 @@ class _TVDrawerState extends State<TVDrawer> {
   @override
   void initState() {
     super.initState();
-    widget.onPageChange?.call(focusedItem);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.onPageChange?.call(focusedItem);
+    });
   }
 
   @override

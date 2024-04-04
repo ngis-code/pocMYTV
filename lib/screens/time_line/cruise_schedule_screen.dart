@@ -12,7 +12,7 @@ class CruisSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    Color completeColor = const Color.fromARGB(255, 162, 164, 179);
+    Color completeColor = Colors.green;
     Color inProgressColor = Colors.blueAccent;
     Color todoColor = const Color(0xffd1d2d7);
 
