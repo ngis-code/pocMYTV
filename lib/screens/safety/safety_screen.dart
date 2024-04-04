@@ -1,12 +1,15 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/animation/animated_page_route.dart';
+import 'package:pocmytv/screens/animation/bubble_animation.dart';
+import 'package:pocmytv/screens/main_page.dart';
 import 'package:pocmytv/screens/safety/safety_image.dart';
-import 'package:pocmytv/screens/safety/safety_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
 class SafetyScreen extends StatefulWidget {
-  const SafetyScreen({super.key});
+  final bool alreadySeen;
+  const SafetyScreen({super.key, this.alreadySeen = true});
 
   @override
   State<SafetyScreen> createState() => _SafetyScreenState();
@@ -45,6 +48,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
       hornColor = Colors.green;
       _isButton3Active = true;
     });
+    Navigator.of(context).pushAndRemoveUntil(
+        animatedPageRoute(child: const MainPage()), (route) => false);
   }
 
   safetyColorChange() {
@@ -54,198 +59,145 @@ class _SafetyScreenState extends State<SafetyScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _isButton2Active = widget.alreadySeen;
+    _isButton3Active = widget.alreadySeen;
+    if (widget.alreadySeen) {
+      buttonColor = Colors.green;
+      hornColor = Colors.green;
+      safetyColor = Colors.green;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
+    final child = Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20.0,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'Safety Information',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Safety Information',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Safety is our top priority. We are committed to providing a safe environment for our employees, customers, and communities.',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
+                const SizedBox(height: 20),
+                const Text(
+                  'Safety is our top priority. We are committed to providing a safe environment for our employees, customers, and communities.',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: height / 1.5,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Material(
-                        elevation: 5,
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(20),
-                        child: GlassWidget(
-                          padding: const EdgeInsets.all(10),
-                          radius: 20,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 1,
+                SizedBox(
+                  height: height / 1.5,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Material(
+                          elevation: 5,
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(20),
+                          child: GlassWidget(
+                            padding: const EdgeInsets.all(10),
+                            radius: 20,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 1,
+                                ),
                               ),
-                            ),
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 10, bottom: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.network(
-                                    'https://deeplink.recruitpick.com/uploads/lifejacket_img',
-                                  ),
-                                ),
-                                const Text(
-                                  'Life Jacket Tutorial',
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.blue),
-                                ),
-                                const Text(
-                                  'Learn how to wear a life jacket properly',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 40,
-                                ),
-                                FocusWidget(
-                                  borderColor: Colors.black,
-                                  onTap: () {
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (context) => SafetyVideoScreen(
-                                    //       onVideoCompleted: videoCompleted,
-                                    //     ),
-                                    //   ),
-                                    // );
-                                    videoCompleted();
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: buttonColor,
-                                      borderRadius: BorderRadius.circular(20),
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20, top: 10, bottom: 10),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                      'https://deeplink.recruitpick.com/uploads/lifejacket_img',
                                     ),
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 10),
-                                    child: Text(
-                                      'Watch the Tutorial'.toUpperCase(),
-                                      style: const TextStyle(
-                                        color: Colors.white,
+                                  ),
+                                  const Text(
+                                    'Life Jacket Tutorial',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.blue),
+                                  ),
+                                  const Text(
+                                    'Learn how to wear a life jacket properly',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 40,
+                                  ),
+                                  FocusWidget(
+                                    borderColor: Colors.black,
+                                    onTap: () {
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => SafetyVideoScreen(
+                                      //       onVideoCompleted: videoCompleted,
+                                      //     ),
+                                      //   ),
+                                      // );
+                                      videoCompleted();
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: _isButton2Active
+                                            ? Colors.green
+                                            : buttonColor,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5, horizontal: 10),
+                                      child: Text(
+                                        'Watch the Tutorial'.toUpperCase(),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: _isButton2Active
-                          ? Material(
-                              elevation: 5,
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.circular(20),
-                              child: GlassWidget(
-                                padding: const EdgeInsets.all(10),
-                                radius: 20,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white,
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1,
-                                    ),
-                                  ),
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 20, top: 10, bottom: 10),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image.network(
-                                          'https://deeplink.recruitpick.com/uploads/lifejacket_img',
-                                        ),
-                                      ),
-                                      const Text(
-                                        'Emergency horn',
-                                        style: TextStyle(
-                                            fontSize: 20, color: Colors.blue),
-                                      ),
-                                      const Text(
-                                        'In an emergency the captain will\nsound seven short and one long emergency blast',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 40,
-                                      ),
-                                      FocusWidget(
-                                        borderColor: Colors.black,
-                                        onTap: () async {
-                                          // await playAudioFromUrl(
-                                          //     "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
-                                          hornColorChange();
-                                          _isButton3Active = true;
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: hornColor,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 5, horizontal: 10),
-                                          child: Text(
-                                            'play horn sound'.toUpperCase(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          : Stack(
-                              children: [
-                                GlassWidget(
-                                  // padding: const EdgeInsets.all(10),
+                      Expanded(
+                        child: _isButton2Active
+                            ? Material(
+                                elevation: 5,
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(20),
+                                child: GlassWidget(
+                                  padding: const EdgeInsets.all(10),
                                   radius: 20,
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -287,105 +239,26 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         const SizedBox(
                                           height: 40,
                                         ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.grey,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 5, horizontal: 10),
-                                          child: Text(
-                                            'play horn sound'.toUpperCase(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned.fill(
-                                    child: GlassWidget(
-                                  blur: 1,
-                                  backgroundColor: Colors.grey.withOpacity(0.5),
-                                  radius: 20,
-                                  child: Container(),
-                                ))
-                              ],
-                            ),
-                    ),
-                    Expanded(
-                        child: _isButton3Active
-                            ? Material(
-                                elevation: 5,
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(20),
-                                child: GlassWidget(
-                                  padding: const EdgeInsets.all(10),
-                                  radius: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.white,
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.only(
-                                        left: 20,
-                                        right: 20,
-                                        top: 10,
-                                        bottom: 10),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Image.network(
-                                          'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
-                                        ),
-                                        const Text(
-                                          'Your assembly station',
-                                          style: TextStyle(
-                                              fontSize: 20, color: Colors.blue),
-                                        ),
-                                        const Text(
-                                          'Go directly to your assembly\nstation if you hear the emergency horn',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 40,
-                                        ),
                                         FocusWidget(
                                           borderColor: Colors.black,
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const SafetyImage(),
-                                              ),
-                                            );
-                                            safetyColorChange();
+                                          onTap: () async {
+                                            // await playAudioFromUrl(
+                                            //     "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                            hornColorChange();
+                                            _isButton3Active = true;
                                           },
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              color: safetyColor,
+                                              color: hornColor,
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                             ),
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 5, horizontal: 10),
                                             child: Text(
-                                              'find your station'.toUpperCase(),
+                                              'play horn sound'.toUpperCase(),
                                               style: const TextStyle(
                                                 color: Colors.white,
-                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                           ),
@@ -399,6 +272,86 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 children: [
                                   GlassWidget(
                                     // padding: const EdgeInsets.all(10),
+                                    radius: 20,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1,
+                                        ),
+                                      ),
+                                      padding: const EdgeInsets.only(
+                                          left: 20,
+                                          right: 20,
+                                          top: 10,
+                                          bottom: 10),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            child: Image.network(
+                                              'https://deeplink.recruitpick.com/uploads/lifejacket_img',
+                                            ),
+                                          ),
+                                          const Text(
+                                            'Emergency horn',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.blue),
+                                          ),
+                                          const Text(
+                                            'In an emergency the captain will\nsound seven short and one long emergency blast',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 40,
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5, horizontal: 10),
+                                            child: Text(
+                                              'play horn sound'.toUpperCase(),
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned.fill(
+                                      child: GlassWidget(
+                                    blur: 1,
+                                    backgroundColor:
+                                        Colors.grey.withOpacity(0.5),
+                                    radius: 20,
+                                    child: Container(),
+                                  ))
+                                ],
+                              ),
+                      ),
+                      Expanded(
+                          child: _isButton3Active
+                              ? Material(
+                                  elevation: 5,
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: GlassWidget(
+                                    padding: const EdgeInsets.all(10),
                                     radius: 20,
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -437,19 +390,35 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           const SizedBox(
                                             height: 40,
                                           ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color: Colors.grey,
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 5, horizontal: 10),
-                                            child: Text(
-                                              'find your station'.toUpperCase(),
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
+                                          FocusWidget(
+                                            borderColor: Colors.black,
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const SafetyImage(),
+                                                ),
+                                              );
+                                              safetyColorChange();
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: safetyColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 10),
+                                              child: Text(
+                                                'find your station'
+                                                    .toUpperCase(),
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -457,23 +426,96 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                       ),
                                     ),
                                   ),
-                                  Positioned.fill(
-                                      child: GlassWidget(
-                                    blur: 1,
-                                    backgroundColor:
-                                        Colors.grey.withOpacity(0.5),
-                                    radius: 20,
-                                    child: Container(),
-                                  ))
-                                ],
-                              )),
-                  ],
+                                )
+                              : Stack(
+                                  children: [
+                                    GlassWidget(
+                                      // padding: const EdgeInsets.all(10),
+                                      radius: 20,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white,
+                                          border: Border.all(
+                                            color: Colors.grey,
+                                            width: 1,
+                                          ),
+                                        ),
+                                        padding: const EdgeInsets.only(
+                                            left: 20,
+                                            right: 20,
+                                            top: 10,
+                                            bottom: 10),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Image.network(
+                                              'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
+                                            ),
+                                            const Text(
+                                              'Your assembly station',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.blue),
+                                            ),
+                                            const Text(
+                                              'Go directly to your assembly\nstation if you hear the emergency horn',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 40,
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 10),
+                                              child: Text(
+                                                'find your station'
+                                                    .toUpperCase(),
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned.fill(
+                                        child: GlassWidget(
+                                      blur: 1,
+                                      backgroundColor:
+                                          Colors.grey.withOpacity(0.5),
+                                      radius: 20,
+                                      child: Container(),
+                                    ))
+                                  ],
+                                )),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
+    if (widget.alreadySeen) {
+      return child;
+    } else {
+      return BubbleAnimation(child: child);
+    }
   }
 }
