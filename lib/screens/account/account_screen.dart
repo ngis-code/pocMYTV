@@ -86,7 +86,7 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 100,
+              height: 20,
             ),
             Row(
               children: [
