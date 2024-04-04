@@ -37,6 +37,7 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: GlassWidget(
+              backgroundColor: Colors.black26,
               radius: 20,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -88,6 +89,7 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: GlassWidget(
+              backgroundColor: Colors.black26,
               radius: 20,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
