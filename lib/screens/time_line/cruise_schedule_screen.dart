@@ -82,8 +82,7 @@ class CruisSchedule extends StatelessWidget {
         height: height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                'http://54.242.44.19/v1/storage/buckets/PHOTOS/files/660f12f9984b9c8400bc/view?project=65f31e0dee7417a5dc36'),
+            image: AssetImage('assets/images/ship_info.webp'),
             fit: BoxFit.cover,
           ),
         ),
