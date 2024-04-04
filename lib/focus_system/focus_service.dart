@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_group.dart';
 
@@ -15,6 +17,10 @@ class FocusService {
 
   static void remove(String group, FocusNode focusNode) {
     // log('Removing FocusNode from group $group', name: 'FocusService.remove');
+    if (focusNode.hasFocus) {
+      log("Removing focus from node", name: "FocusService.remove");
+      focusNode.unfocus();
+    }
     if (_focusGroups.containsKey(group)) {
       _focusGroups[group]!.remove(focusNode);
     } else {

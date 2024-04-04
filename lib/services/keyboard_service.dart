@@ -11,6 +11,9 @@ class KeyBoardService {
   }
 
   static bool globalKeyPressHandler(KeyEvent event) {
+    for (final handler in _handlers) {
+      if (handler(event)) return true;
+    }
     if (event is KeyDownEvent) return false;
     switch (event.logicalKey) {
       case LogicalKeyboardKey.escape:
@@ -22,9 +25,6 @@ class KeyBoardService {
       default:
       // log("Logical Key Pressed: ${event.logicalKey}");
       // log("Physical Key Pressed: ${event.physicalKey}");
-    }
-    for (final handler in _handlers) {
-      if (handler(event)) return true;
     }
     return true;
   }

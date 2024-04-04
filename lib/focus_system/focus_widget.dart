@@ -18,6 +18,7 @@ class FocusWidget extends StatefulWidget {
   final bool enabled;
   final Function() onTap;
   final Function(bool hasFocus)? onFocusChange;
+  final FocusNode? focusNode;
 
   const FocusWidget({
     super.key,
@@ -34,6 +35,7 @@ class FocusWidget extends StatefulWidget {
     this.focusColor,
     this.focusGroup,
     this.enabled = true,
+    this.focusNode,
   });
 
   @override
@@ -44,10 +46,11 @@ class _FocusWidgetState extends State<FocusWidget> {
   bool hasFocus = false;
   bool disposed = false;
   bool rejection = false;
-  final FocusNode focusNode = FocusNode();
+  late final FocusNode focusNode;
 
   @override
   void initState() {
+    focusNode = widget.focusNode ?? FocusNode();
     FocusService.add(widget.focusGroup ?? "unknown", focusNode);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       hasFocus = focusNode.hasFocus;
@@ -62,7 +65,7 @@ class _FocusWidgetState extends State<FocusWidget> {
   dispose() {
     disposed = true;
     FocusService.remove(widget.focusGroup ?? "unknown", focusNode);
-    focusNode.dispose();
+    focusNode.unfocus();
     super.dispose();
   }
 
