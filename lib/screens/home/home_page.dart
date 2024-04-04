@@ -72,14 +72,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: SizedBox(
                   height: 90,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      // const Text(
-                      //   "Welcome Byron Family",
-                      //   style: TextStyle(color: Colors.white, fontSize: 20),
-                      // ),
-                      Row(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           FocusWidget(
                             focusGroup: 'mailButton',
@@ -417,7 +416,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
