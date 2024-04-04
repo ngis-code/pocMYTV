@@ -39,8 +39,8 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
             child: GlassWidget(
               backgroundColor: Colors.black26,
               radius: 20,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: ListView(
+                shrinkWrap: true,
                 children: [
                   _Tile(
                     onTap: onChannelView,
@@ -91,8 +91,8 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
             child: GlassWidget(
               backgroundColor: Colors.black26,
               radius: 20,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: ListView(
+                shrinkWrap: true,
                 children: [
                   _Tile(
                     onTap: onChannelView,
