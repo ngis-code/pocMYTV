@@ -154,7 +154,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                     height: 40,
                                   ),
                                   FocusWidget(
-                                    borderColor: Colors.black,
+                                    borderColor: Colors.black,  
                                     onTap: () {
                                       Navigator.push(
                                         context,
