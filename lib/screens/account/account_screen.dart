@@ -30,7 +30,7 @@ class AccountScreen extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: [
                       Colors.blue.withOpacity(.5),
-                      Colors.white.withOpacity(.1),
+                      Colors.yellow.withOpacity(.1),
                       Colors.blue.withOpacity(.9),
                     ],
                     begin: Alignment.centerLeft,
@@ -63,17 +63,17 @@ class AccountScreen extends StatelessWidget {
                       shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisExtent: 50,
+                              mainAxisExtent: 100,
                               crossAxisCount: 2,
                               crossAxisSpacing: 40,
-                              mainAxisSpacing: 10),
+                              mainAxisSpacing: 20),
                       itemCount: gridItems.length,
                       itemBuilder: (context, index) {
                         return Text(
                           '• ${gridItems[index]}',
                           textAlign: TextAlign.left,
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
