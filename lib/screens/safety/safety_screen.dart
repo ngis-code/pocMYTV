@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/safety/safety_image.dart';
 import 'package:pocmytv/screens/safety/safety_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
@@ -136,14 +137,15 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 FocusWidget(
                                   borderColor: Colors.black,
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SafetyVideoScreen(
-                                          onVideoCompleted: videoCompleted,
-                                        ),
-                                      ),
-                                    );
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => SafetyVideoScreen(
+                                    //       onVideoCompleted: videoCompleted,
+                                    //     ),
+                                    //   ),
+                                    // );
+                                    videoCompleted();
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -214,14 +216,14 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                       FocusWidget(
                                         borderColor: Colors.black,
                                         onTap: () async {
-                                          await playAudioFromUrl(
-                                              "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                          // await playAudioFromUrl(
+                                          //     "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
                                           hornColorChange();
                                           _isButton3Active = true;
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.grey,
+                                            color: hornColor,
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
@@ -361,10 +363,19 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         ),
                                         FocusWidget(
                                           borderColor: Colors.black,
-                                          onTap: () {},
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const SafetyImage(),
+                                              ),
+                                            );
+                                            safetyColorChange();
+                                          },
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              color: Colors.grey,
+                                              color: safetyColor,
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                             ),

@@ -23,23 +23,36 @@ class AccountScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.transparent.withOpacity(.2),
-                borderRadius: BorderRadius.circular(15),
-                // boxShadow: [
-                //   BoxShadow(
-                //     color: Colors.grey.withOpacity(0.5),
-                //     spreadRadius: 5,
-                //     blurRadius: 7,
-                //     offset: const Offset(0, 3),
-                //   ),
-                // ],
-              ),
+                  color: Colors.transparent.withOpacity(.2),
+                  borderRadius: BorderRadius.circular(15),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.blue.withOpacity(.5),
+                      Colors.white.withOpacity(.1),
+                      Colors.blue.withOpacity(.9),
+                    ],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  )
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.withOpacity(0.5),
+                  //     spreadRadius: 5,
+                  //     blurRadius: 7,
+                  //     offset: const Offset(0, 3),
+                  //   ),
+                  // ],
+                  ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
                     "Account",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -55,10 +68,13 @@ class AccountScreen extends StatelessWidget {
                       itemCount: gridItems.length,
                       itemBuilder: (context, index) {
                         return Text(
-                          gridItems[index],
+                          '• ${gridItems[index]}',
                           textAlign: TextAlign.left,
                           style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         );
                       }),
                 ],
@@ -87,7 +103,7 @@ class AccountScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.network(
-                        'https://png.pngtree.com/png-clipart/20220301/ourmid/pngtree-d-rendering-male-character-profile-with-green-mint-sweater-blue-eyes-png-image_4466258.png',
+                        'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
                         height: 200,
                         width: 200,
                       ),
@@ -123,7 +139,7 @@ class AccountScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.network(
-                        'https://png.pngtree.com/png-clipart/20220403/ourmid/pngtree-d-rendering-cute-female-character-avatar-wearing-teal-turtle-neck-and-png-image_4525921.png',
+                        'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
                         height: 200,
                         width: 200,
                       ),
