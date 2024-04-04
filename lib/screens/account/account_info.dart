@@ -15,7 +15,6 @@ class _AccountInformationState extends State<AccountInformation> {
       appBar: AppBar(
         title: const Text('Account Information'),
       ),
-      extendBodyBehindAppBar: true,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Row(
@@ -26,6 +25,7 @@ class _AccountInformationState extends State<AccountInformation> {
                 itemBuilder: (context, index) {
                   {
                     return Card(
+                      color: Colors.white,
                       child: ExpansionTile(
                         initiallyExpanded: true,
                         backgroundColor: Colors.transparent,
@@ -143,9 +143,9 @@ class _AccountInformationState extends State<AccountInformation> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
-                    height: 400,
+                    height: 500,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.grey.withOpacity(.1),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: const Padding(
@@ -156,6 +156,7 @@ class _AccountInformationState extends State<AccountInformation> {
                         bottom: 20,
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "Karen OTT",
