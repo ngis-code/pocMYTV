@@ -13,14 +13,14 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
   @override
   Widget build(BuildContext context) {
     var genres = Genre.values.map((e) => e).toList();
-    genres.removeWhere((element) => [
-          Genre.western,
-          Genre.war,
-          Genre.tvMovie,
-          Genre.romance,
-          Genre.thriller,
-          Genre.scienceFiction,
-        ].contains(element));
+    // genres.removeWhere((element) => [
+    //       Genre.western,
+    //       Genre.war,
+    //       Genre.tvMovie,
+    //       Genre.romance,
+    //       Genre.thriller,
+    //       Genre.scienceFiction,
+    //     ].contains(element));
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
