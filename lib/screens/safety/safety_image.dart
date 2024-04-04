@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 
 class SafetyImage extends StatefulWidget {
   const SafetyImage({super.key});
@@ -12,13 +13,17 @@ class _SafetyImageState extends State<SafetyImage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(
-          color: Colors.white,
+        leading: FocusWidget(
+          onTap: () => Navigator.of(context).pop(),
+          borderColor: Colors.black,
+          child: const BackButton(
+            color: Colors.black,
+          ),
         ),
       ),
       extendBodyBehindAppBar: true,
       body: Image.network(
-        'https://deeplink.recruitpick.com/uploads/IC_MyTV_B2.pnghttps://deeplink.recruitpick.com/uploads/IC_MyTV_B2.png',
+        'https://deeplink.recruitpick.com/uploads/IC_MyTV_B2.png',
         fit: BoxFit.cover,
       ),
     );
