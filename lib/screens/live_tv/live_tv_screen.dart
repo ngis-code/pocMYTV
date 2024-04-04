@@ -15,6 +15,7 @@ class LiveTvScreen extends StatefulWidget {
 
 class _LiveTvScreenState extends State<LiveTvScreen> {
   final controller = PageController();
+  bool firstTimeLoaded = true;
 
   @override
   void initState() {
@@ -30,18 +31,35 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
+    return PageView.builder(
       controller: controller,
       allowImplicitScrolling: false,
       physics: const NeverScrollableScrollPhysics(),
-      children: [
-        Page1(
-          onChannelView: onChannelView,
-        ),
-        Page2(
-          onChannelView: onChannelView,
-        ),
-      ],
+      itemBuilder: (context, index) => index == 0
+          ? Page1(
+              requestFocus: !firstTimeLoaded,
+              onChannelView: onChannelView,
+              onFocusChange: (index) {
+                log("onFocusChange: $index");
+                firstTimeLoaded = false;
+              },
+            )
+          : Page2(
+              onChannelView: onChannelView,
+            ),
+      // children: [
+      //   Page1(
+      //     requestFocus: !firstTimeLoaded,
+      //     onChannelView: onChannelView,
+      //     onFocusChange: (index) {
+      //       log("onFocusChange: $index");
+      //       firstTimeLoaded = false;
+      //     },
+      //   ),
+      //   Page2(
+      //     onChannelView: onChannelView,
+      //   ),
+      // ],
     );
   }
 
@@ -72,17 +90,24 @@ class _Tile extends StatelessWidget {
   final String subtitle;
   final bool requestFocus;
   final Function() onTap;
+  final Function()? onFocusReceive;
   const _Tile({
     required this.image,
     required this.title,
     required this.subtitle,
     required this.onTap,
     this.requestFocus = false,
+    this.onFocusReceive,
   });
 
   @override
   Widget build(BuildContext context) {
     return FocusWidget(
+      onFocusChange: (hasFocus) {
+        if (hasFocus) {
+          onFocusReceive?.call();
+        }
+      },
       hasFocus: requestFocus,
       onTap: onTap,
       focusGroup: "live_tv",
@@ -107,11 +132,18 @@ class _Tile extends StatelessWidget {
 
 class Page1 extends StatelessWidget {
   final Function() onChannelView;
-  const Page1({super.key, required this.onChannelView});
+  final Function(int index) onFocusChange;
+  final bool requestFocus;
+  const Page1({
+    super.key,
+    required this.onChannelView,
+    this.requestFocus = true,
+    required this.onFocusChange,
+  });
 
   @override
   Widget build(BuildContext context) {
-    log("build method of page 1");
+    log("build method of page 1: requestFocus: $requestFocus");
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -122,7 +154,8 @@ class Page1 extends StatelessWidget {
             shrinkWrap: true,
             children: [
               _Tile(
-                requestFocus: true,
+                onFocusReceive: () => onFocusChange(0),
+                requestFocus: requestFocus,
                 onTap: onChannelView,
                 image:
                     "https://i.pinimg.com/originals/17/0a/b5/170ab5775a7c96125e70638942e2f513.png",
