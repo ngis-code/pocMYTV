@@ -13,34 +13,34 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final pageController = PageController();
   final bgPageController = PageController();
-  late VideoPlayerController controller;
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    // controller = VideoPlayerController.network(
-    //   'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
-    // );
-    // controller
-    //   ..addListener(() => setState(() {}))
-    //   ..setLooping(true)
-    //   ..setVolume(0)
-    //   ..initialize().then((_) => setState(() {
-    //         final width = MediaQuery.of(context).size.width;
-    //         final height = MediaQuery.of(context).size.height;
-    //         MainPage.backgroundVideo = AspectRatio(
-    //           aspectRatio: width / height,
-    //           child: VideoPlayer(controller),
-    //         );
-    //       }))
-    //   ..play();
+    _controller = VideoPlayerController.network(
+      'https://deeplink.recruitpick.com/uploads/bgMovie.mp4',
+    );
+    _controller.initialize().then((_) => setState(() {
+          _controller
+            ..addListener(() => setState(() {}))
+            ..setLooping(true)
+            ..setVolume(0)
+            ..play();
+          final width = MediaQuery.of(context).size.width;
+          final height = MediaQuery.of(context).size.height;
+          MainPage.backgroundVideo = AspectRatio(
+            aspectRatio: width / height,
+            child: VideoPlayer(_controller),
+          );
+        }));
   }
 
   @override
   void dispose() {
     pageController.dispose();
     bgPageController.dispose();
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
