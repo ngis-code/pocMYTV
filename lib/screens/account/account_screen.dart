@@ -25,9 +25,24 @@ class AccountScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.transparent.withOpacity(.5),
                   borderRadius: BorderRadius.circular(15),
-                  
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.blue.withOpacity(.9),
+                      Colors.white.withOpacity(.3),
+                      Colors.blue.withOpacity(.9),
+                    ],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  )
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.withOpacity(0.5),
+                  //     spreadRadius: 5,
+                  //     blurRadius: 7,
+                  //     offset: const Offset(0, 3),
+                  //   ),
+                  // ],
                   ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +87,6 @@ class AccountScreen extends StatelessWidget {
             Row(
               children: [
                 FocusWidget(
-                  borderColor: Colors.blue,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -98,8 +112,8 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Image.network(
                           'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
-                          height: 100,
-                          width: 100,
+                          height: 130,
+                          width: 130,
                         ),
                         const SizedBox(
                           height: 15,
@@ -117,7 +131,6 @@ class AccountScreen extends StatelessWidget {
                   width: 10,
                 ),
                 FocusWidget(
-                  borderColor: Colors.blue,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -143,8 +156,8 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Image.network(
                           'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
-                          height: 100,
-                          width: 100,
+                          height: 130,
+                          width: 130,
                         ),
                         const SizedBox(
                           height: 15,
