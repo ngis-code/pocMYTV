@@ -153,30 +153,36 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                   const SizedBox(
                                     height: 40,
                                   ),
-                                  FocusWidget(
-                                    borderColor: Colors.black,
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              SafetyVideoScreen(
-                                            onVideoCompleted: videoCompleted,
+                                  Material(
+                                    elevation: 10,
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: FocusWidget(
+                                      borderColor: Colors.grey.withOpacity(0.5),
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SafetyVideoScreen(
+                                              onVideoCompleted: videoCompleted,
+                                            ),
                                           ),
+                                        );
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: buttonColor,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
-                                      );
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: buttonColor,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 10),
-                                      child: Text(
-                                        'Watch the Tutorial'.toUpperCase(),
-                                        style: const TextStyle(
-                                          color: Colors.white,
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5, horizontal: 10),
+                                        child: Text(
+                                          'Watch the Tutorial'.toUpperCase(),
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -236,30 +242,39 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         const SizedBox(
                                           height: 40,
                                         ),
-                                        FocusWidget(
-                                          borderColor: Colors.black,
-                                          onTap: () async {
-                                            try {
-                                              await playAudioFromUrl(
-                                                  "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
-                                            } catch (e) {
-                                              log("Error playing audio: $e");
-                                              log("Moving onto next");
-                                            }
-                                            hornColorChange();
-                                          },
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: hornColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 5, horizontal: 10),
-                                            child: Text(
-                                              'play horn sound'.toUpperCase(),
-                                              style: const TextStyle(
-                                                color: Colors.white,
+                                        Material(
+                                          elevation: 10,
+                                          color: Colors.transparent,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: FocusWidget(
+                                            borderColor:
+                                                Colors.grey.withOpacity(0.5),
+                                            onTap: () async {
+                                              try {
+                                                await playAudioFromUrl(
+                                                    "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                              } catch (e) {
+                                                log("Error playing audio: $e");
+                                                log("Moving onto next");
+                                              }
+                                              hornColorChange();
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: hornColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 10),
+                                              child: Text(
+                                                'play horn sound'.toUpperCase(),
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -391,34 +406,41 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           const SizedBox(
                                             height: 40,
                                           ),
-                                          FocusWidget(
-                                            borderColor: Colors.black,
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const SafetyImage(),
+                                          Material(
+                                            elevation: 10,
+                                            color: Colors.transparent,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            child: FocusWidget(
+                                              borderColor:
+                                                  Colors.grey.withOpacity(0.5),
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const SafetyImage(),
+                                                  ),
+                                                );
+                                                safetyColorChange();
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: safetyColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
                                                 ),
-                                              );
-                                              safetyColorChange();
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: safetyColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 10),
-                                              child: Text(
-                                                'find your station'
-                                                    .toUpperCase(),
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 5,
+                                                        horizontal: 10),
+                                                child: Text(
+                                                  'find your station'
+                                                      .toUpperCase(),
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
                                             ),
