@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pocmytv/pre_loader/pre_loader.dart';
+import 'package:pocmytv/screens/always_alive_page.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
@@ -89,7 +90,9 @@ class _MainPageState extends State<MainPage> {
                 allowImplicitScrolling: false,
                 controller: pageController,
                 itemBuilder: (context, index) {
-                  return TVDrawer.drawerItems.entries.elementAt(index).value;
+                  return AlwaysAlivePage(
+                    child: TVDrawer.drawerItems.entries.elementAt(index).value,
+                  );
                 },
               ),
             ),

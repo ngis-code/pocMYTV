@@ -11,8 +11,7 @@ class CruisSchedule extends StatefulWidget {
   State<CruisSchedule> createState() => _CruisScheduleState();
 }
 
-class _CruisScheduleState extends State<CruisSchedule>
-    with AutomaticKeepAliveClientMixin {
+class _CruisScheduleState extends State<CruisSchedule> {
   final ScrollController controller = ScrollController();
 
   @override
@@ -368,7 +367,4 @@ class _CruisScheduleState extends State<CruisSchedule>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

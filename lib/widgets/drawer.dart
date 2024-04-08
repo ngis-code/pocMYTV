@@ -15,7 +15,7 @@ class TVDrawer extends StatefulWidget {
     ['Safety Information', Icons.newspaper]: const SafetyScreen(),
     ['Live TV', Icons.movie]: const LiveTvScreen(),
     ['Video On Demand', Icons.tv]: const GenreChooseScreen(),
-    ['Ship Information', Icons.settings]: CruisSchedule(),
+    ['Ship Information', Icons.settings]: const CruisSchedule(),
     ['Account', Icons.cloud_rounded]: const AccountScreen(),
   };
   static const double width = 240;
