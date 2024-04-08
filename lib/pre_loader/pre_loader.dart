@@ -56,7 +56,6 @@ class PreLoader {
               loaded.value += 1 / (assetImages.length + networkImages.length),
         ),
       );
-      loaded.value += 1 / (assetImages.length + networkImages.length);
     }
     for (final networkImage in networkImages) {
       futures.add(
