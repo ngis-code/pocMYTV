@@ -332,11 +332,6 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                     ),
-                    const VerticalDivider(
-                      width: 50,
-                      color: Colors.white,
-                      thickness: 1,
-                    ),
                   ],
                 ),
               ),
