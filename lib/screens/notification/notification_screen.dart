@@ -32,6 +32,7 @@ class NotificationScreen extends StatelessWidget {
                           ),
                         ),
                         FocusWidget(
+                          focusGroup: 'notifcation_close',
                           onTap: () {
                             Navigator.pop(context);
                           },
@@ -43,6 +44,7 @@ class NotificationScreen extends StatelessWidget {
                       ],
                     ),
                     FocusWidget(
+                      focusGroup: 'notifcations',
                       hasFocus: true,
                       onTap: () {},
                       child: const ListTile(
@@ -68,6 +70,7 @@ class NotificationScreen extends StatelessWidget {
                       ),
                     ),
                     FocusWidget(
+                      focusGroup: 'notifcations',
                       onTap: () {},
                       child: const ListTile(
                         leading: Icon(
