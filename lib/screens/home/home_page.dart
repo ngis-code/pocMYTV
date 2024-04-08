@@ -337,112 +337,6 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                       thickness: 1,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Text(
-                                  'GANGWAY',
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 4,
-                              horizontal: 10,
-                            ),
-                            color: Colors.white,
-                            child: Text(
-                              'DECK 5',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    color: Colors.black,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // const VerticalDivider(
-                    //   width: 50,
-                    //   color: Colors.white,
-                    //   thickness: 1,
-                    // ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Text(
-                                  'All Board'.toUpperCase(),
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 4,
-                              horizontal: 10,
-                            ),
-                            color: Colors.white,
-                            child: RichText(
-                              text: TextSpan(
-                                text: '  5:00',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(color: Colors.black),
-                                children: [
-                                  TextSpan(
-                                    text: ' PM  ',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -458,10 +352,13 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Expanded(
-                    child: Image.asset(
-                      'assets/ship.png',
-                      height: double.infinity,
-                      width: double.infinity,
+                    child: RotatedBox(
+                      quarterTurns: 1,
+                      child: Image.asset(
+                        'assets/ship.png',
+                        height: double.infinity,
+                        width: double.infinity,
+                      ),
                     ),
                   ),
                   Wrap(
@@ -470,50 +367,149 @@ class _HomePageState extends State<HomePage> {
                     runAlignment: WrapAlignment.end,
                     crossAxisAlignment: WrapCrossAlignment.end,
                     children: [
-                      HomeTile(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Today\'s Itinerary',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: Colors.white,
-                                  ),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black45,
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            Text(
-                              'Marselles, France',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                    color: Colors.white,
+                            clipBehavior: Clip.hardEdge,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'GANGWAY',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Colors.white,
+                                        ),
                                   ),
-                            ),
-                            const SizedBox(height: 15),
-                            Text(
-                              'Tomorrow\'s Itinerary',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: Colors.white,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 4,
+                                    horizontal: 10,
                                   ),
-                            ),
-                            Text(
-                              'Florence, Italy',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                    color: Colors.white,
+                                  color: Colors.white,
+                                  child: Text(
+                                    'DECK 5',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(
+                                          color: Colors.black,
+                                        ),
                                   ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black45,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'All Board'.toUpperCase(),
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Colors.white,
+                                        ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 4,
+                                    horizontal: 10,
+                                  ),
+                                  color: Colors.white,
+                                  child: RichText(
+                                    text: TextSpan(
+                                      text: '  5:00',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(color: Colors.black),
+                                      children: [
+                                        TextSpan(
+                                          text: ' PM  ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall!
+                                              .copyWith(color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
+                      if (false)
+                        HomeTile(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Today\'s Itinerary',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: Colors.white,
+                                    ),
+                              ),
+                              Text(
+                                'Marselles, France',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                      color: Colors.white,
+                                    ),
+                              ),
+                              const SizedBox(height: 15),
+                              Text(
+                                'Tomorrow\'s Itinerary',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: Colors.white,
+                                    ),
+                              ),
+                              Text(
+                                'Florence, Italy',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                      color: Colors.white,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
                       GlassWidget(
                         radius: 10,
                         child: Container(
