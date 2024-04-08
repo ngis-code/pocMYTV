@@ -50,6 +50,7 @@ class _GenreTileState extends State<GenreTile> {
               widget.onFocusChange?.call(hasFocus);
             },
             child: AnimatedContainer(
+              clipBehavior: Clip.antiAlias,
               height: hasFocus ? maxHeight : maxHeight - maxPadding * 2,
               width: hasFocus ? maxHeight : maxHeight - maxPadding * 2,
               curve: Curves.easeInOut,
@@ -61,14 +62,16 @@ class _GenreTileState extends State<GenreTile> {
                   color: Colors.transparent,
                   // width: 2,
                 ),
-                image: DecorationImage(
-                  image: NetworkImage(genreImages[widget.genre]!),
-                  fit: BoxFit.cover,
-                ),
               ),
               alignment: Alignment.center,
               child: Stack(
                 children: [
+                  Image.network(
+                    genreImages[widget.genre]!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),

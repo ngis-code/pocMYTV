@@ -91,6 +91,7 @@ class AccountScreen extends StatelessWidget {
             Row(
               children: [
                 FocusWidget(
+                  focusGroup: 'account-group',
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -135,6 +136,7 @@ class AccountScreen extends StatelessWidget {
                   width: 10,
                 ),
                 FocusWidget(
+                  focusGroup: 'account-group',
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {

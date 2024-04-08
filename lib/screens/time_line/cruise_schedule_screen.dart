@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:timelines/timelines.dart';
 
@@ -14,39 +15,24 @@ class CruisSchedule extends StatefulWidget {
 class _CruisScheduleState extends State<CruisSchedule> {
   final ScrollController controller = ScrollController();
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // precacheImage(
-      //   const AssetImage("assets/images/ship_info.webp"),
-      //   context,
-      //   size: const Size(100, 100),
-      // ).then((value) => log("Image Loaded Successfully")).onError(
-      //       (error, stackTrace) => log("Error Loading Image: $error"),
-      //     );
-    });
+  Color getColor(int index) {
+    if (index == processIndex) {
+      return inProgressColor;
+    } else if (index < processIndex) {
+      return completeColor;
+    } else {
+      return todoColor;
+    }
   }
+
+  final int processIndex = 2;
+  Color completeColor = Colors.green;
+  Color inProgressColor = Colors.blueAccent;
+  Color todoColor = const Color(0xffd1d2d7);
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    Color completeColor = Colors.green;
-    Color inProgressColor = Colors.blueAccent;
-    Color todoColor = const Color(0xffd1d2d7);
-
-    const int processIndex = 2;
-
-    Color getColor(int index) {
-      if (index == processIndex) {
-        return inProgressColor;
-      } else if (index < processIndex) {
-        return completeColor;
-      } else {
-        return todoColor;
-      }
-    }
-
     final Map<String, Widget> timelines = {
       "Day 1": Text(
         "Day 1",
@@ -99,12 +85,10 @@ class _CruisScheduleState extends State<CruisSchedule> {
       extendBody: true,
       body: Stack(
         children: [
-          SizedBox(
+          Image.asset(
             height: height,
-            child: Image.asset(
-              'assets/images/ship_info.webp',
-              fit: BoxFit.cover,
-            ),
+            'assets/images/ship_info.webp',
+            fit: BoxFit.cover,
           ),
           SingleChildScrollView(
             controller: controller,
@@ -193,18 +177,24 @@ class _CruisScheduleState extends State<CruisSchedule> {
                                 color: Colors.white,
                               ),
                             ),
-                            ElevatedButton(
-                              onPressed: () {},
-                              focusNode: FocusNode(),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFFfdde6c),
-                                shape: RoundedRectangleBorder(
+                            FocusWidget(
+                              onTap: () {},
+                              focusGroup: 'bttn',
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFfdde6c),
+                                  shape: BoxShape.rectangle,
                                   borderRadius: BorderRadius.circular(0),
                                 ),
-                              ),
-                              child: Text(
-                                'discover your next destination'.toUpperCase(),
-                                style: const TextStyle(color: Colors.black),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0,
+                                  vertical: 5,
+                                ),
+                                child: Text(
+                                  'discover your next destination'
+                                      .toUpperCase(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
                               ),
                             ),
                           ],

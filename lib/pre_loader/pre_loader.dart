@@ -36,7 +36,6 @@ class PreLoader {
     "https://i0.wp.com/saportareport.com/wp-content/uploads/2021/12/scene-fron-power-of-the-dog.featured.jpeg?w=1200&ssl=1",
     "https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg",
     'https://deeplink.recruitpick.com/uploads/lifejacket_img',
-    "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3",
     'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
   };
   static final ValueNotifier<double> loaded = ValueNotifier(0);
@@ -49,8 +48,9 @@ class PreLoader {
         precacheImage(
           AssetImage(assetImage),
           context,
-          onError: (exception, stackTrace) =>
-              log("$exception", name: "PreLoader.load"),
+          onError: (exception, stackTrace) => log(
+              "AssetImage($assetImage): $exception",
+              name: "PreLoader.load"),
         ).then(
           (value) =>
               loaded.value += 1 / (assetImages.length + networkImages.length),
@@ -62,8 +62,9 @@ class PreLoader {
         precacheImage(
           NetworkImage(networkImage),
           context,
-          onError: (exception, stackTrace) =>
-              log("$exception", name: "PreLoader.load"),
+          onError: (exception, stackTrace) => log(
+              "NetworkImage($networkImage): $exception",
+              name: "PreLoader.load"),
         ).then(
           (value) =>
               loaded.value += 1 / (assetImages.length + networkImages.length),

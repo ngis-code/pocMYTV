@@ -10,13 +10,13 @@ import '../screens/time_line/cruise_schedule_screen.dart';
 import '../screens/video_on_demand/genre_choose_screen.dart';
 
 class TVDrawer extends StatefulWidget {
-  static final Map<List, Widget> drawerItems = {
-    ['Home', Icons.home]: const HomePage(),
-    ['Safety Information', Icons.newspaper]: const SafetyScreen(),
-    ['Live TV', Icons.movie]: const LiveTvScreen(),
-    ['Video On Demand', Icons.tv]: const GenreChooseScreen(),
-    ['Ship Information', Icons.settings]: const CruisSchedule(),
-    ['Account', Icons.cloud_rounded]: const AccountScreen(),
+  static const Map<List, Widget> drawerItems = {
+    ['Home', Icons.home]: HomePage(),
+    ['Safety Information', Icons.newspaper]: SafetyScreen(),
+    ['Live TV', Icons.movie]: LiveTvScreen(),
+    ['Video On Demand', Icons.tv]: GenreChooseScreen(),
+    ['Ship Information', Icons.settings]: CruisSchedule(),
+    ['Account', Icons.cloud_rounded]: AccountScreen(),
   };
   static const double width = 240;
   final void Function(int index)? onPageChange;
