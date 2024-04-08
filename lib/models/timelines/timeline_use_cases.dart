@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:pocmytv/models/timelines/timeline.dart';
+import 'package:pocmytv/globals.dart';
 
-// localhost:8080/timelines
 Future<List<TimeLineModel>> getTimelines() async {
-  final response = await http
-      .get(Uri.parse('https://v9nm4hsv-3000.asse.devtunnels.ms/timelines'));
+  final response = await http.get(Uri.parse('$serverUrl/timelines'));
   if (response.statusCode == 200) {
     final List<dynamic> timelines = json.decode(response.body);
     return timelines.map((json) => TimeLineModel.fromJson(json)).toList();
@@ -16,8 +15,7 @@ Future<List<TimeLineModel>> getTimelines() async {
 }
 
 Future<int> getCurrentTimeline() async {
-  final response = await http
-      .get(Uri.parse('https://v9nm4hsv-3000.asse.devtunnels.ms/current'));
+  final response = await http.get(Uri.parse('$serverUrl/current'));
   if (response.statusCode == 200) {
     return int.tryParse(response.body) ?? 2;
   } else {
