@@ -20,7 +20,7 @@ class FocusGroup {
   bool? focus() {
     final node = (lastFocusedNode ?? focusNodes.firstOrNull);
     if (node?.hasFocus == true) return true;
-    log("Focus wasn't on the last focused node", name: 'FocusGroup.focus');
+    // log("Focus wasn't on the last focused node", name: 'FocusGroup.focus');
     Future.delayed(const Duration(milliseconds: 1), () => node?.requestFocus());
     // node?.requestFocus();
     return node?.hasFocus;

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:timelines/timelines.dart';
@@ -21,13 +19,13 @@ class _CruisScheduleState extends State<CruisSchedule>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      precacheImage(
-        const AssetImage("assets/images/ship_info.webp"),
-        context,
-        size: const Size(100, 100),
-      ).then((value) => log("Image Loaded Successfully")).onError(
-            (error, stackTrace) => log("Error Loading Image: $error"),
-          );
+      // precacheImage(
+      //   const AssetImage("assets/images/ship_info.webp"),
+      //   context,
+      //   size: const Size(100, 100),
+      // ).then((value) => log("Image Loaded Successfully")).onError(
+      //       (error, stackTrace) => log("Error Loading Image: $error"),
+      //     );
     });
   }
 

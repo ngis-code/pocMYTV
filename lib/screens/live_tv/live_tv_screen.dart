@@ -115,9 +115,7 @@ class _Tile extends StatelessWidget {
         leading: Image.network(image),
         title: Text(
           title,
-          style: const TextStyle(
-            color: Colors.white,
-          ),
+          style: const TextStyle(color: Colors.white),
         ),
         subtitle: Text(
           subtitle,
@@ -143,7 +141,6 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("build method of page 1: requestFocus: $requestFocus");
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -206,7 +203,6 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("build method of page 2");
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20.0),

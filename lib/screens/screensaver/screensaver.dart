@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pocmytv/pre_loader/pre_loader.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/main_page.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
@@ -16,6 +19,9 @@ class _ScreenSaverState extends State<ScreenSaver> {
   @override
   void initState() {
     KeyBoardService.addHandler(_handler);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      PreLoader.load(context);
+    });
     super.initState();
   }
 
@@ -99,13 +105,28 @@ class _ScreenSaverState extends State<ScreenSaver> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Press any key to continue",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
+              ValueListenableBuilder(
+                valueListenable: PreLoader.loaded,
+                builder: (context, value, child) {
+                  if (value != 1) {
+                    return SizedBox(
+                      width: 200,
+                      child: LinearProgressIndicator(
+                        value: value,
+                        valueColor: const AlwaysStoppedAnimation(Colors.red),
+                        backgroundColor: Colors.white,
+                      ),
+                    );
+                  }
+                  return const Text(
+                    "Press any key to continue",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -116,6 +137,11 @@ class _ScreenSaverState extends State<ScreenSaver> {
 
   bool _handler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
+    if (PreLoader.loaded.value != 1) {
+      log("Assets not loaded yet. You can't continue. Current value: ${PreLoader.loaded.value}",
+          name: "ScreenSaverScreen");
+      return false;
+    }
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
