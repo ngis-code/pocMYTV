@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pocmytv/pre_loader/pre_loader.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 import 'package:video_player/video_player.dart';
 
@@ -20,6 +21,9 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      PreLoader.load(context);
+    });
     _controller = VideoPlayerController.network(
       'https://deeplink.recruitpick.com/uploads/bg.avi',
     );
