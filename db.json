@@ -22,7 +22,14 @@
             "id": "4",
             "title": "Day 4",
             "description": "Miami Florida",
+            "dock": true
+        },
+        {
+            "id": "5",
+            "title": "Day 5",
+            "description": "Miami Florida",
             "dock": false
         }
-    ]
+    ],
+    "current": "2"
 }

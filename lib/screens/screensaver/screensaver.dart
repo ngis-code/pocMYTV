@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pocmytv/models/timelines/timeline.dart';
+import 'package:pocmytv/models/timelines/timeline_use_cases.dart';
 import 'package:pocmytv/pre_loader/pre_loader.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/main_page.dart';
@@ -21,6 +23,16 @@ class _ScreenSaverState extends State<ScreenSaver> {
     KeyBoardService.addHandler(_handler);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       PreLoader.load(context);
+      getTimelines().then((value) {
+        setState(() {
+          TimeLineModel.timelines.addAll(value);
+        });
+      });
+      getCurrentTimeline().then((value) {
+        setState(() {
+          TimeLineModel.processIndex = value;
+        });
+      });
     });
     super.initState();
   }

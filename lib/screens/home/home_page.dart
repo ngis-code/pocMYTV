@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/models/timelines/timeline.dart';
 import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/screens/notification/notification_screen.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -37,52 +38,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Widget> timelines = {
-      "Day 1": Text(
-        "Day 1",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 2": Text(
-        "Day 2",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 3": Text(
-        "Day 3",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 4": Text(
-        "Day 4",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 5": Text(
-        "Day 5",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 6": Text(
-        "Day 6",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-      "Day 7": Text(
-        "Day 7",
-        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: Colors.white,
-            ),
-      ),
-    };
-    String oppositeContent = 'Demo Opposite Content';
-
     final Map<String, List<String>> data = {
       'time': ['6:00 PM', '8:00 PM', '10:00 PM'],
       'event': ['Dinner', 'Show', 'Dance Party'],
@@ -616,7 +571,7 @@ class _HomePageState extends State<HomePage> {
                 connectionDirection: ConnectionDirection.before,
                 itemExtentBuilder: (_, __) =>
                     (MediaQuery.of(context).size.height - 100) /
-                    timelines.length,
+                    TimeLineModel.timelines.length,
                 oppositeContentsBuilder: (context, index) {
                   return GlassWidget(
                     blur: 0,
@@ -625,7 +580,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10.0, vertical: 5),
                     child: Text(
-                      timelines.keys.toList()[index],
+                      TimeLineModel.timelines[index].title,
                       style: TextStyle(
                         color: getColor(index),
                         fontWeight: FontWeight.bold,
@@ -641,7 +596,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10.0, vertical: 5),
                     child: Text(
-                      oppositeContent,
+                      TimeLineModel.timelines[index].description,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: getColor(index),
@@ -652,14 +607,14 @@ class _HomePageState extends State<HomePage> {
                 indicatorBuilder: (_, index) {
                   Color color;
                   Widget child = Container();
-                  if (index == processIndex) {
+                  if (index == TimeLineModel.processIndex) {
                     color = inProgressColor;
                     child = const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.directions_boat,
                           color: Colors.white, size: 15.0),
                     );
-                  } else if (index < processIndex) {
+                  } else if (index < TimeLineModel.processIndex) {
                     color = completeColor;
                     child = const Icon(
                       Icons.check,
@@ -669,7 +624,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     color = todoColor;
                   }
-                  if (index <= processIndex) {
+                  if (index <= TimeLineModel.processIndex) {
                     return Stack(
                       children: [
                         RotatedBox(
@@ -679,7 +634,7 @@ class _HomePageState extends State<HomePage> {
                             painter: BezierPainter(
                               color: color,
                               drawStart: index > 0,
-                              drawEnd: index < processIndex,
+                              drawEnd: index < TimeLineModel.processIndex,
                             ),
                           ),
                         ),
@@ -699,7 +654,8 @@ class _HomePageState extends State<HomePage> {
                             size: const Size(15.0, 15.0),
                             painter: BezierPainter(
                               color: color,
-                              drawEnd: index < timelines.length - 1,
+                              drawEnd:
+                                  index < TimeLineModel.timelines.length - 1,
                             ),
                           ),
                         ),
@@ -713,7 +669,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 connectorBuilder: (_, index, type) {
                   if (index > 0) {
-                    if (index == processIndex) {
+                    if (index == TimeLineModel.processIndex) {
                       final prevColor = getColor(index - 1);
                       final color = getColor(index);
                       List<Color> gradientColors;
@@ -744,7 +700,7 @@ class _HomePageState extends State<HomePage> {
                   }
                   return null;
                 },
-                itemCount: timelines.length,
+                itemCount: TimeLineModel.timelines.length,
               ),
             ),
           ),
