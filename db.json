@@ -1,0 +1,28 @@
+{
+    "timelines": [
+        {
+            "id": "1",
+            "title": "Day 1",
+            "description": "Miami Florida",
+            "dock": true
+        },
+        {
+            "id": "2",
+            "title": "Day 2",
+            "description": "Miami Florida",
+            "dock": false
+        },
+        {
+            "id": "3",
+            "title": "Day 3",
+            "description": "Miami Florida",
+            "dock": false
+        },
+        {
+            "id": "4",
+            "title": "Day 4",
+            "description": "Miami Florida",
+            "dock": false
+        }
+    ]
+}
