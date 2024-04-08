@@ -41,7 +41,6 @@ Map<Genre, String> genreImages = {
   Genre.music:
       "https://deeplink.recruitpick.com/uploads/back-to-the-future.webp",
   Genre.mystery:
-<<<<<<< HEAD
       "https://deeplink.recruitpick.com/uploads/MCDKNOU_LG002%20(1).webp",
   // Genre.romance:
   //     "https://i.pinimg.com/236x/1f/d3/da/1fd3dabcfe549266176e365d830baaea.jpg",
@@ -55,7 +54,4 @@ Map<Genre, String> genreImages = {
   //     "https://d3dh6of9cnaq4t.cloudfront.net/Pictures/2000x1125/4/5/0/17450_tomorrowwar_873634.jpg",
   // Genre.western:
   //     "https://i0.wp.com/saportareport.com/wp-content/uploads/2021/12/scene-fron-power-of-the-dog.featured.jpeg?w=1200&ssl=1",
-=======
-      "https://media.glamour.com/photos/5ef2657e2cc0e95781b03d03/master/w_1600%2Cc_limit/MCDKNOU_LG002.jpg",
->>>>>>> dev
 };
