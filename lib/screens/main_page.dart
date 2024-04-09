@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/always_alive_page.dart';
 import 'package:pocmytv/widgets/drawer.dart';
@@ -25,7 +26,9 @@ class _MainPageState extends State<MainPage> {
       // PreLoader.load(context);
     });
     _controller = VideoPlayerController.network(
-      'https://deeplink.recruitpick.com/uploads/bg.avi',
+      kIsWeb
+          ? 'https://deeplink.recruitpick.com/uploads/bgMovie.mp4'
+          : 'https://deeplink.recruitpick.com/uploads/bg.avi',
     );
     _controller
         .initialize()
