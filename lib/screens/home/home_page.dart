@@ -321,25 +321,21 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Expanded(
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      final width = constraints.maxWidth;
-                      final height = constraints.maxHeight;
-                      return AnimatedAlign(
-                        duration: const Duration(milliseconds: 500),
+                    child: AnimatedAlign(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.decelerate,
+                      alignment:
+                          docked ? Alignment.centerRight : Alignment.center,
+                      child: AnimatedRotation(
                         curve: Curves.decelerate,
-                        alignment:
-                            docked ? Alignment.centerRight : Alignment.center,
-                        child: AnimatedRotation(
-                          curve: Curves.decelerate,
-                          duration: const Duration(milliseconds: 500),
-                          turns: docked ? 0 : 0.25,
-                          child: Image.asset(
-                            'assets/ship.png',
-                            fit: BoxFit.contain,
-                          ),
+                        duration: const Duration(milliseconds: 500),
+                        turns: docked ? 0 : 0.25,
+                        child: Image.asset(
+                          'assets/ship.png',
+                          fit: BoxFit.contain,
                         ),
-                      );
-                    }),
+                      ),
+                    ),
                   ),
                   Wrap(
                     spacing: 20,

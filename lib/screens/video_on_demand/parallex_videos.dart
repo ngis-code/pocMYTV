@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/video_on_demand/movieplay.dart';
 import 'package:pocmytv/screens/video_on_demand/video_cards.dart';
 
 class ParallexVideos extends StatefulWidget {
@@ -37,7 +38,14 @@ class _ParallexVideosState extends State<ParallexVideos> {
             focusGroup: 'vod',
             focusColor: Colors.transparent,
             hasFocus: index == 0,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return MoviePlay(
+                  adVideoUrl: 'https://file-examples.com/storage/fe0e2ce82f660c1579f31b4/2017/04/file_example_MP4_1920_18MG.mp4',
+                  mainVideoUrl: videos[index],
+                );
+              }));
+            },
             child: Stack(
               children: [
                 VideoCards(
