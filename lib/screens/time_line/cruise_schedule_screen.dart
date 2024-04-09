@@ -41,6 +41,7 @@ class _CruisScheduleState extends State<CruisSchedule> {
         children: [
           Image.asset(
             height: height,
+            width: double.infinity,
             'assets/images/ship_info.webp',
             fit: BoxFit.cover,
           ),

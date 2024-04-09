@@ -7,6 +7,7 @@ class CenteredListView extends StatefulWidget {
       itemBuilder;
   final void Function(int index) onTap;
   final void Function(int index)? onFocusChange;
+  final void Function()? onFocusLost;
   final int itemCount;
   final bool infinte;
   final Axis scrollDirection;
@@ -43,6 +44,7 @@ class CenteredListView extends StatefulWidget {
     this.onFocusChange,
     this.focusGroup,
     this.disabledItems = const [],
+    this.onFocusLost,
   });
 
   @override
@@ -104,6 +106,9 @@ class _CenteredListViewState extends State<CenteredListView> {
             builder: (hasFocus) => widget.itemBuilder(context, index, hasFocus),
             onTap: () {
               widget.onTap(index);
+            },
+            onLoseFocus: () {
+              widget.onFocusLost?.call();
             },
             onReceiveFocus: () {
               scrollController.animateTo(
