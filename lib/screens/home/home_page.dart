@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
@@ -22,19 +25,32 @@ class _HomePageState extends State<HomePage> {
   final ScrollController controller = ScrollController();
 
   Color getColor(int index) {
-    if (index == processIndex) {
+    if (index == TimeLineModel.processIndex) {
       return inProgressColor;
-    } else if (index < processIndex) {
+    } else if (index < TimeLineModel.processIndex) {
       return completeColor;
     } else {
       return todoColor;
     }
   }
 
-  final int processIndex = 2;
   Color completeColor = Colors.green;
   Color inProgressColor = Colors.blueAccent;
   Color todoColor = const Color(0xffd1d2d7);
+  bool docked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
+      Timer.periodic(const Duration(seconds: 5), (timer) {
+        setState(() {
+          docked = !docked;
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -302,14 +318,25 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Expanded(
-                    child: RotatedBox(
-                      quarterTurns: 1,
-                      child: Image.asset(
-                        'assets/ship.png',
-                        height: double.infinity,
-                        width: double.infinity,
-                      ),
-                    ),
+                    child: LayoutBuilder(builder: (context, constraints) {
+                      final width = constraints.maxWidth;
+                      final height = constraints.maxHeight;
+                      return AnimatedAlign(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.decelerate,
+                        alignment:
+                            docked ? Alignment.centerRight : Alignment.center,
+                        child: AnimatedRotation(
+                          curve: Curves.decelerate,
+                          duration: const Duration(milliseconds: 500),
+                          turns: docked ? 0 : 0.25,
+                          child: Image.asset(
+                            'assets/ship.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      );
+                    }),
                   ),
                   Wrap(
                     spacing: 20,
@@ -559,149 +586,159 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(
             width: 400,
-            child: Timeline.tileBuilder(
-              theme: TimelineThemeData(
-                direction: Axis.vertical,
-                connectorTheme: const ConnectorThemeData(
-                  space: 10.0,
-                  thickness: 5.0,
-                ),
-              ),
-              builder: TimelineTileBuilder.connected(
-                connectionDirection: ConnectionDirection.before,
-                itemExtentBuilder: (_, __) =>
-                    (MediaQuery.of(context).size.height - 100) /
-                    TimeLineModel.timelines.length,
-                oppositeContentsBuilder: (context, index) {
-                  return GlassWidget(
-                    blur: 0,
-                    radius: 20,
-                    backgroundColor: Colors.black45,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 5),
-                    child: Text(
-                      TimeLineModel.timelines[index].title,
-                      style: TextStyle(
-                        color: getColor(index),
-                        fontWeight: FontWeight.bold,
-                      ),
+            child: Stack(
+              children: [
+                Timeline.tileBuilder(
+                  theme: TimelineThemeData(
+                    direction: Axis.vertical,
+                    connectorTheme: const ConnectorThemeData(
+                      space: 10.0,
+                      thickness: 5.0,
                     ),
-                  );
-                },
-                contentsBuilder: (context, index) {
-                  return GlassWidget(
-                    blur: 0,
-                    backgroundColor: Colors.black45,
-                    radius: 20,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 5),
-                    child: Text(
-                      TimeLineModel.timelines[index].description,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: getColor(index),
-                      ),
-                    ),
-                  );
-                },
-                indicatorBuilder: (_, index) {
-                  Color color;
-                  Widget child = Container();
-                  if (index == TimeLineModel.processIndex) {
-                    color = inProgressColor;
-                    child = const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.directions_boat,
-                          color: Colors.white, size: 15.0),
-                    );
-                  } else if (index < TimeLineModel.processIndex) {
-                    color = completeColor;
-                    child = const Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: 15.0,
-                    );
-                  } else {
-                    color = todoColor;
-                  }
-                  if (index <= TimeLineModel.processIndex) {
-                    return Stack(
-                      children: [
-                        RotatedBox(
-                          quarterTurns: 1,
-                          child: CustomPaint(
-                            size: const Size(30.0, 30.0),
-                            painter: BezierPainter(
-                              color: color,
-                              drawStart: index > 0,
-                              drawEnd: index < TimeLineModel.processIndex,
-                            ),
+                  ),
+                  builder: TimelineTileBuilder.connected(
+                    connectionDirection: ConnectionDirection.before,
+                    itemExtentBuilder: (_, __) =>
+                        (MediaQuery.of(context).size.height - 100) /
+                        TimeLineModel.timelines.length,
+                    oppositeContentsBuilder: (context, index) {
+                      return GlassWidget(
+                        blur: 0,
+                        radius: 20,
+                        backgroundColor: Colors.black45,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 5),
+                        child: Text(
+                          TimeLineModel.timelines[index].title,
+                          style: TextStyle(
+                            color: getColor(index),
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        DotIndicator(
-                          size: 30.0,
-                          color: color,
-                          child: child,
-                        )
-                      ],
-                    );
-                  } else {
-                    return Stack(
-                      children: [
-                        RotatedBox(
-                          quarterTurns: 1,
-                          child: CustomPaint(
-                            size: const Size(15.0, 15.0),
-                            painter: BezierPainter(
-                              color: color,
-                              drawEnd:
-                                  index < TimeLineModel.timelines.length - 1,
-                            ),
+                      );
+                    },
+                    contentsBuilder: (context, index) {
+                      return GlassWidget(
+                        blur: 0,
+                        backgroundColor: Colors.black45,
+                        radius: 20,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 5),
+                        child: Text(
+                          TimeLineModel.timelines[index].description,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: getColor(index),
                           ),
                         ),
-                        OutlinedDotIndicator(
-                          borderWidth: 4.0,
-                          color: color,
-                        ),
-                      ],
-                    );
-                  }
-                },
-                connectorBuilder: (_, index, type) {
-                  if (index > 0) {
-                    if (index == TimeLineModel.processIndex) {
-                      final prevColor = getColor(index - 1);
-                      final color = getColor(index);
-                      List<Color> gradientColors;
-                      if (type == ConnectorType.start) {
-                        gradientColors = [
-                          Color.lerp(prevColor, color, 0.5)!,
-                          color
-                        ];
+                      );
+                    },
+                    indicatorBuilder: (_, index) {
+                      Color color;
+                      Widget child = Container();
+                      if (index == TimeLineModel.processIndex) {
+                        color = inProgressColor;
+                        child = const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(Icons.directions_boat,
+                              color: Colors.white, size: 15.0),
+                        );
+                      } else if (index < TimeLineModel.processIndex) {
+                        color = completeColor;
+                        child = const Icon(
+                          Icons.check,
+                          color: Colors.white,
+                          size: 15.0,
+                        );
                       } else {
-                        gradientColors = [
-                          prevColor,
-                          Color.lerp(prevColor, color, 0.5)!
-                        ];
+                        color = todoColor;
                       }
-                      return DecoratedLineConnector(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: gradientColors,
-                          ),
-                        ),
-                      );
-                    } else {
-                      return SolidLineConnector(
-                        indent: 0,
-                        color: getColor(index),
-                      );
-                    }
-                  }
-                  return null;
-                },
-                itemCount: TimeLineModel.timelines.length,
-              ),
+                      if (index <= TimeLineModel.processIndex) {
+                        return Stack(
+                          children: [
+                            RotatedBox(
+                              quarterTurns: 1,
+                              child: CustomPaint(
+                                size: const Size(30.0, 30.0),
+                                painter: BezierPainter(
+                                  color: color,
+                                  drawStart: index > 0,
+                                  drawEnd: index < TimeLineModel.processIndex,
+                                ),
+                              ),
+                            ),
+                            DotIndicator(
+                              size: 30.0,
+                              color: color,
+                              child: child,
+                            )
+                          ],
+                        );
+                      } else {
+                        return Stack(
+                          children: [
+                            RotatedBox(
+                              quarterTurns: 1,
+                              child: CustomPaint(
+                                size: const Size(15.0, 15.0),
+                                painter: BezierPainter(
+                                  color: color,
+                                  drawEnd: index <
+                                      TimeLineModel.timelines.length - 1,
+                                ),
+                              ),
+                            ),
+                            OutlinedDotIndicator(
+                              borderWidth: 4.0,
+                              color: color,
+                            ),
+                          ],
+                        );
+                      }
+                    },
+                    connectorBuilder: (_, index, type) {
+                      if (index > 0) {
+                        if (index == TimeLineModel.processIndex) {
+                          final prevColor = getColor(index - 1);
+                          final color = getColor(index);
+                          List<Color> gradientColors;
+                          if (type == ConnectorType.start) {
+                            gradientColors = [
+                              Color.lerp(prevColor, color, 0.5)!,
+                              color
+                            ];
+                          } else {
+                            gradientColors = [
+                              prevColor,
+                              Color.lerp(prevColor, color, 0.5)!
+                            ];
+                          }
+                          return DecoratedLineConnector(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: gradientColors,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return SolidLineConnector(
+                            indent: 0,
+                            color: getColor(index),
+                          );
+                        }
+                      }
+                      return null;
+                    },
+                    itemCount: TimeLineModel.timelines.length,
+                  ),
+                ).animate(target: docked ? 1 : 0).moveX(begin: 0, end: 400),
+                Positioned.fill(
+                  child: Image.network(
+                    'https://as2.ftcdn.net/v2/jpg/02/16/09/57/1000_F_216095730_8ol6Cof9NIJSLJWJscTRYraAOsU9jNti.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ).animate(target: docked ? 0 : 1).moveX(begin: 0, end: 400),
+              ],
             ),
           ),
         ],

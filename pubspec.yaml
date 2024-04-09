@@ -23,6 +23,7 @@ dependencies:
   audioplayers_tizen: ^3.0.1
   video_player_tizen: ^2.4.9
   http: ^1.2.0
+  flutter_animate: ^4.5.0
 
 
 dev_dependencies:
