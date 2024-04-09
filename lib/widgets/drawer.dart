@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/account/account_screen.dart';
@@ -18,10 +21,11 @@ class TVDrawer extends StatefulWidget {
     ['Ship Information', Icons.settings]: CruisSchedule(),
     ['Account', Icons.cloud_rounded]: AccountScreen(),
   };
-  static const double width = 240;
+  static double width = 240;
   final void Function(int index)? onPageChange;
   static final ValueNotifier<bool> safetyLocked =
       ValueNotifier(kDebugMode ? false : true);
+  static final ValueNotifier<bool> drawerHidden = ValueNotifier(false);
   const TVDrawer({super.key, this.onPageChange});
 
   @override
@@ -31,13 +35,42 @@ class TVDrawer extends StatefulWidget {
 class _TVDrawerState extends State<TVDrawer> {
   bool initialized = false;
   int focusedItem = TVDrawer.safetyLocked.value ? 1 : 0;
+  int count = 0;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       widget.onPageChange?.call(focusedItem);
+      TVDrawer.drawerHidden.addListener(changeState);
     });
+  }
+
+  @override
+  void dispose() {
+    TVDrawer.drawerHidden.removeListener(changeState);
+    super.dispose();
+  }
+
+  void changeState() {
+    setState(() {});
+  }
+
+  void hideDrawer() async {
+    int tmp = ++count;
+    await Future.delayed(const Duration(milliseconds: 1));
+    if (count == tmp) {
+      TVDrawer.width = 80;
+      TVDrawer.drawerHidden.value = true;
+      log("Hiding the drawer");
+    }
+  }
+
+  void showDrawer() async {
+    count++;
+    TVDrawer.width = 240;
+    TVDrawer.drawerHidden.value = false;
+    log("Showing the drawer");
   }
 
   @override
@@ -49,7 +82,8 @@ class _TVDrawerState extends State<TVDrawer> {
           tag: 'tvdrawer',
           child: Material(
             color: const Color.fromARGB(211, 13, 13, 13),
-            child: SizedBox(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
               width: TVDrawer.width,
               child: Column(
                 children: [
@@ -64,13 +98,15 @@ class _TVDrawerState extends State<TVDrawer> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    "Welcome Byron Family",
+                  Text(
+                    TVDrawer.drawerHidden.value ? "" : "Welcome Byron Family",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.fade,
                   ),
                   Expanded(
                     child: LayoutBuilder(
@@ -90,7 +126,12 @@ class _TVDrawerState extends State<TVDrawer> {
                           itemBuilder: (context, index, hasFocus) {
                             return ListTile(
                               title: Text(
-                                TVDrawer.drawerItems.keys.elementAt(index)[0],
+                                TVDrawer.drawerHidden.value
+                                    ? ""
+                                    : TVDrawer.drawerItems.keys
+                                        .elementAt(index)[0],
+                                maxLines: 1,
+                                overflow: TextOverflow.fade,
                                 style: TextStyle(
                                     color: TVDrawer.safetyLocked.value &&
                                             focusedItem == index
@@ -113,30 +154,17 @@ class _TVDrawerState extends State<TVDrawer> {
                               ),
                             );
                           },
+                          onFocusLost: () {
+                            hideDrawer();
+                          },
                           onFocusChange: (index) {
-                            // if (!initialized) {
-                            //   initialized = true;
-                            //   log("Returning without navigating to a different screen");
-                            //   return;
-                            // }
-                            // if (index != focusedItem) {
-                            //   log("Navigating to a different screen");
-                            //   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         TVDrawer.drawerItems.values.elementAt(index),
-                            //   ));
-                            // }
+                            showDrawer();
                             if (index != focusedItem) {
                               focusedItem = index;
                               widget.onPageChange?.call(focusedItem);
                             }
                           },
                           onTap: (index) {
-                            // Navigator.of(context).pushReplacement(animatedPageRoute(
-                            //   child: TVDrawer.drawerItems.values.elementAt(index),
-                            //   begin: Offset(0, focusedItem > index ? -1 : 1),
-                            //   end: Offset.zero,
-                            // ));
                             if (index != focusedItem) {
                               setState(() {
                                 focusedItem = index;
