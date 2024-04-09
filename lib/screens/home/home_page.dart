@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
@@ -43,12 +44,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
-      Timer.periodic(const Duration(seconds: 5), (timer) {
-        setState(() {
-          docked = !docked;
+      docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
+      if (kDebugMode) {
+        Timer.periodic(const Duration(seconds: 5), (timer) {
+          setState(() {
+            docked = !docked;
+          });
         });
-      });
+      }
     });
   }
 
