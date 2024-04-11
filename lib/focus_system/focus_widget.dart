@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_service.dart';
+import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
 class FocusWidget extends StatefulWidget {
@@ -48,6 +51,7 @@ class _FocusWidgetState extends State<FocusWidget> {
 
   @override
   void initState() {
+    super.initState();
     focusNode = widget.focusNode ?? FocusNode();
     FocusService.add(widget.focusGroup ?? "unknown", focusNode);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -56,7 +60,7 @@ class _FocusWidgetState extends State<FocusWidget> {
         FocusService.requestFocus(widget.focusGroup ?? "unknown", focusNode);
       }
     });
-    super.initState();
+    KeyBoardService.addHandler(_handler);
   }
 
   @override
@@ -64,6 +68,7 @@ class _FocusWidgetState extends State<FocusWidget> {
     disposed = true;
     FocusService.remove(widget.focusGroup ?? "unknown", focusNode);
     focusNode.unfocus();
+    KeyBoardService.removeHandler(_handler);
     super.dispose();
   }
 
@@ -116,5 +121,30 @@ class _FocusWidgetState extends State<FocusWidget> {
         ),
       ),
     );
+  }
+
+  bool _handler(KeyEvent event) {
+    if (!focusNode.hasFocus || !kIsWeb) return false;
+    switch (event.logicalKey) {
+      case LogicalKeyboardKey.escape:
+      case LogicalKeyboardKey.backspace:
+        if (KeyBoardService.navigatorKey.currentState!.canPop()) {
+          KeyBoardService.navigatorKey.currentState!.pop();
+        }
+        break;
+      case LogicalKeyboardKey.arrowUp:
+        KeyBoardService.focusInDirection(context, TraversalDirection.up);
+        break;
+      case LogicalKeyboardKey.arrowDown:
+        KeyBoardService.focusInDirection(context, TraversalDirection.down);
+        break;
+      case LogicalKeyboardKey.arrowLeft:
+        KeyBoardService.focusInDirection(context, TraversalDirection.left);
+        break;
+      case LogicalKeyboardKey.arrowRight:
+        KeyBoardService.focusInDirection(context, TraversalDirection.right);
+        break;
+    }
+    return true;
   }
 }

@@ -68,4 +68,16 @@ class KeyBoardService {
   static void removeHandler(bool Function(KeyEvent event) handler) {
     _handlers.remove(handler);
   }
+
+  static void focusInDirection(
+      BuildContext context, TraversalDirection direction) {
+    if (!FocusScope.of(context).focusInDirection(direction)) {
+      for (final dir in TraversalDirection.values) {
+        if (dir != direction && FocusScope.of(context).focusInDirection(dir)) {
+          return;
+        }
+      }
+      log("Widget not found to be traversed! for $direction");
+    }
+  }
 }
