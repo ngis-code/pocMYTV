@@ -68,7 +68,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         toolbarHeight: 120,
         title: Container(
-          padding: const EdgeInsets.all(20),
+          padding:
+              const EdgeInsets.only(left: 20, top: 20, bottom: 20, right: 20),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
