@@ -1,5 +1,10 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_service.dart';
+import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
 class FocusWidget extends StatefulWidget {
@@ -48,6 +53,7 @@ class _FocusWidgetState extends State<FocusWidget> {
 
   @override
   void initState() {
+    super.initState();
     focusNode = widget.focusNode ?? FocusNode();
     FocusService.add(widget.focusGroup ?? "unknown", focusNode);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -56,7 +62,7 @@ class _FocusWidgetState extends State<FocusWidget> {
         FocusService.requestFocus(widget.focusGroup ?? "unknown", focusNode);
       }
     });
-    super.initState();
+    KeyBoardService.addHandler(_handler);
   }
 
   @override
@@ -64,6 +70,7 @@ class _FocusWidgetState extends State<FocusWidget> {
     disposed = true;
     FocusService.remove(widget.focusGroup ?? "unknown", focusNode);
     focusNode.unfocus();
+    KeyBoardService.removeHandler(_handler);
     super.dispose();
   }
 
@@ -116,5 +123,39 @@ class _FocusWidgetState extends State<FocusWidget> {
         ),
       ),
     );
+  }
+
+  bool _handler(KeyEvent event) {
+    if (!focusNode.hasFocus || !kIsWeb) return false;
+    switch (event.logicalKey) {
+      case LogicalKeyboardKey.escape:
+      case LogicalKeyboardKey.backspace:
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
+        }
+        break;
+      case LogicalKeyboardKey.arrowUp:
+        if (!FocusScope.of(context).focusInDirection(TraversalDirection.up)) {
+          log("Widget not found to be traversed! for arrowUp");
+        }
+        break;
+      case LogicalKeyboardKey.arrowDown:
+        if (!FocusScope.of(context).focusInDirection(TraversalDirection.down)) {
+          log("Widget not found to be traversed! for arrowDown");
+        }
+        break;
+      case LogicalKeyboardKey.arrowLeft:
+        if (!FocusScope.of(context).focusInDirection(TraversalDirection.left)) {
+          log("Widget not found to be traversed! for arrowLeft");
+        }
+        break;
+      case LogicalKeyboardKey.arrowRight:
+        if (!FocusScope.of(context)
+            .focusInDirection(TraversalDirection.right)) {
+          log("Widget not found to be traversed! for arrowRight");
+        }
+        break;
+    }
+    return true;
   }
 }

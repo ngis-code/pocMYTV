@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +61,6 @@ class _TVDrawerState extends State<TVDrawer> {
     if (count == tmp) {
       TVDrawer.width = 80;
       TVDrawer.drawerHidden.value = true;
-      log("Hiding the drawer");
     }
   }
 
@@ -70,7 +68,6 @@ class _TVDrawerState extends State<TVDrawer> {
     count++;
     TVDrawer.width = 240;
     TVDrawer.drawerHidden.value = false;
-    log("Showing the drawer");
   }
 
   @override
