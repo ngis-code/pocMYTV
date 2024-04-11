@@ -20,12 +20,11 @@ class TVDrawer extends StatefulWidget {
     ['Ship Information', Icons.settings]: CruisSchedule(),
     ['Account', Icons.cloud_rounded]: AccountScreen(),
   };
-  static double width = 240;
-  final void Function(int index)? onPageChange;
+  static double height = 240;
   static final ValueNotifier<bool> safetyLocked =
       ValueNotifier(kDebugMode ? false : true);
   static final ValueNotifier<bool> drawerHidden = ValueNotifier(false);
-  const TVDrawer({super.key, this.onPageChange});
+  const TVDrawer({super.key});
 
   @override
   State<TVDrawer> createState() => _TVDrawerState();
@@ -40,7 +39,6 @@ class _TVDrawerState extends State<TVDrawer> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      widget.onPageChange?.call(focusedItem);
       TVDrawer.drawerHidden.addListener(changeState);
     });
   }
@@ -59,14 +57,14 @@ class _TVDrawerState extends State<TVDrawer> {
     int tmp = ++count;
     await Future.delayed(const Duration(milliseconds: 1));
     if (count == tmp) {
-      TVDrawer.width = 80;
+      TVDrawer.height = 80;
       TVDrawer.drawerHidden.value = true;
     }
   }
 
   void showDrawer() async {
     count++;
-    TVDrawer.width = 240;
+    TVDrawer.height = 240;
     TVDrawer.drawerHidden.value = false;
   }
 
@@ -81,7 +79,7 @@ class _TVDrawerState extends State<TVDrawer> {
             color: const Color.fromARGB(211, 13, 13, 13),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              width: TVDrawer.width,
+              width: TVDrawer.height,
               child: Column(
                 children: [
                   const SizedBox(
@@ -158,7 +156,6 @@ class _TVDrawerState extends State<TVDrawer> {
                             showDrawer();
                             if (index != focusedItem) {
                               focusedItem = index;
-                              widget.onPageChange?.call(focusedItem);
                             }
                           },
                           onTap: (index) {
@@ -166,7 +163,6 @@ class _TVDrawerState extends State<TVDrawer> {
                               setState(() {
                                 focusedItem = index;
                               });
-                              widget.onPageChange?.call(focusedItem);
                             }
                           },
                           itemCount: TVDrawer.drawerItems.length,
