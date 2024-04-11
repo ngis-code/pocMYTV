@@ -8,7 +8,7 @@ import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 
 class BottomMenuTiles extends StatelessWidget {
-  ScrollController scrollController = ScrollController();
+  final ScrollController scrollController = ScrollController();
   BottomMenuTiles({super.key});
 
   @override
