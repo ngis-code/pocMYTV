@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -130,30 +128,21 @@ class _FocusWidgetState extends State<FocusWidget> {
     switch (event.logicalKey) {
       case LogicalKeyboardKey.escape:
       case LogicalKeyboardKey.backspace:
-        if (Navigator.of(context).canPop()) {
-          Navigator.of(context).pop();
+        if (KeyBoardService.navigatorKey.currentState!.canPop()) {
+          KeyBoardService.navigatorKey.currentState!.pop();
         }
         break;
       case LogicalKeyboardKey.arrowUp:
-        if (!FocusScope.of(context).focusInDirection(TraversalDirection.up)) {
-          log("Widget not found to be traversed! for arrowUp");
-        }
+        KeyBoardService.focusInDirection(context, TraversalDirection.up);
         break;
       case LogicalKeyboardKey.arrowDown:
-        if (!FocusScope.of(context).focusInDirection(TraversalDirection.down)) {
-          log("Widget not found to be traversed! for arrowDown");
-        }
+        KeyBoardService.focusInDirection(context, TraversalDirection.down);
         break;
       case LogicalKeyboardKey.arrowLeft:
-        if (!FocusScope.of(context).focusInDirection(TraversalDirection.left)) {
-          log("Widget not found to be traversed! for arrowLeft");
-        }
+        KeyBoardService.focusInDirection(context, TraversalDirection.left);
         break;
       case LogicalKeyboardKey.arrowRight:
-        if (!FocusScope.of(context)
-            .focusInDirection(TraversalDirection.right)) {
-          log("Widget not found to be traversed! for arrowRight");
-        }
+        KeyBoardService.focusInDirection(context, TraversalDirection.right);
         break;
     }
     return true;
