@@ -69,7 +69,18 @@ class _ShorexScreenState extends State<ShorexScreen> {
                     Flexible(
                       flex: 1,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "ShoreExcursions",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
+                                ),
+                          ),
                           Text(
                             data['title'],
                             style: Theme.of(context)
