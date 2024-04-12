@@ -62,6 +62,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: const BackgroundVideo(
+        showBackButton: false,
         child: Padding(
           padding: EdgeInsets.only(bottom: 20.0),
           child: HomePage(),

@@ -8,6 +8,7 @@ import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
+// ignore: must_be_immutable
 class HomeBottomTiles extends StatelessWidget {
   HomeBottomTiles({super.key});
 
@@ -41,7 +42,7 @@ class HomeBottomTiles extends StatelessWidget {
             color: const Color(0xff1f1f1f).withAlpha(190),
             onFocusChange: onFocusChange,
             description: "Watch your favorite shows and movies",
-            title: "VOD",
+            title: "Video on Demand",
             icon: Icons.ondemand_video_rounded,
             page: const GenreChooseScreen(),
           ),
@@ -58,7 +59,7 @@ class HomeBottomTiles extends StatelessWidget {
             onFocusChange: onFocusChange,
             description: "Account Information",
             title: "Account",
-            icon: Icons.cloud_rounded,
+            icon: Icons.person_rounded,
             page: const AccountScreen(),
           ),
         ],
