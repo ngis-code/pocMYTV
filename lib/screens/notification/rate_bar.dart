@@ -6,11 +6,15 @@ class RateBar extends StatefulWidget {
   final double minRating;
   final double maxRating;
   final double initialRating;
+  final double size;
+  final void Function(double rating)? onRatingUpdate;
   const RateBar({
     super.key,
     this.minRating = 0,
     this.maxRating = 5,
     this.initialRating = 1,
+    this.onRatingUpdate,
+    this.size = 30,
   });
 
   @override
@@ -28,6 +32,22 @@ class _RateBarState extends State<RateBar> {
 
   @override
   Widget build(BuildContext context) {
+    final child = RatingBar(
+      ratingWidget: RatingWidget(
+        full: const Icon(Icons.star, color: Colors.amber),
+        half: const Icon(Icons.star_half, color: Colors.amber),
+        empty: const Icon(Icons.star_border, color: Colors.amber),
+      ),
+      initialRating: rating,
+      minRating: widget.minRating,
+      direction: Axis.horizontal,
+      allowHalfRating: true,
+      itemCount: widget.maxRating.toInt(),
+      itemSize: widget.size,
+      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+      onRatingUpdate: widget.onRatingUpdate ?? (rating) {},
+    );
+    if (widget.onRatingUpdate == null) return child;
     return FocusWidget(
       focusGroup: 'rateBar',
       onTap: () {
@@ -36,21 +56,7 @@ class _RateBarState extends State<RateBar> {
           if (rating < widget.minRating) rating = widget.minRating;
         });
       },
-      child: RatingBar(
-        ratingWidget: RatingWidget(
-          full: const Icon(Icons.star, color: Colors.amber),
-          half: const Icon(Icons.star_half, color: Colors.amber),
-          empty: const Icon(Icons.star_border, color: Colors.amber),
-        ),
-        initialRating: rating,
-        minRating: widget.minRating,
-        direction: Axis.horizontal,
-        allowHalfRating: true,
-        itemCount: widget.maxRating.toInt(),
-        itemSize: 30,
-        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-        onRatingUpdate: (rating) {},
-      ),
+      child: child,
     );
   }
 }

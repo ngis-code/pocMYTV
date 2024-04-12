@@ -4,6 +4,7 @@ import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
+import 'package:pocmytv/screens/shorex/shorex.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
@@ -53,6 +54,14 @@ class HomeBottomTiles extends StatelessWidget {
             title: "Schedule",
             icon: Icons.timeline,
             page: const CruisSchedule(),
+          ),
+          HomeBottomTile(
+            color: const Color(0xff1f1f1f).withAlpha(190),
+            onFocusChange: onFocusChange,
+            description: "ShoreX",
+            title: "Shore Excursions",
+            icon: Icons.star_border_outlined,
+            page: const ShorexScreen(),
           ),
           HomeBottomTile(
             color: const Color(0xff1f1f1f).withAlpha(190),
