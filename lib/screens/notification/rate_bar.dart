@@ -7,6 +7,7 @@ class RateBar extends StatefulWidget {
   final double maxRating;
   final double initialRating;
   final double size;
+  final Color? color;
   final void Function(double rating)? onRatingUpdate;
   const RateBar({
     super.key,
@@ -15,6 +16,7 @@ class RateBar extends StatefulWidget {
     this.initialRating = 1,
     this.onRatingUpdate,
     this.size = 30,
+    this.color,
   });
 
   @override
@@ -34,9 +36,9 @@ class _RateBarState extends State<RateBar> {
   Widget build(BuildContext context) {
     final child = RatingBar(
       ratingWidget: RatingWidget(
-        full: const Icon(Icons.star, color: Colors.amber),
-        half: const Icon(Icons.star_half, color: Colors.amber),
-        empty: const Icon(Icons.star_border, color: Colors.amber),
+        full: Icon(Icons.star, color: widget.color ?? Colors.amber),
+        half: Icon(Icons.star_half, color: widget.color ?? Colors.amber),
+        empty: Icon(Icons.star_border, color: widget.color ?? Colors.amber),
       ),
       initialRating: rating,
       minRating: widget.minRating,

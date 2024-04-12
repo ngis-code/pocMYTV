@@ -61,37 +61,66 @@ class _ShorexScreenState extends State<ShorexScreen> {
                     Flexible(
                       flex: 2,
                       fit: FlexFit.tight,
-                      child: Image.network(
-                        data['image'],
-                        fit: BoxFit.cover,
+                      child: SizedBox(
+                        height: double.infinity,
+                        child: Image.network(
+                          data['image'],
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Flexible(
                       flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "ShoreExcursions",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                      child: Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "ShoreExcursions",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
+                                  ),
+                            ),
+                            Text(
+                              data['title'],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            Row(
+                              children: [
+                                RateBar(
+                                  initialRating: data['rating'],
+                                  size: 20,
+                                  color: Colors.blue,
                                 ),
-                          ),
-                          Text(
-                            data['title'],
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium!
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
+                                Text("${data['views']} reviews"),
+                              ],
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  "\$${data['price']}",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
-                          ),
-                          const RateBar(size: 20),
-                        ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
