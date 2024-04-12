@@ -1,8 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
+import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
+import 'package:pocmytv/screens/safety/safety_screen.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
@@ -18,69 +19,47 @@ class BottomMenuTiles extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: TVDrawer.drawerHidden,
       builder: (context, value, child) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HomeBottomTile(
+            color: Colors.green.withAlpha(190),
             onFocusChange: onFocusChange,
-            description: "Watch your favorite show",
-            title: "VOD",
-            icon: Icons.tv_rounded,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const GenreChooseScreen(),
-                ),
-              );
-            },
+            description: "Check the safety information",
+            title: "Safety Information",
+            icon: Icons.health_and_safety_rounded,
+            page: const SafetyScreen(),
           ),
           HomeBottomTile(
+            color: Colors.blue.withAlpha(190),
+            onFocusChange: onFocusChange,
+            description: "Watch shows and movies",
+            title: "Live TV",
+            icon: Icons.tv_rounded,
+            page: const LiveTvScreen(),
+          ),
+          HomeBottomTile(
+            color: Colors.red.withAlpha(190),
+            onFocusChange: onFocusChange,
+            description: "Watch your favorite shows and movies",
+            title: "VOD",
+            icon: Icons.ondemand_video_rounded,
+            page: const GenreChooseScreen(),
+          ),
+          HomeBottomTile(
+            color: const Color.fromARGB(190, 1, 29, 187),
             onFocusChange: onFocusChange,
             description: "Cruise Schedule",
             title: "Schedule",
             icon: Icons.timeline,
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const CruisSchedule(),
-                ),
-              );
-            },
+            page: const CruisSchedule(),
           ),
           HomeBottomTile(
+            color: const Color.fromARGB(190, 255, 0, 0),
             onFocusChange: onFocusChange,
-            description: "Know about the hotel",
-            title: "Hotel Info",
-            icon: Icons.hotel_rounded,
-            onTap: () {
-              log("TV");
-            },
-          ),
-          HomeBottomTile(
-            onFocusChange: onFocusChange,
-            description: "Check the weather",
-            title: "Weather",
+            description: "Account Information",
+            title: "Account",
             icon: Icons.cloud_rounded,
-            onTap: () {
-              log("TV");
-            },
-          ),
-          HomeBottomTile(
-            onFocusChange: onFocusChange,
-            description: "Browse your favorite place",
-            title: "Restaurant & Bars",
-            icon: Icons.restaurant_rounded,
-            onTap: () {
-              log("TV");
-            },
-          ),
-          HomeBottomTile(
-            onFocusChange: onFocusChange,
-            description: "Don't Miss Any News",
-            title: "News",
-            icon: Icons.newspaper_rounded,
-            onTap: () {
-              log("TV");
-            },
+            page: const AccountScreen(),
           ),
         ],
       ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(

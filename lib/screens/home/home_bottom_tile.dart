@@ -7,15 +7,18 @@ class HomeBottomTile extends StatefulWidget {
   final String title;
   final IconData icon;
   final String description;
-  final Function() onTap;
+  final Color color;
   final void Function(bool hasFocus, double height)? onFocusChange;
-  const HomeBottomTile(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.onTap,
-      required this.icon,
-      this.onFocusChange});
+  final Widget page;
+  const HomeBottomTile({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.icon,
+    this.onFocusChange,
+    this.color = Colors.black45,
+    required this.page,
+  });
 
   @override
   State<HomeBottomTile> createState() => _HomeBottomTileState();
@@ -30,17 +33,24 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
         builder: (context, constraints) {
           double width = constraints.maxWidth;
           double height = constraints.maxHeight;
-          width = math.min(height, width);
+          width = math.min(math.min(height, width), 200);
           height = width;
           return Padding(
             padding: const EdgeInsets.only(left: 4, right: 4),
             child: FocusWidget(
-              onTap: widget.onTap,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => widget.page,
+                  ),
+                );
+              },
               onFocusChange: (hasFocus) {
                 widget.onFocusChange?.call(hasFocus, height);
               },
               borderRadius: 20,
-              backgroundColor: Colors.black.withOpacity(0.5),
+              backgroundColor: widget.color,
               borderColor: Colors.white,
               borderWidth: 5,
               blur: 3,
