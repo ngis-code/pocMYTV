@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/models/movie/genre.dart';
+import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_tile.dart';
 
 class GenreChooseScreen extends StatefulWidget {
@@ -21,24 +22,28 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
     //       Genre.thriller,
     //       Genre.scienceFiction,
     //     ].contains(element));
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: SingleChildScrollView(
-          clipBehavior: Clip.none,
-          child: SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              runAlignment: WrapAlignment.center,
-              children: [
-                ...genres.map(
-                  (e) => GenreTile(
-                    genre: e,
-                  ),
-                )
-              ],
+    return Scaffold(
+      body: BackgroundVideo(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: SingleChildScrollView(
+              clipBehavior: Clip.none,
+              child: SizedBox(
+                width: double.infinity,
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  children: [
+                    ...genres.map(
+                      (e) => GenreTile(
+                        genre: e,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         ),
