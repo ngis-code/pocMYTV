@@ -22,7 +22,7 @@ class HomeBottomTiles extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HomeBottomTile(
-            color: Colors.green.withAlpha(190),
+            color: const Color(0xff1f1f1f).withAlpha(190),
             onFocusChange: onFocusChange,
             description: "Check the safety information",
             title: "Safety Information",
@@ -30,7 +30,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const SafetyScreen(),
           ),
           HomeBottomTile(
-            color: Colors.blue.withAlpha(190),
+            color: const Color(0xff1f1f1f).withAlpha(190),
             onFocusChange: onFocusChange,
             description: "Watch shows and movies",
             title: "Live TV",
@@ -38,7 +38,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const LiveTvScreen(),
           ),
           HomeBottomTile(
-            color: Colors.red.withAlpha(190),
+            color: const Color(0xff1f1f1f).withAlpha(190),
             onFocusChange: onFocusChange,
             description: "Watch your favorite shows and movies",
             title: "VOD",
@@ -46,7 +46,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const GenreChooseScreen(),
           ),
           HomeBottomTile(
-            color: const Color.fromARGB(190, 1, 29, 187),
+            color: const Color(0xff1f1f1f).withAlpha(190),
             onFocusChange: onFocusChange,
             description: "Cruise Schedule",
             title: "Schedule",
@@ -54,7 +54,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const CruisSchedule(),
           ),
           HomeBottomTile(
-            color: const Color.fromARGB(190, 255, 0, 0),
+            color: const Color(0xff1f1f1f).withAlpha(190),
             onFocusChange: onFocusChange,
             description: "Account Information",
             title: "Account",
@@ -65,7 +65,7 @@ class HomeBottomTiles extends StatelessWidget {
       ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
             curve: Curves.easeInOut,
             begin: 0,
-            end: height - 20,
+            end: height,
             duration: const Duration(milliseconds: 500),
           ),
     );

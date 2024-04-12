@@ -82,233 +82,247 @@ class _HomePageState extends State<HomePage> {
           ),
           child: SizedBox(
             height: 90,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    FocusWidget(
-                      focusGroup: 'mailButton',
-                      onTap: () {
-                        showGeneralDialog(
-                          context: context,
-                          barrierColor: Colors.transparent,
-                          pageBuilder: (context, Animation<double> animation,
-                              Animation<double> secondaryAnimation) {
-                            return const Dialog(
-                                backgroundColor: Colors.black45,
-                                child: NotificationScreen());
-                          },
-                          barrierDismissible: true,
-                          barrierLabel: MaterialLocalizations.of(context)
-                              .modalBarrierDismissLabel,
-                          transitionDuration: const Duration(milliseconds: 500),
-                          transitionBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            return SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(0, -1),
-                                end: Offset.zero,
-                              ).animate(
-                                CurvedAnimation(
-                                  parent: animation,
-                                  curve: Curves.easeInOut,
-                                ),
-                              ),
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: Offset.zero,
-                                  end: const Offset(0, -1),
-                                ).animate(
-                                  CurvedAnimation(
-                                    parent: secondaryAnimation,
-                                    curve: Curves.easeInOut,
-                                  ),
-                                ),
-                                child: child,
-                              ),
-                            );
-                          },
-                        );
-                      },
-                      child: const Stack(
-                        clipBehavior: Clip.none,
+            child: Row(
+              children: [
+                Image.asset('assets/images/logo.png', fit: BoxFit.fitHeight),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            Icons.mail_outline_outlined,
-                            size: 35,
-                            color: Colors.white,
-                          ),
-                          Positioned(
-                            bottom: -5,
-                            left: 10,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.red,
-                              radius: 10,
-                              child: Text(
-                                "2",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    const VerticalDivider(
-                      width: 50,
-                      color: Colors.white,
-                      thickness: 1,
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                text: "76°",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .copyWith(
-                                      color: Colors.white,
+                          FocusWidget(
+                            focusGroup: 'mailButton',
+                            onTap: () {
+                              showGeneralDialog(
+                                context: context,
+                                barrierColor: Colors.transparent,
+                                pageBuilder: (context,
+                                    Animation<double> animation,
+                                    Animation<double> secondaryAnimation) {
+                                  return const Dialog(
+                                      backgroundColor: Colors.black45,
+                                      child: NotificationScreen());
+                                },
+                                barrierDismissible: true,
+                                barrierLabel: MaterialLocalizations.of(context)
+                                    .modalBarrierDismissLabel,
+                                transitionDuration:
+                                    const Duration(milliseconds: 500),
+                                transitionBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return SlideTransition(
+                                    position: Tween<Offset>(
+                                      begin: const Offset(0, -1),
+                                      end: Offset.zero,
+                                    ).animate(
+                                      CurvedAnimation(
+                                        parent: animation,
+                                        curve: Curves.easeInOut,
+                                      ),
                                     ),
-                                children: [
-                                  TextSpan(
-                                    text: " / 24°C ",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall!
-                                        .copyWith(
-                                          color: Colors.white,
+                                    child: SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: Offset.zero,
+                                        end: const Offset(0, -1),
+                                      ).animate(
+                                        CurvedAnimation(
+                                          parent: secondaryAnimation,
+                                          curve: Curves.easeInOut,
                                         ),
-                                  ),
-                                  const WidgetSpan(child: SizedBox(width: 10))
-                                ],
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      ),
+                                      child: child,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: const Stack(
+                              clipBehavior: Clip.none,
                               children: [
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
+                                Icon(
+                                  Icons.mail_outline_outlined,
+                                  size: 35,
                                   color: Colors.white,
-                                  elevation: 0,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          CupertinoIcons.sunrise,
-                                          size: 18,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text('6:30 AM',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .copyWith()),
-                                      ],
+                                ),
+                                Positioned(
+                                  bottom: -5,
+                                  left: 10,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.red,
+                                    radius: 10,
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color: Colors.black26,
-                                  elevation: 0,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Row(
+                                )
+                              ],
+                            ),
+                          ),
+                          const VerticalDivider(
+                            width: 50,
+                            color: Colors.white,
+                            thickness: 1,
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Column(
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "76°",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium!
+                                          .copyWith(
+                                            color: Colors.white,
+                                          ),
                                       children: [
-                                        const Icon(
-                                          CupertinoIcons.sunset,
-                                          color: Colors.white,
-                                          size: 18,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          '8:40 PM',
+                                        TextSpan(
+                                          text: " / 24°C ",
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodySmall!
+                                              .titleSmall!
                                               .copyWith(
                                                 color: Colors.white,
                                               ),
                                         ),
+                                        const WidgetSpan(
+                                            child: SizedBox(width: 10))
                                       ],
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              CupertinoIcons.sun_max,
-                              size: 50,
-                              color: Color(0xffd6e14a),
-                            ),
-                            Text(
-                              'Sunny',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    color: Colors.white,
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        color: Colors.white,
+                                        elevation: 0,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                CupertinoIcons.sunrise,
+                                                size: 18,
+                                              ),
+                                              const SizedBox(width: 4),
+                                              Text('6:30 AM',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodySmall!
+                                                      .copyWith()),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        color: Colors.black26,
+                                        elevation: 0,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                CupertinoIcons.sunset,
+                                                color: Colors.white,
+                                                size: 18,
+                                              ),
+                                              const SizedBox(width: 4),
+                                              Text(
+                                                '8:40 PM',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall!
+                                                    .copyWith(
+                                                      color: Colors.white,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const VerticalDivider(
-                      width: 50,
-                      color: Colors.white,
-                      thickness: 1,
-                    ),
-                    ClockWidget(
-                      builder: (context, time) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
-                              textAlign: TextAlign.right,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
+                                ],
                               ),
-                            ),
-                            Text(
-                              DateFormat('EEEE, MMMM d').format(DateTime.now()),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    CupertinoIcons.sun_max,
+                                    size: 50,
+                                    color: Color(0xffd6e14a),
+                                  ),
+                                  Text(
+                                    'Sunny',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Colors.white,
+                                        ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        );
-                      },
+                            ],
+                          ),
+                          const VerticalDivider(
+                            width: 50,
+                            color: Colors.white,
+                            thickness: 1,
+                          ),
+                          ClockWidget(
+                            builder: (context, time) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '${time.hour}:${time.minute.toString().padLeft(2, '0')}',
+                                    textAlign: TextAlign.right,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    DateFormat('EEEE, MMMM d')
+                                        .format(DateTime.now()),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
@@ -326,15 +340,22 @@ class _HomePageState extends State<HomePage> {
                       curve: Curves.decelerate,
                       alignment:
                           docked ? Alignment.centerRight : Alignment.center,
-                      child: AnimatedRotation(
-                        curve: Curves.decelerate,
-                        duration: const Duration(milliseconds: 500),
-                        turns: docked ? 0 : 0.25,
+                      child: RotatedBox(
+                        quarterTurns: 1,
                         child: Image.asset(
                           'assets/ship.png',
                           fit: BoxFit.contain,
                         ),
                       ),
+                      // AnimatedRotation(
+                      //   curve: Curves.decelerate,
+                      //   duration: const Duration(milliseconds: 500),
+                      //   turns: docked ? 0 : 0.25,
+                      //   child: Image.asset(
+                      //     'assets/ship.png',
+                      //     fit: BoxFit.contain,
+                      //   ),
+                      // ),
                     ),
                   ),
                   Wrap(

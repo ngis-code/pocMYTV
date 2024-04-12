@@ -10,6 +10,7 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassWidget(
+      radius: 20,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

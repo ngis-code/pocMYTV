@@ -36,7 +36,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
           width = math.min(math.min(height, width), 200);
           height = width;
           return Padding(
-            padding: const EdgeInsets.only(left: 4, right: 4),
+            padding: const EdgeInsets.only(left: 4, right: 4, bottom: 8),
             child: FocusWidget(
               onTap: () {
                 Navigator.push(
@@ -68,10 +68,10 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.25,
+                    height: height * 0.5,
                     width: width,
                     child: FittedBox(
-                      alignment: Alignment.bottomCenter,
+                      alignment: Alignment.center,
                       fit: BoxFit.scaleDown,
                       child: Text(
                         widget.title,
@@ -83,18 +83,19 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.25,
-                    width: width,
-                    child: Text(
-                      widget.description,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            color: Colors.white.withOpacity(0.7),
-                          ),
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+                  if (false)
+                    SizedBox(
+                      height: height * 0.25,
+                      width: width,
+                      child: Text(
+                        widget.description,
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),
