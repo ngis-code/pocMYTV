@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
@@ -31,35 +32,39 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: controller,
-      allowImplicitScrolling: false,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) => index == 0
-          ? Page1(
-              requestFocus: !firstTimeLoaded,
-              onChannelView: onChannelView,
-              onFocusChange: (index) {
-                log("onFocusChange: $index");
-                firstTimeLoaded = false;
-              },
-            )
-          : Page2(
-              onChannelView: onChannelView,
-            ),
-      // children: [
-      //   Page1(
-      //     requestFocus: !firstTimeLoaded,
-      //     onChannelView: onChannelView,
-      //     onFocusChange: (index) {
-      //       log("onFocusChange: $index");
-      //       firstTimeLoaded = false;
-      //     },
-      //   ),
-      //   Page2(
-      //     onChannelView: onChannelView,
-      //   ),
-      // ],
+    return Scaffold(
+      body: BackgroundVideo(
+        child: PageView.builder(
+          controller: controller,
+          allowImplicitScrolling: false,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) => index == 0
+              ? Page1(
+                  requestFocus: !firstTimeLoaded,
+                  onChannelView: onChannelView,
+                  onFocusChange: (index) {
+                    log("onFocusChange: $index");
+                    firstTimeLoaded = false;
+                  },
+                )
+              : Page2(
+                  onChannelView: onChannelView,
+                ),
+          // children: [
+          //   Page1(
+          //     requestFocus: !firstTimeLoaded,
+          //     onChannelView: onChannelView,
+          //     onFocusChange: (index) {
+          //       log("onFocusChange: $index");
+          //       firstTimeLoaded = false;
+          //     },
+          //   ),
+          //   Page2(
+          //     onChannelView: onChannelView,
+          //   ),
+          // ],
+        ),
+      ),
     );
   }
 

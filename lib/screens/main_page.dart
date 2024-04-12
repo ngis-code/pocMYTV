@@ -2,12 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/screens/home/bottom_menu_tiles.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static Widget backgroundVideo = const SizedBox(height: 20, width: 20);
+  static Widget backgroundVideo = Container(
+    height: 20,
+    width: 20,
+    color: Colors.blue,
+  );
   const MainPage({super.key});
 
   @override
@@ -56,25 +61,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: Stack(
-          children: [
-            // Background
-            Positioned.fill(
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-              child: MainPage.backgroundVideo,
-            ),
-            // Main Content
-            const Positioned.fill(
-              child: HomePage(),
-            ),
-          ],
-        ),
+      body: const BackgroundVideo(
+        child: HomePage(),
       ),
       extendBody: true,
       bottomNavigationBar: BottomMenuTiles(),
