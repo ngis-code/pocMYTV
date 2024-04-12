@@ -77,12 +77,15 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
   }
 
   bool keyBoardHandler(KeyEvent event) {
-    if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+    if ((event.logicalKey == LogicalKeyboardKey.arrowLeft ||
+            event.logicalKey == LogicalKeyboardKey.backspace ||
+            event.logicalKey == LogicalKeyboardKey.escape) &&
+        controller.page != 0) {
       controller.previousPage(
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-      return false;
+      return true;
     }
     return false;
   }

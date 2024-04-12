@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
-import 'package:pocmytv/screens/home/bottom_menu_tiles.dart';
+import 'package:pocmytv/screens/home/home_bottom_tiles.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
 import 'package:video_player/video_player.dart';
 
@@ -62,10 +62,13 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: const BackgroundVideo(
-        child: HomePage(),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 20.0),
+          child: HomePage(),
+        ),
       ),
       extendBody: true,
-      bottomNavigationBar: BottomMenuTiles(),
+      bottomNavigationBar: HomeBottomTiles(),
     );
   }
 }

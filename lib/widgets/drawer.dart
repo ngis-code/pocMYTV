@@ -39,13 +39,13 @@ class _TVDrawerState extends State<TVDrawer> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      TVDrawer.drawerHidden.addListener(changeState);
+      // TVDrawer.drawerHidden.addListener(changeState);
     });
   }
 
   @override
   void dispose() {
-    TVDrawer.drawerHidden.removeListener(changeState);
+    // TVDrawer.drawerHidden.removeListener(changeState);
     super.dispose();
   }
 
@@ -58,14 +58,14 @@ class _TVDrawerState extends State<TVDrawer> {
     await Future.delayed(const Duration(milliseconds: 1));
     if (count == tmp) {
       TVDrawer.height = 80;
-      TVDrawer.drawerHidden.value = true;
+      // TVDrawer.drawerHidden.value = true;
     }
   }
 
   void showDrawer() async {
     count++;
     TVDrawer.height = 240;
-    TVDrawer.drawerHidden.value = false;
+    // TVDrawer.drawerHidden.value = false;
   }
 
   @override

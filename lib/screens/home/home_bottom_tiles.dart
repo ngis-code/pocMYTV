@@ -8,8 +8,8 @@ import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
-class BottomMenuTiles extends StatelessWidget {
-  BottomMenuTiles({super.key});
+class HomeBottomTiles extends StatelessWidget {
+  HomeBottomTiles({super.key});
 
   int count = 0;
   double height = 0;
