@@ -83,7 +83,7 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-      return true;
+      return false;
     }
     return false;
   }
