@@ -2,17 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pocmytv/pre_loader/pre_loader.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/screens/home/home_bottom_tiles.dart';
 import 'package:pocmytv/screens/home/home_page.dart';
 import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
-  static Widget backgroundVideo = Container(
-    height: 20,
-    width: 20,
-    color: Colors.blue,
-  );
+  static Widget backgroundVideo = Container(color: Colors.blue);
   const MainPage({super.key});
 
   @override
@@ -26,7 +23,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // PreLoader.load(context);
+      PreLoader.load(context);
     });
     _controller = VideoPlayerController.network(
       kIsWeb
@@ -43,10 +40,12 @@ class _MainPageState extends State<MainPage> {
                 ..play();
               final width = MediaQuery.of(context).size.width;
               final height = MediaQuery.of(context).size.height;
-              MainPage.backgroundVideo = AspectRatio(
-                aspectRatio: width / height,
-                child: VideoPlayer(_controller),
-              );
+              setState(() {
+                MainPage.backgroundVideo = AspectRatio(
+                  aspectRatio: width / height,
+                  child: VideoPlayer(_controller),
+                );
+              });
             }))
         .onError((error, stackTrace) => log("Error Loading Video: $error"));
   }
@@ -61,9 +60,10 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: const BackgroundVideo(
+      body: BackgroundVideo(
         showBackButton: false,
-        child: Padding(
+        backgroundWidget: MainPage.backgroundVideo,
+        child: const Padding(
           padding: EdgeInsets.only(bottom: 20.0),
           child: HomePage(),
         ),

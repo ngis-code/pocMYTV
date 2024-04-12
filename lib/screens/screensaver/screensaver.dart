@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/models/timelines/timeline.dart';
@@ -120,7 +121,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
               ValueListenableBuilder(
                 valueListenable: PreLoader.loaded,
                 builder: (context, value, child) {
-                  if (value != 1) {
+                  if (value != 1 && !kDebugMode) {
                     return SizedBox(
                       width: 200,
                       child: LinearProgressIndicator(
@@ -149,7 +150,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
 
   bool _handler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
-    if (PreLoader.loaded.value != 1) {
+    if (PreLoader.loaded.value != 1 && !kDebugMode) {
       log("Assets not loaded yet. You can't continue. Current value: ${PreLoader.loaded.value}",
           name: "ScreenSaverScreen");
       return false;

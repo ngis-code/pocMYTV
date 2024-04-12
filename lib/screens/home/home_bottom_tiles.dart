@@ -83,7 +83,7 @@ class HomeBottomTiles extends StatelessWidget {
 
   void hideDrawer() async {
     int tmp = ++count;
-    await Future.delayed(const Duration(milliseconds: 1));
+    await Future.delayed(const Duration(milliseconds: 100));
     if (count == tmp) {
       TVDrawer.drawerHidden.value = true;
     }
