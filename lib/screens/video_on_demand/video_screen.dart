@@ -40,22 +40,27 @@ class _VideoScreenState extends State<VideoScreen> {
             height: (MediaQuery.of(context).size.height * 2) / 3,
             child: const ParallexVideos(),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height / 3 - 10,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    for (int index = 0; index < Movie.allMovies.length; index++)
-                      MovieTile(
-                        movie: Movie.allMovies[index],
-                        height: MediaQuery.of(context).size.height / 3 - 10,
-                        width: MediaQuery.of(context).size.width / 3,
-                      ),
-                  ],
+          FocusTraversalGroup(
+            policy: ReadingOrderTraversalPolicy(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 3 - 10,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      for (int index = 0;
+                          index < Movie.allMovies.length;
+                          index++)
+                        MovieTile(
+                          movie: Movie.allMovies[index],
+                          height: MediaQuery.of(context).size.height / 3 - 10,
+                          width: MediaQuery.of(context).size.width / 3,
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
