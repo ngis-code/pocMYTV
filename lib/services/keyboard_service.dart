@@ -15,6 +15,8 @@ class KeyBoardService {
 
   static bool globalKeyPressHandler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
+    log("Logical Key Pressed: ${event.logicalKey}");
+    log("Physical Key Pressed: ${event.physicalKey}");
     for (final handler in _handlers) {
       if (handler(event)) return true;
     }
@@ -26,8 +28,6 @@ class KeyBoardService {
         }
         break;
       default:
-      // log("Logical Key Pressed: ${event.logicalKey}");
-      // log("Physical Key Pressed: ${event.physicalKey}");
     }
 
     /// Special handling for web navigation
@@ -72,11 +72,12 @@ class KeyBoardService {
   static void focusInDirection(
       BuildContext context, TraversalDirection direction) {
     if (!FocusScope.of(context).focusInDirection(direction)) {
-      for (final dir in TraversalDirection.values) {
-        if (dir != direction && FocusScope.of(context).focusInDirection(dir)) {
-          return;
-        }
-      }
+      FocusScope.of(context).nextFocus();
+      // for (final dir in TraversalDirection.values) {
+      //   if (dir != direction && FocusScope.of(context).focusInDirection(dir)) {
+      //     return;
+      //   }
+      // }
       log("Widget not found to be traversed! for $direction");
     }
   }
