@@ -23,7 +23,7 @@ class TVDrawer extends StatefulWidget {
   static double height = 240;
   static final ValueNotifier<bool> safetyLocked =
       ValueNotifier(kDebugMode ? false : true);
-  static final ValueNotifier<bool> drawerHidden = ValueNotifier(false);
+  static final ValueNotifier<bool> drawerHidden = ValueNotifier(true);
   const TVDrawer({super.key});
 
   @override
