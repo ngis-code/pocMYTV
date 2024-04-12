@@ -2,23 +2,24 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:pocmytv/models/timelines/timeline.dart';
-import 'package:pocmytv/globals.dart';
 
-Future<List<TimeLineModel>> getTimelines() async {
-  final response = await http.get(Uri.parse('$serverUrl/timelines'));
+Future<Map<String, dynamic>> getTimeLineData() async {
+  final response = await http.get(
+      Uri.parse('https://deeplink.recruitpick.com/uploads/timelines.json'));
   if (response.statusCode == 200) {
-    final List<dynamic> timelines = json.decode(response.body);
-    return timelines.map((json) => TimeLineModel.fromJson(json)).toList();
+    return json.decode(response.body);
   } else {
-    throw Exception('Failed to load timelines');
+    throw Exception('Failed to load timeline data');
   }
 }
 
+Future<List<TimeLineModel>> getTimelines() async {
+  final response = await getTimeLineData();
+  final List<dynamic> timelines = response['timelines'];
+  return timelines.map((json) => TimeLineModel.fromJson(json)).toList();
+}
+
 Future<int> getCurrentTimeline() async {
-  final response = await http.get(Uri.parse('$serverUrl/current'));
-  if (response.statusCode == 200) {
-    return int.tryParse(response.body) ?? 2;
-  } else {
-    throw Exception('Failed to load current timeline');
-  }
+  final response = await getTimeLineData();
+  return int.tryParse(response['current'].toString()) ?? 0;
 }

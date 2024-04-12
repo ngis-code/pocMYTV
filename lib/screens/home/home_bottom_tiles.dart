@@ -89,7 +89,11 @@ class HomeBottomTiles extends StatelessWidget {
   }
 
   void showDrawer() async {
-    count++;
+    int tmp = ++count;
     TVDrawer.drawerHidden.value = false;
+    await Future.delayed(const Duration(seconds: 5));
+    if (count == tmp) {
+      hideDrawer();
+    }
   }
 }
