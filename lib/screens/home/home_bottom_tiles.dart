@@ -17,13 +17,14 @@ class HomeBottomTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color color = const Color(0xff1f1f1f).withAlpha(190);
     return ValueListenableBuilder(
       valueListenable: TVDrawer.drawerHidden,
       builder: (context, value, child) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HomeBottomTile(
-            color: const Color(0xff1f1f1f).withAlpha(190),
+            color: color,
             onFocusChange: onFocusChange,
             description: "Check the safety information",
             title: "Safety Information",
@@ -31,7 +32,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const SafetyScreen(),
           ),
           HomeBottomTile(
-            color: const Color(0xff1f1f1f).withAlpha(190),
+            color: color,
             onFocusChange: onFocusChange,
             description: "Watch shows and movies",
             title: "Live TV",
@@ -39,7 +40,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const LiveTvScreen(),
           ),
           HomeBottomTile(
-            color: const Color(0xff1f1f1f).withAlpha(190),
+            color: color,
             onFocusChange: onFocusChange,
             description: "Watch your favorite shows and movies",
             title: "Video on Demand",
@@ -47,7 +48,7 @@ class HomeBottomTiles extends StatelessWidget {
             page: const GenreChooseScreen(),
           ),
           HomeBottomTile(
-            color: const Color(0xff1f1f1f).withAlpha(190),
+            color: color,
             onFocusChange: onFocusChange,
             description: "Cruise Schedule",
             title: "Schedule",

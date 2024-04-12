@@ -29,14 +29,14 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
   Widget build(BuildContext context) {
     return Flexible(
       flex: 1,
+      fit: FlexFit.tight,
       child: LayoutBuilder(
         builder: (context, constraints) {
           double width = constraints.maxWidth;
           double height = constraints.maxHeight;
-          width = math.min(math.min(height, width), 200);
-          height = width;
+          height = height / 8;
           return Padding(
-            padding: const EdgeInsets.only(left: 4, right: 4, bottom: 8),
+            padding: const EdgeInsets.only(left: 50, right: 4, bottom: 8),
             child: FocusWidget(
               onTap: () {
                 Navigator.push(
@@ -60,7 +60,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                 children: [
                   SizedBox(
                     width: width,
-                    height: height * 0.5,
+                    height: height / 2.5,
                     child: FittedBox(
                       alignment: Alignment.center,
                       fit: BoxFit.contain,
@@ -78,7 +78,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
-                            .titleLarge!
+                            .titleMedium!
                             .copyWith(color: Colors.white),
                       ),
                     ),
