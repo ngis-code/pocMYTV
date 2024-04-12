@@ -78,7 +78,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
-                            .titleLarge!
+                            .titleMedium!
                             .copyWith(color: Colors.white),
                       ),
                     ),
