@@ -34,9 +34,9 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
           double width = constraints.maxWidth;
           double height = constraints.maxHeight;
           width = math.min(math.min(height, width), 200);
-          height = width;
+          height = 150;
           return Padding(
-            padding: const EdgeInsets.only(left: 4, right: 4, bottom: 8),
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
             child: FocusWidget(
               onTap: () {
                 Navigator.push(
@@ -57,10 +57,14 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
                   SizedBox(
                     width: width,
-                    height: height * 0.5,
+                    height: height / 2.5,
                     child: FittedBox(
                       alignment: Alignment.center,
                       fit: BoxFit.contain,
@@ -68,7 +72,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.5,
+                    height: height / 2.5,
                     width: width,
                     child: FittedBox(
                       alignment: Alignment.center,
