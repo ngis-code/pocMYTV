@@ -77,8 +77,9 @@ class _ScreenSaverState extends State<ScreenSaver> {
             children: [
               Image.asset(
                 'assets/images/logo.png',
-                height: 120,
-                width: 120,
+                height: 150,
+                width: 150,
+                color: Colors.white,
               ),
               RichText(
                 textAlign: TextAlign.center,
@@ -107,7 +108,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
                       ),
                     ),
                     TextSpan(
-                      text: 'Icon of the seas',
+                      text: 'Acent',
                       style: TextStyle(
                         color: Colors.blue,
                         fontSize: 30,

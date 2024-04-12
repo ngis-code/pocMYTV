@@ -84,7 +84,8 @@ class _HomePageState extends State<HomePage> {
             height: 90,
             child: Row(
               children: [
-                Image.asset('assets/images/logo.png', fit: BoxFit.fitHeight),
+                Image.asset('assets/images/logo.png',
+                    height: 300, color: Colors.white),
                 Expanded(
                   child: Align(
                     alignment: Alignment.centerRight,

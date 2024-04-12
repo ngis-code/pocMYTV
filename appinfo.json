@@ -1,0 +1,14 @@
+{
+  "id": "com.yourcompany.yourapp",
+  "version": "1.0.0",
+  "vendor": "Your Company",
+  "type": "web",
+  "main": "index.html",
+  "title": "Your App Title",
+  "icon": "icon.png",
+  "largeIcon": "icon.png",
+  "bgColor": "black",
+  "splashBackground": "splash.png",
+  "resolution": "1920x1080"
+}
+
