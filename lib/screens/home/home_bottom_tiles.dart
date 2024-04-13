@@ -19,29 +19,29 @@ class HomeBottomTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color = Colors.black45;
-    return Container(
-      padding: const EdgeInsets.only(
-        bottom: 18,
-        right: 25,
-        left: 25,
-        top: 10,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.blue[400]!.withOpacity(.2),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
+    return ValueListenableBuilder(
+      valueListenable: TVDrawer.drawerHidden,
+      builder: (context, value, child) => Container(
+        padding: const EdgeInsets.only(
+          bottom: 18,
+          right: 25,
+          left: 25,
+          top: 10,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(.5),
-            blurRadius: 10,
-            spreadRadius: 5,
+        decoration: BoxDecoration(
+          color: Colors.blue[400]!.withOpacity(.2),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
           ),
-        ],
-      ),
-      child: ValueListenableBuilder(
-        valueListenable: TVDrawer.drawerHidden,
-        builder: (context, value, child) => Row(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.5),
+              blurRadius: 10,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             HomeBottomTile(
@@ -94,13 +94,13 @@ class HomeBottomTiles extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
-          curve: Curves.easeInOut,
-          begin: 0,
-          end: height,
-          duration: const Duration(milliseconds: 500),
-        );
+      ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
+            curve: Curves.easeInOut,
+            begin: 0,
+            end: height,
+            duration: const Duration(milliseconds: 500),
+          ),
+    );
   }
 
   void onFocusChange(bool hasFocus, double height) {
