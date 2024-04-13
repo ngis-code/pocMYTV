@@ -73,22 +73,25 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                       child: Icon(
                         widget.icon,
                         color: Colors.white,
-                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: height / 2.5,
                     width: width,
-                    child: FittedBox(
-                      alignment: Alignment.center,
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        widget.title,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2.5),
+                      child: FittedBox(
+                        alignment: Alignment.center,
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          widget.title,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

@@ -27,7 +27,7 @@ class HomeBottomTiles extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue[400]!.withOpacity(.2 ),
+          color: Colors.blue[400]!.withOpacity(.2),
           borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
