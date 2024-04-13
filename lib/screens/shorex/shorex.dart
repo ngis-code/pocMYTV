@@ -10,6 +10,7 @@ class ShorexScreen extends StatefulWidget {
 
 class _ShorexScreenState extends State<ShorexScreen> {
   final highlightPageController = PageController();
+  final allPageController = PageController();
   final List<Map<String, dynamic>> exsData = [
     {
       'title': 'Catamaran Sail & Snorkel',
@@ -139,9 +140,8 @@ class _ShorexScreenState extends State<ShorexScreen> {
           Expanded(
             child: LayoutBuilder(builder: (context, constraints) {
               final width = constraints.maxWidth / 4;
-              return ListView.separated(
-                itemCount: exsData.length,
-                separatorBuilder: (context, index) => const SizedBox(width: 0),
+              return ListView.builder(
+                controller: allPageController,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   index = index % exsData.length;
