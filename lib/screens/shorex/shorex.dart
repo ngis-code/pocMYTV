@@ -94,6 +94,8 @@ class _ShorexScreenState extends State<ShorexScreen> {
                             ),
                             Text(
                               data['title'],
+                              maxLines: 4,
+                              overflow: TextOverflow.ellipsis,
                               style: Theme.of(context)
                                   .textTheme
                                   .displayMedium!
@@ -101,7 +103,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                            Row(
+                            Wrap(
                               children: [
                                 RateBar(
                                   initialRating: data['rating'],
@@ -135,84 +137,93 @@ class _ShorexScreenState extends State<ShorexScreen> {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              itemCount: exsData.length,
-              separatorBuilder: (context, index) => const SizedBox(width: 20),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                index = index % exsData.length;
-                final data = exsData[index];
-                return Column(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: SizedBox(
-                        height: double.infinity,
-                        child: Image.network(
-                          data['image'],
-                          fit: BoxFit.cover,
+            child: LayoutBuilder(builder: (context, constraints) {
+              final width = constraints.maxWidth / 4;
+              return ListView.separated(
+                itemCount: exsData.length,
+                separatorBuilder: (context, index) => const SizedBox(width: 0),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  index = index % exsData.length;
+                  final data = exsData[index];
+                  return SizedBox(
+                    width: width,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Image.network(
+                              data['image'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "ShoreExcursions",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87,
-                                  ),
-                            ),
-                            Text(
-                              data['title'],
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayMedium!
-                                  .copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                            Row(
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                RateBar(
-                                  initialRating: data['rating'],
-                                  size: 20,
-                                  color: Colors.blue,
-                                ),
-                                Text("${data['views']} reviews"),
-                              ],
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Text(
-                                  "\$${data['price']}",
+                                Text(
+                                  "ShoreExcursions",
+                                  maxLines: 2,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyLarge!
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                ),
+                                Text(
+                                  data['title'],
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
                                       .copyWith(
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                              ),
+                                Wrap(
+                                  children: [
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: RateBar(
+                                        initialRating: data['rating'],
+                                        size: 20,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    Text("${data['views']} reviews"),
+                                  ],
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Text(
+                                      "\$${data['price']}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                );
-              },
-            ),
+                  );
+                },
+              );
+            }),
           ),
         ],
       ),
@@ -222,7 +233,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
   void _animate() {
     Future.delayed(const Duration(seconds: 5), () {
       highlightPageController.nextPage(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 1000),
         curve: Curves.easeInOut,
       );
       _animate();
