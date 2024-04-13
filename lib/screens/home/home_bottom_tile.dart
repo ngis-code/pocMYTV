@@ -38,8 +38,8 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
           width = math.min(math.min(height, width), 200);
           height = 90;
           return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
+            padding: EdgeInsets.symmetric(
+              horizontal: constraints.maxWidth * 0.05,
             ),
             child: FocusWidget(
               hasFocus: widget.requestFocus,
