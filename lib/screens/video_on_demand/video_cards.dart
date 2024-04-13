@@ -25,7 +25,10 @@ class _VideoCardsState extends State<VideoCards> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(widget.assetPath);
+    _controller = VideoPlayerController.network(
+      widget.assetPath,
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    );
 
     _controller
       ..addListener(() => setState(() {}))

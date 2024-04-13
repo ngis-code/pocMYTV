@@ -29,6 +29,7 @@ class _MainPageState extends State<MainPage> {
       kIsWeb
           ? 'https://deeplink.recruitpick.com/uploads/bgMovie.mp4'
           : 'https://deeplink.recruitpick.com/uploads/bg.avi',
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
     _controller
         .initialize()
@@ -69,7 +70,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       extendBody: true,
-      bottomNavigationBar: HomeBottomTiles(),
+      bottomNavigationBar: const HomeBottomTiles(),
     );
   }
 }

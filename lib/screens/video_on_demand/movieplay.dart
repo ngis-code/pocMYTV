@@ -26,8 +26,10 @@ class _MoviePlayState extends State<MoviePlay> {
   }
 
   Future<void> _initializeVideoPlayer(String videoUrl) async {
-    _controller = VideoPlayerController.network(videoUrl)
-      ..initialize().then((_) {
+    _controller = VideoPlayerController.network(
+      videoUrl,
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    )..initialize().then((_) {
         setState(() {});
         _controller.play();
       });
