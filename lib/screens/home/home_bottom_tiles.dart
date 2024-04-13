@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
@@ -27,7 +26,7 @@ class HomeBottomTiles extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue[400]!.withOpacity(.2 ),
+          color: Colors.blue[400]!.withOpacity(.2),
           borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
@@ -94,12 +93,7 @@ class HomeBottomTiles extends StatelessWidget {
                 page: const AccountScreen(),
               ),
             ],
-          ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
-                curve: Curves.easeInOut,
-                begin: 0,
-                end: height,
-                duration: const Duration(milliseconds: 500),
-              ),
+          ),
         ),
       ),
     );
