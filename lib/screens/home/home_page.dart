@@ -56,6 +56,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final Map<String, List<String>> data = {
       'time': ['6:00 PM', '8:00 PM', '10:00 PM'],
       'event': ['Dinner', 'Show', 'Dance Party'],
@@ -65,11 +67,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        toolbarHeight: 120,
+        toolbarHeight: height / 4,
         title: Container(
           padding:
               const EdgeInsets.only(left: 20, top: 20, bottom: 20, right: 20),
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
@@ -606,7 +609,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(
-            width: 400,
+            height: height,
+            width: width / 3,
             child: Stack(
               children: [
                 Timeline.tileBuilder(
@@ -620,8 +624,7 @@ class _HomePageState extends State<HomePage> {
                   builder: TimelineTileBuilder.connected(
                     connectionDirection: ConnectionDirection.before,
                     itemExtentBuilder: (_, __) =>
-                        (MediaQuery.of(context).size.height - 100) /
-                        TimeLineModel.timelines.length,
+                        (height - 150) / TimeLineModel.timelines.length,
                     oppositeContentsBuilder: (context, index) {
                       return GlassWidget(
                         blur: 0,
