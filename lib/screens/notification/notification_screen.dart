@@ -100,17 +100,17 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
             const Divider(),
-            const Flexible(
+            Flexible(
               flex: 2,
               fit: FlexFit.tight,
               child: Row(
                 children: [
-                  Flexible(
+                  const Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
                     child: ParallerPromotionalAds(),
                   ),
-                  VerticalDivider(
+                  const VerticalDivider(
                     color: Colors.white,
                   ),
                   Flexible(
@@ -120,7 +120,7 @@ class NotificationScreen extends StatelessWidget {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
+                          const Text(
                             'Rate Your Experience While Onboard',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -129,7 +129,10 @@ class NotificationScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          RateBar(minRating: 1),
+                          RateBar(
+                            minRating: 1,
+                            onRatingUpdate: (rating) {},
+                          ),
                         ],
                       ),
                     ),

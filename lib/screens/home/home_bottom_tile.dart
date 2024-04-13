@@ -10,6 +10,7 @@ class HomeBottomTile extends StatefulWidget {
   final Color color;
   final void Function(bool hasFocus, double height)? onFocusChange;
   final Widget page;
+  final bool requestFocus;
   const HomeBottomTile({
     super.key,
     required this.title,
@@ -18,6 +19,7 @@ class HomeBottomTile extends StatefulWidget {
     this.onFocusChange,
     this.color = Colors.black45,
     required this.page,
+    this.requestFocus = false,
   });
 
   @override
@@ -40,6 +42,7 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
               horizontal: 20,
             ),
             child: FocusWidget(
+              hasFocus: widget.requestFocus,
               onTap: () {
                 Navigator.push(
                   context,

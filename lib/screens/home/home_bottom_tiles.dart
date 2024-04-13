@@ -9,12 +9,24 @@ import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
-// ignore: must_be_immutable
-class HomeBottomTiles extends StatelessWidget {
-  HomeBottomTiles({super.key});
+class HomeBottomTiles extends StatefulWidget {
+  const HomeBottomTiles({super.key});
 
+  @override
+  State<HomeBottomTiles> createState() => _HomeBottomTilesState();
+}
+
+class _HomeBottomTilesState extends State<HomeBottomTiles> {
   int count = 0;
   double height = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      TVDrawer.drawerHidden.value = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +58,7 @@ class HomeBottomTiles extends StatelessWidget {
           children: [
             HomeBottomTile(
               color: color,
+              requestFocus: true,
               onFocusChange: onFocusChange,
               description: "Check the safety information",
               title: "Safety Information",
@@ -97,7 +110,7 @@ class HomeBottomTiles extends StatelessWidget {
       ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
             curve: Curves.easeInOut,
             begin: 0,
-            end: height,
+            end: height + 20,
             duration: const Duration(milliseconds: 500),
           ),
     );

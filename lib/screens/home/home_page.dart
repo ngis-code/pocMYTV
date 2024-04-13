@@ -97,7 +97,6 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           FocusWidget(
                             focusGroup: 'mailButton',
-                            hasFocus: true,
                             onTap: () {
                               showGeneralDialog(
                                 context: context,
