@@ -128,6 +128,7 @@ class _FocusWidgetState extends State<FocusWidget> {
     switch (event.logicalKey) {
       case LogicalKeyboardKey.escape:
       case LogicalKeyboardKey.backspace:
+      case LogicalKeyboardKey.goBack:
         if (KeyBoardService.navigatorKey.currentState!.canPop()) {
           KeyBoardService.navigatorKey.currentState!.pop();
         }

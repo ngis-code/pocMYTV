@@ -23,6 +23,7 @@ class KeyBoardService {
     switch (event.logicalKey) {
       case LogicalKeyboardKey.escape:
       case LogicalKeyboardKey.backspace:
+      case LogicalKeyboardKey.goBack:
         if (navigatorKey.currentState!.canPop()) {
           navigatorKey.currentState!.pop();
         }
