@@ -18,67 +18,90 @@ class HomeBottomTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = const Color(0xff1f1f1f).withAlpha(190);
-    return ValueListenableBuilder(
-      valueListenable: TVDrawer.drawerHidden,
-      builder: (context, value, child) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          HomeBottomTile(
-            color: color,
-            onFocusChange: onFocusChange,
-            description: "Check the safety information",
-            title: "Safety Information",
-            icon: Icons.health_and_safety_rounded,
-            page: const SafetyScreen(),
+    Color color = Colors.black45;
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: 8.0,
+        right: 15,
+        left: 15,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[400]!.withOpacity(.2 ),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
           ),
-          HomeBottomTile(
-            color: color,
-            onFocusChange: onFocusChange,
-            description: "Watch shows and movies",
-            title: "Live TV",
-            icon: Icons.tv_rounded,
-            page: const LiveTvScreen(),
-          ),
-          HomeBottomTile(
-            color: color,
-            onFocusChange: onFocusChange,
-            description: "Watch your favorite shows and movies",
-            title: "Video on Demand",
-            icon: Icons.ondemand_video_rounded,
-            page: const GenreChooseScreen(),
-          ),
-          HomeBottomTile(
-            color: color,
-            onFocusChange: onFocusChange,
-            description: "Cruise Schedule",
-            title: "Schedule",
-            icon: Icons.timeline,
-            page: const CruisSchedule(),
-          ),
-          HomeBottomTile(
-            color: const Color(0xff1f1f1f).withAlpha(190),
-            onFocusChange: onFocusChange,
-            description: "ShoreX",
-            title: "Shore Excursions",
-            icon: Icons.star_border_outlined,
-            page: const ShorexScreen(),
-          ),
-          HomeBottomTile(
-            color: const Color(0xff1f1f1f).withAlpha(190),
-            onFocusChange: onFocusChange,
-            description: "Account Information",
-            title: "Account",
-            icon: Icons.person_rounded,
-            page: const AccountScreen(),
-          ),
-        ],
-      ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
-            curve: Curves.easeInOut,
-            begin: 0,
-            end: height,
-            duration: const Duration(milliseconds: 500),
-          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.5),
+              blurRadius: 10,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.all(10),
+        child: ValueListenableBuilder(
+          valueListenable: TVDrawer.drawerHidden,
+          builder: (context, value, child) => Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeBottomTile(
+                color: color,
+                onFocusChange: onFocusChange,
+                description: "Check the safety information",
+                title: "Safety Information",
+                icon: Icons.health_and_safety_rounded,
+                page: const SafetyScreen(),
+              ),
+              HomeBottomTile(
+                color: color,
+                onFocusChange: onFocusChange,
+                description: "Watch shows and movies",
+                title: "Live TV",
+                icon: Icons.tv_rounded,
+                page: const LiveTvScreen(),
+              ),
+              HomeBottomTile(
+                color: color,
+                onFocusChange: onFocusChange,
+                description: "Watch your favorite shows and movies",
+                title: "Video on Demand",
+                icon: Icons.ondemand_video_rounded,
+                page: const GenreChooseScreen(),
+              ),
+              HomeBottomTile(
+                color: color,
+                onFocusChange: onFocusChange,
+                description: "Cruise Schedule",
+                title: "Schedule",
+                icon: Icons.timeline,
+                page: const CruisSchedule(),
+              ),
+              HomeBottomTile(
+                color: color,
+                onFocusChange: onFocusChange,
+                description: "ShoreX",
+                title: "Shore Excursions",
+                icon: Icons.star_border_outlined,
+                page: const ShorexScreen(),
+              ),
+              HomeBottomTile(
+                color: color,
+                onFocusChange: onFocusChange,
+                description: "Account Information",
+                title: "Account",
+                icon: Icons.person_rounded,
+                page: const AccountScreen(),
+              ),
+            ],
+          ).animate(target: TVDrawer.drawerHidden.value ? 1 : 0).moveY(
+                curve: Curves.easeInOut,
+                begin: 0,
+                end: height,
+                duration: const Duration(milliseconds: 500),
+              ),
+        ),
+      ),
     );
   }
 
