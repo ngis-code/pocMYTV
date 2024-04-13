@@ -3,19 +3,26 @@ import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/account/account_info.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
 
   @override
+  State<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends State<AccountScreen> {
+  List<String> gridItems = [
+    'Your account list all transactions posted to your\nonboard account',
+    "To view an individual's charges, select that\nguest's name.",
+    "Paying by credit card? No further action is\nnecessary. Any outstanding balance will be\ncharged to your credit card.",
+    "Paying by cash? Visit Guest Services by 11 p.m. the\nfinal night of your cruise to settle your account.",
+    "If you have questions about your account, dial 0\non your stateroom phone or visit Guest Services\nprior to 8:30 a.m. on the final day of your cruise.",
+    "Non-refundable onboard credits must be used\nprior to 10 pm the final night of your cruise or they\nwill be forfeited.",
+  ];
+  @override
   Widget build(BuildContext context) {
-    List<String> gridItems = [
-      'Your account list all transactions posted to your\nonboard account',
-      "To view an individual's charges, select that\nguest's name.",
-      "Paying by credit card? No further action is\nnecessary. Any outstanding balance will be\ncharged to your credit card.",
-      "Paying by cash? Visit Guest Services by 11 p.m. the\nfinal night of your cruise to settle your account.",
-      "If you have questions about your account, dial 0\non your stateroom phone or visit Guest Services\nprior to 8:30 a.m. on the final day of your cruise.",
-      "Non-refundable onboard credits must be used\nprior to 10 pm the final night of your cruise or they\nwill be forfeited.",
-    ];
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: BackgroundVideo(
         child: Padding(
@@ -50,25 +57,25 @@ class AccountScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Account",
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: height / 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       GridView.builder(
                           shrinkWrap: true,
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                              SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  mainAxisExtent: 80,
-                                  crossAxisSpacing: 40,
-                                  mainAxisSpacing: 20),
+                                  mainAxisExtent: height / 10,
+                                  crossAxisSpacing: 20,
+                                  mainAxisSpacing: height / 50),
                           itemCount: gridItems.length,
                           itemBuilder: (context, index) {
                             return FittedBox(
@@ -77,8 +84,8 @@ class AccountScreen extends StatelessWidget {
                               child: Text(
                                 '• ${gridItems[index]}',
                                 textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  fontSize: 15,
+                                style: TextStyle(
+                                  fontSize: height / 50,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -120,16 +127,17 @@ class AccountScreen extends StatelessWidget {
                           children: [
                             Image.network(
                               'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
-                              height: 130,
-                              width: 130,
+                              height: height / 5,
+                              width: width / 7.5,
                             ),
                             const SizedBox(
                               height: 15,
                             ),
                             Text(
                               "Male".toUpperCase(),
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: height / 25,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -165,16 +173,17 @@ class AccountScreen extends StatelessWidget {
                           children: [
                             Image.network(
                               'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
-                              height: 130,
-                              width: 130,
+                              height: height / 5,
+                              width: width / 7.5,
                             ),
                             const SizedBox(
                               height: 15,
                             ),
                             Text(
                               "Female".toUpperCase(),
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: height / 25,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),

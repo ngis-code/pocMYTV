@@ -11,6 +11,8 @@ class AccountInformation extends StatefulWidget {
 class _AccountInformationState extends State<AccountInformation> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -57,8 +59,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "LIME ",
@@ -78,8 +79,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "LIME ",
@@ -99,8 +99,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "LIME ",
@@ -120,8 +119,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "LIME ",
@@ -150,7 +148,7 @@ class _AccountInformationState extends State<AccountInformation> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
-                    height: 500,
+                    height: height / 1.5,
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(.1),
                       borderRadius: BorderRadius.circular(15),
@@ -177,8 +175,7 @@ class _AccountInformationState extends State<AccountInformation> {
                             height: 10,
                           ),
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 "Total Charges",
@@ -202,8 +199,7 @@ class _AccountInformationState extends State<AccountInformation> {
                             height: 10,
                           ),
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 "Credit",
@@ -225,8 +221,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           ),
                           Spacer(),
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 "Current Balance",
