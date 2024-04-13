@@ -52,7 +52,15 @@ class _ShorexScreenState extends State<ShorexScreen> {
       'views': 738,
       'price': 256.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594338109952-4BZIHJ16FU6UVRCCUQ7A/2020-07-09+19_40_34.2020-07-09+19_41_21.gif?format=1500w',
+          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594323275851-08KBXHEHN2F4SIOYUJNB/Ca_18.png?format=1500w',
+    },
+    {
+      'title': 'Shore Excursion',
+      'rating': 4.5,
+      'views': 738,
+      'price': 256.99,
+      'image':
+          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg?format=1500w',
     },
   ];
 
@@ -128,7 +136,9 @@ class _ShorexScreenState extends State<ShorexScreen> {
                               Wrap(
                                 children: [
                                   RateBar(
-                                    initialRating: data['rating'],
+                                    initialRating: double.tryParse(
+                                            data['rating'].toString()) ??
+                                        0,
                                     size: 20,
                                     color: Colors.blue,
                                   ),
@@ -213,7 +223,9 @@ class _ShorexScreenState extends State<ShorexScreen> {
                                       FittedBox(
                                         fit: BoxFit.scaleDown,
                                         child: RateBar(
-                                          initialRating: data['rating'],
+                                          initialRating: double.tryParse(
+                                                  data['rating'].toString()) ??
+                                              0,
                                           size: 20,
                                           color: Colors.blue,
                                         ),
