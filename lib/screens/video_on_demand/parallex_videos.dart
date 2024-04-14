@@ -41,7 +41,8 @@ class _ParallexVideosState extends State<ParallexVideos> {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return MoviePlay(
-                  adVideoUrl: 'https://file-examples.com/storage/fe0e2ce82f660c1579f31b4/2017/04/file_example_MP4_1920_18MG.mp4',
+                  adVideoUrl:
+                      'https://cdn.pixabay.com/video/2020/07/03/43781-436252322_large.mp4',
                   mainVideoUrl: videos[index],
                 );
               }));
