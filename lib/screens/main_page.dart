@@ -49,6 +49,10 @@ class _MainPageState extends State<MainPage> {
                 MainPage.backgroundVideo = AspectRatio(
                   aspectRatio: width / height,
                   child: FocusWidget(
+                    borderColor: Colors.transparent,
+                    borderRadius: 0,
+                    blur: 0,
+                    borderWidth: 0,
                     skipTraversal: true,
                     onTap: () {},
                     child: VideoPlayer(_controller),

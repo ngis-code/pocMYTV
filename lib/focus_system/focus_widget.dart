@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_service.dart';
@@ -91,7 +90,7 @@ class _FocusWidgetState extends State<FocusWidget> {
         // log(hasFocus
         //     ? "Got Focus ${widget.focusGroup ?? 'unknown'}"
         //     : "Lost Focus ${widget.focusGroup ?? 'unknown'}");
-        if (hasFocus && !kDebugMode) {
+        if (hasFocus) {
           final request = FocusService.requestFocus(
               widget.focusGroup ?? "unknown", focusNode);
           // log("Request ${request ? 'approved' : 'rejected'}");
