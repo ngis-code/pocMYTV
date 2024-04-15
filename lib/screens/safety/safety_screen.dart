@@ -164,6 +164,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                     color: Colors.transparent,
                                     borderRadius: BorderRadius.circular(20),
                                     child: FocusWidget(
+                                      hasFocus: true,
                                       borderColor: Colors.grey.withOpacity(0.5),
                                       onTap: () {
                                         Navigator.push(

@@ -130,6 +130,7 @@ class _CruisScheduleState extends State<CruisSchedule> {
                             ),
                           ),
                           FocusWidget(
+                            hasFocus: true,
                             onTap: () {},
                             focusGroup: 'bttn',
                             child: Container(
