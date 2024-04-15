@@ -98,19 +98,6 @@ class _HomeBottomTileState extends State<HomeBottomTile> {
                       ),
                     ),
                   ),
-                  if (false)
-                    SizedBox(
-                      height: height * 0.25,
-                      width: width,
-                      child: Text(
-                        widget.description,
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
                 ],
               ),
             ),

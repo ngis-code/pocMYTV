@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/pre_loader/pre_loader.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/screens/home/home_bottom_tiles.dart';
@@ -29,7 +30,10 @@ class _MainPageState extends State<MainPage> {
       kIsWeb
           ? 'https://deeplink.recruitpick.com/uploads/bgMovie.mp4'
           : 'https://deeplink.recruitpick.com/uploads/bg.avi',
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+      videoPlayerOptions: VideoPlayerOptions(
+        mixWithOthers: true,
+        allowBackgroundPlayback: true,
+      ),
     );
     _controller
         .initialize()
@@ -44,7 +48,11 @@ class _MainPageState extends State<MainPage> {
               setState(() {
                 MainPage.backgroundVideo = AspectRatio(
                   aspectRatio: width / height,
-                  child: VideoPlayer(_controller),
+                  child: FocusWidget(
+                    skipTraversal: true,
+                    onTap: () {},
+                    child: VideoPlayer(_controller),
+                  ),
                 );
               });
             }))
@@ -62,8 +70,8 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: BackgroundVideo(
-        showBackButton: false,
         backgroundWidget: MainPage.backgroundVideo,
+        showBackButton: false,
         child: const Padding(
           padding: EdgeInsets.only(bottom: 20.0),
           child: HomePage(),

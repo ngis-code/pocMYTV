@@ -6,11 +6,13 @@ import 'video_screen.dart';
 
 class GenreTile extends StatefulWidget {
   final Genre genre;
+  final bool hasFocus;
   final void Function(bool hasFocus)? onFocusChange;
   const GenreTile({
     super.key,
     required this.genre,
     this.onFocusChange,
+    required this.hasFocus,
   });
 
   @override
@@ -23,6 +25,12 @@ class _GenreTileState extends State<GenreTile> {
   bool hasFocus = false;
 
   @override
+  void initState() {
+    super.initState();
+    hasFocus = widget.hasFocus;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: maxHeight,
@@ -31,6 +39,7 @@ class _GenreTileState extends State<GenreTile> {
         child: Padding(
           padding: EdgeInsets.all(hasFocus ? 0 : maxPadding),
           child: FocusWidget(
+            hasFocus: hasFocus,
             focusGroup: 'genreTiles',
             backgroundColor: Colors.grey.withOpacity(.2),
             onTap: () {

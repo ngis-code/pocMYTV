@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,8 +14,6 @@ class KeyBoardService {
 
   static bool globalKeyPressHandler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
-    log("Logical Key Pressed: ${event.logicalKey}");
-    log("Physical Key Pressed: ${event.physicalKey}");
     for (final handler in _handlers) {
       if (handler(event)) return true;
     }
@@ -28,34 +25,21 @@ class KeyBoardService {
           navigatorKey.currentState!.pop();
         }
         break;
+      case LogicalKeyboardKey.arrowLeft:
+      case LogicalKeyboardKey.arrowRight:
+      case LogicalKeyboardKey.arrowUp:
+      case LogicalKeyboardKey.arrowDown:
+        // TODO: this line should only be called if there is no focus node with focus
+        FocusScope.of(navigatorKey.currentContext!).nextFocus();
+        break;
       default:
-    }
-
-    /// Special handling for web navigation
-    if (kIsWeb) {
-      switch (event.logicalKey) {
-        case LogicalKeyboardKey.arrowUp:
-          FocusScope.of(navigatorKey.currentContext!)
-              .focusInDirection(TraversalDirection.up);
-          break;
-        case LogicalKeyboardKey.arrowDown:
-          FocusScope.of(navigatorKey.currentContext!)
-              .focusInDirection(TraversalDirection.down);
-          break;
-        case LogicalKeyboardKey.arrowLeft:
-          FocusScope.of(navigatorKey.currentContext!)
-              .focusInDirection(TraversalDirection.left);
-          break;
-        case LogicalKeyboardKey.arrowRight:
-          FocusScope.of(navigatorKey.currentContext!)
-              .focusInDirection(TraversalDirection.right);
-          break;
-        default:
-          log("Logical Key Pressed: ${event.logicalKey}");
-          log("Physical Key Pressed: ${event.physicalKey}");
-      }
+        log(event.logicalKey.keyLabel);
     }
     return true;
+  }
+
+  static void nextFocus() {
+    FocusScope.of(navigatorKey.currentContext!).nextFocus();
   }
 
   static void unfocus() {
@@ -70,16 +54,13 @@ class KeyBoardService {
     _handlers.remove(handler);
   }
 
-  static void focusInDirection(
-      BuildContext context, TraversalDirection direction) {
-    if (!FocusScope.of(context).focusInDirection(direction)) {
-      FocusScope.of(context).nextFocus();
-      // for (final dir in TraversalDirection.values) {
-      //   if (dir != direction && FocusScope.of(context).focusInDirection(dir)) {
-      //     return;
-      //   }
-      // }
-      log("Widget not found to be traversed! for $direction");
+  static bool focusInDirection(
+      FocusNode focusNode, TraversalDirection direction) {
+    final moved = focusNode.focusInDirection(direction);
+    if (!moved) {
+      focusNode.requestFocus();
+      return false;
     }
+    return true;
   }
 }

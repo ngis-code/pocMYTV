@@ -36,11 +36,11 @@ class _GenreChooseScreenState extends State<GenreChooseScreen> {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   runAlignment: WrapAlignment.center,
                   children: [
-                    ...genres.map(
-                      (e) => GenreTile(
-                        genre: e,
+                    for (int i = 0; i < genres.length; ++i)
+                      GenreTile(
+                        genre: genres[i],
+                        hasFocus: i == 0,
                       ),
-                    )
                   ],
                 ),
               ),

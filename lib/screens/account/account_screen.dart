@@ -101,6 +101,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 Row(
                   children: [
                     FocusWidget(
+                      hasFocus: true,
                       focusGroup: 'account-group',
                       onTap: () {
                         Navigator.push(context,

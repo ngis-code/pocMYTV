@@ -17,9 +17,9 @@ class FocusWidget extends StatefulWidget {
   final EdgeInsets padding;
   final String? focusGroup;
   final bool enabled;
+  final bool skipTraversal;
   final Function() onTap;
   final Function(bool hasFocus)? onFocusChange;
-  final FocusNode? focusNode;
 
   const FocusWidget({
     super.key,
@@ -36,7 +36,7 @@ class FocusWidget extends StatefulWidget {
     this.focusColor,
     this.focusGroup,
     this.enabled = true,
-    this.focusNode,
+    this.skipTraversal = false,
   });
 
   @override
@@ -52,7 +52,13 @@ class _FocusWidgetState extends State<FocusWidget> {
   @override
   void initState() {
     super.initState();
-    focusNode = widget.focusNode ?? FocusNode();
+    focusNode = FocusNode(
+      onKeyEvent: _handler,
+      skipTraversal: widget.skipTraversal,
+      canRequestFocus: !widget.skipTraversal,
+      descendantsAreFocusable: !widget.skipTraversal,
+      descendantsAreTraversable: !widget.skipTraversal,
+    );
     FocusService.add(widget.focusGroup ?? "unknown", focusNode);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       hasFocus = focusNode.hasFocus;
@@ -60,7 +66,6 @@ class _FocusWidgetState extends State<FocusWidget> {
         FocusService.requestFocus(widget.focusGroup ?? "unknown", focusNode);
       }
     });
-    KeyBoardService.addHandler(_handler);
   }
 
   @override
@@ -68,7 +73,6 @@ class _FocusWidgetState extends State<FocusWidget> {
     disposed = true;
     FocusService.remove(widget.focusGroup ?? "unknown", focusNode);
     focusNode.unfocus();
-    KeyBoardService.removeHandler(_handler);
     super.dispose();
   }
 
@@ -87,7 +91,7 @@ class _FocusWidgetState extends State<FocusWidget> {
         // log(hasFocus
         //     ? "Got Focus ${widget.focusGroup ?? 'unknown'}"
         //     : "Lost Focus ${widget.focusGroup ?? 'unknown'}");
-        if (hasFocus) {
+        if (hasFocus && !kDebugMode) {
           final request = FocusService.requestFocus(
               widget.focusGroup ?? "unknown", focusNode);
           // log("Request ${request ? 'approved' : 'rejected'}");
@@ -123,29 +127,25 @@ class _FocusWidgetState extends State<FocusWidget> {
     );
   }
 
-  bool _handler(KeyEvent event) {
-    if (!focusNode.hasFocus || !kIsWeb) return false;
+  KeyEventResult _handler(FocusNode node, KeyEvent event) {
+    if (event is KeyDownEvent) return KeyEventResult.ignored;
     switch (event.logicalKey) {
-      case LogicalKeyboardKey.escape:
-      case LogicalKeyboardKey.backspace:
-      case LogicalKeyboardKey.goBack:
-        if (KeyBoardService.navigatorKey.currentState!.canPop()) {
-          KeyBoardService.navigatorKey.currentState!.pop();
-        }
-        break;
-      case LogicalKeyboardKey.arrowUp:
-        KeyBoardService.focusInDirection(context, TraversalDirection.up);
-        break;
-      case LogicalKeyboardKey.arrowDown:
-        KeyBoardService.focusInDirection(context, TraversalDirection.down);
-        break;
       case LogicalKeyboardKey.arrowLeft:
-        KeyBoardService.focusInDirection(context, TraversalDirection.left);
-        break;
+        KeyBoardService.focusInDirection(focusNode, TraversalDirection.left);
+        return KeyEventResult.handled;
+      case LogicalKeyboardKey.arrowUp:
+        KeyBoardService.focusInDirection(focusNode, TraversalDirection.up);
+        return KeyEventResult.handled;
       case LogicalKeyboardKey.arrowRight:
-        KeyBoardService.focusInDirection(context, TraversalDirection.right);
-        break;
+        KeyBoardService.focusInDirection(focusNode, TraversalDirection.right);
+        return KeyEventResult.handled;
+      case LogicalKeyboardKey.arrowDown:
+        KeyBoardService.focusInDirection(focusNode, TraversalDirection.down);
+        return KeyEventResult.handled;
+      case LogicalKeyboardKey.enter:
+        focusNode.requestFocus(focusNode);
+        return KeyEventResult.handled;
     }
-    return true;
+    return KeyEventResult.ignored;
   }
 }

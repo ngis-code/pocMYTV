@@ -16,7 +16,6 @@ class LiveTvScreen extends StatefulWidget {
 
 class _LiveTvScreenState extends State<LiveTvScreen> {
   final controller = PageController();
-  bool firstTimeLoaded = true;
 
   @override
   void initState() {
@@ -40,11 +39,10 @@ class _LiveTvScreenState extends State<LiveTvScreen> {
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => index == 0
               ? Page1(
-                  requestFocus: !firstTimeLoaded,
+                  requestFocus: true,
                   onChannelView: onChannelView,
                   onFocusChange: (index) {
                     log("onFocusChange: $index");
-                    firstTimeLoaded = false;
                   },
                 )
               : Page2(
