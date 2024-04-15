@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_service.dart';
@@ -127,7 +130,9 @@ class _FocusWidgetState extends State<FocusWidget> {
   }
 
   KeyEventResult _handler(FocusNode node, KeyEvent event) {
+    if (!kIsWeb) return KeyEventResult.ignored;
     if (event is KeyDownEvent) return KeyEventResult.ignored;
+    log("_handler of focusWidget called");
     switch (event.logicalKey) {
       case LogicalKeyboardKey.arrowLeft:
         KeyBoardService.focusInDirection(focusNode, TraversalDirection.left);

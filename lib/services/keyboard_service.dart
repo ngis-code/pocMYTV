@@ -14,6 +14,7 @@ class KeyBoardService {
 
   static bool globalKeyPressHandler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
+    log("global _handler called");
     for (final handler in _handlers) {
       if (handler(event)) return true;
     }
@@ -30,7 +31,7 @@ class KeyBoardService {
       case LogicalKeyboardKey.arrowUp:
       case LogicalKeyboardKey.arrowDown:
         // TODO: this line should only be called if there is no focus node with focus
-        FocusScope.of(navigatorKey.currentContext!).nextFocus();
+        // FocusScope.of(navigatorKey.currentContext!).nextFocus();
         break;
       default:
         log(event.logicalKey.keyLabel);

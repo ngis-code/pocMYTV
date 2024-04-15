@@ -57,6 +57,12 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
       height: double.infinity,
       child: Stack(
         children: [
+          if (widget.backgroundWidget == null)
+            Positioned.fill(
+              child: Container(
+                color: Colors.blue,
+              ),
+            ),
           Positioned.fill(
               child: widget.backgroundWidget ??
                   AspectRatio(
