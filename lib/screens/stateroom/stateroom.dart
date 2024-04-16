@@ -171,7 +171,7 @@ class _StateRoomState extends State<StateRoom> {
                               ),
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9wPdmnpWzrwfxoDT4G18WWHn2NQwQ2N51q4-BqqvA0w&s'),
+                                      'https://i.pinimg.com/736x/c3/9a/72/c39a72a101dec9f5d37727e17ed9ef0a.jpg'),
                                   fit: BoxFit.cover),
                               gradient: LinearGradient(
                                 colors: [
