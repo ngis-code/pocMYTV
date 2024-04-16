@@ -22,9 +22,8 @@ class Movie {
   static List<Movie> allMovies = [
     // game of thrones
     Movie(
-      title: 'Game of Thrones',
-      description:
-          'Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO.',
+      title: 'CocoCay Island',
+      description: 'your details here',
       image:
           'https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg',
       duration: const Duration(hours: 1, minutes: 5),
@@ -34,9 +33,8 @@ class Movie {
     ),
     // the boss baby
     Movie(
-      title: 'The Boss Baby',
-      description:
-          'The Boss Baby is a 2017 American computer-animated comedy film produced by DreamWorks Animation and distributed by 20th Century Fox.',
+      title: 'CocoCay Island',
+      description: 'your details here',
       image:
           'https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg',
       duration: const Duration(hours: 1, minutes: 37),

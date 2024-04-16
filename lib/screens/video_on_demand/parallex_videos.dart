@@ -74,14 +74,14 @@ class _ParallexVideosState extends State<ParallexVideos> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'ICON',
+                        'TOP GUN',
                         style:
                             Theme.of(context).textTheme.displayMedium!.copyWith(
                                   color: Colors.white,
                                 ),
                       ),
                       Text(
-                        'Watch ICON Of the Seas Lanuch to Miami!',
+                        'Watch this demo movie with adds integrated',
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: Colors.white,
@@ -111,6 +111,6 @@ class _ParallexVideosState extends State<ParallexVideos> {
 }
 
 final videos = [
-  'https://www.shutterstock.com/shutterstock/videos/3392396905/preview/stock-footage-turku-finland-world-s-largest-cruise-ship-icon-of-the-seas-during-second-sea-trials.webm',
-  'https://file-examples.com/storage/fef0ba8e7b660ad2093c8cd/2017/04/file_example_MP4_1280_10MG.mp4',
+  'https://mytvpocroyal.com/uploads/topgunmovie.mp4',
+  'https://mytvpocroyal.com/uploads/topgunmovie.mp4',
 ];
