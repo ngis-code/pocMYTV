@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/utils/shader_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
@@ -50,16 +51,28 @@ class _StateRoomState extends State<StateRoom> {
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/ship_info.webp',
-                      width: width / 2,
-                      
-                      height: height / 2,
+                // Image.asset(
+                //   'assets/images/ship_info.webp',
+                //   width: width / 2,
+                  
+                //   height: height / 2,
+                //   fit: BoxFit.cover,
+                // )
+                Container(
+                  width: width / 2,
+                  height: height / 2,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius  .all(
+                      Radius.circular(20),
+                    ),  
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/ship_info.webp'),
                       fit: BoxFit.cover,
-                    )
-                  ],
+                    ),
+                  ),
+                  child: GridView.count(
+                    crossAxisCount: 3,
+                  ),
                 )
               ],
             ),
