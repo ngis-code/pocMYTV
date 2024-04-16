@@ -18,7 +18,7 @@ class _MoviePlayState extends State<MoviePlay> {
   late VideoPlayerController _controller;
   late List<String> _videoQueue;
   int _currentVideoIndex = 0;
-  bool _isAdVideoPlaying = true; // Track if the ad video is currently playing
+  bool _isAdVideoPlaying = true;
 
   @override
   void initState() {
@@ -40,12 +40,7 @@ class _MoviePlayState extends State<MoviePlay> {
 
   void _checkVideo() {
     if (_controller.value.position >= _controller.value.duration) {
-      // When one video ends, load and play the next one
-      _currentVideoIndex++;
-      if (_currentVideoIndex < _videoQueue.length) {
-        _loadNextVideo(_videoQueue[_currentVideoIndex]);
-      }
-      _isAdVideoPlaying = false; // Ad video is no longer playing
+      _skipAd();
     }
   }
 
@@ -61,6 +56,7 @@ class _MoviePlayState extends State<MoviePlay> {
 
   void _skipAd() {
     if (_isAdVideoPlaying && _videoQueue.length > 1) {
+      _isAdVideoPlaying = false; // Ad video is no longer playing
       _loadNextVideo(_videoQueue[1]); // Load the main video
       _currentVideoIndex = 1; // Update the index to reflect the main video
     }
@@ -94,47 +90,51 @@ class _MoviePlayState extends State<MoviePlay> {
       body: _controller.value.isInitialized
           ? AspectRatio(
               aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
+              child: FocusWidget(
+                onTap: () {},
+                enabled: false,
+                child: VideoPlayer(_controller),
+              ),
             )
           : Container(
               alignment: Alignment.center,
               child: const CircularProgressIndicator(),
             ),
-      floatingActionButton: ClockWidget(
-        updatePerSec: true,
-        builder: (context, time) {
-          // time to finish should be 5 sec from the start of the video
-          // final timeToFinish =
-          //     _controller.value.duration - _controller.value.position;
-          final timeToFinish =
-              const Duration(seconds: 5) - _controller.value.position;
-          if (_controller.value.position >= const Duration(seconds: 5)) {
-            return FocusWidget(
-              hasFocus: true,
-              onTap: () => _skipAd(),
+      floatingActionButton: !_isAdVideoPlaying
+          ? null
+          : FocusWidget(
+              onTap: _skipAd,
               borderColor: Colors.white,
+              backgroundColor: Colors.black45,
               padding: const EdgeInsets.all(8),
-              child: const Icon(
-                Icons.skip_next_rounded,
-                color: Colors.white,
+              child: ClockWidget(
+                updatePerSec: true,
+                builder: (context, time) {
+                  final timeToFinish =
+                      const Duration(seconds: 5) - _controller.value.position;
+                  if (_controller.value.position >=
+                      const Duration(seconds: 5)) {
+                    return const Icon(
+                      Icons.skip_next_rounded,
+                      color: Colors.white,
+                    );
+                  }
+                  return GlassWidget(
+                    radius: 50,
+                    backgroundColor: Colors.black45,
+                    blur: 10,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    child: Text(
+                      "${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  );
+                },
               ),
-            );
-          }
-          return GlassWidget(
-            radius: 50,
-            backgroundColor: Colors.black45,
-            blur: 10,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
             ),
-            child: Text(
-              "${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
-              style: const TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          );
-        },
-      ),
     );
   }
 }
