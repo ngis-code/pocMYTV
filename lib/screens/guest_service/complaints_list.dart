@@ -3,6 +3,7 @@ import 'package:pocmytv/extensions/datetime_extensions.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
+import 'package:pocmytv/screens/guest_service/complaint_info.dart';
 import 'package:pocmytv/widgets/clock.dart';
 
 class ComplaintsList extends StatelessWidget {
@@ -29,7 +30,62 @@ class ComplaintsList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final complaint = Complaint.complaints[index];
                   return FocusWidget(
-                    onTap: () {},
+                    onTap: () {
+                      showGeneralDialog(
+                        context: context,
+                        barrierColor: Colors.transparent,
+                        pageBuilder: (context, Animation<double> animation,
+                            Animation<double> secondaryAnimation) {
+                          return Dialog(
+                              backgroundColor: Colors.black45,
+                              child: ComplaintInfo(
+                                complaint: complaint,
+                              ));
+                        },
+                        barrierDismissible: false,
+                        barrierLabel: MaterialLocalizations.of(context)
+                            .modalBarrierDismissLabel,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        transitionBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return ScaleTransition(
+                            scale: Tween<double>(
+                              begin: 0,
+                              end: 1,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                            child: child,
+                          );
+                          // return SlideTransition(
+                          //   position: Tween<Offset>(
+                          //     begin: const Offset(0, -1),
+                          //     end: Offset.zero,
+                          //   ).animate(
+                          //     CurvedAnimation(
+                          //       parent: animation,
+                          //       curve: Curves.easeInOut,
+                          //     ),
+                          //   ),
+                          //   child: SlideTransition(
+                          //     position: Tween<Offset>(
+                          //       begin: Offset.zero,
+                          //       end: const Offset(0, -1),
+                          //     ).animate(
+                          //       CurvedAnimation(
+                          //         parent: secondaryAnimation,
+                          //         curve: Curves.easeInOut,
+                          //       ),
+                          //     ),
+                          //     child: child,
+                          //   ),
+                          // );
+                        },
+                      );
+                    },
                     child: ListTile(
                       title: Text(
                         complaint.complaint.replaceAll('_', ' ').toPascalCase(),
