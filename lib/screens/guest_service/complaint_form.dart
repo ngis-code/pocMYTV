@@ -22,6 +22,7 @@ class ComplaintForm extends StatelessWidget {
               return true;
             },
           ),
+          const SizedBox(height: 50),
           FocusWidget(
             padding: const EdgeInsets.symmetric(
               horizontal: 40,

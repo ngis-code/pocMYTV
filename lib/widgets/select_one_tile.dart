@@ -25,7 +25,7 @@ class SelectOneTile extends StatelessWidget {
       ),
       backgroundColor: enabled
           ? isSelected
-              ? Colors.blue
+              ? Colors.red
               : Colors.transparent
           : theme.colorScheme.surface.withOpacity(0.5),
       borderRadius: 20,
