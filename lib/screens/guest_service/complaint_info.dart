@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/extensions/datetime_extensions.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
+import 'package:pocmytv/screens/notification/parallex_promotional_ads.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
@@ -35,42 +36,44 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
   Widget build(BuildContext context) {
     return GlassWidget(
       radius: 20,
+      backgroundColor: Colors.white70,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(50.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Complaint: ${widget.complaint.complaint}',
+              widget.complaint.complaint,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Colors.white,
+                    color: darkBlue,
+                    fontWeight: FontWeight.bold,
                   ),
             ),
             Text(
               'Complaint Category: ${widget.complaint.category}',
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
+                    color: darkBlue,
                   ),
             ),
             Text(
               'Created At: ${widget.complaint.createdAt.toMonthString()} ${widget.complaint.createdAt.amPmTime}',
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
+                    color: darkBlue,
                   ),
             ),
             if (widget.complaint.resolvedAt != null)
               Text(
                 'Resolved At: ${widget.complaint.resolvedAt?.toMonthString()} ${widget.complaint.resolvedAt?.amPmTime}',
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.white,
+                      color: darkBlue,
                     ),
               ),
             if (widget.complaint.expectedResolveAt != null)
               Text(
                 "Expected Resolution Time: ${widget.complaint.expectedResolveAt?.toMonthString()} ${widget.complaint.expectedResolveAt?.amPmTime}",
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.white,
+                      color: darkBlue,
                     ),
               ),
           ],

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -43,14 +41,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
-      if (false) {
-        Timer.periodic(const Duration(seconds: 5), (timer) {
-          setState(() {
-            docked = !docked;
-          });
-        });
-      }
+      setState(() {
+        docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
+      });
+      //Timer.periodic(const Duration(seconds: 5), (timer) {
+      //  setState(() {
+      //    docked = !docked;
+      //  });
+      //});
     });
   }
 
@@ -352,28 +350,30 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Expanded(
-                    child: AnimatedAlign(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.decelerate,
-                      alignment:
-                          docked ? Alignment.centerRight : Alignment.center,
-                      child: RotatedBox(
-                        quarterTurns: 1,
-                        child: Image.asset(
-                          'assets/ship.png',
-                          fit: BoxFit.contain,
-                        ),
+                    child: RotatedBox(
+                      quarterTurns: 1,
+                      child: Image.asset(
+                        'assets/ship.png',
+                        fit: BoxFit.contain,
                       ),
-                      // AnimatedRotation(
-                      //   curve: Curves.decelerate,
-                      //   duration: const Duration(milliseconds: 500),
-                      //   turns: docked ? 0 : 0.25,
-                      //   child: Image.asset(
-                      //     'assets/ship.png',
-                      //     fit: BoxFit.contain,
-                      //   ),
-                      // ),
-                    ),
+                    )
+                        .animate(
+                          target: docked ? 1 : 0,
+                        )
+                        .moveY(
+                          begin: 0,
+                          end: width / 2,
+                        )
+                        .scaleXY(
+                          end: 0.5,
+                          begin: 1,
+                          duration: const Duration(milliseconds: 500),
+                        )
+                        .rotate(
+                          begin: 0,
+                          end: -0.25,
+                          duration: const Duration(milliseconds: 500),
+                        ),
                   ),
                   Wrap(
                     spacing: 20,

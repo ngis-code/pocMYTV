@@ -86,21 +86,22 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
                   ),
                 ),
           ),
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                color: darkBlue.withOpacity(0.5),
-                // gradient: LinearGradient(
-                //   end: Alignment.topCenter,
-                //   begin: Alignment.bottomCenter,
-                //   colors: [
-                //     Color.fromARGB(255, 4, 69, 122),
-                //     Colors.transparent,
-                //   ],
-                // ),
+          if (widget.backgroundWidget == null)
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: darkBlue.withOpacity(0.5),
+                  // gradient: LinearGradient(
+                  //   end: Alignment.topCenter,
+                  //   begin: Alignment.bottomCenter,
+                  //   colors: [
+                  //     Color.fromARGB(255, 4, 69, 122),
+                  //     Colors.transparent,
+                  //   ],
+                  // ),
+                ),
               ),
             ),
-          ),
           Positioned.fill(child: widget.child),
           if (widget.showBackButton && Navigator.of(context).canPop())
             Positioned(
