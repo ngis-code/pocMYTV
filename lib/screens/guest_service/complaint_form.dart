@@ -23,6 +23,7 @@ class _ComplaintFormState extends State<ComplaintForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SelectOne(
+            hasFocus: true,
             expanded: true,
             selectedOption: chosenOption,
             allOptions: {

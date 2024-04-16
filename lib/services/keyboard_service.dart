@@ -35,6 +35,9 @@ class KeyBoardService {
         if (!hasFocus) {
           FocusScope.of(navigatorKey.currentContext!).nextFocus();
         }
+        // else {
+        //   log("FocusManager.instance.primaryFocus?.hasFocus = ${FocusManager.instance.primaryFocus?.hasFocus}");
+        // }
         break;
       default:
         log(event.logicalKey.keyLabel);
