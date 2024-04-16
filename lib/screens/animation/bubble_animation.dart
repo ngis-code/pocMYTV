@@ -3,6 +3,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:vector_math/vector_math.dart' as v;
 
@@ -52,25 +53,27 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final width = MediaQuery.of(context).size.width;
-      final height = MediaQuery.of(context).size.height;
-      for (var i = 0; i < widget.bubbles; i++) {
-        _particles.add(v.Vector2(
-          math.Random().nextDouble() * width,
-          math.Random().nextDouble() * height,
-        ));
-        _velocities.add(v.Vector2(
-          (math.Random().nextDouble() - 0.5) * widget.velocityMultiplier,
-          (math.Random().nextDouble() - 0.5) * widget.velocityMultiplier,
-        ));
-        _radius.add(
-            math.Random().nextDouble() * (widget.maxRadius - widget.minRadius) +
-                widget.minRadius);
-        _colors.add(widget.colors[i % widget.colors.length]);
-      }
-      _update();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    // });
+    final width =
+        MediaQuery.of(KeyBoardService.navigatorKey.currentContext!).size.width;
+    final height =
+        MediaQuery.of(KeyBoardService.navigatorKey.currentContext!).size.height;
+    for (var i = 0; i < widget.bubbles; i++) {
+      _particles.add(v.Vector2(
+        math.Random().nextDouble() * width,
+        math.Random().nextDouble() * height,
+      ));
+      _velocities.add(v.Vector2(
+        (math.Random().nextDouble() - 0.5) * widget.velocityMultiplier,
+        (math.Random().nextDouble() - 0.5) * widget.velocityMultiplier,
+      ));
+      _radius.add(
+          math.Random().nextDouble() * (widget.maxRadius - widget.minRadius) +
+              widget.minRadius);
+      _colors.add(widget.colors[i % widget.colors.length]);
+    }
+    _update();
   }
 
   @override
