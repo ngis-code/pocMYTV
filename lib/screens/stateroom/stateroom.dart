@@ -17,6 +17,9 @@ class _StateRoomState extends State<StateRoom> {
     'Light',
   ];
 
+  int acTemp = 28;
+  bool curtainSwitch = false;
+  bool lightOnOrOffToggle = false;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -57,66 +60,241 @@ class _StateRoomState extends State<StateRoom> {
                   ],
                 ),
                 Container(
-                  width: width / 1.2,
-                  height: height / 1.5,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
+                    width: width / 1.2,
+                    height: height / 1.5,
+                    alignment: Alignment.bottomCenter,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/ship_info.webp'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/ship_info.webp'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xFF061556),
-                              Color(0xFF2B6FC0),
-                              Color(0xFF131C49),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Music',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: height / 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xFF061556),
+                                  Color(0xFF2B6FC0),
+                                  Color(0xFF131C49),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
                             ),
-                            Text(
-                              'Music',
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(.6),
-                                fontSize: height / 50,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  stateroomObjective[0],
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(.8),
+                                    fontSize: height / 30,
+                                  ),
+                                ),
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    child: Divider(),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    IconButton(
+                                      alignment: Alignment.bottomCenter,
+                                      icon: const Icon(
+                                        Icons.remove,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          acTemp--;
+                                        });
+                                      },
+                                    ),
+                                    Text(
+                                      '$acTemp°C',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: height / 15,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      alignment: Alignment.bottomCenter,
+                                      icon: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          acTemp++;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xFF061556),
+                                  Color(0xFF2B6FC0),
+                                  Color(0xFF131C49),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
                             ),
-                          ],
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  stateroomObjective[1],
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(.8),
+                                    fontSize: height / 30,
+                                  ),
+                                ),
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    child: Divider(),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      curtainSwitch ? 'Open' : 'Close',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: height / 15,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      alignment: Alignment.bottomCenter,
+                                      icon: Icon(
+                                        curtainSwitch
+                                            ? Icons.open_in_full
+                                            : Icons.close_fullscreen,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          curtainSwitch = !curtainSwitch;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      );
-                    },
-                    itemCount: stateroomObjective.length,
-                  ),
-                )
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xFF061556),
+                                  Color(0xFF2B6FC0),
+                                  Color(0xFF131C49),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  stateroomObjective[2],
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(.8),
+                                    fontSize: height / 30,
+                                  ),
+                                ),
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    child: Divider(),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      lightOnOrOffToggle ? 'On' : 'Off',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: height / 15,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      alignment: Alignment.bottomCenter,
+                                      icon: Icon(
+                                        lightOnOrOffToggle
+                                            ? Icons.lightbulb
+                                            : Icons.lightbulb_outline,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          lightOnOrOffToggle =
+                                              !lightOnOrOffToggle;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ))
               ],
             ),
             Padding(
