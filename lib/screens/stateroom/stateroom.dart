@@ -77,11 +77,17 @@ class _StateRoomState extends State<StateRoom> {
                       children: [
                         Expanded(
                           child: Container(
+                            height: height / 4,
                             margin: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                    'https://kobiecomplete.com/wp-content/uploads/2017/07/daikin-ductless-air-conditioning-680.jpg',
+                                  ),
+                                  fit: BoxFit.cover),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xFF061556),
@@ -92,14 +98,24 @@ class _StateRoomState extends State<StateRoom> {
                                 end: Alignment.bottomRight,
                               ),
                             ),
+                            padding: const EdgeInsets.only(
+                                left: 20, top: 10, right: 20),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   stateroomObjective[0],
                                   style: TextStyle(
                                     color: Colors.white.withOpacity(.8),
+                                    fontSize: height / 30,
+                                  ),
+                                ),
+                                Text(
+                                  '$acTemp°C',
+                                  style: TextStyle(
+                                    color: Colors.white,
                                     fontSize: height / 30,
                                   ),
                                 ),
@@ -118,10 +134,9 @@ class _StateRoomState extends State<StateRoom> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     IconButton(
-                                      alignment: Alignment.bottomCenter,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.remove,
-                                        color: Colors.white,
+                                        color: Colors.black.withOpacity(.8),
                                       ),
                                       onPressed: () {
                                         setState(() {
@@ -129,18 +144,10 @@ class _StateRoomState extends State<StateRoom> {
                                         });
                                       },
                                     ),
-                                    Text(
-                                      '$acTemp°C',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: height / 15,
-                                      ),
-                                    ),
                                     IconButton(
-                                      alignment: Alignment.bottomCenter,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.add,
-                                        color: Colors.white,
+                                        color: Colors.black.withOpacity(.8),
                                       ),
                                       onPressed: () {
                                         setState(() {
@@ -156,11 +163,16 @@ class _StateRoomState extends State<StateRoom> {
                         ),
                         Expanded(
                           child: Container(
+                            height: height / 4,
                             margin: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9wPdmnpWzrwfxoDT4G18WWHn2NQwQ2N51q4-BqqvA0w&s'),
+                                  fit: BoxFit.cover),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xFF061556),
@@ -171,9 +183,12 @@ class _StateRoomState extends State<StateRoom> {
                                 end: Alignment.bottomRight,
                               ),
                             ),
+                            padding: const EdgeInsets.only(
+                                left: 20, top: 10, right: 20),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   stateroomObjective[1],
@@ -225,11 +240,16 @@ class _StateRoomState extends State<StateRoom> {
                         ),
                         Expanded(
                           child: Container(
+                            height: height / 4,
                             margin: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVbufQR5wfU4vNnORX3KB0AUDXuY7wpHG9lEfFqlVjRg&s'),
+                                  fit: BoxFit.cover),
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0xFF061556),
@@ -240,9 +260,12 @@ class _StateRoomState extends State<StateRoom> {
                                 end: Alignment.bottomRight,
                               ),
                             ),
+                            padding: const EdgeInsets.only(
+                                left: 20, top: 10, right: 20),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   stateroomObjective[2],
