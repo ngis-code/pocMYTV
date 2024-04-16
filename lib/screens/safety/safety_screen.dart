@@ -140,7 +140,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
                                     child: Image.network(
-                                      'https://deeplink.recruitpick.com/uploads/lifejacket_img',
+                                      'https://mytvpocroyal.com/uploads/lifejacket_img',
                                       height: height / 3,
                                       width: width / 4,
                                     ),
@@ -232,7 +232,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                           child: Image.network(
-                                            'https://deeplink.recruitpick.com/uploads/lifejacket_img',
+                                            'https://mytvpocroyal.com/uploads/lifejacket_img',
                                             height: height / 3,
                                             width: width / 4,
                                           ),
@@ -263,7 +263,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                             onTap: () async {
                                               try {
                                                 await playAudioFromUrl(
-                                                    "https://deeplink.recruitpick.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                                    "https://mytvpocroyal.com/uploads/LATEST_Emergency%20Signal.mp3");
                                               } catch (e) {
                                                 log("Error playing audio: $e");
                                                 log("Moving onto next");
@@ -321,7 +321,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             child: Image.network(
-                                              'https://deeplink.recruitpick.com/uploads/lifejacket_img',
+                                              'https://mytvpocroyal.com/uploads/lifejacket_img',
                                               height: height / 3,
                                               width: width / 4,
                                             ),
@@ -400,7 +400,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Image.network(
-                                            'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
+                                            'https://mytvpocroyal.com/uploads/IC_sign_B2.png',
                                           ),
                                           const Text(
                                             'Your assembly station',
@@ -487,7 +487,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Image.network(
-                                              'https://deeplink.recruitpick.com/uploads/IC_sign_B2.png',
+                                              'https://mytvpocroyal.com/uploads/IC_sign_B2.png',
                                             ),
                                             const Text(
                                               'Your assembly station',

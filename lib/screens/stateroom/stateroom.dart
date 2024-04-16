@@ -55,7 +55,6 @@ class _StateRoomState extends State<StateRoom> {
                     Image.asset(
                       'assets/images/ship_info.webp',
                       width: width / 2,
-                      
                       height: height / 2,
                       fit: BoxFit.cover,
                     )
@@ -142,4 +141,4 @@ class _StateRoomState extends State<StateRoom> {
     );
   }
 }
-// window.location.href = "https://deeplink.recruitpick.com/web";
+// window.location.href = "https://mytvpocroyal.com/web";

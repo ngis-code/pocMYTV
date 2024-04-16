@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:pocmytv/models/timelines/timeline.dart';
 
 Future<Map<String, dynamic>> getTimeLineData() async {
-  final response = await http.get(
-      Uri.parse('https://deeplink.recruitpick.com/uploads/timelines.json'));
+  final response = await http
+      .get(Uri.parse('https://mytvpocroyal.com/uploads/timelines.json'));
   if (response.statusCode == 200) {
     return json.decode(response.body);
   } else {

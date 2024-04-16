@@ -23,7 +23,7 @@ class _SafetyImageState extends State<SafetyImage> {
       ),
       extendBodyBehindAppBar: true,
       body: Image.network(
-        'https://deeplink.recruitpick.com/uploads/IC_MyTV_B2.png',
+        'https://mytvpocroyal.com/uploads/IC_MyTV_B2.png',
         fit: BoxFit.cover,
       ),
     );

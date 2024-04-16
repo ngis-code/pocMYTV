@@ -28,8 +28,8 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
     super.initState();
     _controller = VideoPlayerController.network(
       kIsWeb
-          ? 'https://deeplink.recruitpick.com/uploads/bgMovie.mp4'
-          : 'https://deeplink.recruitpick.com/uploads/bg.avi',
+          ? 'https://mytvpocroyal.com/uploads/bgMovie.mp4'
+          : 'https://mytvpocroyal.com/uploads/bg.avi',
       videoPlayerOptions: VideoPlayerOptions(
         mixWithOthers: true,
         allowBackgroundPlayback: true,

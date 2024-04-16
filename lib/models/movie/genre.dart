@@ -21,27 +21,22 @@ enum Genre {
 
 Map<Genre, String> genreImages = {
   Genre.action:
-      "https://deeplink.recruitpick.com/uploads/action-shot-with-man-on-the-run-dynamic-scene-in-action-movie-blockbuster-style-generated-ai-photo.webp",
+      "https://mytvpocroyal.com/uploads/action-shot-with-man-on-the-run-dynamic-scene-in-action-movie-blockbuster-style-generated-ai-photo.webp",
   Genre.adventure:
-      "https://deeplink.recruitpick.com/uploads/adventure_movie_scene_epic_drama_4_by_dankushagi_dfx68wh-pre.webp",
-  Genre.animation: "https://deeplink.recruitpick.com/uploads/image%20(1).webp",
-  Genre.comedy:
-      "https://deeplink.recruitpick.com/uploads/home-alone-1585876454.webp",
+      "https://mytvpocroyal.com/uploads/adventure_movie_scene_epic_drama_4_by_dankushagi_dfx68wh-pre.webp",
+  Genre.animation: "https://mytvpocroyal.com/uploads/image%20(1).webp",
+  Genre.comedy: "https://mytvpocroyal.com/uploads/home-alone-1585876454.webp",
   Genre.crime:
-      "https://deeplink.recruitpick.com/uploads/AAAABWHNRq64uL28xpbVQlXquunYU3GY_iTiHAXem5T9dfKAHzuTDPJvBJiyZualhrTBuLucgTG912wMDRquH60r23h_8XQivAQmaNMTeGBcwVEKG9OnhVqcnxKM.webp",
+      "https://mytvpocroyal.com/uploads/AAAABWHNRq64uL28xpbVQlXquunYU3GY_iTiHAXem5T9dfKAHzuTDPJvBJiyZualhrTBuLucgTG912wMDRquH60r23h_8XQivAQmaNMTeGBcwVEKG9OnhVqcnxKM.webp",
   Genre.drama:
-      "https://deeplink.recruitpick.com/uploads/eb01187bbe4c8a3d9a677ae85b32143c2763438a_2000x2000%20(1).webp",
-  Genre.family: "https://deeplink.recruitpick.com/uploads/Family-2013-1.webp",
-  Genre.fantasy:
-      "https://deeplink.recruitpick.com/uploads/best-fantasy-movies.webp",
-  Genre.history:
-      "https://deeplink.recruitpick.com/uploads/saving-private-ryan.webp",
+      "https://mytvpocroyal.com/uploads/eb01187bbe4c8a3d9a677ae85b32143c2763438a_2000x2000%20(1).webp",
+  Genre.family: "https://mytvpocroyal.com/uploads/Family-2013-1.webp",
+  Genre.fantasy: "https://mytvpocroyal.com/uploads/best-fantasy-movies.webp",
+  Genre.history: "https://mytvpocroyal.com/uploads/saving-private-ryan.webp",
   Genre.horror:
-      "https://deeplink.recruitpick.com/uploads/Reddit-Scariest-Horror-Movie-Scenes-Featured-Image.webp",
-  Genre.music:
-      "https://deeplink.recruitpick.com/uploads/back-to-the-future.webp",
-  Genre.mystery:
-      "https://deeplink.recruitpick.com/uploads/MCDKNOU_LG002%20(1).webp",
+      "https://mytvpocroyal.com/uploads/Reddit-Scariest-Horror-Movie-Scenes-Featured-Image.webp",
+  Genre.music: "https://mytvpocroyal.com/uploads/back-to-the-future.webp",
+  Genre.mystery: "https://mytvpocroyal.com/uploads/MCDKNOU_LG002%20(1).webp",
   // Genre.romance:
   //     "https://i.pinimg.com/236x/1f/d3/da/1fd3dabcfe549266176e365d830baaea.jpg",
   // Genre.scienceFiction:

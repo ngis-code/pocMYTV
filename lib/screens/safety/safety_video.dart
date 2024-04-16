@@ -17,7 +17,7 @@ class _SafetyVideoScreenState extends State<SafetyVideoScreen> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-        'https://deeplink.recruitpick.com/uploads/LifeJacket_EN_072021.mp4',
+        'https://mytvpocroyal.com/uploads/LifeJacket_EN_072021.mp4',
         videoPlayerOptions: VideoPlayerOptions(
             allowBackgroundPlayback: false, mixWithOthers: true))
       ..initialize().then((_) {
