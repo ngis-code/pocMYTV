@@ -19,9 +19,9 @@ class FocusWidget extends StatefulWidget {
   final EdgeInsets padding;
   final String? focusGroup;
   final bool enabled;
-  final bool skipTraversal;
   final Function() onTap;
   final Function(bool hasFocus)? onFocusChange;
+  final FocusNode? focusNode;
 
   const FocusWidget({
     super.key,
@@ -38,7 +38,7 @@ class FocusWidget extends StatefulWidget {
     this.focusColor,
     this.focusGroup,
     this.enabled = true,
-    this.skipTraversal = false,
+    this.focusNode,
   });
 
   @override
@@ -54,13 +54,12 @@ class _FocusWidgetState extends State<FocusWidget> {
   @override
   void initState() {
     super.initState();
-    focusNode = FocusNode(
-      onKeyEvent: _handler,
-      skipTraversal: widget.skipTraversal,
-      canRequestFocus: !widget.skipTraversal,
-      descendantsAreFocusable: !widget.skipTraversal,
-      descendantsAreTraversable: !widget.skipTraversal,
-    );
+    focusNode = widget.focusNode ?? FocusNode();
+    focusNode.onKeyEvent = _handler;
+    focusNode.skipTraversal = !widget.enabled;
+    focusNode.canRequestFocus = widget.enabled;
+    focusNode.descendantsAreFocusable = widget.enabled;
+    focusNode.descendantsAreTraversable = widget.enabled;
     FocusService.add(widget.focusGroup ?? "unknown", focusNode);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       hasFocus = focusNode.hasFocus;
@@ -74,7 +73,10 @@ class _FocusWidgetState extends State<FocusWidget> {
   dispose() {
     disposed = true;
     FocusService.remove(widget.focusGroup ?? "unknown", focusNode);
-    focusNode.unfocus();
+    if (focusNode.hasFocus) {
+      focusNode.unfocus();
+      KeyBoardService.hasFocus = false;
+    }
     super.dispose();
   }
 
@@ -90,19 +92,15 @@ class _FocusWidgetState extends State<FocusWidget> {
           rejection = false;
           return;
         }
-        // log(hasFocus
-        //     ? "Got Focus ${widget.focusGroup ?? 'unknown'}"
-        //     : "Lost Focus ${widget.focusGroup ?? 'unknown'}");
         if (hasFocus) {
+          KeyBoardService.hasFocus = true;
           final request = FocusService.requestFocus(
               widget.focusGroup ?? "unknown", focusNode);
-          // log("Request ${request ? 'approved' : 'rejected'}");
           if (!request) {
             rejection = true;
             return;
           }
         }
-        // log("Animating Focus: $hasFocus ${widget.focusGroup ?? 'unknown'}");
         setState(() {
           this.hasFocus = hasFocus;
         });

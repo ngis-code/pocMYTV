@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pocmytv/screens/account/account_screen.dart';
+import 'package:pocmytv/screens/guest_service/guest_service_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
@@ -111,8 +112,8 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
               onFocusChange: onFocusChange,
               description: "Guest Service",
               title: "Guest Service",
-              icon: Icons.star_border_outlined,
-              page: const ShorexScreen(),
+              icon: Icons.info_outline_rounded,
+              page: const GuestServiceScreen(),
             ),
             HomeBottomTile(
               color: color,

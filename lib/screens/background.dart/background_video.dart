@@ -72,7 +72,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
                       borderRadius: 0,
                       blur: 0,
                       borderWidth: 0,
-                      skipTraversal: true,
+                      enabled: false,
                       onTap: () {},
                       child: VideoPlayer(_controller),
                     ),

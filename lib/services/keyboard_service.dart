@@ -8,6 +8,8 @@ class KeyBoardService {
       GlobalKey<NavigatorState>();
   static final _handlers = <bool Function(KeyEvent event)>[];
 
+  static bool hasFocus = false;
+
   static void init() {
     HardwareKeyboard.instance.addHandler(globalKeyPressHandler);
   }
@@ -30,8 +32,9 @@ class KeyBoardService {
       case LogicalKeyboardKey.arrowRight:
       case LogicalKeyboardKey.arrowUp:
       case LogicalKeyboardKey.arrowDown:
-        // TODO: this line should only be called if there is no focus node with focus
-        // FocusScope.of(navigatorKey.currentContext!).nextFocus();
+        if (!hasFocus) {
+          FocusScope.of(navigatorKey.currentContext!).nextFocus();
+        }
         break;
       default:
         log(event.logicalKey.keyLabel);
