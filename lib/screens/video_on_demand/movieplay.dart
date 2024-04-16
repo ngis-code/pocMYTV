@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/utils/glass_widget.dart';
+import 'package:pocmytv/widgets/clock.dart';
 import 'package:video_player/video_player.dart';
 
 class MoviePlay extends StatefulWidget {
@@ -98,13 +100,40 @@ class _MoviePlayState extends State<MoviePlay> {
               alignment: Alignment.center,
               child: const CircularProgressIndicator(),
             ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: FocusWidget(
-            onTap: () => _skipAd(),
-            borderColor: Colors.white,
-            padding: const EdgeInsets.all(8),
-            child: const Icon(Icons.skip_next_rounded)),
+      floatingActionButton: ClockWidget(
+        updatePerSec: true,
+        builder: (context, time) {
+          // time to finish should be 5 sec from the start of the video
+          // final timeToFinish =
+          //     _controller.value.duration - _controller.value.position;
+          final timeToFinish =
+              const Duration(seconds: 5) - _controller.value.position;
+          if (_controller.value.position >= const Duration(seconds: 5)) {
+            return FocusWidget(
+              hasFocus: true,
+              onTap: () => _skipAd(),
+              borderColor: Colors.white,
+              padding: const EdgeInsets.all(8),
+              child: const Icon(
+                Icons.skip_next_rounded,
+                color: Colors.white,
+              ),
+            );
+          }
+          return GlassWidget(
+            radius: 50,
+            backgroundColor: Colors.black45,
+            blur: 10,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: Text(
+              "${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          );
+        },
       ),
     );
   }
