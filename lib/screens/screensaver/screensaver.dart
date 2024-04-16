@@ -10,6 +10,7 @@ import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/main_page.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/widgets/clock.dart';
+import 'dart:html' as html;
 
 class ScreenSaver extends StatefulWidget {
   const ScreenSaver({super.key});
@@ -35,7 +36,15 @@ class _ScreenSaverState extends State<ScreenSaver> {
         });
       });
     });
+    isRunningOnIpad();
     super.initState();
+  }
+
+  bool isRunningOnIpad() {
+    final userAgent = html.window.navigator.userAgent;
+    // Check for both 'iPad' and 'Macintosh' as newer models may identify as Macintosh
+    return userAgent.contains('iPad') ||
+        (userAgent.contains('Macintosh') && userAgent.contains('Touch'));
   }
 
   @override
@@ -83,14 +92,14 @@ class _ScreenSaverState extends State<ScreenSaver> {
               ),
               RichText(
                 textAlign: TextAlign.center,
-                text: const TextSpan(
-                  text: "Welcome to your Stateroom ",
-                  style: TextStyle(
+                text: TextSpan(
+                  text: "Welcome to your Stateroom ${isRunningOnIpad()}",
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     // fontWeight: FontWeight.bold,
                   ),
-                  children: [
+                  children: const [
                     TextSpan(
                       text: 'Landon Byron',
                       style: TextStyle(
