@@ -108,7 +108,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
                       ),
                     ),
                     TextSpan(
-                      text: 'Acent',
+                      text: 'Ascent',
                       style: TextStyle(
                         color: Colors.blue,
                         fontSize: 30,
