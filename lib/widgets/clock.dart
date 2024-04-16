@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class ClockWidget extends StatefulWidget {
   final Widget Function(BuildContext context, DateTime time) builder;
-  const ClockWidget({super.key, required this.builder});
+  final bool updatePerSec;
+  const ClockWidget(
+      {super.key, required this.builder, this.updatePerSec = false});
 
   @override
   State<ClockWidget> createState() => _ClockWidgetState();
@@ -29,7 +31,9 @@ class _ClockWidgetState extends State<ClockWidget> {
   }
 
   Future<void> _updateTime() async {
-    final millisecTillNextMinute = 60 * 1000 - DateTime.now().millisecond;
+    final millisecTillNextMinute = widget.updatePerSec
+        ? 1000 - DateTime.now().millisecond
+        : 60 * 1000 - DateTime.now().millisecond;
     await Future.delayed(Duration(milliseconds: millisecTillNextMinute));
     if (!disposed) {
       setState(() {});
