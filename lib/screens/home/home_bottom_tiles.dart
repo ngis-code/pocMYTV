@@ -100,6 +100,22 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
             HomeBottomTile(
               color: color,
               onFocusChange: onFocusChange,
+              description: "StateRoom",
+              title: "StateRoom",
+              icon: Icons.star_border_outlined,
+              page: const ShorexScreen(),
+            ),
+            HomeBottomTile(
+              color: color,
+              onFocusChange: onFocusChange,
+              description: "Guest Service",
+              title: "Guest Service",
+              icon: Icons.star_border_outlined,
+              page: const ShorexScreen(),
+            ),
+            HomeBottomTile(
+              color: color,
+              onFocusChange: onFocusChange,
               description: "Account Information",
               title: "Account",
               icon: Icons.person_rounded,
