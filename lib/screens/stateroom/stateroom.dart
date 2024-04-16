@@ -11,6 +11,12 @@ class StateRoom extends StatefulWidget {
 }
 
 class _StateRoomState extends State<StateRoom> {
+  List<String> stateroomObjective = [
+    'AC',
+    'Curtains',
+    'Light',
+  ];
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -50,16 +56,66 @@ class _StateRoomState extends State<StateRoom> {
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/ship_info.webp',
-                      width: width / 2,
-                      
-                      height: height / 2,
+                Container(
+                  width: width / 1.2,
+                  height: height / 1.5,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/ship_info.webp'),
                       fit: BoxFit.cover,
-                    )
-                  ],
+                    ),
+                  ),
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0xFF061556),
+                              Color(0xFF2B6FC0),
+                              Color(0xFF131C49),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Music',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: height / 50,
+                              ),
+                            ),
+                            Text(
+                              'Music',
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(.6),
+                                fontSize: height / 50,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    itemCount: stateroomObjective.length,
+                  ),
                 )
               ],
             ),
