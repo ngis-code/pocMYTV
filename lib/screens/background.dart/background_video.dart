@@ -65,8 +65,8 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
             ),
           Positioned.fill(
               child: widget.backgroundWidget ??
-                  AspectRatio(
-                    aspectRatio: width / height,
+                  ClipRRect(
+                    clipBehavior: Clip.hardEdge,
                     child: FocusWidget(
                       borderColor: Colors.transparent,
                       borderRadius: 0,
@@ -74,7 +74,10 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
                       borderWidth: 0,
                       enabled: false,
                       onTap: () {},
-                      child: VideoPlayer(_controller),
+                      child: AspectRatio(
+                        aspectRatio: width / height,
+                        child: VideoPlayer(_controller),
+                      ),
                     ),
                   )),
           Positioned.fill(child: widget.child),
