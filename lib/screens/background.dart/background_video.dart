@@ -64,22 +64,27 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
               ),
             ),
           Positioned.fill(
-              child: widget.backgroundWidget ??
-                  ClipRRect(
-                    clipBehavior: Clip.hardEdge,
-                    child: FocusWidget(
-                      borderColor: Colors.transparent,
-                      borderRadius: 0,
-                      blur: 0,
-                      borderWidth: 0,
-                      enabled: false,
-                      onTap: () {},
-                      child: AspectRatio(
-                        aspectRatio: width / height,
+            child: widget.backgroundWidget ??
+                FocusWidget(
+                  borderColor: Colors.transparent,
+                  borderRadius: 0,
+                  blur: 0,
+                  borderWidth: 0,
+                  enabled: false,
+                  onTap: () {},
+                  child: AspectRatio(
+                    aspectRatio: width / height,
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: SizedBox(
+                        width: _controller.value.size.width,
+                        height: _controller.value.size.height,
                         child: VideoPlayer(_controller),
                       ),
                     ),
-                  )),
+                  ),
+                ),
+          ),
           Positioned.fill(child: widget.child),
           if (widget.showBackButton && Navigator.of(context).canPop())
             Positioned(
