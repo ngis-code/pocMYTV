@@ -41,8 +41,7 @@ class _ParallexVideosState extends State<ParallexVideos> {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return MoviePlay(
-                  adVideoUrl:
-                      'https://cdn.pixabay.com/video/2020/07/03/43781-436252322_large.mp4',
+                  adVideoUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
                   mainVideoUrl: videos[index],
                 );
               }));
