@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/models/complaint.dart/complaint.dart';
 import 'package:pocmytv/models/complaint.dart/complaint_category.dart';
+import 'package:pocmytv/screens/guest_service/guest_service_screen.dart';
+import 'package:pocmytv/screens/main_page.dart';
 import 'package:pocmytv/widgets/select_one.dart';
 
 class ComplaintForm extends StatefulWidget {
@@ -13,7 +16,6 @@ class ComplaintForm extends StatefulWidget {
 }
 
 class _ComplaintFormState extends State<ComplaintForm> {
-  bool hasFocus = false;
   String? chosenOption;
 
   @override
@@ -42,11 +44,29 @@ class _ComplaintFormState extends State<ComplaintForm> {
             ),
             backgroundColor: Colors.transparent,
             borderRadius: 40,
-            onTap: () {},
-            onFocusChange: (hasFocus) {
-              setState(() {
-                this.hasFocus = hasFocus;
-              });
+            onTap: () {
+              Complaint.complaints.insert(
+                0,
+                Complaint(
+                  complaint: chosenOption!,
+                  category: widget.category.title,
+                  createdAt: DateTime.now(),
+                  expectedResolveAt: DateTime.now().add(
+                    const Duration(minutes: 1),
+                  ),
+                ),
+              );
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => const MainPage(),
+                ),
+                (route) => false,
+              );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const GuestServiceScreen(),
+                ),
+              );
             },
             child: Text(
               'Submit',
