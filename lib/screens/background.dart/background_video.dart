@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/notification/parallex_promotional_ads.dart';
 import 'package:video_player/video_player.dart';
 
 class BackgroundVideo extends StatefulWidget {
@@ -87,15 +88,17 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
           ),
           Positioned.fill(
             child: Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                end: Alignment.topCenter,
-                begin: Alignment.bottomCenter,
-                colors: [
-                  Color.fromARGB(255, 4, 69, 122),
-                  Colors.transparent,
-                ],
-              )),
+              decoration: BoxDecoration(
+                color: darkBlue.withOpacity(0.5),
+                // gradient: LinearGradient(
+                //   end: Alignment.topCenter,
+                //   begin: Alignment.bottomCenter,
+                //   colors: [
+                //     Color.fromARGB(255, 4, 69, 122),
+                //     Colors.transparent,
+                //   ],
+                // ),
+              ),
             ),
           ),
           Positioned.fill(child: widget.child),

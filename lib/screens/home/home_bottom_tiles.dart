@@ -4,6 +4,7 @@ import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/guest_service/guest_service_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
+import 'package:pocmytv/screens/notification/parallex_promotional_ads.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
 import 'package:pocmytv/screens/shorex/shorex.dart';
 import 'package:pocmytv/screens/stateroom/stateroom.dart';
@@ -32,7 +33,7 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
 
   @override
   Widget build(BuildContext context) {
-    Color color = Colors.black45;
+    Color color = darkBlue.withOpacity(0.5);
     return ValueListenableBuilder(
       valueListenable: TVDrawer.drawerHidden,
       builder: (context, value, child) => Container(
