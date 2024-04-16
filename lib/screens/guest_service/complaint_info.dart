@@ -59,18 +59,20 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
                     color: Colors.white,
                   ),
             ),
-            Text(
-              'Resolved At: ${widget.complaint.resolvedAt!.toMonthString()} ${widget.complaint.resolvedAt!.amPmTime}',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
-                  ),
-            ),
-            Text(
-              "Expected Resolution Time: ${widget.complaint.expectedResolveAt!.toMonthString()} ${widget.complaint.resolvedAt!.amPmTime}",
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
-                  ),
-            ),
+            if (widget.complaint.resolvedAt != null)
+              Text(
+                'Resolved At: ${widget.complaint.resolvedAt?.toMonthString()} ${widget.complaint.resolvedAt?.amPmTime}',
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+            if (widget.complaint.expectedResolveAt != null)
+              Text(
+                "Expected Resolution Time: ${widget.complaint.expectedResolveAt?.toMonthString()} ${widget.complaint.expectedResolveAt?.amPmTime}",
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
           ],
         ),
       ),
