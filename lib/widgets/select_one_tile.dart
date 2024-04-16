@@ -6,18 +6,21 @@ class SelectOneTile extends StatelessWidget {
   final void Function() onPressed;
   final String label;
   final bool enabled;
+  final bool hasFocus;
   const SelectOneTile({
     super.key,
     required this.isSelected,
     required this.onPressed,
     required this.label,
     this.enabled = true,
+    this.hasFocus = false,
   });
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return FocusWidget(
       onTap: onPressed,
+      hasFocus: hasFocus,
       enabled: enabled,
       padding: const EdgeInsets.symmetric(
         horizontal: 10,

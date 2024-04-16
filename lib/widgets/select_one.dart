@@ -11,6 +11,7 @@ class SelectOne<T> extends StatefulWidget {
   final String? title;
   final String? subtitle;
   bool expanded;
+  final bool hasFocus;
   SelectOne({
     super.key,
     required this.allOptions,
@@ -20,6 +21,7 @@ class SelectOne<T> extends StatefulWidget {
     this.title,
     this.subtitle,
     this.expanded = false,
+    this.hasFocus = false,
   });
 
   @override
@@ -29,6 +31,7 @@ class SelectOne<T> extends StatefulWidget {
 class _SelectOneState<T> extends State<SelectOne<T>> {
   @override
   Widget build(BuildContext context) {
+    int i = 0;
     final Wrap body = Wrap(
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
@@ -36,18 +39,21 @@ class _SelectOneState<T> extends State<SelectOne<T>> {
       runSpacing: 0,
       spacing: 5,
       children: widget.allOptions
-          .map((e) => SelectOneTile(
-                enabled: !widget.disabledOptions.contains(e.toString()),
-                label: e.toString().toPascalCase(),
-                isSelected: widget.selectedOption == e,
-                onPressed: () {
-                  if (widget.onChange(e)) {
-                    setState(() {
-                      widget.selectedOption = e;
-                    });
-                  }
-                },
-              ))
+          .map(
+            (e) => SelectOneTile(
+              hasFocus: widget.hasFocus && i++ == 0,
+              enabled: !widget.disabledOptions.contains(e.toString()),
+              label: e.toString().toPascalCase(),
+              isSelected: widget.selectedOption == e,
+              onPressed: () {
+                if (widget.onChange(e)) {
+                  setState(() {
+                    widget.selectedOption = e;
+                  });
+                }
+              },
+            ),
+          )
           .toList(),
     );
     return Column(
