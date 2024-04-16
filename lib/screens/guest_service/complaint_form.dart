@@ -17,6 +17,7 @@ class ComplaintForm extends StatefulWidget {
 
 class _ComplaintFormState extends State<ComplaintForm> {
   String? chosenOption;
+  String? err;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,12 @@ class _ComplaintFormState extends State<ComplaintForm> {
             backgroundColor: Colors.transparent,
             borderRadius: 40,
             onTap: () {
+              if (chosenOption == null) {
+                setState(() {
+                  err = 'Please select an option';
+                });
+                return;
+              }
               Complaint.complaints.insert(
                 0,
                 Complaint(
@@ -75,6 +82,14 @@ class _ComplaintFormState extends State<ComplaintForm> {
                   ),
             ),
           ),
+          if (err != null)
+            Text(
+              err!,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
         ],
       ),
     );
