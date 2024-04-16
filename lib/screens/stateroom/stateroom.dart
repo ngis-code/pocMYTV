@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/utils/shader_widget.dart';
@@ -144,3 +142,4 @@ class _StateRoomState extends State<StateRoom> {
     );
   }
 }
+// window.location.href = "https://deeplink.recruitpick.com/web";
