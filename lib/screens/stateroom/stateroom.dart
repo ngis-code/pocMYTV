@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
-import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/utils/shader_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
 
@@ -19,9 +18,9 @@ class _StateRoomState extends State<StateRoom> {
   ];
 
   // !!Theme like: Day-Time, Movie, BedTime, etc,.
-  // !!Add Bubble Animation
   // !!Some defrentation between the movie and the ad like a black screen
   // !!Even for something for the Stateroom Automation
+  // !!Animation in the homepage with the ship
 
   int acTemp = 28;
   bool curtainSwitch = false;
