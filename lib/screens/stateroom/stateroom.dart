@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/utils/shader_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
@@ -30,7 +31,7 @@ class _StateRoomState extends State<StateRoom> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: BackgroundVideo(
+      body: BubbleAnimation(
         child: Column(
           children: [
             Row(
@@ -71,10 +72,6 @@ class _StateRoomState extends State<StateRoom> {
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(
                         Radius.circular(20),
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/ship_info.webp'),
-                        fit: BoxFit.cover,
                       ),
                     ),
                     child: Row(
