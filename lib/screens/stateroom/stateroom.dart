@@ -14,8 +14,13 @@ class _StateRoomState extends State<StateRoom> {
   List<String> stateroomObjective = [
     'AC',
     'Curtains',
-    'Light',
+    'Theme',
   ];
+
+  // !!Theme like: Day-Time, Movie, BedTime, etc,.
+  // !!Add Bubble Animation
+  // !!Some defrentation between the movie and the ad like a black screen
+  // !!Even for something for the Stateroom Automation
 
   int acTemp = 28;
   bool curtainSwitch = false;
