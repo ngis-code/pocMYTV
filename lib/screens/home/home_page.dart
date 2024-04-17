@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   Color completeColor = Colors.green;
   Color inProgressColor = Colors.blueAccent;
   Color todoColor = const Color(0xffd1d2d7);
-  bool docked = false;
+  bool docked = true;
   double start = 0.41176470588235294117647058823529;
   double end = 0.45294117647058823529411764705882;
 
@@ -364,30 +364,40 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: [
                         Expanded(
-                          child: RotatedBox(
-                            quarterTurns: 1,
-                            child: Image.asset(
-                              'assets/ship.png',
-                              fit: BoxFit.contain,
+                          child: Transform.translate(
+                            offset: Offset(
+                              docked
+                                  ? 50
+                                  : 0, // Change these values to move the ship
+                              docked
+                                  ? 300
+                                  : 0, // Change these values to move the ship
                             ),
-                          )
-                              .animate(
-                                target: docked ? 1 : 0,
-                              )
-                              .moveY(
-                                begin: 0,
-                                end: width / 2,
-                              )
-                              .scaleXY(
-                                end: 0.5,
-                                begin: 1,
-                                duration: const Duration(milliseconds: 500),
-                              )
-                              .rotate(
-                                begin: 0,
-                                end: -0.25,
-                                duration: const Duration(milliseconds: 500),
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                              child: Image.asset(
+                                'assets/ship.png',
+                                fit: BoxFit.contain,
                               ),
+                            )
+                                .animate(
+                                  target: docked ? 1 : 0,
+                                )
+                                .moveY(
+                                  begin: 0,
+                                  end: width / 4,
+                                )
+                                .scaleXY(
+                                  end: 0.2,
+                                  begin: 1,
+                                  duration: const Duration(milliseconds: 500),
+                                )
+                                .rotate(
+                                  begin: 0,
+                                  end: -0.17,
+                                  duration: const Duration(milliseconds: 500),
+                                ),
+                          ),
                         ),
                       ],
                     ),
@@ -591,106 +601,110 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-          GlassWidget(
-            radius: 10,
-            child: Container(
-              color: Colors.black45,
-              child: Column(
-                children: [
-                  const SizedBox(height: 4),
-                  Text(
-                    'UPCOMING EVENTS',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: Colors.white),
-                  ),
-                  DataTable(
-                    columnSpacing: 2,
-                    headingRowHeight: 30,
-                    showBottomBorder: false,
-                    dataTextStyle:
-                        Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: Colors.black,
-                            ),
-                    headingTextStyle:
-                        Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                    dividerThickness: 0,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
+          Padding(
+            padding: const EdgeInsets.only(left: 100),
+            child: GlassWidget(
+              radius: 10,
+              child: Container(
+                color: Colors.black45,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 4),
+                    Text(
+                      'UPCOMING EVENTS',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: Colors.white),
                     ),
-                    border: TableBorder.symmetric(
-                      inside: const BorderSide(
-                        color: Colors.white,
-                        width: 1,
+                    DataTable(
+                      columnSpacing: 2,
+                      headingRowHeight: 30,
+                      showBottomBorder: false,
+                      dataTextStyle:
+                          Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: Colors.black,
+                              ),
+                      headingTextStyle:
+                          Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      dividerThickness: 0,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
                       ),
-                    ),
-                    headingRowColor: MaterialStateColor.resolveWith(
-                      (states) {
-                        return Colors.white.withOpacity(.8);
-                      },
-                    ),
-                    columns: [
-                      ...data.keys.map(
-                        (e) => DataColumn(
-                          label: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4),
-                            child: Text(
-                              e.toPascalCase(),
-                              textAlign: TextAlign.right,
+                      border: TableBorder.symmetric(
+                        inside: const BorderSide(
+                          color: Colors.white,
+                          width: 1,
+                        ),
+                      ),
+                      headingRowColor: MaterialStateColor.resolveWith(
+                        (states) {
+                          return Colors.white.withOpacity(.8);
+                        },
+                      ),
+                      columns: [
+                        ...data.keys.map(
+                          (e) => DataColumn(
+                            label: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4),
+                              child: Text(
+                                e.toPascalCase(),
+                                textAlign: TextAlign.right,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                    rows: [
-                      for (int i = 0; i < data['time']!.length; i++)
-                        DataRow(
-                          color: MaterialStateColor.resolveWith(
-                            (states) {
-                              return Colors.white;
-                            },
+                      ],
+                      rows: [
+                        for (int i = 0; i < data['time']!.length; i++)
+                          DataRow(
+                            color: MaterialStateColor.resolveWith(
+                              (states) {
+                                return Colors.white;
+                              },
+                            ),
+                            cells: [
+                              DataCell(Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(data['time']![i],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith()),
+                              )),
+                              DataCell(Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(data['event']![i],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith()),
+                              )),
+                              DataCell(Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(data['location']![i],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith()),
+                              )),
+                            ],
                           ),
-                          cells: [
-                            DataCell(Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
-                              child: Text(data['time']![i],
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith()),
-                            )),
-                            DataCell(Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
-                              child: Text(data['event']![i],
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith()),
-                            )),
-                            DataCell(Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
-                              child: Text(data['location']![i],
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith()),
-                            )),
-                          ],
-                        ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -757,13 +771,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      docked = !docked;
-                    });
-                  },
-                  child: const Text("Dock and UnDock")),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.black45,
@@ -812,6 +819,13 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      docked = !docked;
+                    });
+                  },
+                  child: const Text("Dock and UnDock")),
             ],
           ),
         ],
