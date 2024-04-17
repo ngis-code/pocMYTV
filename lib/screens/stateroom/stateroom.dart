@@ -21,6 +21,7 @@ class _StateRoomState extends State<StateRoom> {
   // !!Some defrentation between the movie and the ad like a black screen
   // !!Even for something for the Stateroom Automation
   // !!Animation in the homepage with the ship
+  // !!Bottom Tile Indicator (Floating Bottom Tile Indicator)
 
   int acTemp = 28;
   bool curtainSwitch = false;
