@@ -21,7 +21,6 @@ class _StateRoomState extends State<StateRoom> {
   // !!Add Bubble Animation
   // !!Some defrentation between the movie and the ad like a black screen
   // !!Even for something for the Stateroom Automation
-  // !!Make the execel sheet look good
 
   int acTemp = 28;
   bool curtainSwitch = false;

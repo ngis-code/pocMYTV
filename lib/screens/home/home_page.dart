@@ -442,47 +442,89 @@ class _HomePageState extends State<HomePage> {
                               ),
                               DataTable(
                                 columnSpacing: 2,
-                                headingRowHeight: 20,
-                                // dataRowHeight: 20,
-                                horizontalMargin: 10,
-                                dataRowMaxHeight: 40,
-                                dataRowMinHeight: 20,
+                                headingRowHeight: 30,
                                 showBottomBorder: false,
                                 dataTextStyle: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
-                                    .copyWith(color: Colors.white),
+                                    .copyWith(
+                                      color: Colors.black,
+                                    ),
                                 headingTextStyle: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
-                                    .copyWith(color: Colors.white),
-                                dividerThickness: 1,
+                                    .copyWith(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                dividerThickness: 0,
                                 decoration: BoxDecoration(
                                   color: Colors.black.withOpacity(0.5),
                                 ),
-                                border: TableBorder.all(color: Colors.white),
+                                border: TableBorder.symmetric(
+                                  inside: const BorderSide(
+                                    color: Colors.white,
+                                    width: 1,
+                                  ),
+                                ),
+                                headingRowColor: MaterialStateColor.resolveWith(
+                                  (states) {
+                                    return Colors.white.withOpacity(.8);
+                                  },
+                                ),
                                 columns: [
-                                  ...data.keys.map((e) => DataColumn(
-                                          label: Text(
-                                        e.toPascalCase(),
-                                        textAlign: TextAlign.center,
-                                      ))),
+                                  ...data.keys.map(
+                                    (e) => DataColumn(
+                                      label: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 4),
+                                        child: Text(
+                                          e.toPascalCase(),
+                                          textAlign: TextAlign.right,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                                 rows: [
                                   for (int i = 0; i < data['time']!.length; i++)
                                     DataRow(
+                                      color: MaterialStateColor.resolveWith(
+                                        (states) {
+                                          return Colors.white;
+                                        },
+                                      ),
                                       cells: [
-                                        DataCell(Text(
-                                          data['time']![i],
-                                          textAlign: TextAlign.center,
+                                        DataCell(Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          child: Text(data['time']![i],
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith()),
                                         )),
-                                        DataCell(Text(
-                                          data['event']![i],
-                                          textAlign: TextAlign.center,
+                                        DataCell(Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          child: Text(data['event']![i],
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith()),
                                         )),
-                                        DataCell(Text(
-                                          data['location']![i],
-                                          textAlign: TextAlign.center,
+                                        DataCell(Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          child: Text(data['location']![i],
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith()),
                                         )),
                                       ],
                                     ),
@@ -562,6 +604,13 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
+                          ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  docked = !docked;
+                                });
+                              },
+                              child: const Text("Dock and UnDock")),
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.black45,
@@ -773,7 +822,7 @@ class _HomePageState extends State<HomePage> {
                     .moveX(begin: 0, end: width / 3),
                 Positioned.fill(
                   child: Image.network(
-                    'https://as2.ftcdn.net/v2/jpg/02/16/09/57/1000_F_216095730_8ol6Cof9NIJSLJWJscTRYraAOsU9jNti.jpg',
+                    'https://mytvpocroyal.com/uploads/island.png',
                     fit: BoxFit.cover,
                   ),
                 )
