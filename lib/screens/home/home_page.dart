@@ -672,7 +672,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(
             height: height,
-            width: width / 3,
+            width: width / 1.2,
             child: Stack(
               children: [
                 Timeline.tileBuilder(
@@ -823,11 +823,12 @@ class _HomePageState extends State<HomePage> {
                 Positioned.fill(
                   child: Image.network(
                     'https://mytvpocroyal.com/uploads/island.png',
-                    fit: BoxFit.cover,
-                  ),
-                )
-                    .animate(target: docked ? 0 : 1)
-                    .moveX(begin: 0, end: width / 3),
+                    height: height,
+                    width: width / 2,
+                  )
+                      .animate(target: docked ? 0 : 1)
+                      .moveX(begin: 0, end: width / 3),
+                ),
               ],
             ),
           ),
