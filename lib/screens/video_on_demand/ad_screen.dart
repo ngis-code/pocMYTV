@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/video_on_demand/common_video_player.dart';
-import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../focus_system/focus_widget.dart';
@@ -56,6 +55,9 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
         matchFullScreen: true,
       ),
       floatingActionButton: FocusWidget(
+        focusGroup: 'ad_skip_bttn',
+        hasFocus: true,
+        borderColor: Colors.transparent,
         onTap: kDebugMode ? skipAd : () {},
         borderRadius: 20,
         backgroundColor: Colors.black45,

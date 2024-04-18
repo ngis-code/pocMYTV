@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class CommonVideoPlayer extends StatefulWidget {
@@ -57,7 +58,11 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    Widget videoPlayer = VideoPlayer(_controller);
+    Widget videoPlayer = FocusWidget(
+      onTap: () {},
+      enabled: false,
+      child: VideoPlayer(_controller),
+    );
     if (widget.matchFullScreen) {
       videoPlayer = FittedBox(
         fit: BoxFit.cover,
@@ -70,40 +75,6 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
     }
     return Stack(
       children: [
-        if (widget.showControls)
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Colors.black.withOpacity(0.5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton(
-                    icon: Icon(_controller.value.isPlaying
-                        ? Icons.pause
-                        : Icons.play_arrow),
-                    onPressed: () {
-                      setState(() {
-                        if (_controller.value.isPlaying) {
-                          _controller.pause();
-                        } else {
-                          _controller.play();
-                        }
-                      });
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.skip_next),
-                    onPressed: () {
-                      _controller.seekTo(_controller.value.duration);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
         if (!_controller.value.isInitialized)
           Center(
             child: Container(
@@ -120,6 +91,52 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
             child: videoPlayer,
           ),
         ),
+        if (widget.showControls)
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FocusWidget(
+                  focusGroup: 'video_controls',
+                  hasFocus: true,
+                  backgroundColor: Colors.black.withOpacity(0.5),
+                  borderRadius: 20,
+                  padding: const EdgeInsets.all(8),
+                  child: Icon(
+                    _controller.value.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      if (_controller.value.isPlaying) {
+                        _controller.pause();
+                      } else {
+                        _controller.play();
+                      }
+                    });
+                  },
+                ),
+                FocusWidget(
+                  focusGroup: 'video_controls',
+                  backgroundColor: Colors.black.withOpacity(0.5),
+                  borderRadius: 20,
+                  padding: const EdgeInsets.all(8),
+                  child: const Icon(
+                    Icons.skip_next,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    _controller.seekTo(_controller.value.duration);
+                  },
+                ),
+              ],
+            ),
+          ),
       ],
     );
   }
