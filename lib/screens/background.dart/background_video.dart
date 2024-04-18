@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
-import 'package:pocmytv/screens/notification/parallex_promotional_ads.dart';
 import 'package:video_player/video_player.dart';
+
+import '../../globals.dart';
 
 class BackgroundVideo extends StatefulWidget {
   final Widget child;

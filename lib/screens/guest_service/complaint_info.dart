@@ -5,9 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:pocmytv/extensions/datetime_extensions.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
-import 'package:pocmytv/screens/notification/parallex_promotional_ads.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
+
+import '../../globals.dart';
 
 class ComplaintInfo extends StatefulWidget {
   final Complaint complaint;

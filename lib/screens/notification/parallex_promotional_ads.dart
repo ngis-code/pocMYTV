@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-const Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
 class ParallerPromotionalAds extends StatefulWidget {
   const ParallerPromotionalAds({
