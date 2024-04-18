@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   Color completeColor = Colors.green;
   Color inProgressColor = Colors.blueAccent;
   Color todoColor = const Color(0xffd1d2d7);
-  bool docked = true;
+  bool docked = false;
   double start = 0.41176470588235294117647058823529;
   double end = 0.45294117647058823529411764705882;
 
