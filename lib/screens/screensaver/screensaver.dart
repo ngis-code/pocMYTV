@@ -70,79 +70,94 @@ class _ScreenSaverState extends State<ScreenSaver> {
           ],
         ),
         extendBodyBehindAppBar: true,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                'assets/images/logo.png',
-                height: 150,
-                width: 150,
-                color: Colors.white,
-              ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: const TextSpan(
-                  text: "Welcome to your Stateroom ",
-                  style: TextStyle(
+        body: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MainPage(),
+                ),
+              );
+            },
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    height: 150,
+                    width: 150,
                     color: Colors.white,
-                    fontSize: 30,
-                    // fontWeight: FontWeight.bold,
                   ),
-                  children: [
-                    TextSpan(
-                      text: 'Landon Byron',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: '\nWe hope you enjoy ',
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: const TextSpan(
+                      text: "Welcome to your Stateroom ",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                         // fontWeight: FontWeight.bold,
                       ),
+                      children: [
+                        TextSpan(
+                          text: 'Landon Byron',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '\nWe hope you enjoy ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Ascent',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
-                    TextSpan(
-                      text: 'Ascent',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 20),
+                  ValueListenableBuilder(
+                    valueListenable: PreLoader.loaded,
+                    builder: (context, value, child) {
+                      if (value != 1 && !kDebugMode) {
+                        return SizedBox(
+                          width: 200,
+                          child: LinearProgressIndicator(
+                            value: value,
+                            valueColor:
+                                const AlwaysStoppedAnimation(Colors.red),
+                            backgroundColor: Colors.white,
+                          ),
+                        );
+                      }
+                      return const Text(
+                        "Press any key to continue",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              ValueListenableBuilder(
-                valueListenable: PreLoader.loaded,
-                builder: (context, value, child) {
-                  if (value != 1 && !kDebugMode) {
-                    return SizedBox(
-                      width: 200,
-                      child: LinearProgressIndicator(
-                        value: value,
-                        valueColor: const AlwaysStoppedAnimation(Colors.red),
-                        backgroundColor: Colors.white,
-                      ),
-                    );
-                  }
-                  return const Text(
-                    "Press any key to continue",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  );
-                },
-              ),
-            ],
+            ),
           ),
         ),
       ),
