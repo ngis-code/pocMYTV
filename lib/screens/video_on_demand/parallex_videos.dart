@@ -52,25 +52,30 @@ class _ParallexVideosState extends State<ParallexVideos> {
                     //   adVideoUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
                     //   mainVideoUrl: videos[index],
                     // );
-                    return const AdvertisementScreen(
-                      adUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
-                    );
-                  },
-                ),
-              );
-              await Navigator.push(
-                globalContext,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const BlackScreen();
-                  },
-                ),
-              );
-              await Navigator.push(
-                globalContext,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return MoviePlayyy(movieUrl: videos[index]);
+                    return AdvertisementScreen(
+                        adUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
+                        onComplete: (controller) async {
+                          await Navigator.push(
+                            globalContext,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return BlackScreen(
+                                  onComplete: () {
+                                    Navigator.push(
+                                      globalContext,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MoviePlayyy(
+                                              movieUrl: videos[index]);
+                                        },
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          );
+                        });
                   },
                 ),
               );

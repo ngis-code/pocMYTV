@@ -7,7 +7,8 @@ import '../../widgets/clock.dart';
 
 class AdvertisementScreen extends StatefulWidget {
   final String adUrl;
-  const AdvertisementScreen({super.key, required this.adUrl});
+  final void Function(VideoPlayerController)? onComplete;
+  const AdvertisementScreen({super.key, required this.adUrl, this.onComplete});
 
   @override
   State<AdvertisementScreen> createState() => _AdvertisementScreenState();
@@ -41,11 +42,13 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
 
   void skipAd() {
     Navigator.of(context).pop();
+    widget.onComplete?.call(_controller);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: CommonVideoPlayer(
         controller: _controller,
         matchFullScreen: true,

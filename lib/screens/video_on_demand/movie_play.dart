@@ -9,7 +9,12 @@ class MoviePlayyy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(child: CommonVideoPlayer(videoUrl: movieUrl)),
+      body: Center(
+        child: CommonVideoPlayer(
+          videoUrl: movieUrl,
+          showControls: true,
+        ),
+      ),
     );
   }
 }
