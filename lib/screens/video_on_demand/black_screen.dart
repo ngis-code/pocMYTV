@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/utils/shader_widget.dart';
 
 class BlackScreen extends StatefulWidget {
   const BlackScreen({super.key});
