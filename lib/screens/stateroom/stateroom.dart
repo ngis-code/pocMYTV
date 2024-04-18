@@ -20,7 +20,6 @@ class _StateRoomState extends State<StateRoom> {
   // !!Theme like: Day-Time, Movie, BedTime, etc,.
   // !!Even for something for the Stateroom Automation
   // !!Animation in the homepage with the ship
-  // !!Bottom Tile Indicator (Floating Bottom Tile Indicator)
   // !!Fixes in the Tile Indicator
 
   int acTemp = 28;

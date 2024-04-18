@@ -486,10 +486,10 @@ class _HomePageState extends State<HomePage> {
                           child: Transform.translate(
                             offset: Offset(
                               docked
-                                  ? 50
+                                  ? width / 35
                                   : 0, // Change these values to move the ship
                               docked
-                                  ? 300
+                                  ? height / 2.8
                                   : 0, // Change these values to move the ship
                             ),
                             child: RotatedBox(
