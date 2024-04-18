@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/screens/video_on_demand/common_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../focus_system/focus_widget.dart';
@@ -6,8 +7,7 @@ import '../../widgets/clock.dart';
 
 class AdvertisementScreen extends StatefulWidget {
   final String adUrl;
-  final Function? onAdEnd;
-  const AdvertisementScreen({super.key, required this.adUrl, this.onAdEnd});
+  const AdvertisementScreen({super.key, required this.adUrl});
 
   @override
   State<AdvertisementScreen> createState() => _AdvertisementScreenState();
@@ -41,24 +41,14 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
 
   void skipAd() {
     Navigator.of(context).pop();
-    widget.onAdEnd?.call();
   }
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: AspectRatio(
-        aspectRatio: width / height,
-        child: FittedBox(
-          fit: BoxFit.cover,
-          child: SizedBox(
-            width: _controller.value.size.width,
-            height: _controller.value.size.height,
-            child: VideoPlayer(_controller),
-          ),
-        ),
+      body: CommonVideoPlayer(
+        controller: _controller,
+        matchFullScreen: true,
       ),
       floatingActionButton: FocusWidget(
         onTap: skipAd,

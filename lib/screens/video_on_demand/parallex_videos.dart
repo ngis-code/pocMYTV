@@ -41,38 +41,39 @@ class _ParallexVideosState extends State<ParallexVideos> {
             focusGroup: 'vod',
             focusColor: Colors.transparent,
             hasFocus: index == 0,
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                // return MoviePlay(
-                //   adVideoUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
-                //   mainVideoUrl: videos[index],
-                // );
-                return AdvertisementScreen(
-                    adUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
-                    onAdEnd: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const BlackScreen();
-                          },
-                        ),
-                      );
-                      await Navigator.push(
-                        KeyBoardService.navigatorKey.currentContext!,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return MoviePlayyy(
-                              movieUrl: videos[index],
-                              onMovieEnd: () {
-                                Navigator.pop(context);
-                              },
-                            );
-                          },
-                        ),
-                      );
-                    });
-              }));
+            onTap: () async {
+              final globalContext =
+                  KeyBoardService.navigatorKey.currentContext!;
+              await Navigator.push(
+                globalContext,
+                MaterialPageRoute(
+                  builder: (context) {
+                    // return MoviePlay(
+                    //   adVideoUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
+                    //   mainVideoUrl: videos[index],
+                    // );
+                    return const AdvertisementScreen(
+                      adUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
+                    );
+                  },
+                ),
+              );
+              await Navigator.push(
+                globalContext,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const BlackScreen();
+                  },
+                ),
+              );
+              await Navigator.push(
+                globalContext,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MoviePlayyy(movieUrl: videos[index]);
+                  },
+                ),
+              );
             },
             child: Stack(
               children: [
