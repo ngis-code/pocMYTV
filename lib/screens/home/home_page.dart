@@ -104,6 +104,18 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        docked = !docked;
+                                      });
+                                    },
+                                    child: const Text("Dock and UnDock")),
+                                const VerticalDivider(
+                                  width: 50,
+                                  color: Colors.white,
+                                  thickness: 1,
+                                ),
                                 FocusWidget(
                                   focusGroup: 'mailButton',
                                   onTap: () {
@@ -819,13 +831,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      docked = !docked;
-                    });
-                  },
-                  child: const Text("Dock and UnDock")),
             ],
           ),
         ],
