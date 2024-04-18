@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/video_on_demand/ad_screen.dart';
+import 'package:pocmytv/screens/video_on_demand/black_screen.dart';
+import 'package:pocmytv/screens/video_on_demand/movie_play.dart';
 import 'package:pocmytv/screens/video_on_demand/movieplay.dart';
 import 'package:pocmytv/screens/video_on_demand/video_cards.dart';
 
@@ -40,10 +43,35 @@ class _ParallexVideosState extends State<ParallexVideos> {
             hasFocus: index == 0,
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return MoviePlay(
-                  adVideoUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
-                  mainVideoUrl: videos[index],
-                );
+                // return MoviePlay(
+                //   adVideoUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
+                //   mainVideoUrl: videos[index],
+                // );
+                return AdvertisementScreen(
+                    adUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
+                    onAdEnd: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const BlackScreen();
+                          },
+                        ),
+                      );
+                      await Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MoviePlayyy(
+                              movieUrl: videos[index],
+                              onMovieEnd: () {
+                                Navigator.pop(context);
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    });
               }));
             },
             child: Stack(
