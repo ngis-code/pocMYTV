@@ -61,7 +61,10 @@ class _StateRoomState extends State<StateRoom> {
                         Icon(Icons.sunny, color: Colors.white),
                         Text('28 C', style: TextStyle(color: Colors.white)),
                       ],
-                    )
+                    ),
+                    Switch(value: false, onChanged: (value) {}),
+                    Switch(value: false, onChanged: (value) {}),
+                    Switch(value: false, onChanged: (value) {}),
                   ],
                 ),
                 Container(
