@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+
 import '../../focus_system/focus_widget.dart';
 import '../../utils/glass_widget.dart';
 import '../../widgets/clock.dart';
@@ -27,7 +28,7 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
       })
       ..addListener(() {
         if (_controller.value.position >= _controller.value.duration) {
-          widget.onAdEnd?.call();
+          skipAd();
         }
       });
     super.initState();
@@ -39,58 +40,59 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
     super.dispose();
   }
 
+  void skipAd() {
+    Navigator.of(context).pop();
+    widget.onAdEnd?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
-
-double height = MediaQuery.of(context).size.height;
-double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: AspectRatio(
-                    aspectRatio: width / height,
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: SizedBox(
-                        width: _controller.value.size.width,
-                        height: _controller.value.size.height,
-                        child: VideoPlayer(_controller),
-                      ),
-                    ),
-                  ),
+        aspectRatio: width / height,
+        child: FittedBox(
+          fit: BoxFit.cover,
+          child: SizedBox(
+            width: _controller.value.size.width,
+            height: _controller.value.size.height,
+            child: VideoPlayer(_controller),
+          ),
+        ),
+      ),
       floatingActionButton: FocusWidget(
-              onTap: (){
-                widget.onAdEnd?.call();
-              },
-              borderColor: Colors.white,
+        onTap: skipAd,
+        borderColor: Colors.white,
+        backgroundColor: Colors.black45,
+        padding: const EdgeInsets.all(8),
+        child: ClockWidget(
+          updatePerSec: true,
+          builder: (context, time) {
+            final timeToFinish =
+                const Duration(seconds: 5) - _controller.value.position;
+            if (_controller.value.position >= const Duration(seconds: 5)) {
+              return const Icon(
+                Icons.skip_next_rounded,
+                color: Colors.white,
+              );
+            }
+            return GlassWidget(
+              radius: 50,
               backgroundColor: Colors.black45,
-              padding: const EdgeInsets.all(8),
-              child: ClockWidget(
-                updatePerSec: true,
-                builder: (context, time) {
-                  final timeToFinish =
-                      const Duration(seconds: 5) - _controller.value.position;
-                  if (_controller.value.position >=
-                      const Duration(seconds: 5)) {
-                    return const Icon(
-                      Icons.skip_next_rounded,
-                      color: Colors.white,
-                    );
-                  }
-                  return GlassWidget(
-                    radius: 50,
-                    backgroundColor: Colors.black45,
-                    blur: 10,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    child: Text(
-                      "${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
-                      style: const TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  );
-                },
+              blur: 10,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
               ),
-            ),
+              child: Text(
+                "${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
+                style: const TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

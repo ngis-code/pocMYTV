@@ -4,8 +4,8 @@ import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/video_on_demand/ad_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/black_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/movie_play.dart';
-import 'package:pocmytv/screens/video_on_demand/movieplay.dart';
 import 'package:pocmytv/screens/video_on_demand/video_cards.dart';
+import 'package:pocmytv/services/keyboard_service.dart';
 
 class ParallexVideos extends StatefulWidget {
   const ParallexVideos({super.key});
@@ -58,8 +58,8 @@ class _ParallexVideosState extends State<ParallexVideos> {
                           },
                         ),
                       );
-                      await Navigator.pushReplacement(
-                        context,
+                      await Navigator.push(
+                        KeyBoardService.navigatorKey.currentContext!,
                         MaterialPageRoute(
                           builder: (context) {
                             return MoviePlayyy(

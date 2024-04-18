@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocmytv/utils/shader_widget.dart';
 
 class BlackScreen extends StatefulWidget {
   const BlackScreen({super.key});
@@ -12,7 +13,7 @@ class _BlackScreenState extends State<BlackScreen> {
   void initState() {
     super.initState();
     Future.delayed(
-      const Duration(seconds: 1,milliseconds: 500),
+      const Duration(seconds: 1, milliseconds: 500),
       () {
         Navigator.pop(context);
       },
@@ -25,11 +26,13 @@ class _BlackScreenState extends State<BlackScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Text(
-          'Video is Loading...',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: height / 3,
+        child: ShaderWidget(
+          child: Text(
+            'Video is Loading...',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: height / 10,
+            ),
           ),
         ),
       ),
