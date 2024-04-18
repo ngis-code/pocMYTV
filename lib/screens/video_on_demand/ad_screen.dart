@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/video_on_demand/common_video_player.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -51,8 +52,9 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
         controller: _controller,
         matchFullScreen: true,
       ),
-      floatingActionButton: GlassWidget(
-        radius: 20,
+      floatingActionButton: FocusWidget(
+        onTap: kDebugMode ? skipAd : () {},
+        borderRadius: 20,
         backgroundColor: Colors.black45,
         padding: const EdgeInsets.all(8),
         child: ClockWidget(
