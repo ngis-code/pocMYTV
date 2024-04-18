@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BlackScreen extends StatefulWidget {
-  const BlackScreen({super.key});
+  final void Function()? onComplete;
+  const BlackScreen({super.key, this.onComplete});
 
   @override
   State<BlackScreen> createState() => _BlackScreenState();
@@ -15,6 +16,7 @@ class _BlackScreenState extends State<BlackScreen> {
       const Duration(seconds: 1, milliseconds: 500),
       () {
         Navigator.pop(context);
+        widget.onComplete?.call();
       },
     );
   }
