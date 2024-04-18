@@ -13,6 +13,8 @@ class MoviePlayyy extends StatelessWidget {
         child: CommonVideoPlayer(
           videoUrl: movieUrl,
           showControls: true,
+          onNext: (_) {},
+          onPrev: (_) {},
         ),
       ),
     );
