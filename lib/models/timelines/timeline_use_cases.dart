@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:pocmytv/models/timelines/timeline.dart';
 
 Future<Map<String, dynamic>> getTimeLineData() async {
   final response = await http.get(
-    Uri.parse('https://mytvpocroyal.com/uploads/timelines.json'),
+    Uri.parse(kDebugMode && kIsWeb
+        ? 'https://v9nm4hsv-3002.asse.devtunnels.ms/timelines.json'
+        : 'https://mytvpocroyal.com/uploads/timelines.json'),
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
