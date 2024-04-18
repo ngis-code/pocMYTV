@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/extensions/datetime_extensions.dart';
+import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
 import 'package:pocmytv/screens/notification/parallex_promotional_ads.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
@@ -44,7 +45,7 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              widget.complaint.complaint,
+              widget.complaint.complaint.replaceAll('_', ' ').toPascalCase(),
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     color: darkBlue,
                     fontWeight: FontWeight.bold,

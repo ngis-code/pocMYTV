@@ -10,7 +10,6 @@ import 'package:pocmytv/screens/shorex/shorex.dart';
 import 'package:pocmytv/screens/stateroom/stateroom.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
-import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
 class HomeBottomTiles extends StatefulWidget {
@@ -44,42 +43,42 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
             left: 0,
             right: 0,
             child: Center(
-              child: GlassWidget(
-                blur: 0,
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-                backgroundColor: darkBlue.withOpacity(0.5),
-                radius: 20,
-                child: Column(
-                  children: [
-                    const Text(
-                      "Swipe up to see more options",
+              child: Stack(
+                children: [
+                  const Positioned(
+                    child: Text(
+                      "Press down button to see more options",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Icon(Icons.keyboard_arrow_down_rounded,
-                            size: 40, color: Colors.white)
-                        .animate(
-                          onComplete: (controller) =>
-                              controller.repeat(reverse: true),
-                        )
-                        .moveY(
-                          curve: Curves.easeInOut,
-                          begin: -5,
-                          end: 5,
-                          duration: const Duration(milliseconds: 1000),
-                        )
-                        .then()
-                        .moveY(
-                          curve: Curves.easeInOut,
-                          begin: 5,
-                          end: -5,
-                          duration: const Duration(milliseconds: 1000),
-                        ),
-                  ],
-                ),
+                  ),
+                  Positioned.fill(
+                    child: Center(
+                      child: const Icon(Icons.keyboard_arrow_down_rounded,
+                              size: 40, color: Colors.white)
+                          .animate(
+                            onComplete: (controller) =>
+                                controller.repeat(reverse: true),
+                          )
+                          .moveY(
+                            curve: Curves.easeInOut,
+                            begin: 0,
+                            end: 5,
+                            duration: const Duration(milliseconds: 1000),
+                          )
+                          .then()
+                          .moveY(
+                            curve: Curves.easeInOut,
+                            begin: 0,
+                            end: -5,
+                            duration: const Duration(milliseconds: 1000),
+                          ),
+                    ),
+                  ),
+                ],
               ).animate(target: TVDrawer.drawerHidden.value ? 0 : 1).moveY(
                     curve: Curves.easeInOut,
                     begin: 0,
