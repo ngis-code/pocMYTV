@@ -67,16 +67,16 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                         )
                         .moveY(
                           curve: Curves.easeInOut,
-                          begin: -10,
+                          begin: -5,
                           end: 5,
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 1000),
                         )
                         .then()
                         .moveY(
                           curve: Curves.easeInOut,
                           begin: 5,
-                          end: -10,
-                          duration: const Duration(milliseconds: 500),
+                          end: -5,
+                          duration: const Duration(milliseconds: 1000),
                         ),
                   ],
                 ),
