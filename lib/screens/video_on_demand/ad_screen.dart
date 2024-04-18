@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/video_on_demand/common_video_player.dart';
+import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../focus_system/focus_widget.dart';
@@ -50,24 +51,17 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
         controller: _controller,
         matchFullScreen: true,
       ),
-      floatingActionButton: FocusWidget(
-        onTap: skipAd,
-        borderColor: Colors.white,
+      floatingActionButton: GlassWidget(
+        radius: 20,
         backgroundColor: Colors.black45,
         padding: const EdgeInsets.all(8),
         child: ClockWidget(
           updatePerSec: true,
           builder: (context, time) {
             final timeToFinish =
-                const Duration(seconds: 5) - _controller.value.position;
-            if (_controller.value.position >= const Duration(seconds: 5)) {
-              return const Icon(
-                Icons.skip_next_rounded,
-                color: Colors.white,
-              );
-            }
+                _controller.value.duration - _controller.value.position;
             return Text(
-              "Skip ${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
+              "Your movie will start after this ad ${timeToFinish.inSeconds % 60}",
               style: const TextStyle(color: Colors.white, fontSize: 20),
             );
           },
