@@ -26,16 +26,11 @@ class _BlackScreenState extends State<BlackScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: ShaderWidget(
-          child: Text(
-            'Video is Loading...',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: height / 10,
-            ),
-          ),
-        ),
-      ),
+          child: Image.asset(
+        'assets/images/logo.png',
+        color: Colors.white,
+        height: height / 3,
+      )),
     );
   }
 }
