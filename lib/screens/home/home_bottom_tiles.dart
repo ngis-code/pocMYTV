@@ -46,15 +46,16 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
               child: Stack(
                 children: [
                   const Positioned(
-                    child: Text(
-                      "Press down button to see more options",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
+                      child: Text(
+                        // "Press down button to see more options",
+                        "",
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ),
+                      ),
                   Positioned.fill(
                     child: Center(
                       child: const Icon(Icons.keyboard_arrow_down_rounded,

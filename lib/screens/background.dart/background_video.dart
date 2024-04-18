@@ -107,12 +107,49 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
             Positioned(
               top: 10,
               left: 10,
-              child: GestureDetector(
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(color: Colors.white, Icons.arrow_back),
+              // child: GestureDetector(
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     // child: Icon(color: Colors.white, Icons.arrow_back, size: 30),
+              //     child: Container(
+              //       decoration: BoxDecoration(
+              //         color: Colors.black.withOpacity(0.5),
+              //         borderRadius: BorderRadius.circular(20),
+              //       ),
+              //       padding: const EdgeInsets.all(8),
+              //       child: const Icon(
+              //         Icons.arrow_back_rounded,
+              //         color: Colors.white,
+              //         size: 30,
+              //       ),
+              //     ),
+              //   ),
+              //   onTap: () => Navigator.of(context).pop(),
+              // ),
+              child: ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black.withOpacity(0.5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: const EdgeInsets.all(15)),
+                child: const Column(
+                  children: [
+                    Icon(
+                      Icons.home_rounded,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    Text(
+                      'Press Back',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
                 ),
-                onTap: () => Navigator.of(context).pop(),
               ),
             ),
         ],
