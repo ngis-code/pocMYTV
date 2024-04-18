@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../focus_system/focus_widget.dart';
-import '../../utils/glass_widget.dart';
 import '../../widgets/clock.dart';
 
 class AdvertisementScreen extends StatefulWidget {
@@ -77,18 +76,9 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
                 color: Colors.white,
               );
             }
-            return GlassWidget(
-              radius: 50,
-              backgroundColor: Colors.black45,
-              blur: 10,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              child: Text(
-                "${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
-                style: const TextStyle(color: Colors.white, fontSize: 20),
-              ),
+            return Text(
+              "Skip ${timeToFinish.inMinutes}:${timeToFinish.inSeconds % 60}",
+              style: const TextStyle(color: Colors.white, fontSize: 20),
             );
           },
         ),
