@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/utils/shader_widget.dart';
 import 'package:pocmytv/widgets/clock.dart';
@@ -21,6 +23,10 @@ class _StateRoomState extends State<StateRoom> {
   // !!Even for something for the Stateroom Automation
   // !!Animation in the homepage with the ship
   // !!Fixes in the Tile Indicator
+
+  bool dateTime = false;
+  bool movieTime = true;
+  bool bedTime = false;
 
   int acTemp = 28;
   bool curtainSwitch = false;
@@ -62,9 +68,19 @@ class _StateRoomState extends State<StateRoom> {
                         Text('28 C', style: TextStyle(color: Colors.white)),
                       ],
                     ),
-                    Switch(value: false, onChanged: (value) {}),
-                    Switch(value: false, onChanged: (value) {}),
-                    Switch(value: false, onChanged: (value) {}),
+                    Row(
+                      children: [
+                        RotatedBox(
+                          quarterTurns: 3,
+                          child: CupertinoSwitch(
+                            value: true,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                        // CupertinoSwitch(value: false, onChanged: (value) {}),
+                        // CupertinoSwitch(value: false, onChanged: (value) {}),
+                      ],
+                    ),
                   ],
                 ),
                 Container(
