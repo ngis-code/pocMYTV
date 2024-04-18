@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:video_player/video_player.dart';
 
@@ -9,6 +10,9 @@ class CommonVideoPlayer extends StatefulWidget {
   final bool showControls;
   final Widget? loadingWidget;
   final bool matchFullScreen;
+  final void Function(VideoPlayerController controller)? onNext;
+  final void Function(VideoPlayerController controller)? onPrev;
+  final void Function(VideoPlayerController controller)? onPlayPause;
   final Function(VideoPlayerController controller)? onComplete;
   const CommonVideoPlayer({
     super.key,
@@ -19,6 +23,9 @@ class CommonVideoPlayer extends StatefulWidget {
     this.loadingWidget,
     this.matchFullScreen = false,
     this.onComplete,
+    this.onNext,
+    this.onPrev,
+    this.onPlayPause,
   });
 
   @override
@@ -27,6 +34,9 @@ class CommonVideoPlayer extends StatefulWidget {
 
 class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
   late final VideoPlayerController _controller;
+
+  int count = 0;
+  bool show = true;
 
   @override
   void initState() {
@@ -92,14 +102,32 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
           ),
         ),
         if (widget.showControls)
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
+          Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                if (widget.onPrev != null)
+                  FocusWidget(
+                    onFocusChange: onFocusChange,
+                    focusGroup: 'video_controls',
+                    backgroundColor: Colors.black.withOpacity(0.5),
+                    borderRadius: 20,
+                    padding: const EdgeInsets.all(8),
+                    child: const Icon(
+                      Icons.skip_previous_rounded,
+                      color: Colors.white,
+                    ),
+                    onTap: () {
+                      if (_controller.value.position > Duration.zero) {
+                        _controller.seekTo(Duration.zero);
+                      } else {
+                        widget.onPrev?.call(_controller);
+                      }
+                    },
+                  ),
                 FocusWidget(
+                  onFocusChange: onFocusChange,
                   focusGroup: 'video_controls',
                   hasFocus: true,
                   backgroundColor: Colors.black.withOpacity(0.5),
@@ -107,8 +135,8 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
                   padding: const EdgeInsets.all(8),
                   child: Icon(
                     _controller.value.isPlaying
-                        ? Icons.pause
-                        : Icons.play_arrow,
+                        ? Icons.pause_rounded
+                        : Icons.play_arrow_rounded,
                     color: Colors.white,
                   ),
                   onTap: () {
@@ -119,25 +147,55 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
                         _controller.play();
                       }
                     });
+                    widget.onPlayPause?.call(_controller);
                   },
                 ),
-                FocusWidget(
-                  focusGroup: 'video_controls',
-                  backgroundColor: Colors.black.withOpacity(0.5),
-                  borderRadius: 20,
-                  padding: const EdgeInsets.all(8),
-                  child: const Icon(
-                    Icons.skip_next,
-                    color: Colors.white,
+                if (widget.onNext != null)
+                  FocusWidget(
+                    onFocusChange: onFocusChange,
+                    focusGroup: 'video_controls',
+                    backgroundColor: Colors.black.withOpacity(0.5),
+                    borderRadius: 20,
+                    padding: const EdgeInsets.all(8),
+                    child: const Icon(
+                      Icons.skip_next_rounded,
+                      color: Colors.white,
+                    ),
+                    onTap: () {
+                      _controller.seekTo(_controller.value.duration);
+                      widget.onNext?.call(_controller);
+                    },
                   ),
-                  onTap: () {
-                    _controller.seekTo(_controller.value.duration);
-                  },
-                ),
               ],
             ),
-          ),
+          )
+              .animate(
+                target: show ? 1 : 0,
+              )
+              .fade(
+                curve: Curves.easeInOut,
+                begin: 0,
+                end: 1,
+                duration: const Duration(milliseconds: 500),
+              ),
       ],
     );
+  }
+
+  void onFocusChange(bool hasFocus) {
+    showControls();
+  }
+
+  void showControls() async {
+    int tmp = ++count;
+    setState(() {
+      show = true;
+    });
+    await Future.delayed(const Duration(seconds: 5));
+    if (count == tmp) {
+      setState(() {
+        show = false;
+      });
+    }
   }
 }
