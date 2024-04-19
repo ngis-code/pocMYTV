@@ -135,7 +135,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               height: 15,
                             ),
                             Text(
-                              "Male".toUpperCase(),
+                              "Landon".toUpperCase(),
                               style: TextStyle(
                                   fontSize: height / 25,
                                   fontWeight: FontWeight.bold),
@@ -173,7 +173,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         child: Column(
                           children: [
                             Image.network(
-                              'https://cdn3d.iconscout.com/3d/premium/thumb/woman-avatar-6299541-5187873.png?f=webp',
+                              'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
                               height: height / 5,
                               width: width / 7.5,
                             ),
@@ -181,7 +181,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               height: 15,
                             ),
                             Text(
-                              "Female".toUpperCase(),
+                              "Gabriel".toUpperCase(),
                               style: TextStyle(
                                   fontSize: height / 25,
                                   fontWeight: FontWeight.bold),
