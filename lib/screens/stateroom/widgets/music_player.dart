@@ -21,8 +21,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
   void initState() {
     super.initState();
     player.onPositionChanged.listen((pos) async {
-      value = pos.inMilliseconds.toDouble() /
-          (await player.getDuration())!.inMilliseconds.toDouble();
+      final duration = await player.getDuration();
+      if (duration == null) {
+        value = 0;
+      } else {
+        value =
+            pos.inMilliseconds.toDouble() / duration.inMilliseconds.toDouble();
+      }
       setState(() {});
     });
     player.onPlayerComplete.listen((event) {
@@ -102,7 +107,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                   child: Slider(
                     allowedInteraction: SliderInteraction.tapOnly,
                     value: math.min(math.max(0, value), 1),
-                    onChanged: (val) async {
+                    onChangeEnd: (val) async {
                       value = val;
                       player.seek(
                         Duration(
@@ -114,6 +119,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                         ),
                       );
                     },
+                    onChanged: (val) async {},
                     activeColor: Colors.blue,
                     inactiveColor: Colors.white54,
                   ),
