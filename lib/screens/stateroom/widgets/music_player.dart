@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
@@ -99,7 +101,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                   enabled: false,
                   child: Slider(
                     allowedInteraction: SliderInteraction.tapOnly,
-                    value: value,
+                    value: math.min(math.max(0, value), 1),
                     onChanged: (val) async {
                       value = val;
                       player.seek(
