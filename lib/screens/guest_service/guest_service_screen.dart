@@ -77,6 +77,7 @@ class GuestServiceScreen extends StatelessWidget {
                                     crossAxisCount: count,
                                     crossAxisSpacing: 20,
                                     mainAxisSpacing: 20,
+                                    clipBehavior: Clip.none,
                                     children: [
                                       for (int i = 0;
                                           i < categoryList.length;

@@ -43,21 +43,23 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // calculateImageDimension('https://mytvpocroyal.com/uploads/island.png')
+      //     .then((value) {
+      //   setState(() {
+      //     imageHeight = value.height;
+      //     imageWidth = value.width;
+      //   });
+      // });
       setState(() {
         docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
       });
-      //Timer.periodic(const Duration(seconds: 5), (timer) {
-      //  setState(() {
-      //    docked = !docked;
-      //  });
-      //});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     final Map<String, List<String>> data = {
       'time': ['6:00 PM', '8:00 PM', '10:00 PM'],
       'event': ['Dinner', 'Show', 'Dance Party'],
@@ -472,6 +474,19 @@ class _HomePageState extends State<HomePage> {
             child: Image.network(
               'https://mytvpocroyal.com/uploads/island.png',
               height: height,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
             ).animate(target: docked ? 0 : 1).moveX(begin: 0, end: width),
           ),
           Positioned.fill(
@@ -485,12 +500,8 @@ class _HomePageState extends State<HomePage> {
                         Expanded(
                           child: Transform.translate(
                             offset: Offset(
-                              docked
-                                  ? width / 35
-                                  : 0, // Change these values to move the ship
-                              docked
-                                  ? height / 2.8
-                                  : 0, // Change these values to move the ship
+                              docked ? width / 35 : 0,
+                              docked ? height / 2.8 : 0,
                             ),
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -504,10 +515,14 @@ class _HomePageState extends State<HomePage> {
                                 )
                                 .moveY(
                                   begin: 0,
-                                  end: width / 4,
+                                  end: -height / 10,
+                                )
+                                .moveX(
+                                  begin: 0,
+                                  end: -width / 20,
                                 )
                                 .scaleXY(
-                                  end: 0.2,
+                                  end: 0.15,
                                   begin: 1,
                                   duration: const Duration(milliseconds: 500),
                                 )
@@ -836,7 +851,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Text(
-                      'Connect to Wifi'.toUpperCase(),
+                      'On the go?'.toUpperCase(),
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
