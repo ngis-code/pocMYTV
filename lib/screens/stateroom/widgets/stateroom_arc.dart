@@ -5,7 +5,13 @@ import 'package:flutter/material.dart';
 class StateRoomArc extends StatefulWidget {
   final List<Color> colors;
   final double value;
-  const StateRoomArc({super.key, required this.colors, required this.value});
+  final AnimationController animationController2;
+  const StateRoomArc({
+    super.key,
+    required this.colors,
+    required this.value,
+    required this.animationController2,
+  });
 
   @override
   State<StateRoomArc> createState() => _StateRoomArcState();
@@ -32,7 +38,6 @@ class _StateRoomArcState extends State<StateRoomArc>
       ..addListener(() {
         setState(() {});
       });
-    // animationController.repeat(reverse: false);
     animationController.animateTo(3.14);
   }
 
@@ -50,8 +55,8 @@ class _StateRoomArcState extends State<StateRoomArc>
           ),
           Positioned.fill(
             child: CustomPaint(
-              painter: ProgressArc(
-                  widget.value * 4.71, widget.colors, true, Colors.grey),
+              painter: ProgressArc(widget.animationController2.value * 4.71,
+                  widget.colors, true, Colors.grey),
             ),
           ),
         ],
