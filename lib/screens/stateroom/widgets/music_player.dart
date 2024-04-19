@@ -104,7 +104,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     ),
                     FocusWidget(
                       padding: const EdgeInsets.all(10),
-                      hasFocus: true,
                       onTap: () {},
                       child: const Icon(Icons.play_arrow, color: Colors.white),
                     ),

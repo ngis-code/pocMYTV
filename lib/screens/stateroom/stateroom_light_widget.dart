@@ -6,11 +6,13 @@ class StateroomLightWidget extends StatefulWidget {
   final String lightType;
   final IconData onIcon;
   final IconData offIcon;
+  final bool hasFocus;
   const StateroomLightWidget({
     super.key,
     required this.lightType,
     required this.onIcon,
     required this.offIcon,
+    this.hasFocus = false,
   });
 
   @override
@@ -25,6 +27,7 @@ class _StateroomLightWidgetState extends State<StateroomLightWidget> {
     return SizedBox(
       height: double.infinity,
       child: FocusWidget(
+        hasFocus: widget.hasFocus,
         onTap: () {
           setState(() {
             isOn = !isOn;

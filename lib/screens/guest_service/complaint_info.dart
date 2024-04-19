@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/extensions/datetime_extensions.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -45,12 +46,32 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              widget.complaint.complaint.replaceAll('_', ' ').toPascalCase(),
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  widget.complaint.complaint
+                      .replaceAll('_', ' ')
+                      .toPascalCase(),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: darkBlue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                FocusWidget(
+                  hasFocus: true,
+                  borderColor: Colors.black,
+                  onTap: () {
+                    disposed = true;
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(
+                    Icons.close,
+                    size: 30,
                     color: darkBlue,
-                    fontWeight: FontWeight.bold,
                   ),
+                ),
+              ],
             ),
             Text(
               'Complaint Category: ${widget.complaint.category}',
