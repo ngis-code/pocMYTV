@@ -28,10 +28,10 @@ class _ScreenSaverState extends State<ScreenSaver> {
         setState(() {
           TimeLineModel.timelines.addAll(value);
         });
-      });
-      getCurrentTimeline().then((value) {
-        setState(() {
-          TimeLineModel.processIndex = value;
+        getCurrentTimeline().then((value) {
+          setState(() {
+            TimeLineModel.processIndex = value;
+          });
         });
       });
     });
