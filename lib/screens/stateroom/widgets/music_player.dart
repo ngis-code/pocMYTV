@@ -50,22 +50,28 @@ class _MusicPlayerState extends State<MusicPlayer> {
             radius: 20,
             blur: 0,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Shape of You',
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Shape of You',
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                    ),
+                    Text(
+                      'Ed Sheeran',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Ed Sheeran',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-                const SizedBox(height: 10),
                 FocusWidget(
                   onTap: () {},
                   enabled: false,
@@ -81,7 +87,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     inactiveColor: Colors.white54,
                   ),
                 ),
-                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

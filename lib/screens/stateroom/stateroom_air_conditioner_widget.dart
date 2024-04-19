@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
+import 'package:pocmytv/screens/stateroom/widgets/stateroom_arc.dart';
 
 class StateroomAirConditionerWidget extends StatefulWidget {
   const StateroomAirConditionerWidget({super.key});
@@ -29,7 +30,17 @@ class _StateroomAirConditionerWidgetState
                   color: Colors.white,
                 ),
           ),
-          const Expanded(child: Text('in progress')),
+          const Expanded(
+            child: StateRoomArc(
+              colors: [
+                Colors.blue,
+                Colors.blueAccent,
+                Colors.purple,
+                Colors.redAccent,
+              ],
+              value: ((80 - 60) + 60.0) / 100,
+            ),
+          ),
         ],
       ),
     );
