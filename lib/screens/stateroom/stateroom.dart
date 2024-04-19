@@ -18,9 +18,11 @@ class _StateRoomState extends State<StateRoom> {
     'Theme',
   ];
 
-  // !!Theme like: Day-Time, Movie, BedTime, etc,.
-  // !!Even for something for the Stateroom Automation
-  // !!Animation in the homepage with the ship
+  /// !!Theme like: Day-Time, Movie, BedTime, etc,.
+  /// !!Even for something for the Stateroom Automation
+  /// !!Animation in the homepage with the ship
+  /// !!IPad responsiveness **
+  /// !!QR Code to open up the mobile app (deeplinks.recruitpick.com) (recrutpick://)
 
   bool dateTime = false;
   bool movieTime = true;
