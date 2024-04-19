@@ -45,21 +45,23 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // calculateImageDimension('https://mytvpocroyal.com/uploads/island.png')
+      //     .then((value) {
+      //   setState(() {
+      //     imageHeight = value.height;
+      //     imageWidth = value.width;
+      //   });
+      // });
       setState(() {
         docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
       });
-      //Timer.periodic(const Duration(seconds: 5), (timer) {
-      //  setState(() {
-      //    docked = !docked;
-      //  });
-      //});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     final Map<String, List<String>> data = {
       'time': ['6:00 PM', '8:00 PM', '10:00 PM'],
       'event': ['Dinner', 'Show', 'Dance Party'],

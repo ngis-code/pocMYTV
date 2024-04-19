@@ -21,7 +21,6 @@ class _StateRoomState extends State<StateRoom> {
   // !!Theme like: Day-Time, Movie, BedTime, etc,.
   // !!Even for something for the Stateroom Automation
   // !!Animation in the homepage with the ship
-  // !!Fixes in the Tile Indicator
 
   bool dateTime = false;
   bool movieTime = true;
