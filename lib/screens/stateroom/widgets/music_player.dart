@@ -22,83 +22,100 @@ class _MusicPlayerState extends State<MusicPlayer> {
       child: Stack(
         children: [
           Positioned(
-              left: 0,
-              top: 0,
-              bottom: 0,
-              child: Image.network(
-                  'https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.rediff.com%2Fgetahead%2Freport%2Ftrend-shape-of-you-ed-sheeran-drake-despacito-most-streamed-spotify-apple-music-youtube%2F20171211.htm&psig=AOvVaw2Bk7FIaLLMd72GPlmFKf6Z&ust=1713634496477000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDLw43ozoUDFQAAAAAdAAAAABAZ')),
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            child: Image.network(
+              'https://im.rediff.com/getahead/2017/dec/11shape-of-you-cover1.jpg?w=670&h=900',
+              fit: BoxFit.cover,
+            ),
+          ),
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.transparent,
+                    Colors.black26,
+                    Colors.black45,
+                    Colors.black87,
                     Colors.black,
                   ],
                 ),
               ),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Shape of You',
-                style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+          GlassWidget(
+            padding: const EdgeInsets.all(20.0),
+            radius: 20,
+            blur: 0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Shape of You',
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                ),
+                Text(
+                  'Ed Sheeran',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Colors.white,
+                      ),
+                ),
+                const SizedBox(height: 10),
+                FocusWidget(
+                  onTap: () {},
+                  enabled: false,
+                  child: Slider(
+                    allowedInteraction: SliderInteraction.tapOnly,
+                    value: value,
+                    onChanged: (val) {
+                      setState(() {
+                        value = val;
+                      });
+                    },
+                    activeColor: Colors.blue,
+                    inactiveColor: Colors.white54,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FocusWidget(
+                      padding: const EdgeInsets.all(10),
+                      onTap: () {},
+                      child: const Icon(Icons.shuffle, color: Colors.white),
                     ),
-              ),
-              Text(
-                'Ed Sheeran',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.white,
+                    FocusWidget(
+                      padding: const EdgeInsets.all(10),
+                      onTap: () {},
+                      child:
+                          const Icon(Icons.skip_previous, color: Colors.white),
                     ),
-              ),
-              const SizedBox(height: 10),
-              Slider(
-                value: value,
-                onChanged: (val) {
-                  setState(() {
-                    value = val;
-                  });
-                },
-                activeColor: Colors.blue,
-                inactiveColor: Colors.white54,
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FocusWidget(
-                    padding: const EdgeInsets.all(10),
-                    onTap: () {},
-                    child: const Icon(Icons.shuffle, color: Colors.white),
-                  ),
-                  FocusWidget(
-                    padding: const EdgeInsets.all(10),
-                    onTap: () {},
-                    child: const Icon(Icons.skip_previous, color: Colors.white),
-                  ),
-                  FocusWidget(
-                    padding: const EdgeInsets.all(10),
-                    hasFocus: true,
-                    onTap: () {},
-                    child: const Icon(Icons.play_arrow, color: Colors.white),
-                  ),
-                  FocusWidget(
-                    padding: const EdgeInsets.all(10),
-                    onTap: () {},
-                    child: const Icon(Icons.skip_next, color: Colors.white),
-                  ),
-                  FocusWidget(
-                    padding: const EdgeInsets.all(10),
-                    onTap: () {},
-                    child: const Icon(Icons.repeat, color: Colors.white),
-                  ),
-                ],
-              ),
-            ],
+                    FocusWidget(
+                      padding: const EdgeInsets.all(10),
+                      hasFocus: true,
+                      onTap: () {},
+                      child: const Icon(Icons.play_arrow, color: Colors.white),
+                    ),
+                    FocusWidget(
+                      padding: const EdgeInsets.all(10),
+                      onTap: () {},
+                      child: const Icon(Icons.skip_next, color: Colors.white),
+                    ),
+                    FocusWidget(
+                      padding: const EdgeInsets.all(10),
+                      onTap: () {},
+                      child: const Icon(Icons.repeat, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
