@@ -157,7 +157,7 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   onFocusChange: onFocusChange,
                   description: "StateRoom",
                   title: "StateRoom",
-                  icon: Icons.star_border_outlined,
+                  icon: Icons.home_rounded,
                   page: const StateroomAutomationScreen(),
                 ),
                 HomeBottomTile(
