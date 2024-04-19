@@ -13,6 +13,7 @@ class StateroomAirConditionerWidget extends StatefulWidget {
 
 class _StateroomAirConditionerWidgetState
     extends State<StateroomAirConditionerWidget> {
+  double values = ((80 - 60) + 60.0) / 100;
   @override
   Widget build(BuildContext context) {
     return FocusWidget(
@@ -31,16 +32,44 @@ class _StateroomAirConditionerWidgetState
                 ),
           ),
           const SizedBox(height: 20),
-          const Expanded(
+          Expanded(
             child: StateRoomArc(
-              colors: [
+              colors: const [
                 Colors.blue,
                 Colors.blueAccent,
                 Colors.purple,
                 Colors.redAccent,
               ],
-              value: ((80 - 60) + 60.0) / 100,
+              value: values,
             ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    values = values - 0.1;
+                  });
+                },
+                icon: const Icon(
+                  Icons.remove,
+                  color: Colors.white,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    values = values + 0.1;
+                  });
+                },
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ],
       ),
