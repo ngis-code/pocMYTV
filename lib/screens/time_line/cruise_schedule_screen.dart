@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/globals.dart';
 import 'package:pocmytv/models/timelines/timeline.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -28,7 +29,7 @@ class _CruisScheduleState extends State<CruisSchedule> {
   }
 
   Color completeColor = Colors.green;
-  Color inProgressColor = Colors.blueAccent;
+  Color inProgressColor = darkBlue;
   Color todoColor = const Color(0xffd1d2d7);
 
   @override

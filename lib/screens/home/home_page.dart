@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/globals.dart';
 import 'package:pocmytv/models/timelines/timeline.dart';
 import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/screens/notification/notification_screen.dart';
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Color completeColor = Colors.green;
-  Color inProgressColor = Colors.blueAccent;
+  Color inProgressColor = darkBlue;
   Color todoColor = const Color(0xffd1d2d7);
   bool docked = false;
   double start = 0.41176470588235294117647058823529;
@@ -502,7 +503,7 @@ class _HomePageState extends State<HomePage> {
                                     : 0, // Change these values to move the ship
                               ),
                               child: RotatedBox(
-                                quarterTurns: 1,
+                                quarterTurns: 0,
                                 child: Image.asset(
                                   'assets/ship.png',
                                   fit: BoxFit.contain,
