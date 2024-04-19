@@ -4,6 +4,7 @@ import 'package:pocmytv/screens/stateroom/stateroom_air_conditioner_widget.dart'
 import 'package:pocmytv/screens/stateroom/stateroom_light_widget.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_weather_widget.dart';
 import 'package:pocmytv/screens/stateroom/widgets/music_player.dart';
+import 'package:pocmytv/screens/stateroom/widgets/stateroom_stats_tile.dart';
 import 'package:pocmytv/screens/stateroom/widgets/stateroom_time_widget.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
@@ -89,8 +90,39 @@ class StateroomAutomationScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Expanded(child: MusicPlayer()),
-                    SizedBox(width: tilePadding),
-                    const Expanded(child: MusicPlayer()),
+                    SizedBox(height: tilePadding),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const Expanded(
+                            child: StateroomStatsTile(
+                              title: "Total Consumption",
+                              value: "2,7",
+                              unit: "kWH",
+                              icon: Icons.abc,
+                            ),
+                          ),
+                          SizedBox(width: tilePadding),
+                          const Expanded(
+                            child: StateroomStatsTile(
+                              title: "Humidity",
+                              value: "54.0",
+                              unit: "%",
+                              icon: Icons.abc,
+                            ),
+                          ),
+                          SizedBox(width: tilePadding),
+                          const Expanded(
+                            child: StateroomStatsTile(
+                              title: "Pressure",
+                              value: "1008",
+                              unit: "hPA",
+                              icon: Icons.abc,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
