@@ -10,7 +10,7 @@ class PreLoader {
     'assets/ship.png',
   };
   static const Set<String> networkImages = {
-    "https://i.pinimg.com/originals/17/0a/b5/170ab5775a7c96125e70638942e2f513.png",
+    "https://upload.wikimedia.org/wikipedia/commons/8/82/House_Flag_of_Celebrity_Cruises.svg",
     "https://as1.ftcdn.net/v2/jpg/02/77/84/54/1000_F_277845419_KGENqAUJ1JsiK4e7tNc5N8i1z5fRRwEb.jpg",
     "https://static.vecteezy.com/system/resources/thumbnails/016/314/482/small/map-pointer-art-icons-and-graphics-free-png.png",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmLxUqyCxVBJlR-nxuMCpe2TT1tF17h_NNCR8cqhpVxw&s",
