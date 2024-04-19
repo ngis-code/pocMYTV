@@ -23,7 +23,7 @@ class ComplaintsList extends StatelessWidget {
                   ),
             )
           : Padding(
-              padding: const EdgeInsets.symmetric(vertical: 40),
+              padding: const EdgeInsets.symmetric(vertical: 60),
               child: ListView.separated(
                 separatorBuilder: (context, index) => const Divider(),
                 itemCount: Complaint.complaints.length,
