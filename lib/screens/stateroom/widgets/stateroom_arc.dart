@@ -50,8 +50,8 @@ class _StateRoomArcState extends State<StateRoomArc>
           ),
           Positioned.fill(
             child: CustomPaint(
-              painter:
-                  ProgressArc(widget.value, widget.colors, true, Colors.grey),
+              painter: ProgressArc(
+                  widget.value * 4.71, widget.colors, true, Colors.grey),
             ),
           ),
         ],
@@ -87,8 +87,8 @@ class ProgressArc extends CustomPainter {
     if (isBackground) {
       paint.shader = LinearGradient(
         colors: colors,
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
+        begin: Alignment.bottomLeft,
+        end: Alignment.bottomRight,
       ).createShader(rect);
     }
     canvas.drawArc(rect, startAngle, sweepAngle, userCenter, paint);

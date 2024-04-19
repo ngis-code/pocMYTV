@@ -60,24 +60,24 @@ class StateroomAutomationScreen extends StatelessWidget {
                               children: [
                                 const Expanded(
                                   child: StateroomLightWidget(
-                                    offIcon: Icons.lightbulb_outline_rounded,
-                                    onIcon: Icons.lightbulb_rounded,
+                                    offIcon: Icons.lightbulb_outlined,
+                                    onIcon: Icons.lightbulb,
                                     lightType: "Main",
                                   ),
                                 ),
                                 SizedBox(width: tilePadding),
                                 const Expanded(
                                   child: StateroomLightWidget(
-                                    offIcon: Icons.lightbulb_outline_rounded,
-                                    onIcon: Icons.lightbulb_rounded,
+                                    offIcon: Icons.laptop,
+                                    onIcon: Icons.laptop,
                                     lightType: "Desk",
                                   ),
                                 ),
                                 SizedBox(width: tilePadding),
                                 const Expanded(
                                   child: StateroomLightWidget(
-                                    offIcon: Icons.lightbulb_outline_rounded,
-                                    onIcon: Icons.lightbulb_rounded,
+                                    offIcon: Icons.light_rounded,
+                                    onIcon: Icons.light_rounded,
                                     lightType: "Balcony",
                                   ),
                                 ),
