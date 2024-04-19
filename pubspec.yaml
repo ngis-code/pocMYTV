@@ -19,7 +19,7 @@ dependencies:
   vector_math: ^2.1.4
   timelines: ^0.1.0
   video_player: ^2.4.2
-  audioplayers: ^5.2.1
+  audioplayers: ^5.1.0
   audioplayers_tizen: ^3.0.1
   video_player_tizen: ^2.4.9
   http: ^1.2.0
