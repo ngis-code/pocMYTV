@@ -15,7 +15,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
   bool disposed = false;
   final List<Map<String, dynamic>> exsData = [
     {
-      'title': 'Catamaran Sail & Snorkel',
+      'title': 'Celebrity Sail & Snorkel',
       'rating': 4,
       'views': 738,
       'price': 134.99,
@@ -23,7 +23,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
           'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1593634805410-NC149C7M0QCJMMUMLJ3J/colors+01+copy+4.jpg?format=1500w',
     },
     {
-      'title': 'Carnival Shore Excursion',
+      'title': 'Celebrity Shore Excursion',
       'rating': 3,
       'views': 387,
       'price': 400.99,
@@ -31,7 +31,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
           'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594317631484-6JNSTCSQZWE8GASE1M5W/Ca_10.jpg?format=1500w',
     },
     {
-      'title': 'Dolphin Encounter',
+      'title': 'Celebrity Dolphin Encounter',
       'rating': 3,
       'views': 3218,
       'price': 34.99,
@@ -39,7 +39,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
           'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594320847160-DSJPBO63J6PLNCXXZ274/Ca_12.jpg?format=1500w',
     },
     {
-      'title': 'Carnival',
+      'title': 'Celebrity',
       'rating': 4.5,
       'views': 465,
       'price': 256.99,
@@ -47,7 +47,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
           'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594323275851-08KBXHEHN2F4SIOYUJNB/Ca_18.png?format=1500w',
     },
     {
-      'title': 'Dolphin Encounter',
+      'title': 'Celebrity Dolphin Encounter',
       'rating': 3,
       'views': 328,
       'price': 134.99,
@@ -55,7 +55,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
           'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/4cd53c9c-585a-408e-accf-bff8dc024332/getty-images-IJOEYzY5sek-unsplash.jpg',
     },
     {
-      'title': 'Shore Excursion',
+      'title': 'Celebrity Shore Excursion',
       'rating': 4.5,
       'views': 8672,
       'price': 123.99,
