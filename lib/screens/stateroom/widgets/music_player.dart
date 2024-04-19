@@ -20,6 +20,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
       padding: EdgeInsets.all(tilePadding),
       backgroundColor: tileBackgroundColor,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             left: 0,

@@ -35,10 +35,10 @@ class _StateroomAirConditionerWidgetState
           Expanded(
             child: StateRoomArc(
               colors: const [
+                Colors.redAccent,
+                Colors.purple,
                 Colors.blue,
                 Colors.blueAccent,
-                Colors.purple,
-                Colors.redAccent,
               ],
               value: values,
             ),

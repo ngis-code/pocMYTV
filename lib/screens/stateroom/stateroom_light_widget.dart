@@ -39,8 +39,8 @@ class _StateroomLightWidgetState extends State<StateroomLightWidget> {
           children: [
             Icon(
               isOn ? widget.onIcon : widget.offIcon,
-              size: 30,
-              color: isOn ? Colors.blue : Colors.blueGrey,
+              size: 50,
+              color: isOn ? Colors.cyanAccent : Colors.blue,
             ),
             Expanded(
               child: FittedBox(
