@@ -30,6 +30,7 @@ class _StateroomAirConditionerWidgetState
                   color: Colors.white,
                 ),
           ),
+          const SizedBox(height: 20),
           const Expanded(
             child: StateRoomArc(
               colors: [
