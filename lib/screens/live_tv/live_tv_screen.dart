@@ -161,17 +161,17 @@ class Page1 extends StatelessWidget {
                 requestFocus: requestFocus,
                 onTap: onChannelView,
                 image:
-                    "https://i.pinimg.com/originals/17/0a/b5/170ab5775a7c96125e70638942e2f513.png",
+                    "https://upload.wikimedia.org/wikipedia/commons/8/82/House_Flag_of_Celebrity_Cruises.svg",
                 title: "HDMI 1",
                 subtitle: "HDMI 1",
               ),
               _Tile(
                 onTap: onChannelView,
                 image:
-                    "https://i.pinimg.com/originals/17/0a/b5/170ab5775a7c96125e70638942e2f513.png",
-                title: "Royal Entertainment",
+                    "https://upload.wikimedia.org/wikipedia/commons/8/82/House_Flag_of_Celebrity_Cruises.svg",
+                title: "Celebrity Entertainment",
                 subtitle:
-                    "Watch the latest movies and TV shows from Royal Entertainment",
+                    "Watch the latest movies and TV shows from Celebrity Entertainment",
               ),
               _Tile(
                 onTap: onChannelView,
