@@ -163,8 +163,8 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                 HomeBottomTile(
                   color: color,
                   onFocusChange: onFocusChange,
-                  description: "Guest Service",
-                  title: "Guest Service",
+                  description: "Guest Relations",
+                  title: "Guest Relations",
                   icon: Icons.info_outline_rounded,
                   page: const GuestServiceScreen(),
                 ),

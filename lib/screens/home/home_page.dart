@@ -467,7 +467,7 @@ class _HomePageState extends State<HomePage> {
           ]),
       body: GestureDetector(
         onTap: () {
-TVDrawer.drawerHidden.value = !TVDrawer.drawerHidden.value;   
+          TVDrawer.drawerHidden.value = !TVDrawer.drawerHidden.value;
           // TVDrawer.drawerHidden.value = true;
         },
         child: Stack(
@@ -845,7 +845,7 @@ TVDrawer.drawerHidden.value = !TVDrawer.drawerHidden.value;
                 child: Column(
                   children: [
                     Text(
-                      'Connect to Wifi'.toUpperCase(),
+                      'TV On The Go'.toUpperCase(),
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
