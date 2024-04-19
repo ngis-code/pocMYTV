@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
@@ -11,7 +12,27 @@ class MusicPlayer extends StatefulWidget {
 }
 
 class _MusicPlayerState extends State<MusicPlayer> {
-  double value = .3;
+  double value = 0;
+  final player = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    player.onPositionChanged.listen((pos) async {
+      value = pos.inMilliseconds.toDouble() /
+          (await player.getDuration())!.inMilliseconds.toDouble();
+      setState(() {});
+    });
+    player.onPlayerComplete.listen((event) {
+      player.seek(const Duration());
+    });
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +100,17 @@ class _MusicPlayerState extends State<MusicPlayer> {
                   child: Slider(
                     allowedInteraction: SliderInteraction.tapOnly,
                     value: value,
-                    onChanged: (val) {
-                      setState(() {
-                        value = val;
-                      });
+                    onChanged: (val) async {
+                      value = val;
+                      player.seek(
+                        Duration(
+                          milliseconds: (val *
+                                  ((await player.getDuration())
+                                          ?.inMilliseconds ??
+                                      0))
+                              .toInt(),
+                        ),
+                      );
                     },
                     activeColor: Colors.blue,
                     inactiveColor: Colors.white54,
@@ -98,18 +126,52 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     ),
                     FocusWidget(
                       padding: const EdgeInsets.all(10),
-                      onTap: () {},
+                      onTap: () {
+                        player.seek(
+                          const Duration(
+                            milliseconds: 0,
+                          ),
+                        );
+                        setState(() {});
+                      },
                       child:
                           const Icon(Icons.skip_previous, color: Colors.white),
                     ),
                     FocusWidget(
                       padding: const EdgeInsets.all(10),
-                      onTap: () {},
-                      child: const Icon(Icons.play_arrow, color: Colors.white),
+                      onTap: () async {
+                        if (player.state == PlayerState.playing) {
+                          await player.pause();
+                        } else if (player.state == PlayerState.paused) {
+                          await player.resume();
+                        } else if (player.state == PlayerState.stopped) {
+                          await player.play(
+                            UrlSource(
+                                "https://mytvpocroyal.com/uploads/Shape_of_You.mp3"),
+                          );
+                        }
+                        setState(() {});
+                      },
+                      child: Icon(
+                        player.state == PlayerState.playing
+                            ? Icons.pause
+                            : Icons.play_arrow,
+                        color: Colors.white,
+                      ),
                     ),
                     FocusWidget(
                       padding: const EdgeInsets.all(10),
-                      onTap: () {},
+                      onTap: () async {
+                        player.seek(
+                          Duration(
+                            milliseconds: (((await player.getDuration())
+                                        ?.inMilliseconds ??
+                                    0))
+                                .toInt(),
+                          ),
+                        );
+                        setState(() {});
+                      },
                       child: const Icon(Icons.skip_next, color: Colors.white),
                     ),
                     FocusWidget(
