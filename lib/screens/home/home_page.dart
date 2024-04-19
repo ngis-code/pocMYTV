@@ -563,7 +563,9 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   TimeLineModel.timelines[index].title,
                                   style: TextStyle(
-                                    color: getColor(index),
+                                    color: index == TimeLineModel.processIndex
+                                        ? Colors.white
+                                        : getColor(index),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -580,7 +582,9 @@ class _HomePageState extends State<HomePage> {
                                   TimeLineModel.timelines[index].description,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: getColor(index),
+                                    color: index == TimeLineModel.processIndex
+                                        ? Colors.white
+                                        : getColor(index),
                                   ),
                                 ),
                               );

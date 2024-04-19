@@ -83,12 +83,14 @@ class StateroomAutomationScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const Flexible(
+              SizedBox(width: tilePadding),
+              Flexible(
                 flex: 5,
                 child: Column(
                   children: [
-                    Expanded(child: MusicPlayer()),
-                    Expanded(child: MusicPlayer()),
+                    const Expanded(child: MusicPlayer()),
+                    SizedBox(width: tilePadding),
+                    const Expanded(child: MusicPlayer()),
                   ],
                 ),
               ),

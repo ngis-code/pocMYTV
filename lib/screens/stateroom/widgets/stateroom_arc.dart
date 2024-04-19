@@ -32,22 +32,27 @@ class _StateRoomArcState extends State<StateRoomArc>
       ..addListener(() {
         setState(() {});
       });
-    animationController.repeat(reverse: false);
+    // animationController.repeat(reverse: false);
+    animationController.animateTo(3.14);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return SizedBox(
+      height: double.infinity,
+      width: double.infinity,
+      child: Stack(
         children: [
-          CustomPaint(
-            size: const Size(300, 300),
-            painter: ProgressArc(animation.value, [], false, Colors.grey),
+          Positioned.fill(
+            child: CustomPaint(
+              painter: ProgressArc(animation.value, [], false, Colors.grey),
+            ),
           ),
-          CustomPaint(
-            size: const Size(300, 300),
-            painter:
-                ProgressArc(widget.value, widget.colors, true, Colors.grey),
+          Positioned.fill(
+            child: CustomPaint(
+              painter:
+                  ProgressArc(widget.value, widget.colors, true, Colors.grey),
+            ),
           ),
         ],
       ),
@@ -64,9 +69,14 @@ class ProgressArc extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    const rect = Rect.fromLTRB(0, 0, 300, 300);
+    final m = math.min(size.width, size.height);
+    final rect = Rect.fromCenter(
+      center: Offset(size.width / 2, size.height / 2),
+      width: m,
+      height: m,
+    );
     const startAngle = -math.pi;
-    final sweepAngle = -value != null ? value : math.pi;
+    final sweepAngle = value;
     const userCenter = false;
     final paint = Paint()
       ..strokeCap = StrokeCap.round
