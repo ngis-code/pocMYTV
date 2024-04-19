@@ -10,7 +10,7 @@ class StateroomThemeRow extends StatefulWidget {
 }
 
 class _StateroomThemeRowState extends State<StateroomThemeRow> {
-  int chosenTheme = 0;
+  int chosenTheme = 1;
 
   @override
   Widget build(BuildContext context) {
