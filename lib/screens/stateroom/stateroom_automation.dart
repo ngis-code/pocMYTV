@@ -3,6 +3,7 @@ import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_air_conditioner_widget.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_light_widget.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_weather_widget.dart';
+import 'package:pocmytv/screens/stateroom/widgets/music_player.dart';
 import 'package:pocmytv/screens/stateroom/widgets/stateroom_time_widget.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 
@@ -84,7 +85,12 @@ class StateroomAutomationScreen extends StatelessWidget {
               ),
               const Flexible(
                 flex: 5,
-                child: Text('Hehe'),
+                child: Column(
+                  children: [
+                    Expanded(child: MusicPlayer()),
+                    Expanded(child: MusicPlayer()),
+                  ],
+                ),
               ),
             ],
           ),

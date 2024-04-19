@@ -6,7 +6,6 @@ import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/globals.dart';
 import 'package:pocmytv/models/timelines/timeline.dart';
-import 'package:pocmytv/models/timelines/timeline_use_cases.dart';
 import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/screens/notification/notification_screen.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -47,17 +46,17 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      getTimelines().then((value) {
-        setState(() {
-          TimeLineModel.timelines.addAll(value);
-        });
-        getCurrentTimeline().then((value) {
-          setState(() {
-            TimeLineModel.processIndex = value;
-            docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
-          });
-        });
-      });
+      //getTimelines().then((value) {
+      //setState(() {
+      //  TimeLineModel.timelines.addAll(value);
+      //});
+      //getCurrentTimeline().then((value) {
+      //  setState(() {
+      //    TimeLineModel.processIndex = value;
+      //    docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
+      //  });
+      //});
+      //});
       setState(() {
         docked = TimeLineModel.timelines[TimeLineModel.processIndex].dock;
       });
