@@ -27,7 +27,7 @@ class _StateRoomArcState extends State<StateRoomArc>
         parent: animationController, curve: Curves.easeInOutCubic);
     animation = Tween<double>(
       begin: 0,
-      end: 3.14,
+      end: 3.14 + 3.14 / 2,
     ).animate(curvedAnimation)
       ..addListener(() {
         setState(() {});
@@ -75,7 +75,7 @@ class ProgressArc extends CustomPainter {
       width: m,
       height: m,
     );
-    const startAngle = -math.pi;
+    const startAngle = -math.pi - math.pi / 4;
     final sweepAngle = value;
     const userCenter = false;
     final paint = Paint()
