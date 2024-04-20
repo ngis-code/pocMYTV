@@ -34,6 +34,7 @@ class CommonVideoPlayer extends StatefulWidget {
 
 class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
   late final VideoPlayerController _controller;
+  bool disposed = false;
 
   int count = 0;
   bool show = true;
@@ -48,8 +49,10 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
             ? VideoPlayerController.asset(widget.videoUrl!)
             : VideoPlayerController.network(widget.videoUrl!))
       ..initialize().then((_) {
+        if (disposed) return;
         if (widget.onComplete != null) {
           _controller.addListener(() {
+            if (disposed) return;
             if (_controller.value.position >= _controller.value.duration) {
               widget.onComplete!(_controller);
             }
@@ -62,6 +65,7 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
 
   @override
   void dispose() {
+    disposed = true;
     _controller.dispose();
     super.dispose();
   }
