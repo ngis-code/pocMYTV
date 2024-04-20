@@ -70,18 +70,17 @@ class _ScreenSaverState extends State<ScreenSaver> {
           ],
         ),
         extendBodyBehindAppBar: true,
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MainPage(),
-                ),
-              );
-            },
+        body: GestureDetector(
+          onTap: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MainPage(),
+              ),
+            );
+          },
+          child: Container(
+            color: Colors.transparent,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -180,91 +179,3 @@ class _ScreenSaverState extends State<ScreenSaver> {
     return false;
   }
 }
-
-//   static const _backgroundColor = Color.fromARGB(255, 0, 17, 255);
-//   static const _colors = [
-//     Color.fromARGB(255, 64, 254, 244),
-//     Color.fromARGB(255, 0, 212, 249),
-//     Color.fromARGB(255, 0, 249, 187),
-//   ];
-//   static const _durations = [
-//     5000,
-//     4000,
-//     6000,
-//   ];
-//   static const _heightPercentages = [
-//     0.6,
-//     0.7,
-//     0.8,
-//   ];
-    // body: Stack(
-    //   children: [
-    //     WaveWidget(
-    //       config: CustomConfig(
-    //         colors: ScreenSaver._colors,
-    //         durations: ScreenSaver._durations,
-    //         heightPercentages: ScreenSaver._heightPercentages,
-    //       ),
-    //       backgroundColor: ScreenSaver._backgroundColor,
-    //       size: const Size(double.infinity, double.infinity),
-    //       waveAmplitude: 0,
-    //     ),
-    //     Center(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         mainAxisSize: MainAxisSize.max,
-    //         children: [
-    //           Image.asset(
-    //             'assets/images/logo.png',
-    //             height: 120,
-    //             width: 120,
-    //           ),
-    //           const Text(
-    //             "Hello Customer",
-    //             style: TextStyle(
-    //               color: Colors.white,
-    //               fontSize: 30,
-    //               fontWeight: FontWeight.bold,
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ],
-    // ),
-    // body: AnimateGradient(
-    //   primaryBegin: Alignment.topCenter,
-    //   primaryEnd: Alignment.bottomCenter,
-    //   secondaryBegin: Alignment.bottomCenter,
-    //   secondaryEnd: Alignment.bottomCenter,
-    //   duration: const Duration(seconds: 5),
-    //   primaryColors: const [
-    //     Color(0xFF061556),
-    //     Color(0xFF0073BB),
-    //   ],
-    //   secondaryColors: const [
-    //     Color(0xFF061556),
-    //     Color(0xFF0073BB),
-    //   ],
-    //   child: Center(
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       mainAxisSize: MainAxisSize.max,
-    //       children: [
-    //         Image.asset(
-    //           'assets/images/logo.png',
-    //           height: 120,
-    //           width: 120,
-    //         ),
-    //         const Text(
-    //           "Hello Customer",
-    //           style: TextStyle(
-    //             color: Colors.white,
-    //             fontSize: 30,
-    //             fontWeight: FontWeight.bold,
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // ),
