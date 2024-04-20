@@ -20,15 +20,13 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
   void initState() {
     _controller = VideoPlayerController.network(
       widget.adUrl,
-    )
-      ..initialize().then((_) {
+    )..initialize().then((_) {
         setState(() {});
-        _controller.play();
-      })
-      ..addListener(() {
-        if (_controller.value.position >= _controller.value.duration) {
-          skipAd();
-        }
+        _controller.play().then((_) => _controller.addListener(() {
+              if (_controller.value.position >= _controller.value.duration) {
+                skipAd();
+              }
+            }));
       });
     super.initState();
   }
