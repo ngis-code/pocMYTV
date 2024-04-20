@@ -481,6 +481,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: Stack(
           children: [
+            // Island
             Positioned(
               right: 0,
               top: 0,
@@ -490,212 +491,201 @@ class _HomePageState extends State<HomePage> {
                 height: height,
               ).animate(target: docked ? 0 : 1).moveX(begin: 0, end: width),
             ),
+            Positioned(
+              right: height / 1.4,
+              bottom: -40,
+              child: Container(
+                transform: Matrix4.rotationZ(-1.075),
+                child: Image.asset(
+                  'assets/ship.png',
+                  width: height / 3.45,
+                )
+                    .animate(target: docked ? 1 : 0)
+                    .then(delay: const Duration(seconds: 1))
+                    .moveX(
+                      begin: -height / 3.45,
+                      end: 0,
+                      curve: Curves.easeInOut,
+                      duration: const Duration(milliseconds: 1000),
+                    ),
+              ),
+            ),
+            // Body
             Positioned.fill(
               child: Row(
                 children: [
+                  // Ship
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Transform.translate(
-                              offset: Offset(
-                                docked
-                                    ? width / 35
-                                    : 0, // Change these values to move the ship
-                                docked
-                                    ? height / 2.8
-                                    : 0, // Change these values to move the ship
-                              ),
-                              child: RotatedBox(
-                                quarterTurns: 0,
-                                child: Image.asset(
-                                  'assets/ship.png',
-                                  fit: BoxFit.contain,
-                                ),
-                              )
-                                  .animate(
-                                    target: docked ? 1 : 0,
-                                  )
-                                  .moveY(
-                                    begin: 0,
-                                    end: width / 4,
-                                  )
-                                  .scaleXY(
-                                    end: 0.2,
-                                    begin: 1.2,
-                                    duration: const Duration(milliseconds: 500),
-                                  )
-                                  .rotate(
-                                    begin: 0,
-                                    end: -0.17,
-                                    duration: const Duration(milliseconds: 500),
-                                  ),
-                            ),
+                      child: RotatedBox(
+                        quarterTurns: 0,
+                        child: Image.asset(
+                          'assets/ship.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ).animate(target: docked ? 1 : 0).moveX(
+                            begin: 0,
+                            end: width,
+                            curve: Curves.easeInOut,
+                            duration: const Duration(milliseconds: 1000),
                           ),
-                        ],
-                      ),
                     ),
                   ),
+                  // Timeline
                   SizedBox(
                     height: height,
-                    width: docked ? 0 : width / 3,
-                    child: Stack(
-                      children: [
-                        Timeline.tileBuilder(
-                          theme: TimelineThemeData(
-                            direction: Axis.vertical,
-                            connectorTheme: const ConnectorThemeData(
-                              space: 10.0,
-                              thickness: 5.0,
+                    width: width / 3,
+                    child: Timeline.tileBuilder(
+                      theme: TimelineThemeData(
+                        direction: Axis.vertical,
+                        connectorTheme: const ConnectorThemeData(
+                          space: 10.0,
+                          thickness: 5.0,
+                        ),
+                      ),
+                      builder: TimelineTileBuilder.connected(
+                        connectionDirection: ConnectionDirection.before,
+                        itemExtentBuilder: (_, __) =>
+                            (height - 150) / TimeLineModel.timelines.length,
+                        oppositeContentsBuilder: (context, index) {
+                          return GlassWidget(
+                            blur: 0,
+                            radius: 20,
+                            backgroundColor: Colors.black45,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 5),
+                            child: Text(
+                              TimeLineModel.timelines[index].title,
+                              style: TextStyle(
+                                color: index == TimeLineModel.processIndex
+                                    ? Colors.white
+                                    : getColor(index),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          builder: TimelineTileBuilder.connected(
-                            connectionDirection: ConnectionDirection.before,
-                            itemExtentBuilder: (_, __) =>
-                                (height - 150) / TimeLineModel.timelines.length,
-                            oppositeContentsBuilder: (context, index) {
-                              return GlassWidget(
-                                blur: 0,
-                                radius: 20,
-                                backgroundColor: Colors.black45,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0, vertical: 5),
-                                child: Text(
-                                  TimeLineModel.timelines[index].title,
-                                  style: TextStyle(
-                                    color: index == TimeLineModel.processIndex
-                                        ? Colors.white
-                                        : getColor(index),
-                                    fontWeight: FontWeight.bold,
+                          );
+                        },
+                        contentsBuilder: (context, index) {
+                          return GlassWidget(
+                            blur: 0,
+                            backgroundColor: Colors.black45,
+                            radius: 20,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 5),
+                            child: Text(
+                              TimeLineModel.timelines[index].description,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: index == TimeLineModel.processIndex
+                                    ? Colors.white
+                                    : getColor(index),
+                              ),
+                            ),
+                          );
+                        },
+                        indicatorBuilder: (_, index) {
+                          Color color;
+                          Widget child = Container();
+                          if (index == TimeLineModel.processIndex) {
+                            color = inProgressColor;
+                            child = const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Icons.directions_boat,
+                                  color: Colors.white, size: 15.0),
+                            );
+                          } else if (index < TimeLineModel.processIndex) {
+                            color = completeColor;
+                            child = const Icon(
+                              Icons.check,
+                              color: Colors.white,
+                              size: 15.0,
+                            );
+                          } else {
+                            color = todoColor;
+                          }
+                          if (index <= TimeLineModel.processIndex) {
+                            return Stack(
+                              children: [
+                                RotatedBox(
+                                  quarterTurns: 1,
+                                  child: CustomPaint(
+                                    size: const Size(30.0, 30.0),
+                                    painter: BezierPainter(
+                                      color: color,
+                                      drawStart: index > 0,
+                                      drawEnd:
+                                          index < TimeLineModel.processIndex,
+                                    ),
+                                  ),
+                                ),
+                                DotIndicator(
+                                  size: 30.0,
+                                  color: color,
+                                  child: child,
+                                )
+                              ],
+                            );
+                          } else {
+                            return Stack(
+                              children: [
+                                RotatedBox(
+                                  quarterTurns: 1,
+                                  child: CustomPaint(
+                                    size: const Size(15.0, 15.0),
+                                    painter: BezierPainter(
+                                      color: color,
+                                      drawEnd: index <
+                                          TimeLineModel.timelines.length - 1,
+                                    ),
+                                  ),
+                                ),
+                                OutlinedDotIndicator(
+                                  borderWidth: 4.0,
+                                  color: color,
+                                ),
+                              ],
+                            );
+                          }
+                        },
+                        connectorBuilder: (_, index, type) {
+                          if (index > 0) {
+                            if (index == TimeLineModel.processIndex) {
+                              final prevColor = getColor(index - 1);
+                              final color = getColor(index);
+                              List<Color> gradientColors;
+                              if (type == ConnectorType.start) {
+                                gradientColors = [
+                                  Color.lerp(prevColor, color, 0.5)!,
+                                  color
+                                ];
+                              } else {
+                                gradientColors = [
+                                  prevColor,
+                                  Color.lerp(prevColor, color, 0.5)!
+                                ];
+                              }
+                              return DecoratedLineConnector(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: gradientColors,
                                   ),
                                 ),
                               );
-                            },
-                            contentsBuilder: (context, index) {
-                              return GlassWidget(
-                                blur: 0,
-                                backgroundColor: Colors.black45,
-                                radius: 20,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0, vertical: 5),
-                                child: Text(
-                                  TimeLineModel.timelines[index].description,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: index == TimeLineModel.processIndex
-                                        ? Colors.white
-                                        : getColor(index),
-                                  ),
-                                ),
+                            } else {
+                              return SolidLineConnector(
+                                indent: 0,
+                                color: getColor(index),
                               );
-                            },
-                            indicatorBuilder: (_, index) {
-                              Color color;
-                              Widget child = Container();
-                              if (index == TimeLineModel.processIndex) {
-                                color = inProgressColor;
-                                child = const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Icon(Icons.directions_boat,
-                                      color: Colors.white, size: 15.0),
-                                );
-                              } else if (index < TimeLineModel.processIndex) {
-                                color = completeColor;
-                                child = const Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                  size: 15.0,
-                                );
-                              } else {
-                                color = todoColor;
-                              }
-                              if (index <= TimeLineModel.processIndex) {
-                                return Stack(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 1,
-                                      child: CustomPaint(
-                                        size: const Size(30.0, 30.0),
-                                        painter: BezierPainter(
-                                          color: color,
-                                          drawStart: index > 0,
-                                          drawEnd: index <
-                                              TimeLineModel.processIndex,
-                                        ),
-                                      ),
-                                    ),
-                                    DotIndicator(
-                                      size: 30.0,
-                                      color: color,
-                                      child: child,
-                                    )
-                                  ],
-                                );
-                              } else {
-                                return Stack(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 1,
-                                      child: CustomPaint(
-                                        size: const Size(15.0, 15.0),
-                                        painter: BezierPainter(
-                                          color: color,
-                                          drawEnd: index <
-                                              TimeLineModel.timelines.length -
-                                                  1,
-                                        ),
-                                      ),
-                                    ),
-                                    OutlinedDotIndicator(
-                                      borderWidth: 4.0,
-                                      color: color,
-                                    ),
-                                  ],
-                                );
-                              }
-                            },
-                            connectorBuilder: (_, index, type) {
-                              if (index > 0) {
-                                if (index == TimeLineModel.processIndex) {
-                                  final prevColor = getColor(index - 1);
-                                  final color = getColor(index);
-                                  List<Color> gradientColors;
-                                  if (type == ConnectorType.start) {
-                                    gradientColors = [
-                                      Color.lerp(prevColor, color, 0.5)!,
-                                      color
-                                    ];
-                                  } else {
-                                    gradientColors = [
-                                      prevColor,
-                                      Color.lerp(prevColor, color, 0.5)!
-                                    ];
-                                  }
-                                  return DecoratedLineConnector(
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: gradientColors,
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  return SolidLineConnector(
-                                    indent: 0,
-                                    color: getColor(index),
-                                  );
-                                }
-                              }
-                              return null;
-                            },
-                            itemCount: TimeLineModel.timelines.length,
-                          ),
-                        )
-                            .animate(target: docked ? 1 : 0)
-                            .moveX(begin: 0, end: width / 3),
-                      ],
-                    ),
+                            }
+                          }
+                          return null;
+                        },
+                        itemCount: TimeLineModel.timelines.length,
+                      ),
+                    )
+                        .animate(target: docked ? 1 : 0)
+                        .moveX(begin: 0, end: width / 3),
                   ),
                 ],
               ),
@@ -703,147 +693,153 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(left: 100.0, right: width / 3 - 100),
-        child: Wrap(
-          spacing: 20,
-          runSpacing: 20,
-          runAlignment: WrapAlignment.end,
-          crossAxisAlignment: WrapCrossAlignment.end,
-          alignment: WrapAlignment.spaceBetween,
-          children: [
-            GlassWidget(
-              radius: 10,
-              child: Container(
-                color: Colors.black45,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 4),
-                    Text(
-                      'UPCOMING EVENTS',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(color: Colors.white),
-                    ),
-                    DataTable(
-                      columnSpacing: 2,
-                      headingRowHeight: 30,
-                      showBottomBorder: false,
-                      dataTextStyle:
-                          Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                color: Colors.black,
-                              ),
-                      headingTextStyle:
-                          Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                      dividerThickness: 0,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                      ),
-                      border: TableBorder.symmetric(
-                        inside: const BorderSide(
-                          color: Colors.white,
-                          width: 1,
-                        ),
-                      ),
-                      headingRowColor: MaterialStateColor.resolveWith(
-                        (states) {
-                          return Colors.white.withOpacity(.8);
-                        },
-                      ),
-                      columns: [
-                        ...data.keys.map(
-                          (e) => DataColumn(
-                            label: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
-                              child: Text(
-                                e.toPascalCase(),
-                                textAlign: TextAlign.right,
+      bottomNavigationBar: kDebugMode
+          ? null
+          : Padding(
+              padding: EdgeInsets.only(left: 100.0, right: width / 3 - 100),
+              child: Wrap(
+                spacing: 20,
+                runSpacing: 20,
+                runAlignment: WrapAlignment.end,
+                crossAxisAlignment: WrapCrossAlignment.end,
+                alignment: WrapAlignment.spaceBetween,
+                children: [
+                  GlassWidget(
+                    radius: 10,
+                    child: Container(
+                      color: Colors.black45,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 4),
+                          Text(
+                            'UPCOMING EVENTS',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(color: Colors.white),
+                          ),
+                          DataTable(
+                            columnSpacing: 2,
+                            headingRowHeight: 30,
+                            showBottomBorder: false,
+                            dataTextStyle: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Colors.black,
+                                ),
+                            headingTextStyle: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                            dividerThickness: 0,
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                            border: TableBorder.symmetric(
+                              inside: const BorderSide(
+                                color: Colors.white,
+                                width: 1,
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                      rows: [
-                        for (int i = 0; i < data['time']!.length; i++)
-                          DataRow(
-                            color: MaterialStateColor.resolveWith(
+                            headingRowColor: MaterialStateColor.resolveWith(
                               (states) {
-                                return Colors.white;
+                                return Colors.white.withOpacity(.8);
                               },
                             ),
-                            cells: [
-                              DataCell(Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4),
-                                child: Text(data['time']![i],
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith()),
-                              )),
-                              DataCell(Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4),
-                                child: Text(data['event']![i],
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith()),
-                              )),
-                              DataCell(Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4),
-                                child: Text(data['location']![i],
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith()),
-                              )),
+                            columns: [
+                              ...data.keys.map(
+                                (e) => DataColumn(
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 4),
+                                    child: Text(
+                                      e.toPascalCase(),
+                                      textAlign: TextAlign.right,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                            rows: [
+                              for (int i = 0; i < data['time']!.length; i++)
+                                DataRow(
+                                  color: MaterialStateColor.resolveWith(
+                                    (states) {
+                                      return Colors.white;
+                                    },
+                                  ),
+                                  cells: [
+                                    DataCell(Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4),
+                                      child: Text(data['time']![i],
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith()),
+                                    )),
+                                    DataCell(Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4),
+                                      child: Text(data['event']![i],
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith()),
+                                    )),
+                                    DataCell(Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4),
+                                      child: Text(data['location']![i],
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith()),
+                                    )),
+                                  ],
+                                ),
                             ],
                           ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  GlassWidget(
+                    radius: 10,
+                    child: Container(
+                      color: Colors.black26,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      child: Column(
+                        children: [
+                          Text(
+                            'TV On The Go'.toUpperCase(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(color: Colors.white),
+                          ),
+                          Image.asset(
+                            'assets/images/qrcode.png',
+                            fit: BoxFit.cover,
+                            width: 100,
+                            height: 100,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            GlassWidget(
-              radius: 10,
-              child: Container(
-                color: Colors.black26,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Column(
-                  children: [
-                    Text(
-                      'TV On The Go'.toUpperCase(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .copyWith(color: Colors.white),
-                    ),
-                    Image.asset(
-                      'assets/images/qrcode.png',
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 100,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
