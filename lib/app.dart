@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pocmytv/screens/screensaver/screensaver.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
@@ -18,6 +19,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+  ]);
     return MaterialApp(
       navigatorKey: KeyBoardService.navigatorKey,
       debugShowCheckedModeBanner: false,

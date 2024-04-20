@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
@@ -113,18 +114,20 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        docked = !docked;
-                                      });
-                                    },
-                                    child: const Text("Dock and UnDock")),
-                                const VerticalDivider(
-                                  width: 50,
-                                  color: Colors.white,
-                                  thickness: 1,
-                                ),
+                                if (kDebugMode)
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          docked = !docked;
+                                        });
+                                      },
+                                      child: const Text("Dock and UnDock")),
+                                if (kDebugMode)
+                                  const VerticalDivider(
+                                    width: 50,
+                                    color: Colors.white,
+                                    thickness: 1,
+                                  ),
                                 FocusWidget(
                                   focusGroup: 'mailButton',
                                   onTap: () {

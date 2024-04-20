@@ -70,6 +70,8 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
                     size: 30,
                     color: darkBlue,
                   ),
+
+                  
                 ),
               ],
             ),
