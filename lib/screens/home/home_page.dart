@@ -6,7 +6,6 @@ import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/globals.dart';
 import 'package:pocmytv/models/timelines/timeline.dart';
-import 'package:pocmytv/screens/home/home_tile.dart';
 import 'package:pocmytv/screens/notification/notification_screen.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/bezierpainter.dart';
@@ -710,39 +709,6 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: WrapCrossAlignment.end,
           alignment: WrapAlignment.spaceBetween,
           children: [
-            if (false)
-              HomeTile(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Today\'s Itinerary',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                    Text(
-                      'Marselles, France',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                    const SizedBox(height: 15),
-                    Text(
-                      'Tomorrow\'s Itinerary',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                    Text(
-                      'Florence, Italy',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
             GlassWidget(
               radius: 10,
               child: Container(
