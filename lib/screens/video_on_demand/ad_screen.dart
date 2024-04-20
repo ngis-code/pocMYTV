@@ -1,3 +1,8 @@
+// !!Fix to color of the timeline of day2
+// !!Fix the QRCode and open the app link
+// !!Make sure the code for the TV and chrome updated
+// !!Fix the audio in the stateroom automation screen
+
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';

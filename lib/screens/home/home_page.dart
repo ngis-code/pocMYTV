@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -484,7 +486,7 @@ class _HomePageState extends State<HomePage> {
                   .animate(target: docked ? 1 : 0)
                   .then(delay: const Duration(seconds: 1))
                   .moveX(
-                    begin: width,
+                    begin: math.max(width, height) * 2,
                     end: 0,
                     duration: const Duration(milliseconds: 1000),
                     curve: Curves.easeInOut,
