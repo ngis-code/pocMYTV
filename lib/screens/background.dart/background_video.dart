@@ -24,6 +24,7 @@ class BackgroundVideo extends StatefulWidget {
 
 class _BackgroundVideoState extends State<BackgroundVideo> {
   late final VideoPlayerController _controller;
+  bool disposed = false;
 
   @override
   void initState() {
@@ -37,17 +38,29 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
         allowBackgroundPlayback: true,
       ),
     );
-    _controller
-        .initialize()
-        .then((_) => setState(() {
-              _controller
-                ..addListener(() => setState(() {}))
-                ..setLooping(true)
-                ..setVolume(0)
-                ..play();
-              setState(() {});
-            }))
-        .onError((error, stackTrace) => log("Error Loading Video: $error"));
+    _controller.initialize().then((_) {
+      if (disposed) return;
+      setState(() {
+        _controller
+          ..addListener(() {
+            if (disposed) return;
+            setState(() {});
+          })
+          ..setLooping(true)
+          ..setVolume(0)
+          ..play();
+        if (disposed) return;
+        setState(() {});
+      });
+    }).onError((error, stackTrace) {
+      log("Error Loading Video: $error");
+    });
+  }
+
+  @override
+  void dispose() {
+    disposed = true;
+    super.dispose();
   }
 
   @override
