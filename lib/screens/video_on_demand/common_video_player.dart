@@ -74,15 +74,14 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    Widget videoPlayer = GestureDetector(
-      onTap: () {
-        showControls();
-      },
-      child: FocusWidget(
-        onTap: () {},
-        enabled: false,
-        child: VideoPlayer(_controller),
-      ),
+    Widget videoPlayer = FocusWidget(
+      borderColor: Colors.transparent,
+      borderRadius: 0,
+      blur: 0,
+      borderWidth: 0,
+      onTap: () {},
+      enabled: false,
+      child: VideoPlayer(_controller),
     );
     if (widget.matchFullScreen) {
       videoPlayer = FittedBox(
