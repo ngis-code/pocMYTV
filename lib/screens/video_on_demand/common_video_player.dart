@@ -198,11 +198,13 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
 
   void showControls() async {
     int tmp = ++count;
+    if (disposed) return;
     setState(() {
       show = true;
     });
     await Future.delayed(const Duration(seconds: 5));
     if (count == tmp) {
+      if (disposed) return;
       setState(() {
         show = false;
       });
