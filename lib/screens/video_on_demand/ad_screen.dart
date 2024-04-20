@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -27,6 +29,9 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
                 skipAd();
               }
             }));
+      }).onError((error, stackTrace) {
+        log("Error loading ad: $error");
+        skipAd();
       });
     super.initState();
   }
