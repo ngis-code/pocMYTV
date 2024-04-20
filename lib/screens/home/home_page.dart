@@ -39,8 +39,6 @@ class _HomePageState extends State<HomePage> {
   Color inProgressColor = darkBlue;
   Color todoColor = const Color(0xffd1d2d7);
   bool docked = false;
-  double start = 0.41176470588235294117647058823529;
-  double end = 0.45294117647058823529411764705882;
 
   @override
   void initState() {
@@ -489,7 +487,15 @@ class _HomePageState extends State<HomePage> {
               child: Image.network(
                 'https://mytvpocroyal.com/uploads/island.png',
                 height: height,
-              ).animate(target: docked ? 0 : 1).moveX(begin: 0, end: width),
+              )
+                  .animate(target: docked ? 1 : 0)
+                  .then(delay: const Duration(seconds: 1))
+                  .moveX(
+                    begin: width,
+                    end: 0,
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.easeInOut,
+                  ),
             ),
             Positioned(
               right: height / 1.4,
@@ -501,7 +507,7 @@ class _HomePageState extends State<HomePage> {
                   width: height / 3.45,
                 )
                     .animate(target: docked ? 1 : 0)
-                    .then(delay: const Duration(seconds: 1))
+                    .then(delay: const Duration(seconds: 3))
                     .moveX(
                       begin: -height / 3.45,
                       end: 0,
@@ -524,12 +530,15 @@ class _HomePageState extends State<HomePage> {
                           'assets/ship.png',
                           fit: BoxFit.contain,
                         ),
-                      ).animate(target: docked ? 1 : 0).moveX(
+                      )
+                          .animate(target: docked ? 1 : 0)
+                          .moveX(
                             begin: 0,
                             end: width,
                             curve: Curves.easeInOut,
                             duration: const Duration(milliseconds: 1000),
-                          ),
+                          )
+                          .then(delay: const Duration(seconds: 1)),
                     ),
                   ),
                   // Timeline

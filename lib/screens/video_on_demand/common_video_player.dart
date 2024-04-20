@@ -66,6 +66,7 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
   @override
   void dispose() {
     disposed = true;
+    if (widget.controller != null) return;
     _controller.dispose();
     super.dispose();
   }
