@@ -401,6 +401,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         children: [
                                           Image.network(
                                             'https://mytvpocroyal.com/uploads/IC_sign_B2.png',
+                                            height: height / 3,
+                                            width: width / 4,
                                           ),
                                           const Text(
                                             'Your assembly station',
@@ -488,6 +490,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           children: [
                                             Image.network(
                                               'https://mytvpocroyal.com/uploads/IC_sign_B2.png',
+                                              height: height / 3,
+                                              width: width / 4,
                                             ),
                                             const Text(
                                               'Your assembly station',
