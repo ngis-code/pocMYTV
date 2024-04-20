@@ -60,6 +60,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
   @override
   void dispose() {
     disposed = true;
+    _controller.dispose();
     super.dispose();
   }
 
