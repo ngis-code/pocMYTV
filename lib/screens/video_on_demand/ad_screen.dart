@@ -49,31 +49,39 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
-          child: FittedBox(
-            fit: BoxFit.cover,
-            child: SizedBox(
-              width: _controller.value.size.width,
-              height: _controller.value.size.height,
-              child: FocusWidget(
-                borderColor: Colors.transparent,
-                borderRadius: 0,
-                blur: 0,
-                borderWidth: 0,
-                onTap: () {},
-                enabled: false,
-                child: VideoPlayer(_controller),
+      body: !_controller.value.isInitialized
+          ? Center(
+              child: Text(
+                "Advertisement is loading",
+                style: TextStyle(color: Colors.white, fontSize: height / 20),
+              ),
+            )
+          : SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: SizedBox(
+                    width: _controller.value.size.width,
+                    height: _controller.value.size.height,
+                    child: FocusWidget(
+                      borderColor: Colors.transparent,
+                      borderRadius: 0,
+                      blur: 0,
+                      borderWidth: 0,
+                      onTap: () {},
+                      enabled: false,
+                      child: VideoPlayer(_controller),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ),
       floatingActionButton: FocusWidget(
         focusGroup: 'ad_skip_bttn',
         hasFocus: true,
