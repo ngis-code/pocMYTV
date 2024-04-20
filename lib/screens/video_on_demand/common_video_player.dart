@@ -75,7 +75,9 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     Widget videoPlayer = FocusWidget(
-      onTap: () {},
+      onTap: () {
+        showControls();
+      },
       enabled: false,
       child: VideoPlayer(_controller),
     );

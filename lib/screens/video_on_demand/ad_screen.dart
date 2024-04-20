@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pocmytv/screens/video_on_demand/common_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../focus_system/focus_widget.dart';
@@ -21,7 +20,6 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
   void initState() {
     _controller = VideoPlayerController.network(
       widget.adUrl,
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     )
       ..initialize().then((_) {
         setState(() {});
@@ -50,9 +48,20 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: CommonVideoPlayer(
-        controller: _controller,
-        matchFullScreen: true,
+      body: FittedBox(
+        fit: BoxFit.cover,
+        child: SizedBox(
+          width: _controller.value.size.width,
+          height: _controller.value.size.height,
+          child: FocusWidget(
+            onTap: () {},
+            enabled: false,
+            child: AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            ),
+          ),
+        ),
       ),
       floatingActionButton: FocusWidget(
         focusGroup: 'ad_skip_bttn',
