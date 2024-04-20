@@ -48,16 +48,16 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: FittedBox(
-        fit: BoxFit.cover,
-        child: SizedBox(
-          width: _controller.value.size.width,
-          height: _controller.value.size.height,
-          child: FocusWidget(
-            onTap: () {},
-            enabled: false,
-            child: AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
+      body: AspectRatio(
+        aspectRatio: _controller.value.aspectRatio,
+        child: FittedBox(
+          fit: BoxFit.cover,
+          child: SizedBox(
+            width: _controller.value.size.width,
+            height: _controller.value.size.height,
+            child: FocusWidget(
+              onTap: () {},
+              enabled: false,
               child: VideoPlayer(_controller),
             ),
           ),
