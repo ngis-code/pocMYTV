@@ -112,20 +112,6 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                if (kDebugMode)
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          docked = !docked;
-                                        });
-                                      },
-                                      child: const Text("Dock and UnDock")),
-                                if (kDebugMode)
-                                  const VerticalDivider(
-                                    width: 50,
-                                    color: Colors.white,
-                                    thickness: 1,
-                                  ),
                                 FocusWidget(
                                   focusGroup: 'mailButton',
                                   onTap: () {
@@ -476,6 +462,13 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           TVDrawer.drawerHidden.value = !TVDrawer.drawerHidden.value;
           // TVDrawer.drawerHidden.value = true;
+        },
+        onLongPress: () {
+          if (kDebugMode) {
+            setState(() {
+              docked = !docked;
+            });
+          }
         },
         child: Stack(
           children: [
