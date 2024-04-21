@@ -9,7 +9,7 @@ import 'package:vector_math/vector_math_64.dart' as v;
 class CloudsScreen extends StatefulWidget {
   static const List<String> cloudImages = [
     'https://freepngtransparent.com/wp-content/uploads/2023/03/cloud-png-166.png',
-    'https://i.pinimg.com/originals/19/8d/ae/198daeda14097d45e417e62ff283f10e.png',
+    'https://cdn.pixabay.com/photo/2013/07/13/12/12/cloud-159388_640.png',
     'https://pngimg.com/d/cloud_PNG6.png',
   ];
   const CloudsScreen({super.key});
@@ -34,7 +34,7 @@ class _CloudsScreenState extends State<CloudsScreen> {
           math.Random().nextDouble() * MediaQuery.of(context).size.width,
           -400,
         ),
-        velocity: v.Vector2(0, math.Random().nextDouble() * 0.5 + 0.5),
+        velocity: v.Vector2(0, math.Random().nextDouble() * 0.5 + 1),
       );
       setState(() {
         clouds.add(cloud);
@@ -58,9 +58,7 @@ class _CloudsScreenState extends State<CloudsScreen> {
           Positioned(
             left: cloud.position.x,
             top: cloud.position.y,
-            child:
-                // this image should have transparency = 0.2
-                Image.network(
+            child: Image.network(
               cloud.imageUrl,
               width: 400,
               height: 400,
@@ -72,7 +70,9 @@ class _CloudsScreenState extends State<CloudsScreen> {
   }
 
   void _moveClouds() {
-    moveTimer = Timer.periodic(const Duration(milliseconds: 16), (timer) {
+    const int fps = 30;
+    moveTimer =
+        Timer.periodic(const Duration(milliseconds: 1000 ~/ fps), (timer) {
       final List<Cloud> cloudsToRemove = [];
       setState(() {
         for (final cloud in clouds) {

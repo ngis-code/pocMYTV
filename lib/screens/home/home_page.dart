@@ -696,6 +696,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            // Clouds Animation (You can comment below line to hide the clouds)
             const Positioned.fill(child: CloudsScreen()),
           ],
         ),
