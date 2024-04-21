@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
@@ -467,11 +466,9 @@ class _HomePageState extends State<HomePage> {
           // TVDrawer.drawerHidden.value = true;
         },
         onLongPress: () {
-          if (kDebugMode) {
-            setState(() {
-              docked = !docked;
-            });
-          }
+          setState(() {
+            docked = !docked;
+          });
         },
         child: Stack(
           children: [
