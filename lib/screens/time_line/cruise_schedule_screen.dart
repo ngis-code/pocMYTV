@@ -198,7 +198,9 @@ class _CruisScheduleState extends State<CruisSchedule> {
                                 TimeLineModel.timelines[index].description,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: getColor(index),
+                                  color: index == TimeLineModel.processIndex
+                                      ? Colors.white
+                                      : getColor(index),
                                 ),
                               ),
                             );
