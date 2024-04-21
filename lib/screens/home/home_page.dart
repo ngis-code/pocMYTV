@@ -9,6 +9,7 @@ import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/globals.dart';
 import 'package:pocmytv/models/timelines/timeline.dart';
+import 'package:pocmytv/screens/home/clouds_screen.dart';
 import 'package:pocmytv/screens/notification/notification_screen.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:pocmytv/widgets/bezierpainter.dart';
@@ -492,6 +493,7 @@ class _HomePageState extends State<HomePage> {
                     curve: Curves.easeInOut,
                   ),
             ),
+            // The ship for island
             Positioned(
               right: height / 1.4,
               bottom: -40,
@@ -694,6 +696,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            const Positioned.fill(child: CloudsScreen()),
           ],
         ),
       ),
