@@ -8,9 +8,10 @@ import 'package:vector_math/vector_math_64.dart' as v;
 // Summons random clouds with random velocities (all velocities are directed down) and random positions (start position will have y=0, but can have any x value (0 to width))
 class CloudsScreen extends StatefulWidget {
   static const List<String> cloudImages = [
-    'https://freepngtransparent.com/wp-content/uploads/2023/03/cloud-png-166.png',
-    'https://cdn.pixabay.com/photo/2013/07/13/12/12/cloud-159388_640.png',
     'https://pngimg.com/d/cloud_PNG6.png',
+    'https://static.wixstatic.com/media/c7e869_1f9f35b5fb294ca4b95982c795234695~mv2.png/v1/crop/x_413,y_116,w_1556,h_1587/fill/w_356,h_364,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Cloud_H03_2k%20(1).png',
+    'https://www.pngall.com/wp-content/uploads/14/Sky-PNG-Free-Image.png',
+    'https://pngimg.com/d/cloud_PNG8.png',
   ];
   const CloudsScreen({super.key});
 
@@ -26,7 +27,7 @@ class _CloudsScreenState extends State<CloudsScreen> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 4), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       final cloud = Cloud(
         imageUrl: CloudsScreen
             .cloudImages[clouds.length % CloudsScreen.cloudImages.length],
@@ -60,8 +61,8 @@ class _CloudsScreenState extends State<CloudsScreen> {
             top: cloud.position.y,
             child: Image.network(
               cloud.imageUrl,
-              width: 400,
-              height: 400,
+              width: 800,
+              height: 800,
               color: Colors.white.withOpacity(0.4),
             ),
           ),
