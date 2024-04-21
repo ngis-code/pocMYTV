@@ -701,153 +701,147 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: kDebugMode
-          ? null
-          : Padding(
-              padding: EdgeInsets.only(left: 100.0, right: width / 3 - 100),
-              child: Wrap(
-                spacing: 20,
-                runSpacing: 20,
-                runAlignment: WrapAlignment.end,
-                crossAxisAlignment: WrapCrossAlignment.end,
-                alignment: WrapAlignment.spaceBetween,
-                children: [
-                  GlassWidget(
-                    radius: 10,
-                    child: Container(
-                      color: Colors.black45,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 4),
-                          Text(
-                            'UPCOMING EVENTS',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(color: Colors.white),
-                          ),
-                          DataTable(
-                            columnSpacing: 2,
-                            headingRowHeight: 30,
-                            showBottomBorder: false,
-                            dataTextStyle: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: Colors.black,
-                                ),
-                            headingTextStyle: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                            dividerThickness: 0,
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            border: TableBorder.symmetric(
-                              inside: const BorderSide(
-                                color: Colors.white,
-                                width: 1,
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(left: 100.0, right: width / 3 - 100),
+        child: Wrap(
+          spacing: 20,
+          runSpacing: 20,
+          runAlignment: WrapAlignment.end,
+          crossAxisAlignment: WrapCrossAlignment.end,
+          alignment: WrapAlignment.spaceBetween,
+          children: [
+            GlassWidget(
+              radius: 10,
+              child: Container(
+                color: Colors.black45,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 4),
+                    Text(
+                      'UPCOMING EVENTS',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: Colors.white),
+                    ),
+                    DataTable(
+                      columnSpacing: 2,
+                      headingRowHeight: 30,
+                      showBottomBorder: false,
+                      dataTextStyle:
+                          Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: Colors.black,
+                              ),
+                      headingTextStyle:
+                          Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      dividerThickness: 0,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                      ),
+                      border: TableBorder.symmetric(
+                        inside: const BorderSide(
+                          color: Colors.white,
+                          width: 1,
+                        ),
+                      ),
+                      headingRowColor: MaterialStateColor.resolveWith(
+                        (states) {
+                          return Colors.white.withOpacity(.8);
+                        },
+                      ),
+                      columns: [
+                        ...data.keys.map(
+                          (e) => DataColumn(
+                            label: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4),
+                              child: Text(
+                                e.toPascalCase(),
+                                textAlign: TextAlign.right,
                               ),
                             ),
-                            headingRowColor: MaterialStateColor.resolveWith(
+                          ),
+                        ),
+                      ],
+                      rows: [
+                        for (int i = 0; i < data['time']!.length; i++)
+                          DataRow(
+                            color: MaterialStateColor.resolveWith(
                               (states) {
-                                return Colors.white.withOpacity(.8);
+                                return Colors.white;
                               },
                             ),
-                            columns: [
-                              ...data.keys.map(
-                                (e) => DataColumn(
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 4),
-                                    child: Text(
-                                      e.toPascalCase(),
-                                      textAlign: TextAlign.right,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                            rows: [
-                              for (int i = 0; i < data['time']!.length; i++)
-                                DataRow(
-                                  color: MaterialStateColor.resolveWith(
-                                    (states) {
-                                      return Colors.white;
-                                    },
-                                  ),
-                                  cells: [
-                                    DataCell(Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      child: Text(data['time']![i],
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith()),
-                                    )),
-                                    DataCell(Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      child: Text(data['event']![i],
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith()),
-                                    )),
-                                    DataCell(Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      child: Text(data['location']![i],
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith()),
-                                    )),
-                                  ],
-                                ),
+                            cells: [
+                              DataCell(Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(data['time']![i],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith()),
+                              )),
+                              DataCell(Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(data['event']![i],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith()),
+                              )),
+                              DataCell(Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(data['location']![i],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith()),
+                              )),
                             ],
                           ),
-                        ],
-                      ),
+                      ],
                     ),
-                  ),
-                  GlassWidget(
-                    radius: 10,
-                    child: Container(
-                      color: Colors.black26,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
-                      child: Column(
-                        children: [
-                          Text(
-                            'TV On The Go'.toUpperCase(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(color: Colors.white),
-                          ),
-                          Image.asset(
-                            'assets/images/qrcode.png',
-                            fit: BoxFit.cover,
-                            width: 100,
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
+            GlassWidget(
+              radius: 10,
+              child: Container(
+                color: Colors.black26,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Column(
+                  children: [
+                    Text(
+                      'TV On The Go'.toUpperCase(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(color: Colors.white),
+                    ),
+                    Image.asset(
+                      'assets/images/qrcode.png',
+                      fit: BoxFit.cover,
+                      width: 100,
+                      height: 100,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
