@@ -114,34 +114,6 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                GlassWidget(
-                                  radius: 10,
-                                  backgroundColor: Colors.black26,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 5),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        'TV On The Go'.toUpperCase(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge!
-                                            .copyWith(color: Colors.white),
-                                      ),
-                                      Image.asset(
-                                        'assets/images/qrcode.png',
-                                        fit: BoxFit.cover,
-                                        width: 90,
-                                        height: 90,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const VerticalDivider(
-                                  width: 50,
-                                  color: Colors.white,
-                                  thickness: 1,
-                                ),
                                 FocusWidget(
                                   focusGroup: 'mailButton',
                                   onTap: () {
@@ -213,6 +185,36 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                       )
+                                    ],
+                                  ),
+                                ),
+                                const VerticalDivider(
+                                  width: 50,
+                                  color: Colors.white,
+                                  thickness: 1,
+                                ),
+                                GlassWidget(
+                                  radius: 10,
+                                  backgroundColor: Colors.black26,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'TV On The Go'.toUpperCase(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .copyWith(color: Colors.white),
+                                      ),
+                                      Expanded(
+                                        child: Image.asset(
+                                          'assets/images/qrcode.png',
+                                          fit: BoxFit.contain,
+                                          // width: 90,
+                                          // height: 90,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -738,7 +740,7 @@ class _HomePageState extends State<HomePage> {
             GlassWidget(
               radius: 10,
               child: Container(
-                color: Color.fromARGB(255, 232, 116, 53),
+                color: const Color.fromARGB(255, 232, 116, 53),
                 child: Column(
                   children: [
                     const SizedBox(height: 4),
