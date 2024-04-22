@@ -114,6 +114,34 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                GlassWidget(
+                                  radius: 10,
+                                  backgroundColor: Colors.black26,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'TV On The Go'.toUpperCase(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(color: Colors.white),
+                                      ),
+                                      Image.asset(
+                                        'assets/images/qrcode.png',
+                                        fit: BoxFit.cover,
+                                        width: 90,
+                                        height: 90,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const VerticalDivider(
+                                  width: 50,
+                                  color: Colors.white,
+                                  thickness: 1,
+                                ),
                                 FocusWidget(
                                   focusGroup: 'mailButton',
                                   onTap: () {
@@ -806,31 +834,6 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                       ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            GlassWidget(
-              radius: 10,
-              child: Container(
-                color: Colors.black26,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Column(
-                  children: [
-                    Text(
-                      'TV On The Go'.toUpperCase(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .copyWith(color: Colors.white),
-                    ),
-                    Image.asset(
-                      'assets/images/qrcode.png',
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 100,
                     ),
                   ],
                 ),
