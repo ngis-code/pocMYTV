@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Color completeColor = Colors.green;
+  Color completeColor = Color.fromARGB(255, 232, 116, 53);
   Color inProgressColor = darkBlue;
   Color todoColor = const Color(0xffd1d2d7);
   bool docked = false;
