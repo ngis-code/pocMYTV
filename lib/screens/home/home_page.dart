@@ -193,8 +193,87 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.white,
                                   thickness: 1,
                                 ),
-                                GlassWidget(
-                                  radius: 10,
+                                FocusWidget(
+                                  focusGroup: 'mailButton',
+                                  onTap: () {
+                                    showGeneralDialog(
+                                      context: context,
+                                      barrierColor: Colors.transparent,
+                                      pageBuilder: (context,
+                                          Animation<double> animation,
+                                          Animation<double>
+                                              secondaryAnimation) {
+                                        return Dialog(
+                                          backgroundColor: Colors.black45,
+                                          child: GlassWidget(
+                                            radius: 20,
+                                            backgroundColor: Colors.black26,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Text(
+                                                      'TV On The Go'
+                                                          .toUpperCase(),
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyLarge!
+                                                          .copyWith(
+                                                              color:
+                                                                  Colors.white),
+                                                    ),
+                                                    FocusWidget(
+                                                      focusGroup: "closeBttn",
+                                                      onTap: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                      hasFocus: true,
+                                                      child: const Icon(
+                                                        Icons.close_rounded,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Image.asset(
+                                                  'assets/images/qrcode.png',
+                                                  fit: BoxFit.contain,
+                                                  height: height / 2,
+                                                  width: width / 2,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      barrierDismissible: false,
+                                      barrierLabel:
+                                          MaterialLocalizations.of(context)
+                                              .modalBarrierDismissLabel,
+                                      transitionDuration:
+                                          const Duration(milliseconds: 500),
+                                      transitionBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        return ScaleTransition(
+                                          scale: Tween<double>(
+                                            begin: 0,
+                                            end: 1,
+                                          ).animate(
+                                            CurvedAnimation(
+                                              parent: animation,
+                                              curve: Curves.easeInOut,
+                                            ),
+                                          ),
+                                          child: child,
+                                        );
+                                      },
+                                    );
+                                  },
+                                  borderRadius: 10,
                                   backgroundColor: Colors.black26,
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 5),
