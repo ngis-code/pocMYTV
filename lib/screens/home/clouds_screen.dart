@@ -12,12 +12,12 @@ const List<String> cloudImages = [
   'https://pngimg.com/d/cloud_PNG8.png',
 ];
 const bool showClouds = true;
-const Duration cloudSummonDelay = Duration(seconds: 3);
+const Duration cloudSummonDelay = Duration(seconds: 7);
 const double cloudHeight = 800.0;
 const double cloudWidth = 800.0;
 const double maxVelocity = 1;
 const double minVelocity = 0.5;
-const double cloudOpacity = 0.4;
+const double cloudOpacity = 0.3;
 const int cloudsAnimationFps = 30; // reducing this also slows the clouds down
 
 class CloudsScreen extends StatefulWidget {

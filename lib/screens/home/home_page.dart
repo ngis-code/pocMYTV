@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                                                     children: [
                                                       Expanded(
                                                         child: Text(
-                                                          'TV On The Go'
+                                                          'GO ANYWHERE'
                                                               .toUpperCase(),
                                                           textAlign:
                                                               TextAlign.center,
@@ -292,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        'TV On The Go'.toUpperCase(),
+                                        'GO ANYWHERE'.toUpperCase(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodySmall!
@@ -319,7 +319,8 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                        color: Colors.black45,
+                                        color:
+                                            Color.fromARGB(255, 232, 116, 53),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       clipBehavior: Clip.hardEdge,
@@ -361,7 +362,8 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Container(
                                       decoration: BoxDecoration(
-                                        color: Colors.black45,
+                                        color:
+                                            Color.fromARGB(255, 232, 116, 53),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       clipBehavior: Clip.hardEdge,
@@ -836,7 +838,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const SizedBox(height: 4),
                     Text(
-                      'UPCOMING EVENTS',
+                      "LANDON'S CALENDAR",
                       style: Theme.of(context)
                           .textTheme
                           .titleLarge!

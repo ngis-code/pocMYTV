@@ -22,7 +22,7 @@ class BubbleAnimation extends StatefulWidget {
     super.key,
     required this.child,
     this.colors = const [
-      Color(0xFFFEBD11),
+      Color.fromARGB(255, 232, 116, 53),
       Color(0xFF061556),
       Color(0xFF0073BB),
       Colors.blue,

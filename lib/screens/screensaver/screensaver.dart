@@ -105,7 +105,7 @@ class _ScreenSaverState extends State<ScreenSaver> {
                         TextSpan(
                           text: 'Landon Byron',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Color.fromARGB(255, 232, 116, 53),
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                           ),
@@ -119,9 +119,9 @@ class _ScreenSaverState extends State<ScreenSaver> {
                           ),
                         ),
                         TextSpan(
-                          text: 'Ascent',
+                          text: 'Xcel',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Color.fromARGB(255, 232, 116, 53),
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                           ),
