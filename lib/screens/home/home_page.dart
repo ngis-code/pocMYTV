@@ -710,7 +710,7 @@ class _HomePageState extends State<HomePage> {
             GlassWidget(
               radius: 10,
               child: Container(
-                color: Colors.black45,
+                color: Color.fromARGB(255, 232, 116, 53),
                 child: Column(
                   children: [
                     const SizedBox(height: 4),
