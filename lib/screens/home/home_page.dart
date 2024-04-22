@@ -211,39 +211,51 @@ class _HomePageState extends State<HomePage> {
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Text(
-                                                      'TV On The Go'
-                                                          .toUpperCase(),
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .bodyLarge!
-                                                          .copyWith(
-                                                              color:
-                                                                  Colors.white),
-                                                    ),
-                                                    FocusWidget(
-                                                      focusGroup: "closeBttn",
-                                                      onTap: () {
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                      },
-                                                      hasFocus: true,
-                                                      child: const Icon(
-                                                        Icons.close_rounded,
-                                                        color: Colors.white,
+                                                SizedBox(
+                                                  width: math.min(
+                                                      height / 2, width / 2),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Text(
+                                                          'TV On The Go'
+                                                              .toUpperCase(),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .titleMedium!
+                                                              .copyWith(
+                                                                  color: Colors
+                                                                      .white),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                      FocusWidget(
+                                                        focusGroup: "closeBttn",
+                                                        onTap: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        hasFocus: true,
+                                                        child: const Icon(
+                                                          Icons.close_rounded,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                                 Image.asset(
                                                   'assets/images/qrcode.png',
                                                   fit: BoxFit.contain,
-                                                  height: height / 2,
-                                                  width: width / 2,
+                                                  height: math.min(
+                                                      height / 2, width / 2),
+                                                  width: math.min(
+                                                      height / 2, width / 2),
                                                 ),
                                               ],
                                             ),
