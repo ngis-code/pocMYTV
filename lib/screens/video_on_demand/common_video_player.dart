@@ -10,6 +10,7 @@ class CommonVideoPlayer extends StatefulWidget {
   final bool showControls;
   final Widget? loadingWidget;
   final bool matchFullScreen;
+  final Widget? header;
   final void Function(VideoPlayerController controller)? onNext;
   final void Function(VideoPlayerController controller)? onPrev;
   final void Function(VideoPlayerController controller)? onPlayPause;
@@ -26,6 +27,7 @@ class CommonVideoPlayer extends StatefulWidget {
     this.onNext,
     this.onPrev,
     this.onPlayPause,
+    this.header,
   });
 
   @override
@@ -178,6 +180,22 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
                   ),
               ],
             ),
+          )
+              .animate(
+                target: show ? 1 : 0,
+              )
+              .fade(
+                curve: Curves.easeInOut,
+                begin: 0,
+                end: 1,
+                duration: const Duration(milliseconds: 500),
+              ),
+        if (widget.showControls && widget.header != null)
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: widget.header!,
           )
               .animate(
                 target: show ? 1 : 0,
