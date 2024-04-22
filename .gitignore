@@ -45,3 +45,4 @@ pubspec.lock
 update.sh
 .vscode/
 timeline_server.bat
+update_all.bat

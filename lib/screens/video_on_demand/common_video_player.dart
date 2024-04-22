@@ -95,123 +95,138 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
         ),
       );
     }
-    return Stack(
-      children: [
-        if (!_controller.value.isInitialized)
-          Center(
-            child: Container(
-              color: Colors.black.withOpacity(0.5),
-              child: widget.loadingWidget ??
-                  const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation(Colors.white),
-                  ),
+    return GestureDetector(
+      onTap: () {
+        if (show) {
+          hideControls();
+        } else {
+          showControls();
+        }
+      },
+      child: Stack(
+        children: [
+          if (!_controller.value.isInitialized)
+            Center(
+              child: Container(
+                color: Colors.black.withOpacity(0.5),
+                child: widget.loadingWidget ??
+                    const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(Colors.white),
+                    ),
+              ),
+            ),
+          Positioned.fill(
+            child: AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: videoPlayer,
             ),
           ),
-        Positioned.fill(
-          child: AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
-            child: videoPlayer,
-          ),
-        ),
-        if (widget.showControls)
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (widget.onPrev != null)
+          if (widget.showControls)
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (widget.onPrev != null)
+                    FocusWidget(
+                      onFocusChange: onFocusChange,
+                      focusGroup: 'video_controls',
+                      backgroundColor: Colors.black.withOpacity(0.5),
+                      borderRadius: 20,
+                      padding: const EdgeInsets.all(8),
+                      child: const Icon(
+                        Icons.skip_previous_rounded,
+                        color: Colors.white,
+                      ),
+                      onTap: () {
+                        if (_controller.value.position > Duration.zero) {
+                          _controller.seekTo(Duration.zero);
+                        } else {
+                          widget.onPrev?.call(_controller);
+                        }
+                      },
+                    ),
                   FocusWidget(
                     onFocusChange: onFocusChange,
                     focusGroup: 'video_controls',
+                    hasFocus: true,
                     backgroundColor: Colors.black.withOpacity(0.5),
                     borderRadius: 20,
                     padding: const EdgeInsets.all(8),
-                    child: const Icon(
-                      Icons.skip_previous_rounded,
+                    child: Icon(
+                      _controller.value.isPlaying
+                          ? Icons.pause_rounded
+                          : Icons.play_arrow_rounded,
                       color: Colors.white,
                     ),
                     onTap: () {
-                      if (_controller.value.position > Duration.zero) {
-                        _controller.seekTo(Duration.zero);
-                      } else {
-                        widget.onPrev?.call(_controller);
-                      }
+                      setState(() {
+                        if (_controller.value.isPlaying) {
+                          _controller.pause();
+                        } else {
+                          _controller.play();
+                        }
+                      });
+                      widget.onPlayPause?.call(_controller);
                     },
                   ),
-                FocusWidget(
-                  onFocusChange: onFocusChange,
-                  focusGroup: 'video_controls',
-                  hasFocus: true,
-                  backgroundColor: Colors.black.withOpacity(0.5),
-                  borderRadius: 20,
-                  padding: const EdgeInsets.all(8),
-                  child: Icon(
-                    _controller.value.isPlaying
-                        ? Icons.pause_rounded
-                        : Icons.play_arrow_rounded,
-                    color: Colors.white,
-                  ),
-                  onTap: () {
-                    setState(() {
-                      if (_controller.value.isPlaying) {
-                        _controller.pause();
-                      } else {
-                        _controller.play();
-                      }
-                    });
-                    widget.onPlayPause?.call(_controller);
-                  },
+                  if (widget.onNext != null)
+                    FocusWidget(
+                      onFocusChange: onFocusChange,
+                      focusGroup: 'video_controls',
+                      backgroundColor: Colors.black.withOpacity(0.5),
+                      borderRadius: 20,
+                      padding: const EdgeInsets.all(8),
+                      child: const Icon(
+                        Icons.skip_next_rounded,
+                        color: Colors.white,
+                      ),
+                      onTap: () {
+                        _controller.seekTo(_controller.value.duration);
+                        widget.onNext?.call(_controller);
+                      },
+                    ),
+                ],
+              ),
+            )
+                .animate(
+                  target: show ? 1 : 0,
+                )
+                .fade(
+                  curve: Curves.easeInOut,
+                  begin: 0,
+                  end: 1,
+                  duration: const Duration(milliseconds: 500),
                 ),
-                if (widget.onNext != null)
-                  FocusWidget(
-                    onFocusChange: onFocusChange,
-                    focusGroup: 'video_controls',
-                    backgroundColor: Colors.black.withOpacity(0.5),
-                    borderRadius: 20,
-                    padding: const EdgeInsets.all(8),
-                    child: const Icon(
-                      Icons.skip_next_rounded,
-                      color: Colors.white,
-                    ),
-                    onTap: () {
-                      _controller.seekTo(_controller.value.duration);
-                      widget.onNext?.call(_controller);
-                    },
-                  ),
-              ],
-            ),
-          )
-              .animate(
-                target: show ? 1 : 0,
-              )
-              .fade(
-                curve: Curves.easeInOut,
-                begin: 0,
-                end: 1,
-                duration: const Duration(milliseconds: 500),
-              ),
-        if (widget.showControls && widget.header != null)
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: widget.header!,
-          )
-              .animate(
-                target: show ? 1 : 0,
-              )
-              .fade(
-                curve: Curves.easeInOut,
-                begin: 0,
-                end: 1,
-                duration: const Duration(milliseconds: 500),
-              ),
-      ],
+          if (widget.showControls && widget.header != null)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: widget.header!,
+            )
+                .animate(
+                  target: show ? 1 : 0,
+                )
+                .fade(
+                  curve: Curves.easeInOut,
+                  begin: 0,
+                  end: 1,
+                  duration: const Duration(milliseconds: 500),
+                ),
+        ],
+      ),
     );
   }
 
   void onFocusChange(bool hasFocus) {
     showControls();
+  }
+
+  void hideControls() {
+    setState(() {
+      show = false;
+    });
   }
 
   void showControls() async {
