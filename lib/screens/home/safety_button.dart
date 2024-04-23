@@ -18,25 +18,10 @@ class SafetyButton extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Icon(
-            Icons.mail_outline_outlined,
+            Icons.safety_check_sharp,
             size: 35,
             color: Colors.white,
           ),
-          Positioned(
-            bottom: -5,
-            left: 10,
-            child: CircleAvatar(
-              backgroundColor: Colors.red,
-              radius: 10,
-              child: Text(
-                "2",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );

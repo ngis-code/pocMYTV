@@ -54,7 +54,7 @@ class NotificationScreen extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: Text(
-                          'AI Promotional Guest',
+                          'Happy Birthday Landon, Enjoy 20% off at Chops!',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,

@@ -115,9 +115,9 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   color: color,
                   requestFocus: true,
                   onFocusChange: onFocusChange,
-                  description: "Photo Gallery",
-                  title: "Photos",
-                  icon: Icons.health_and_safety_rounded,
+                  description: "Check the safety information",
+                  title: "Safety Information",
+                  icon: Icons.photo_album_outlined,
                   page: const PhototGallery(),
                 ),
                 HomeBottomTile(
