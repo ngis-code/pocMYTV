@@ -8,7 +8,7 @@ import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
 import 'package:pocmytv/widgets/centered_list_view.dart';
 
-import '../screens/shopping/shopping.dart';
+import '../screens/room_service/shopping.dart';
 import '../screens/video_on_demand/genre_choose_screen.dart';
 
 class TVDrawer extends StatefulWidget {
@@ -17,7 +17,7 @@ class TVDrawer extends StatefulWidget {
     ['Safety Information', Icons.newspaper]: SafetyScreen(),
     ['Live TV', Icons.movie]: LiveTvScreen(),
     ['Video On Demand', Icons.tv]: GenreChooseScreen(),
-    ['Ship Information', Icons.settings]: ShoppingCart(),
+    ['Ship Information', Icons.settings]: RoomService(),
     ['Account', Icons.cloud_rounded]: AccountScreen(),
   };
   static double height = 240;

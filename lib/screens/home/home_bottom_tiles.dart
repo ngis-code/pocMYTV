@@ -8,7 +8,7 @@ import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/photo_gallery/photo_gallery_screen.dart';
 import 'package:pocmytv/screens/shorex/shorex.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
-import 'package:pocmytv/screens/shopping/shopping.dart';
+import 'package:pocmytv/screens/room_service/shopping.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
@@ -139,10 +139,10 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                 HomeBottomTile(
                   color: color,
                   onFocusChange: onFocusChange,
-                  description: "Shopping Cart",
-                  title: "Shopping",
-                  icon: Icons.shopping_bag_rounded,
-                  page: const ShoppingCart(),
+                  description: "Room Service",
+                  title: "Room Service",
+                  icon: Icons.room_service_rounded,
+                  page: const RoomService(),
                 ),
                 HomeBottomTile(
                   color: color,
