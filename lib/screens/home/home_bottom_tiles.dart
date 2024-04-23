@@ -139,9 +139,9 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                 HomeBottomTile(
                   color: color,
                   onFocusChange: onFocusChange,
-                  description: "Cruise Schedule",
-                  title: "Schedule",
-                  icon: Icons.timeline,
+                  description: "Shopping Cart",
+                  title: "Shopping",
+                  icon: Icons.shopping_bag_rounded,
                   page: const CruisSchedule(),
                 ),
                 HomeBottomTile(
