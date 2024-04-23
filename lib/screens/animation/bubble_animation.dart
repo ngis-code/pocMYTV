@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -8,7 +6,6 @@ import 'package:pocmytv/utils/glass_widget.dart';
 import 'package:vector_math/vector_math.dart' as v;
 
 class BubbleAnimation extends StatefulWidget {
-  // all bright and nice colors
   final List<Color> colors;
   final Widget child;
   final int bubbles;
@@ -96,7 +93,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
                 height: _radius[_particles.indexOf(p)],
                 width: _radius[_particles.indexOf(p)],
                 decoration: BoxDecoration(
-                  color: _colors[_particles.indexOf(p) % widget.colors.length],
+                  color: _colors[_particles.indexOf(p) % _colors.length],
                   shape: BoxShape.circle,
                 ),
               ),
@@ -120,7 +117,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   Future<void> _update() async {
     await Future.delayed(Duration(milliseconds: 1000 ~/ widget.fps));
     if (disposed) return;
-    // update positions of particles
+    if (!context.mounted) return;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     const double margin = 200; // this is the margin beyond the screen's edge
