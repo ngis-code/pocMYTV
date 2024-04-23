@@ -4,14 +4,14 @@ import 'package:pocmytv/models/timelines/timeline.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 
-class CruisSchedule extends StatefulWidget {
-  const CruisSchedule({super.key});
+class ShoppingCart extends StatefulWidget {
+  const ShoppingCart({super.key});
 
   @override
-  State<CruisSchedule> createState() => _CruisScheduleState();
+  State<ShoppingCart> createState() => _ShoppingCartState();
 }
 
-class _CruisScheduleState extends State<CruisSchedule> {
+class _ShoppingCartState extends State<ShoppingCart> {
   final ScrollController controller = ScrollController();
 
   Color getColor(int index) {

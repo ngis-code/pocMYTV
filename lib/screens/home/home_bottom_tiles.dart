@@ -8,7 +8,7 @@ import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/photo_gallery/photo_gallery_screen.dart';
 import 'package:pocmytv/screens/shorex/shorex.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
-import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
+import 'package:pocmytv/screens/shopping/shopping.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
@@ -142,7 +142,7 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   description: "Shopping Cart",
                   title: "Shopping",
                   icon: Icons.shopping_bag_rounded,
-                  page: const CruisSchedule(),
+                  page: const ShoppingCart(),
                 ),
                 HomeBottomTile(
                   color: color,
