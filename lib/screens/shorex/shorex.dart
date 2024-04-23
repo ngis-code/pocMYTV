@@ -3,17 +3,7 @@ import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/screens/notification/rate_bar.dart';
 
 class ShorexScreen extends StatefulWidget {
-  const ShorexScreen({super.key});
-
-  @override
-  State<ShorexScreen> createState() => _ShorexScreenState();
-}
-
-class _ShorexScreenState extends State<ShorexScreen> {
-  final highlightPageController = PageController();
-  final allPageController = PageController();
-  bool disposed = false;
-  final List<Map<String, dynamic>> exsData = [
+  static final List<Map<String, dynamic>> exsData = [
     {
       'title': 'Celebrity Sail & Snorkel',
       'rating': 4,
@@ -63,6 +53,17 @@ class _ShorexScreenState extends State<ShorexScreen> {
           'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg?format=1500w',
     },
   ];
+  const ShorexScreen({super.key});
+
+  @override
+  State<ShorexScreen> createState() => _ShorexScreenState();
+}
+
+class _ShorexScreenState extends State<ShorexScreen> {
+  final highlightPageController = PageController();
+  final allPageController = PageController();
+  bool disposed = false;
+  List<Map<String, dynamic>> get exsData => ShorexScreen.exsData;
 
   @override
   void initState() {

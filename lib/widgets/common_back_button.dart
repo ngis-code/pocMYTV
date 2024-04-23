@@ -9,29 +9,32 @@ class CommonBackButton extends StatelessWidget {
     return FocusWidget(
       enabled: false,
       onTap: () {},
-      child: ElevatedButton(
-        onPressed: () => Navigator.of(context).pop(),
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black.withOpacity(0.5),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            padding: const EdgeInsets.all(15)),
-        child: const Column(
-          children: [
-            Icon(
-              Icons.home_rounded,
-              color: Colors.white,
-              size: 30,
-            ),
-            Text(
-              'Press Back',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
+      child: Hero(
+        tag: 'backButton',
+        child: ElevatedButton(
+          onPressed: () => Navigator.of(context).pop(),
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black.withOpacity(0.5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
-            ),
-          ],
+              padding: const EdgeInsets.all(15)),
+          child: const Column(
+            children: [
+              Icon(
+                Icons.home_rounded,
+                color: Colors.white,
+                size: 30,
+              ),
+              Text(
+                'Press Back',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
