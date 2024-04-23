@@ -5,8 +5,8 @@ import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/screens/photo_gallery/photo_view_screen.dart';
 import 'package:pocmytv/screens/shorex/shorex.dart';
 
-class PhototGallery extends StatelessWidget {
-  const PhototGallery({super.key});
+class PhotosGallery extends StatelessWidget {
+  const PhotosGallery({super.key});
   List<Map<String, dynamic>> get data => ShorexScreen.exsData;
 
   @override

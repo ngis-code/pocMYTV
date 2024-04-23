@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 
@@ -30,13 +31,16 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: BackgroundVideo(
+    return BubbleAnimation(
+      child: BackgroundVideo(
         backgroundWidget: Container(),
         child: InteractiveViewer(
           transformationController: controller,
           child: FocusWidget(
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             borderRadius: 0,
             borderColor: Colors.transparent,
             borderWidth: 0,
