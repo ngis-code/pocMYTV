@@ -9,6 +9,7 @@ import 'package:pocmytv/screens/home/clouds_screen.dart';
 import 'package:pocmytv/screens/home/gangway.dart';
 import 'package:pocmytv/screens/home/mail_button.dart';
 import 'package:pocmytv/screens/home/qr_button.dart';
+import 'package:pocmytv/screens/home/safety_button.dart';
 import 'package:pocmytv/screens/home/time_home_widget.dart';
 import 'package:pocmytv/screens/home/weather_time_home_widget.dart';
 import 'package:pocmytv/utils/glass_widget.dart';
@@ -115,6 +116,12 @@ class _HomePageState extends State<HomePage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 MailButton(),
+                                VerticalDivider(
+                                  width: 50,
+                                  color: Colors.white,
+                                  thickness: 1,
+                                ),
+                                SafetyButton(),
                                 VerticalDivider(
                                   width: 50,
                                   color: Colors.white,
