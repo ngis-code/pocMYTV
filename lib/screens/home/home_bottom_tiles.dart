@@ -116,8 +116,8 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   requestFocus: true,
                   onFocusChange: onFocusChange,
                   description: "Check the safety information",
-                  title: "Safety Information",
-                  icon: Icons.health_and_safety_rounded,
+                  title: "Photo",
+                  icon: Icons.photo_album_outlined,
                   page: const SafetyScreen(),
                 ),
                 HomeBottomTile(
