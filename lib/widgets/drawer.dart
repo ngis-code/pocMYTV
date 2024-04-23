@@ -8,7 +8,7 @@ import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/safety/safety_screen.dart';
 import 'package:pocmytv/widgets/centered_list_view.dart';
 
-import '../screens/room_service/shopping.dart';
+import '../screens/room_service/room_service.dart';
 import '../screens/video_on_demand/genre_choose_screen.dart';
 
 class TVDrawer extends StatefulWidget {
