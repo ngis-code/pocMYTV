@@ -232,7 +232,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                           child: Image.network(
-                                            'https://mytvpocroyal.com/uploads/lifejacket_img',
+                                            'https://mytvpocroyal.com/uploads/Sound.png',
                                             height: height / 3,
                                             width: width / 4,
                                           ),
@@ -321,7 +321,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             child: Image.network(
-                                              'https://mytvpocroyal.com/uploads/lifejacket_img',
+                                              'https://mytvpocroyal.com/uploads/Sound.png',
                                               height: height / 3,
                                               width: width / 4,
                                             ),
