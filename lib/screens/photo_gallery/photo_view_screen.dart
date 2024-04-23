@@ -76,12 +76,12 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
       case LogicalKeyboardKey.arrowRight:
         controller.value.translate(-100, 0);
         break;
-      case LogicalKeyboardKey.arrowUp:
-        controller.value.translate(0, 100);
-        break;
-      case LogicalKeyboardKey.arrowDown:
-        controller.value.translate(0, -100);
-        break;
+      // case LogicalKeyboardKey.arrowUp:
+      //   controller.value.translate(0, 100);
+      //   break;
+      // case LogicalKeyboardKey.arrowDown:
+      //   controller.value.translate(0, -100);
+      //   break;
       default:
         return false;
     }
