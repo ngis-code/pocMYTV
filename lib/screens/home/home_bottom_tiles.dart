@@ -5,7 +5,7 @@ import 'package:pocmytv/screens/account/account_screen.dart';
 import 'package:pocmytv/screens/guest_service/guest_service_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
-import 'package:pocmytv/screens/safety/safety_screen.dart';
+import 'package:pocmytv/screens/photo_gallery/photo_gallery_screen.dart';
 import 'package:pocmytv/screens/shorex/shorex.dart';
 import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
 import 'package:pocmytv/screens/time_line/cruise_schedule_screen.dart';
@@ -115,10 +115,10 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   color: color,
                   requestFocus: true,
                   onFocusChange: onFocusChange,
-                  description: "Check the safety information",
-                  title: "Safety Information",
+                  description: "Photo Gallery",
+                  title: "Photos",
                   icon: Icons.health_and_safety_rounded,
-                  page: const SafetyScreen(),
+                  page: const PhototGallery(),
                 ),
                 HomeBottomTile(
                   color: color,
