@@ -28,7 +28,7 @@ class _CruisScheduleState extends State<CruisSchedule> {
     }
   }
 
-  Color completeColor = Color.fromARGB(255, 232, 116, 53);
+  Color completeColor = const Color.fromARGB(255, 232, 116, 53);
   Color inProgressColor = darkBlue;
   Color todoColor = const Color(0xffd1d2d7);
 
