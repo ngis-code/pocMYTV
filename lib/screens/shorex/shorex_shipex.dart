@@ -25,12 +25,12 @@ class ShorexShipxScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(18),
                     image: const DecorationImage(
                       image: NetworkImage(
-                          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg'),
+                          'https://www.beverlyhillsmagazine.com/wp-content/uploads/Beverly-Hills-Magazine-Celebrity-Cruises-Best-of-Greece-1-1600x755.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  height: 200,
-                  width: 200,
+                  height: 700,
+                  width: 400,
                   child: Stack(
                     children: [
                       Positioned.fill(
@@ -43,7 +43,7 @@ class ShorexShipxScreen extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          'ShoreX',
+                          'Shore Explore',
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.white,
@@ -69,12 +69,12 @@ class ShorexShipxScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(18),
                     image: const DecorationImage(
                       image: NetworkImage(
-                          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg'),
+                          'https://hommes.studio/wp-content/uploads/celebritybeyond-2.jpg.webp'),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  height: 200,
-                  width: 200,
+                  height: 700,
+                  width: 400,
                   child: Stack(
                     children: [
                       Positioned.fill(
@@ -87,7 +87,7 @@ class ShorexShipxScreen extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          'ShipX',
+                          'Ship Explore',
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.white,
