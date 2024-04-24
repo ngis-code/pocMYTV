@@ -28,6 +28,7 @@ dependencies:
   webview_flutter_tizen: ^0.9.1
   webview_flutter: ^4.5.0
   webview_flutter_web: ^0.2.2+4
+  flutter_inappwebview: ^6.0.0
 
 
 dev_dependencies:
