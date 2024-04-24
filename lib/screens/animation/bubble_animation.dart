@@ -10,7 +10,6 @@ class BubbleAnimation extends StatefulWidget {
   final List<Color> colors;
   final Widget child;
   final int bubbles;
-  final int? fps;
   final double minRadius;
   final double blur;
   final double maxRadius;
@@ -33,7 +32,6 @@ class BubbleAnimation extends StatefulWidget {
     this.minRadius = 20,
     this.maxRadius = 150,
     this.velocityMultiplier = 1,
-    this.fps = 15,
     this.blur = 50,
     this.backgroundColor = Colors.black,
   });
@@ -48,7 +46,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   final List<double> _radius = [];
   final List<Color> _colors = [];
   bool disposed = false;
-  late int fps = widget.fps ?? 15;
+  int timeDelta = 15;
   DateTime lastUpdate = DateTime.now();
 
   @override
@@ -85,10 +83,9 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   Widget build(BuildContext context) {
     // calculating fps
     final now = DateTime.now();
-    final diff = now.difference(lastUpdate).inMilliseconds;
+    timeDelta = now.difference(lastUpdate).inMilliseconds;
     lastUpdate = now;
-    fps = (1000 / diff).round();
-    log('fps: $fps');
+    log('fps: ${(1000 / timeDelta).round()}');
 
     return Scaffold(
       backgroundColor: widget.backgroundColor,
@@ -121,7 +118,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   }
 
   Future<void> _update() async {
-    await Future.delayed(Duration(milliseconds: 1000 ~/ fps));
+    await Future.delayed(Duration(milliseconds: timeDelta));
     if (disposed) return;
     if (!context.mounted) return;
     final width = MediaQuery.of(context).size.width;
@@ -129,7 +126,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
     final double margin = widget.maxRadius + 50;
     // this is the margin beyond the screen's edge
     for (var i = 0; i < _particles.length; i++) {
-      _particles[i] += _velocities[i];
+      _particles[i] += _velocities[i] * timeDelta.toDouble();
       if (_particles[i].x < -margin) {
         _particles[i].x = width + margin;
       } else if (_particles[i].x > width + margin) {
