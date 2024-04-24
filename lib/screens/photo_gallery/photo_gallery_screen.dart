@@ -32,15 +32,6 @@ class PhotosGallery extends StatelessWidget {
                     for (var i = 0; i < Photo.allPhotos.length; i++)
                       _PhotoGalleryTile(
                         hasFocus: i == 0,
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => PhotoViewScreen(
-                                photo: Photo.allPhotos[i],
-                              ),
-                            ),
-                          );
-                        },
                         photo: Photo.allPhotos[i],
                       ),
                   ],
@@ -51,30 +42,46 @@ class PhotosGallery extends StatelessWidget {
   }
 }
 
-class _PhotoGalleryTile extends StatelessWidget {
-  final Function() onTap;
+class _PhotoGalleryTile extends StatefulWidget {
   final Photo photo;
   final bool hasFocus;
   const _PhotoGalleryTile({
-    required this.onTap,
     this.hasFocus = false,
     required this.photo,
   });
 
   @override
+  State<_PhotoGalleryTile> createState() => _PhotoGalleryTileState();
+}
+
+class _PhotoGalleryTileState extends State<_PhotoGalleryTile> {
+  @override
   Widget build(BuildContext context) {
     return FocusWidget(
-      hasFocus: hasFocus,
+      hasFocus: widget.hasFocus,
       focusGroup: 'photo_gallery',
       borderRadius: 20,
-      onTap: onTap,
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => PhotoViewScreen(
+              photo: widget.photo,
+              onPhotoLiked: (liked) {
+                setState(() {
+                  widget.photo.liked = liked;
+                });
+              },
+            ),
+          ),
+        );
+      },
       child: Hero(
-        tag: photo.url,
+        tag: widget.photo.url,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             image: DecorationImage(
-              image: NetworkImage(photo.url),
+              image: NetworkImage(widget.photo.url),
               fit: BoxFit.cover,
             ),
           ),
@@ -82,13 +89,32 @@ class _PhotoGalleryTile extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           alignment: Alignment.topRight,
-          padding: const EdgeInsets.all(10),
-          child: Icon(
-            photo.liked
-                ? Icons.favorite_rounded
-                : Icons.favorite_border_rounded,
-            color: photo.liked ? Colors.red : Colors.white,
-            size: 30,
+          padding: const EdgeInsets.all(2),
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.photo.liked = !widget.photo.liked;
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 5,
+                top: 8,
+                right: 5,
+                bottom: 5,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                widget.photo.liked
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_border_rounded,
+                color: widget.photo.liked ? Colors.red : Colors.white,
+                size: 30,
+              ),
+            ),
           ),
         ),
       ),
