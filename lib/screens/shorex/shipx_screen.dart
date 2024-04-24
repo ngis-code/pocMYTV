@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_tizen/webview_flutter_tizen.dart';
 
 class ShipXScreen extends StatefulWidget {
   const ShipXScreen({super.key});
@@ -22,6 +24,9 @@ class _ShipXScreenState extends State<ShipXScreen> {
     super.initState();
     try {
       _controller = WebViewController();
+      if (!Platform.isIOS && !Platform.isAndroid && !kIsWeb) {
+        _controller.tizenEnginePolicy = true;
+      }
       _controller.loadRequest(Uri.parse(
           'https://my.matterport.com/show/?play=1&share=0&m=h1MEqdqBkXq'));
     } catch (e) {
