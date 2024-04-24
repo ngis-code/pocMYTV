@@ -185,7 +185,13 @@ class _RoomServiceState extends State<RoomService> {
                               tag: RoomServiceModel.roomServices[index].title,
                               child: GridTile(
                                 footer: Container(
-                                  color: Colors.transparent.withOpacity(.5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(15),
+                                      bottomRight: Radius.circular(15),
+                                    ),
+                                    color: Colors.transparent.withOpacity(.5),
+                                  ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -209,10 +215,11 @@ class _RoomServiceState extends State<RoomService> {
                                     ],
                                   ),
                                 ),
-                                header: Container(
+                                child: Container(
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
+                                  clipBehavior: Clip.hardEdge,
                                   child: Image.network(
                                     RoomServiceModel.roomServices[index].image,
                                     width: width / 4,
@@ -220,7 +227,6 @@ class _RoomServiceState extends State<RoomService> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                child: const SizedBox(),
                               ),
                             ),
                           ),
