@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -27,7 +29,15 @@ class _ShipXScreenState extends State<ShipXScreen> {
         child: SizedBox(
           width: double.infinity,
           height: double.infinity,
-          child: WebViewWidget(controller: _controller),
+          child: Platform.isAndroid || Platform.isIOS
+              ? WebViewWidget(controller: _controller)
+              : Text(
+                  'Webview not supported on this platform. Please use Android or iOS.',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
         ),
       ),
     );
