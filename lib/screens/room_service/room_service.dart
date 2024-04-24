@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
@@ -58,6 +57,8 @@ class _RoomServiceState extends State<RoomService> {
                           height: height * 0.3,
                           width: width / 4,
                           child: FocusWidget(
+                            hasFocus: index == 0,
+                            focusGroup: 'roomServiceBttns',
                             onTap: () {
                               return showDialog(
                                 context: context,
