@@ -31,7 +31,7 @@ class BubbleAnimation extends StatefulWidget {
     this.bubbles = 80,
     this.minRadius = 20,
     this.maxRadius = 150,
-    this.velocityMultiplier = 1,
+    this.velocityMultiplier = 2,
     this.blur = 50,
     this.backgroundColor = Colors.black,
     this.fps = 15,
