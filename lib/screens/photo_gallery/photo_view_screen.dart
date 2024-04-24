@@ -28,7 +28,7 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Future.delayed(const Duration(milliseconds: 10))
+      Future.delayed(const Duration(milliseconds: 100))
           .then((value) => KeyBoardService.addHandler(_handler));
     });
   }
