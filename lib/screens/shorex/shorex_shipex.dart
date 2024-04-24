@@ -24,12 +24,25 @@ class ShorexShipxScreen extends StatelessWidget {
                 ),
                 hasFocus: true,
                 focusGroup: "shorexBttns",
-                child: Text(
-                  'ShoreX',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    image: const DecorationImage(
+                      image: NetworkImage(
+                          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  height: 200,
+                  width: 200,
+                  child: Text(
+                    'ShoreX',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ),
                 onTap: () {
                   Navigator.of(context).push(
@@ -45,12 +58,25 @@ class ShorexShipxScreen extends StatelessWidget {
                   vertical: 5,
                 ),
                 focusGroup: "shorexBttns",
-                child: Text(
-                  'ShipX',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    image: const DecorationImage(
+                      image: NetworkImage(
+                          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  height: 200,
+                  width: 200,
+                  child: Text(
+                    'ShipX',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ),
                 onTap: () {
                   Navigator.of(context).push(

@@ -248,6 +248,7 @@ class _RoomServiceState extends State<RoomService> {
                           height: height * 0.3,
                           width: width / 4,
                           child: FocusWidget(
+                            focusGroup: 'roomServiceBttns',
                             onTap: () {},
                             child: Hero(
                               tag: RoomServiceModel.roomServices[index].title,

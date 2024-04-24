@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:pocmytv/extensions/string_extensions.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -40,7 +41,15 @@ class _ShipXScreenState extends State<ShipXScreen> {
           width: double.infinity,
           height: double.infinity,
           child: error.isEmpty
-              ? WebViewWidget(controller: _controller)
+              ? FocusWidget(
+                  onTap: () {},
+                  blur: 0,
+                  borderRadius: 0,
+                  borderColor: Colors.transparent,
+                  borderWidth: 0,
+                  hasFocus: true,
+                  child: WebViewWidget(controller: _controller),
+                )
               : Center(
                   child: Text(
                     'Webview is not supported on ${Platform.operatingSystem.toPascalCase()}.\nUse the iOS or web app to view the content.\n\nWe are working on this and this view will be available soon.',
