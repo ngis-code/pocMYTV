@@ -30,38 +30,40 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-      kIsWeb
-          ? 'https://mytvpocroyal.com/uploads/H264HD1080.mp4'
-          : 'https://mytvpocroyal.com/uploads/H264HD1080.mp4',
-      videoPlayerOptions: VideoPlayerOptions(
-        mixWithOthers: true,
-        allowBackgroundPlayback: true,
-      ),
-    );
-    _controller.initialize().then((_) {
-      if (disposed) return;
-      setState(() {
-        _controller
-          ..addListener(() {
-            if (disposed) return;
-            setState(() {});
-          })
-          ..setLooping(true)
-          ..setVolume(0)
-          ..play();
+    if (widget.backgroundWidget == null) {
+      _controller = VideoPlayerController.network(
+        kIsWeb
+            ? 'https://mytvpocroyal.com/uploads/H264HD1080.mp4'
+            : 'https://mytvpocroyal.com/uploads/H264HD1080.mp4',
+        videoPlayerOptions: VideoPlayerOptions(
+          mixWithOthers: true,
+          allowBackgroundPlayback: true,
+        ),
+      );
+      _controller.initialize().then((_) {
         if (disposed) return;
-        setState(() {});
+        setState(() {
+          _controller
+            ..addListener(() {
+              if (disposed) return;
+              setState(() {});
+            })
+            ..setLooping(true)
+            ..setVolume(0)
+            ..play();
+          if (disposed) return;
+          setState(() {});
+        });
+      }).onError((error, stackTrace) {
+        log("Error Loading Video: $error");
       });
-    }).onError((error, stackTrace) {
-      log("Error Loading Video: $error");
-    });
+    }
   }
 
   @override
   void dispose() {
     disposed = true;
-    _controller.dispose();
+    if (widget.backgroundWidget == null) _controller.dispose();
     super.dispose();
   }
 
