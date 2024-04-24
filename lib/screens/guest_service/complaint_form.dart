@@ -1,11 +1,13 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
 import 'package:pocmytv/models/complaint.dart/complaint_category.dart';
 import 'package:pocmytv/screens/guest_service/guest_service_screen.dart';
 import 'package:pocmytv/screens/main_page.dart';
+import 'package:pocmytv/services/keyboard_service.dart';
 import 'package:pocmytv/widgets/select_one.dart';
 
 class ComplaintForm extends StatefulWidget {
@@ -20,6 +22,29 @@ class ComplaintForm extends StatefulWidget {
 class _ComplaintFormState extends State<ComplaintForm> {
   String? chosenOption;
   String? err;
+  final textFieldFocusNode = FocusNode();
+  final submitBttnFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (widget.category.showTextBox) {
+        Future.delayed(const Duration(milliseconds: 100)).then((value) {
+          KeyBoardService.addHandler(_handler);
+          textFieldFocusNode.requestFocus();
+        });
+      }
+    });
+  }
+
+  @override
+  dispose() {
+    if (widget.category.showTextBox) {
+      KeyBoardService.removeHandler(_handler);
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +70,7 @@ class _ComplaintFormState extends State<ComplaintForm> {
             SizedBox(
               width: math.max(700, width / 3),
               child: TextField(
+                focusNode: textFieldFocusNode,
                 style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintStyle: const TextStyle(
@@ -65,6 +91,7 @@ class _ComplaintFormState extends State<ComplaintForm> {
             ),
           const SizedBox(height: 50),
           FocusWidget(
+            focusNode: submitBttnFocusNode,
             padding: const EdgeInsets.symmetric(
               horizontal: 40,
               vertical: 10,
@@ -119,5 +146,37 @@ class _ComplaintFormState extends State<ComplaintForm> {
         ],
       ),
     );
+  }
+
+  bool _handler(KeyEvent event) {
+    if (event is KeyDownEvent) return false;
+    switch (event.logicalKey) {
+      case LogicalKeyboardKey.enter:
+        submitBttnFocusNode.requestFocus();
+        break;
+      case LogicalKeyboardKey.backspace:
+        if (textFieldFocusNode.hasFocus) {
+          return true;
+        } else {
+          return false;
+        }
+      case LogicalKeyboardKey.arrowUp:
+        if (!textFieldFocusNode.hasFocus) {
+          textFieldFocusNode.requestFocus();
+        } else {
+          return false;
+        }
+        break;
+      case LogicalKeyboardKey.arrowDown:
+        if (textFieldFocusNode.hasFocus) {
+          textFieldFocusNode.nextFocus();
+        } else {
+          return false;
+        }
+        break;
+      default:
+        return false;
+    }
+    return true;
   }
 }
