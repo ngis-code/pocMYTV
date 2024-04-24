@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/models/complaint.dart/complaint.dart';
@@ -21,6 +23,7 @@ class _ComplaintFormState extends State<ComplaintForm> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -39,18 +42,26 @@ class _ComplaintFormState extends State<ComplaintForm> {
           ),
           const SizedBox(height: 50),
           if (widget.category.showTextBox)
-            TextField(
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                hintText: 'Enter your complaint',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
-                  borderSide: BorderSide(color: Colors.white),
+            SizedBox(
+              width: math.max(700, width / 3),
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(
+                    color: Colors.white,
+                  ),
+                  hoverColor: Colors.white,
+                  focusColor: Colors.white,
+                  hintText: 'Enter your complaint',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(40),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
                 ),
+                onChanged: (value) {
+                  chosenOption = value;
+                },
               ),
-              onChanged: (value) {
-                chosenOption = value;
-              },
             ),
           const SizedBox(height: 50),
           FocusWidget(
