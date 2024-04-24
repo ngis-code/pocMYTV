@@ -2,30 +2,40 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pocmytv/focus_system/focus_widget.dart';
+import 'package:pocmytv/models/photo/photo.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 
 class PhotoViewScreen extends StatefulWidget {
-  final dynamic data;
-  const PhotoViewScreen({super.key, required this.data});
+  final void Function(bool liked)? onPhotoLiked;
+  final Photo photo;
+
+  const PhotoViewScreen({
+    super.key,
+    required this.photo,
+    this.onPhotoLiked,
+  });
 
   @override
   State<PhotoViewScreen> createState() => _PhotoViewScreenState();
 }
 
 class _PhotoViewScreenState extends State<PhotoViewScreen> {
-  final controller = TransformationController();
+  late bool liked = widget.photo.liked;
 
   @override
   void initState() {
     super.initState();
-    KeyBoardService.addHandler(_handler);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Future.delayed(const Duration(milliseconds: 10))
+          .then((value) => KeyBoardService.addHandler(_handler));
+    });
   }
 
   @override
   void dispose() {
+    KeyBoardService.removeHandler(_handler);
     super.dispose();
   }
 
@@ -34,34 +44,74 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
     return BubbleAnimation(
       child: BackgroundVideo(
         backgroundWidget: Container(),
-        child: InteractiveViewer(
-          transformationController: controller,
-          child: FocusWidget(
-            highlightColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            backgroundColor: Colors.transparent,
-            borderRadius: 0,
-            borderColor: Colors.transparent,
-            borderWidth: 0,
-            onTap: () {
-              // zoom if not zoomed
-              if (controller.value.getMaxScaleOnAxis() == 1) {
-                controller.value = Matrix4.identity()..scale(2.0, 2.0, 1.0);
-              } else {
-                controller.value = Matrix4.identity();
-              }
-            },
-            focusGroup: 'photo_view',
-            hasFocus: true,
-            child: Hero(
-              tag: widget.data['image'],
-              child: Image.network(
-                widget.data['image'],
-                fit: BoxFit.contain,
+        child: Stack(
+          children: [
+            Center(
+              child: Stack(
+                children: [
+                  InteractiveViewer(
+                    child: Hero(
+                      tag: widget.photo.url,
+                      child: Image.network(
+                        widget.photo.url,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: GestureDetector(
+                      onTap: likePhoto,
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                          left: 5,
+                          top: 8,
+                          right: 5,
+                          bottom: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          liked
+                              ? Icons.favorite_rounded
+                              : Icons.favorite_border_rounded,
+                          color: liked ? Colors.red : Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
+            const Positioned(
+              right: 0,
+              top: 0,
+              bottom: 0,
+              child: Center(
+                child: Icon(
+                  Icons.arrow_right_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            ),
+            const Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              child: Center(
+                child: Icon(
+                  Icons.arrow_left_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -71,21 +121,24 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
     if (event is KeyDownEvent) return false;
     switch (event.logicalKey) {
       case LogicalKeyboardKey.arrowLeft:
-        controller.value.translate(100, 0);
+        // controller.value.translate(100, 0);
         break;
       case LogicalKeyboardKey.arrowRight:
-        controller.value.translate(-100, 0);
+        // controller.value.translate(-100, 0);
         break;
-      // case LogicalKeyboardKey.arrowUp:
-      //   controller.value.translate(0, 100);
-      //   break;
-      // case LogicalKeyboardKey.arrowDown:
-      //   controller.value.translate(0, -100);
-      //   break;
+      case LogicalKeyboardKey.enter:
+        likePhoto();
       default:
         return false;
     }
     log("Moved");
     return true;
+  }
+
+  void likePhoto() {
+    setState(() {
+      liked = !liked;
+      widget.onPhotoLiked?.call(liked);
+    });
   }
 }
