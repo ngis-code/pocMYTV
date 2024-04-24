@@ -72,6 +72,7 @@ class _RoomServiceState extends State<RoomService> {
                                           CrossAxisAlignment.end,
                                       children: [
                                         FocusWidget(
+                                          hasFocus: true,
                                           onTap: () => Navigator.pop(context),
                                           child: const Icon(
                                             Icons.cancel,
