@@ -148,7 +148,7 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   color: color,
                   onFocusChange: onFocusChange,
                   description: "ShoreX",
-                  title: "Shore Excursions",
+                  title: "Explore",
                   icon: Icons.star_border_outlined,
                   page: const ShorexShipxScreen(),
                 ),
