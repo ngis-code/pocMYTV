@@ -15,7 +15,15 @@ class ShorexShipxScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FocusWidget(
-              child: const Text('ShoreX'),
+              hasFocus: true,
+              focusGroup: "shorexBttns",
+              child: Text(
+                'ShoreX',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: Colors.white),
+              ),
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -25,7 +33,14 @@ class ShorexShipxScreen extends StatelessWidget {
               },
             ),
             FocusWidget(
-              child: const Text('ShipX'),
+              focusGroup: "shorexBttns",
+              child: Text(
+                'ShipX',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: Colors.white),
+              ),
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
