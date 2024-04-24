@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -9,12 +10,13 @@ class BubbleAnimation extends StatefulWidget {
   final List<Color> colors;
   final Widget child;
   final int bubbles;
-  final int fps;
+  final int? fps;
   final double minRadius;
   final double blur;
   final double maxRadius;
   final double velocityMultiplier;
   final Color backgroundColor;
+
   const BubbleAnimation({
     super.key,
     required this.child,
@@ -31,7 +33,7 @@ class BubbleAnimation extends StatefulWidget {
     this.minRadius = 20,
     this.maxRadius = 150,
     this.velocityMultiplier = 1,
-    this.fps = 60,
+    this.fps = 15,
     this.blur = 50,
     this.backgroundColor = Colors.black,
   });
@@ -46,12 +48,12 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   final List<double> _radius = [];
   final List<Color> _colors = [];
   bool disposed = false;
+  late int fps = widget.fps ?? 15;
+  DateTime lastUpdate = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    // });
     final width =
         MediaQuery.of(KeyBoardService.navigatorKey.currentContext!).size.width;
     final height =
@@ -81,30 +83,34 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
 
   @override
   Widget build(BuildContext context) {
+    // calculating fps
+    final now = DateTime.now();
+    final diff = now.difference(lastUpdate).inMilliseconds;
+    lastUpdate = now;
+    fps = (1000 / diff).round();
+    log('fps: $fps');
+
     return Scaffold(
       backgroundColor: widget.backgroundColor,
       body: Stack(
         children: [
-          ..._particles.map(
-            (p) => Positioned(
-              left: p.x,
-              top: p.y,
+          for (int i = 0; i < _particles.length; i++)
+            Positioned(
+              left: _particles[i].x,
+              top: _particles[i].y,
               child: Container(
-                height: _radius[_particles.indexOf(p)],
-                width: _radius[_particles.indexOf(p)],
+                height: _radius[i],
+                width: _radius[i],
                 decoration: BoxDecoration(
-                  color: _colors[_particles.indexOf(p) % _colors.length],
+                  color: _colors[i % _colors.length],
                   shape: BoxShape.circle,
                 ),
               ),
             ),
-          ),
           Positioned.fill(
             child: GlassWidget(
               blur: widget.blur,
-              child: Container(
-                // color: Colors.white54,
-                alignment: Alignment.center,
+              child: Center(
                 child: widget.child,
               ),
             ),
@@ -115,12 +121,13 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   }
 
   Future<void> _update() async {
-    await Future.delayed(Duration(milliseconds: 1000 ~/ widget.fps));
+    await Future.delayed(Duration(milliseconds: 1000 ~/ fps));
     if (disposed) return;
     if (!context.mounted) return;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    const double margin = 200; // this is the margin beyond the screen's edge
+    final double margin = widget.maxRadius + 50;
+    // this is the margin beyond the screen's edge
     for (var i = 0; i < _particles.length; i++) {
       _particles[i] += _velocities[i];
       if (_particles[i].x < -margin) {
