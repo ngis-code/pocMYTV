@@ -70,8 +70,8 @@ class _HomePageState extends State<HomePage> {
     final height = MediaQuery.of(context).size.height;
     final Map<String, List<String>> data = {
       'time': ['6:00 PM', '8:00 PM', '10:00 PM'],
-      'event': ['Dinner', 'Show', 'Dance Party'],
-      'location': ['Main Dining Room', 'Theater', 'Pool Deck'],
+      'event': ['Landons Spa Apt', 'Show', 'Dance Party'],
+      'location': ['Deck 5 Spa', 'Theater', 'Pool Deck'],
     };
     return Scaffold(
       backgroundColor: Colors.transparent,

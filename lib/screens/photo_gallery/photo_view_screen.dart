@@ -122,7 +122,7 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Press enter if you you wnat to add this photo to your favorite list. You can purchase the photo later.',
+                        'Press enter if you wnat to add this photo to your favorites list. You can purchase the photo later.',
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
