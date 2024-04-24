@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
-import 'package:pocmytv/screens/shorex/matter_port_3d_view.dart';
+import 'package:pocmytv/screens/shorex/shipx_screen.dart';
 import 'package:pocmytv/screens/shorex/shorex.dart';
 
 class ShorexShipxScreen extends StatelessWidget {
