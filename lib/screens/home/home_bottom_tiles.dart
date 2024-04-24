@@ -6,9 +6,9 @@ import 'package:pocmytv/screens/guest_service/guest_service_screen.dart';
 import 'package:pocmytv/screens/home/home_bottom_tile.dart';
 import 'package:pocmytv/screens/live_tv/live_tv_screen.dart';
 import 'package:pocmytv/screens/photo_gallery/photo_gallery_screen.dart';
-import 'package:pocmytv/screens/shorex/shorex.dart';
-import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
 import 'package:pocmytv/screens/room_service/room_service.dart';
+import 'package:pocmytv/screens/shorex/shorex_shipex.dart';
+import 'package:pocmytv/screens/stateroom/stateroom_automation.dart';
 import 'package:pocmytv/screens/video_on_demand/genre_choose_screen.dart';
 import 'package:pocmytv/widgets/drawer.dart';
 
@@ -150,7 +150,7 @@ class _HomeBottomTilesState extends State<HomeBottomTiles> {
                   description: "ShoreX",
                   title: "Shore Excursions",
                   icon: Icons.star_border_outlined,
-                  page: const ShorexScreen(),
+                  page: const ShorexShipxScreen(),
                 ),
                 HomeBottomTile(
                   color: color,
