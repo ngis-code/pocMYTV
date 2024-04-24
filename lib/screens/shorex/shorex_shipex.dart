@@ -22,7 +22,6 @@ class ShorexShipxScreen extends StatelessWidget {
                 focusGroup: "shorexBttns",
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.circular(18),
                     image: const DecorationImage(
                       image: NetworkImage(
@@ -32,12 +31,27 @@ class ShorexShipxScreen extends StatelessWidget {
                   ),
                   height: 200,
                   width: 200,
-                  child: Text(
-                    'ShoreX',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black38,
+                            borderRadius: BorderRadius.circular(18),
+                          ),
                         ),
+                      ),
+                      Center(
+                        child: Text(
+                          'ShoreX',
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 onTap: () {
@@ -52,7 +66,6 @@ class ShorexShipxScreen extends StatelessWidget {
                 focusGroup: "shorexBttns",
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.circular(18),
                     image: const DecorationImage(
                       image: NetworkImage(
@@ -62,12 +75,27 @@ class ShorexShipxScreen extends StatelessWidget {
                   ),
                   height: 200,
                   width: 200,
-                  child: Text(
-                    'ShipX',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black38,
+                            borderRadius: BorderRadius.circular(18),
+                          ),
                         ),
+                      ),
+                      Center(
+                        child: Text(
+                          'ShipX',
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 onTap: () {
