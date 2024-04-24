@@ -22,7 +22,7 @@ class QrButton extends StatelessWidget {
             return Dialog(
               backgroundColor: Colors.black45,
               child: GlassWidget(
-                radius: 20,
+                borderRadius: 20,
                 backgroundColor: Colors.black26,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

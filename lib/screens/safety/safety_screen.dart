@@ -121,7 +121,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                           borderRadius: BorderRadius.circular(20),
                           child: GlassWidget(
                             padding: const EdgeInsets.all(10),
-                            radius: 20,
+                            borderRadius: 20,
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
@@ -209,7 +209,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 borderRadius: BorderRadius.circular(20),
                                 child: GlassWidget(
                                   padding: const EdgeInsets.all(10),
-                                  radius: 20,
+                                  borderRadius: 20,
                                   child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
@@ -298,7 +298,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 children: [
                                   GlassWidget(
                                     // padding: const EdgeInsets.all(10),
-                                    radius: 20,
+                                    borderRadius: 20,
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -366,7 +366,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                     blur: 1,
                                     backgroundColor:
                                         Colors.grey.withOpacity(0.5),
-                                    radius: 20,
+                                    borderRadius: 20,
                                     child: Container(),
                                   ))
                                 ],
@@ -380,7 +380,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                   borderRadius: BorderRadius.circular(20),
                                   child: GlassWidget(
                                     padding: const EdgeInsets.all(10),
-                                    radius: 20,
+                                    borderRadius: 20,
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -468,7 +468,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                   children: [
                                     GlassWidget(
                                       // padding: const EdgeInsets.all(10),
-                                      radius: 20,
+                                      borderRadius: 20,
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
@@ -537,7 +537,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                       blur: 1,
                                       backgroundColor:
                                           Colors.grey.withOpacity(0.5),
-                                      radius: 20,
+                                      borderRadius: 20,
                                       child: Container(),
                                     ))
                                   ],

@@ -19,7 +19,7 @@ class StateroomStatsTile extends StatelessWidget {
     return GlassWidget(
       padding: EdgeInsets.all(tilePadding),
       backgroundColor: tileBackgroundColor,
-      radius: 20,
+      borderRadius: 20,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

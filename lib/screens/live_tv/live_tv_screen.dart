@@ -152,7 +152,7 @@ class Page1 extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: GlassWidget(
           backgroundColor: Colors.black26,
-          radius: 20,
+          borderRadius: 20,
           child: ListView(
             shrinkWrap: true,
             children: [
@@ -214,7 +214,7 @@ class Page2 extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: GlassWidget(
           backgroundColor: Colors.black26,
-          radius: 20,
+          borderRadius: 20,
           child: ListView(
             shrinkWrap: true,
             children: [

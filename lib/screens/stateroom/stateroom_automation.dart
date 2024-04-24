@@ -34,7 +34,7 @@ class StateroomAutomationScreen extends StatelessWidget {
           padding: EdgeInsets.all(tilePadding),
           child: GlassWidget(
             backgroundColor: Colors.white12,
-            radius: 20,
+            borderRadius: 20,
             padding: EdgeInsets.all(tilePadding),
             child: Row(
               children: [

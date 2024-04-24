@@ -44,7 +44,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
   @override
   Widget build(BuildContext context) {
     return GlassWidget(
-      radius: 20,
+      borderRadius: 20,
       padding: EdgeInsets.all(tilePadding),
       backgroundColor: tileBackgroundColor,
       child: Stack(
@@ -76,7 +76,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
           ),
           GlassWidget(
             padding: const EdgeInsets.all(20.0),
-            radius: 20,
+            borderRadius: 20,
             blur: 0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

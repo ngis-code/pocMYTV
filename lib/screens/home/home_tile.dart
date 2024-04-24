@@ -13,7 +13,7 @@ class HomeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlassWidget(
       blur: 20,
-      radius: 20,
+      borderRadius: 20,
       child: Container(color: Colors.black45, padding: padding, child: child),
     );
   }

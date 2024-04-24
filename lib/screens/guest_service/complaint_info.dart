@@ -38,7 +38,7 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
   @override
   Widget build(BuildContext context) {
     return GlassWidget(
-      radius: 20,
+      borderRadius: 20,
       backgroundColor: Colors.white70,
       child: Padding(
         padding: const EdgeInsets.all(50.0),
@@ -70,8 +70,6 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
                     size: 30,
                     color: darkBlue,
                   ),
-
-                  
                 ),
               ],
             ),

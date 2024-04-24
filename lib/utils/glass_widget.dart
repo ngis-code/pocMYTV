@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 /// Glass Widget
 class GlassWidget extends StatelessWidget {
-  final double radius;
+  final double borderRadius;
   final Widget child;
   final double blur;
   final Color? backgroundColor;
   final EdgeInsets? padding;
   const GlassWidget({
     super.key,
-    this.radius = 0,
+    this.borderRadius = 0,
     required this.child,
     this.blur = 15,
     this.backgroundColor,
@@ -21,12 +21,12 @@ class GlassWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget glassWidget = child;
-    if (backgroundColor != null || radius != 0 || padding != null) {
+    if (backgroundColor != null || borderRadius != 0 || padding != null) {
       glassWidget = Container(
         padding: padding,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         clipBehavior: Clip.hardEdge,
         child: child,
@@ -34,7 +34,7 @@ class GlassWidget extends StatelessWidget {
     }
     if (blur != 0) {
       glassWidget = ClipRRect(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(borderRadius),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
           child: glassWidget,

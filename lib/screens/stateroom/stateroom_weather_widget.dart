@@ -10,7 +10,7 @@ class StateroomWeatherWidget extends StatelessWidget {
     return SizedBox(
       height: double.infinity,
       child: GlassWidget(
-        radius: 20,
+        borderRadius: 20,
         backgroundColor: tileBackgroundColor,
         padding: const EdgeInsets.only(right: 20, top: 20, bottom: 20),
         child: Row(

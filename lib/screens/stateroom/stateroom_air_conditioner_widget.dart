@@ -46,7 +46,7 @@ class _StateroomAirConditionerWidgetState
   @override
   Widget build(BuildContext context) {
     return GlassWidget(
-      radius: 20,
+      borderRadius: 20,
       backgroundColor: tileBackgroundColor,
       padding: EdgeInsets.all(tilePadding),
       child: Column(

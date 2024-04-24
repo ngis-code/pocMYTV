@@ -14,7 +14,7 @@ class StateroomTimeWidget extends StatelessWidget {
       child: ClockWidget(
         builder: (context, time) {
           return GlassWidget(
-            radius: 20,
+            borderRadius: 20,
             backgroundColor: tileBackgroundColor,
             padding: const EdgeInsets.all(20),
             child: Column(

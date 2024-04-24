@@ -94,7 +94,7 @@ class _FocusWidgetState extends State<FocusWidget> {
       splashColor: widget.splashColor,
       focusColor: widget.focusColor,
       focusNode: focusNode,
-      onTap: widget.enabled ? widget.onTap : null,
+      onTap: widget.onTap,
       onFocusChange: (hasFocus) {
         if (disposed) return;
         if (rejection) {
@@ -117,7 +117,7 @@ class _FocusWidgetState extends State<FocusWidget> {
       },
       borderRadius: BorderRadius.circular(widget.borderRadius),
       child: GlassWidget(
-        radius: widget.borderRadius,
+        borderRadius: widget.borderRadius,
         blur: widget.blur,
         child: Container(
           padding: widget.padding,

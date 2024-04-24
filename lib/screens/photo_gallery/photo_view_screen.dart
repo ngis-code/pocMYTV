@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pocmytv/focus_system/focus_widget.dart';
 import 'package:pocmytv/models/photo/photo.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
@@ -99,15 +100,56 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               left: 0,
-              top: 0,
-              bottom: 0,
+              right: 0,
+              bottom: 20,
               child: Center(
-                child: Icon(
-                  Icons.arrow_left_rounded,
-                  color: Colors.white,
-                  size: 30,
+                child: FocusWidget(
+                  onTap: () {
+                    likePhoto();
+                  },
+                  blur: 5,
+                  enabled: false,
+                  borderRadius: 20,
+                  padding: const EdgeInsets.all(10),
+                  backgroundColor: Colors.black38,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Did you like this photo?',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      const SizedBox(width: 20),
+                      Text(
+                        'Yes',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      const Icon(
+                        Icons.favorite_rounded,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(width: 20),
+                      Text(
+                        'No',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      const Icon(
+                        Icons.favorite_border_rounded,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

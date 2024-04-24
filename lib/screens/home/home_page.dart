@@ -251,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                         oppositeContentsBuilder: (context, index) {
                           return GlassWidget(
                             blur: 0,
-                            radius: 20,
+                            borderRadius: 20,
                             backgroundColor: Colors.black45,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10.0, vertical: 5),
@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
                           return GlassWidget(
                             blur: 0,
                             backgroundColor: Colors.black45,
-                            radius: 20,
+                            borderRadius: 20,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10.0, vertical: 5),
                             child: Text(
@@ -405,7 +405,7 @@ class _HomePageState extends State<HomePage> {
           alignment: WrapAlignment.spaceBetween,
           children: [
             GlassWidget(
-              radius: 10,
+              borderRadius: 10,
               child: Container(
                 color: const Color.fromARGB(255, 232, 116, 53),
                 child: Column(
