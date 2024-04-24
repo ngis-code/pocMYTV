@@ -72,6 +72,7 @@ class _RoomServiceState extends State<RoomService> {
                                           CrossAxisAlignment.end,
                                       children: [
                                         FocusWidget(
+                                          focusGroup: 'roomServicePopupBttns',
                                           hasFocus: true,
                                           onTap: () => Navigator.pop(context),
                                           child: const Icon(
@@ -163,6 +164,8 @@ class _RoomServiceState extends State<RoomService> {
                                               MainAxisAlignment.center,
                                           children: [
                                             FocusWidget(
+                                              focusGroup:
+                                                  'roomServicePopupBttns',
                                               onTap: () {},
                                               child: ElevatedButton(
                                                 onPressed: () {},
