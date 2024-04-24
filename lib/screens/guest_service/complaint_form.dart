@@ -38,6 +38,19 @@ class _ComplaintFormState extends State<ComplaintForm> {
             },
           ),
           const SizedBox(height: 50),
+          if (widget.category.showTextBox)
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter your complaint',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(40),
+                ),
+              ),
+              onChanged: (value) {
+                chosenOption = value;
+              },
+            ),
+          const SizedBox(height: 50),
           FocusWidget(
             padding: const EdgeInsets.symmetric(
               horizontal: 40,
@@ -46,7 +59,7 @@ class _ComplaintFormState extends State<ComplaintForm> {
             backgroundColor: Colors.transparent,
             borderRadius: 40,
             onTap: () {
-              if (chosenOption == null) {
+              if (chosenOption == null || chosenOption!.isEmpty) {
                 setState(() {
                   err = 'Please select an option';
                 });
