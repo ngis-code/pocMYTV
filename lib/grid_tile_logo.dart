@@ -22,6 +22,7 @@ class GridTileLogo extends StatelessWidget {
     return Hero(
       tag: title.replaceAll('_', ' '),
       child: Material(
+        elevation: 0,
         color: Colors.transparent,
         child: FocusWidget(
           hasFocus: hasFocus,

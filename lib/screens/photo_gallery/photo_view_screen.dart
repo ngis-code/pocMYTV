@@ -53,9 +53,13 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                   InteractiveViewer(
                     child: Hero(
                       tag: widget.photo.url,
-                      child: Image.network(
-                        widget.photo.url,
-                        fit: BoxFit.contain,
+                      child: Material(
+                        elevation: 0,
+                        color: Colors.transparent,
+                        child: Image.network(
+                          widget.photo.url,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),

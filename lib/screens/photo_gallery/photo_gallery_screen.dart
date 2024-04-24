@@ -77,42 +77,46 @@ class _PhotoGalleryTileState extends State<_PhotoGalleryTile> {
       },
       child: Hero(
         tag: widget.photo.url,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(
-              image: NetworkImage(widget.photo.url),
-              fit: BoxFit.cover,
+        child: Material(
+          elevation: 0,
+          color: Colors.transparent,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              image: DecorationImage(
+                image: NetworkImage(widget.photo.url),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          clipBehavior: Clip.antiAlias,
-          height: double.infinity,
-          width: double.infinity,
-          alignment: Alignment.topRight,
-          padding: const EdgeInsets.all(2),
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                widget.photo.liked = !widget.photo.liked;
-              });
-            },
-            child: Container(
-              padding: const EdgeInsets.only(
-                left: 5,
-                top: 8,
-                right: 5,
-                bottom: 5,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.2),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                widget.photo.liked
-                    ? Icons.favorite_rounded
-                    : Icons.favorite_border_rounded,
-                color: widget.photo.liked ? Colors.red : Colors.white,
-                size: 30,
+            clipBehavior: Clip.antiAlias,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.topRight,
+            padding: const EdgeInsets.all(2),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  widget.photo.liked = !widget.photo.liked;
+                });
+              },
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 5,
+                  top: 8,
+                  right: 5,
+                  bottom: 5,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.2),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  widget.photo.liked
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_border_rounded,
+                  color: widget.photo.liked ? Colors.red : Colors.white,
+                  size: 30,
+                ),
               ),
             ),
           ),
