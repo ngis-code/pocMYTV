@@ -43,7 +43,7 @@ class _ShipXScreenState extends State<ShipXScreen> {
               ? WebViewWidget(controller: _controller)
               : Center(
                   child: Text(
-                    'Webview is not supported on ${Platform.operatingSystem.toPascalCase()}.\nUse the iOS app to view the content.\n\nWe are working on this and this view will be available soon.',
+                    'Webview is not supported on ${Platform.operatingSystem.toPascalCase()}.\nUse the iOS or web app to view the content.\n\nWe are working on this and this view will be available soon.',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Colors.white,
