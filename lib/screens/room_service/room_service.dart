@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pocmytv/globals.dart';
-import 'package:pocmytv/models/timelines/timeline.dart';
 import 'package:pocmytv/screens/animation/bubble_animation.dart';
 import 'package:pocmytv/screens/background.dart/background_video.dart';
 
