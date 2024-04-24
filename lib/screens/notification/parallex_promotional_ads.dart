@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-
 class ParallerPromotionalAds extends StatefulWidget {
   const ParallerPromotionalAds({
     super.key,
@@ -342,42 +341,29 @@ class Location {
   final String imageUrl;
 }
 
-const urlPrefix =
-    'https://docs.flutter.dev/cookbook/img-files/effects/parallax';
 const locations = [
   Location(
     name: 'Mount Rushmore',
     place: 'U.S.A',
-    imageUrl: '$urlPrefix/01-mount-rushmore.jpg',
+    imageUrl:
+        'https://plus.unsplash.com/premium_photo-1661855590183-87806182951b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnQlMjBydXNobW9yZXxlbnwwfHwwfHx8MA%3D%3D',
   ),
   Location(
     name: 'Gardens By The Bay',
     place: 'Singapore',
-    imageUrl: '$urlPrefix/02-singapore.jpg',
+    imageUrl:
+        'https://media.istockphoto.com/id/657200824/photo/gardens-by-the-bay-at-night-singapore.jpg?s=612x612&w=0&k=20&c=ay4ExJRGMXp1ZrFEv471AfllvnVE2OOU3bBPuiHXpqM=',
   ),
   Location(
     name: 'Machu Picchu',
     place: 'Peru',
-    imageUrl: '$urlPrefix/03-machu-picchu.jpg',
+    imageUrl:
+        'https://images.unsplash.com/photo-1587595742138-7975cf837028?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFjaHUlMjBwaWNjaHV8ZW58MHx8MHx8fDA%3D',
   ),
   Location(
-    name: 'Vitznau',
-    place: 'Switzerland',
-    imageUrl: '$urlPrefix/04-vitznau.jpg',
-  ),
-  Location(
-    name: 'Bali',
-    place: 'Indonesia',
-    imageUrl: '$urlPrefix/05-bali.jpg',
-  ),
-  Location(
-    name: 'Mexico City',
-    place: 'Mexico',
-    imageUrl: '$urlPrefix/06-mexico-city.jpg',
-  ),
-  Location(
-    name: 'Cairo',
-    place: 'Egypt',
-    imageUrl: '$urlPrefix/07-cairo.jpg',
+    name: 'Sunderbans',
+    place: 'India',
+    imageUrl:
+        'https://media.istockphoto.com/id/461066105/photo/tiger.jpg?s=612x612&w=0&k=20&c=2PkWEioO-ELaSnD0S7QkuGc10H8iVKFurcBPtkTY1uI=',
   ),
 ];
