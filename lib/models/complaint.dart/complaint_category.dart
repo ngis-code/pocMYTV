@@ -370,5 +370,11 @@ class ComplaintCategory {
         ),
       ],
     ),
+    ComplaintCategory(
+      subComplaintCategories: [],
+      title: "other",
+      description: "Any other complaints not covered by the above categories.",
+      showTextBox: true,
+    ),
   ];
 }

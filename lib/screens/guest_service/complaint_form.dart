@@ -40,10 +40,12 @@ class _ComplaintFormState extends State<ComplaintForm> {
           const SizedBox(height: 50),
           if (widget.category.showTextBox)
             TextField(
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: 'Enter your complaint',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(40),
+                  borderSide: BorderSide(color: Colors.white),
                 ),
               ),
               onChanged: (value) {
