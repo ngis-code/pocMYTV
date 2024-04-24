@@ -12,22 +12,6 @@ class RoomService extends StatefulWidget {
 }
 
 class _RoomServiceState extends State<RoomService> {
-  final ScrollController controller = ScrollController();
-
-  Color getColor(int index) {
-    if (index == TimeLineModel.processIndex) {
-      return inProgressColor;
-    } else if (index < TimeLineModel.processIndex) {
-      return completeColor;
-    } else {
-      return todoColor;
-    }
-  }
-
-  Color completeColor = const Color.fromARGB(255, 232, 116, 53);
-  Color inProgressColor = darkBlue;
-  Color todoColor = const Color(0xffd1d2d7);
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;

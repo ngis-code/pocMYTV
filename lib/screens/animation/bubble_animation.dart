@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ class BubbleAnimation extends StatefulWidget {
   final double minRadius;
   final double blur;
   final double maxRadius;
+  final double fps;
   final double velocityMultiplier;
   final Color backgroundColor;
 
@@ -32,8 +32,9 @@ class BubbleAnimation extends StatefulWidget {
     this.minRadius = 20,
     this.maxRadius = 150,
     this.velocityMultiplier = 1,
-    this.blur = 50,
+    this.blur = 0,
     this.backgroundColor = Colors.black,
+    this.fps = 15,
   });
 
   @override
@@ -46,7 +47,7 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   final List<double> _radius = [];
   final List<Color> _colors = [];
   bool disposed = false;
-  int timeDelta = 15;
+  int timeDelta = 1000 ~/ 60;
   DateTime lastUpdate = DateTime.now();
 
   @override
@@ -81,11 +82,28 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
 
   @override
   Widget build(BuildContext context) {
-    // calculating fps
+    // calculating fpsx`
     final now = DateTime.now();
     timeDelta = now.difference(lastUpdate).inMilliseconds;
     lastUpdate = now;
-    log('fps: ${(1000 / timeDelta).round()}');
+
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final double margin = widget.maxRadius + 50;
+    // this is the margin beyond the screen's edge
+    for (var i = 0; i < _particles.length; i++) {
+      _particles[i] += _velocities[i];
+      if (_particles[i].x < -margin) {
+        _particles[i].x = width + margin;
+      } else if (_particles[i].x > width + margin) {
+        _particles[i].x = -margin;
+      }
+      if (_particles[i].y < -margin) {
+        _particles[i].y = height + margin;
+      } else if (_particles[i].y > height + margin) {
+        _particles[i].y = -margin;
+      }
+    }
 
     return Scaffold(
       backgroundColor: widget.backgroundColor,
@@ -118,26 +136,9 @@ class _BubbleAnimationState extends State<BubbleAnimation> {
   }
 
   Future<void> _update() async {
-    await Future.delayed(Duration(milliseconds: timeDelta));
+    await Future.delayed(Duration(milliseconds: 1000 ~/ widget.fps));
     if (disposed) return;
     if (!context.mounted) return;
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    final double margin = widget.maxRadius + 50;
-    // this is the margin beyond the screen's edge
-    for (var i = 0; i < _particles.length; i++) {
-      _particles[i] += _velocities[i] * timeDelta.toDouble();
-      if (_particles[i].x < -margin) {
-        _particles[i].x = width + margin;
-      } else if (_particles[i].x > width + margin) {
-        _particles[i].x = -margin;
-      }
-      if (_particles[i].y < -margin) {
-        _particles[i].y = height + margin;
-      } else if (_particles[i].y > height + margin) {
-        _particles[i].y = -margin;
-      }
-    }
     setState(() {});
     _update();
   }
