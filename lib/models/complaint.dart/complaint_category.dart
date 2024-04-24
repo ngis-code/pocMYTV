@@ -5,7 +5,6 @@ class ComplaintCategory {
   List<String> options;
   String? image;
   bool showTextBox;
-  bool isTextBoxCompulsory;
 
   ComplaintCategory({
     required this.title,
@@ -13,7 +12,6 @@ class ComplaintCategory {
     this.subComplaintCategories = const [],
     this.options = const [],
     this.showTextBox = false,
-    this.isTextBoxCompulsory = false,
     this.image,
   });
 
@@ -33,7 +31,6 @@ class ComplaintCategory {
           subComplaintCategories ?? this.subComplaintCategories,
       options: options ?? this.options,
       showTextBox: showTextBox ?? this.showTextBox,
-      isTextBoxCompulsory: isTextBoxCompulsory ?? this.isTextBoxCompulsory,
       image: image ?? this.image,
     );
   }
@@ -47,7 +44,6 @@ class ComplaintCategory {
           .toList(),
       options: (json['options'] as List).map((e) => e.toString()).toList(),
       showTextBox: json['showTextBox'],
-      isTextBoxCompulsory: json['isTextBoxCompulsory'],
       image: json['image'],
     );
   }
@@ -60,7 +56,6 @@ class ComplaintCategory {
           subComplaintCategories.map((e) => e.toJson()).toList(),
       'options': options,
       'showTextBox': showTextBox,
-      'isTextBoxCompulsory': isTextBoxCompulsory,
       'image': image,
     };
   }
@@ -70,7 +65,6 @@ class ComplaintCategory {
       title: "Room Facilities and Amenities",
       subComplaintCategories: [
         ComplaintCategory(
-          subComplaintCategories: [],
           title: "cleanliness",
           description: "Issues related to cleanliness",
           options: [
