@@ -32,7 +32,9 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
     super.initState();
     if (widget.backgroundWidget == null) {
       _controller = VideoPlayerController.network(
-        kIsWeb ? 'https://mytvpocroyal.com/uploads/H264HD1080.mp4' : 'https://mytvpocroyal.com/uploads/H264HD1080.mp4',
+        kIsWeb
+            ? 'https://mytvpocroyal.com/uploads/H264HD1080.mp4'
+            : 'https://mytvpocroyal.com/uploads/H264HD1080.mp4',
         videoPlayerOptions: VideoPlayerOptions(
           mixWithOthers: true,
           allowBackgroundPlayback: true,
