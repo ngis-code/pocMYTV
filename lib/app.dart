@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:pocmytv/screens/screensaver/screensaver.dart';
 import 'package:pocmytv/services/keyboard_service.dart';
 
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        textTheme: GoogleFonts.quicksandTextTheme(),
+        fontFamily: 'Roboto',
       ),
       home: const ScreenSaver(),
     );

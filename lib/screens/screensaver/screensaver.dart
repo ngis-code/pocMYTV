@@ -23,7 +23,6 @@ class _ScreenSaverState extends State<ScreenSaver> {
   void initState() {
     KeyBoardService.addHandler(_handler);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      PreLoader.load(context);
       getTimelines().then((value) {
         setState(() {
           TimeLineModel.timelines.addAll(value);
