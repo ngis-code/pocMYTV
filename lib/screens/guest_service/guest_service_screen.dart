@@ -39,7 +39,7 @@ class GuestServiceScreen extends StatelessWidget {
                           child: GridTileLogo(
                             title: category!.title,
                             icon: category!.image != null
-                                ? Image.network(
+                                ? Image.asset(
                                     category!.image!,
                                     fit: BoxFit.cover,
                                   )
@@ -89,7 +89,7 @@ class GuestServiceScreen extends StatelessWidget {
                                             hasFocus: i == 0,
                                             title: categoryList[i].title,
                                             icon: categoryList[i].image != null
-                                                ? Image.network(
+                                                ? Image.asset(
                                                     categoryList[i].image!,
                                                     fit: BoxFit.cover,
                                                   )

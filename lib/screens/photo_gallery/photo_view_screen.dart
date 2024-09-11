@@ -56,7 +56,7 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                       child: Material(
                         elevation: 0,
                         color: Colors.transparent,
-                        child: Image.network(
+                        child: Image.asset(
                           widget.photo.url,
                           fit: BoxFit.contain,
                         ),

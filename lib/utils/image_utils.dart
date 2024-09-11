@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 Future<Size> calculateImageDimension(String url) {
   Completer<Size> completer = Completer();
-  Image image = Image.network(url);
+  Image image = Image.asset(url);
   image.image.resolve(const ImageConfiguration()).addListener(
     ImageStreamListener(
       (ImageInfo image, bool synchronousCall) {
