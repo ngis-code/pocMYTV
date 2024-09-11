@@ -22,8 +22,8 @@ class _SafetyImageState extends State<SafetyImage> {
         ),
       ),
       extendBodyBehindAppBar: true,
-      body: Image.network(
-        'https://mytvpocroyal.com/uploads/IC_MyTV_B2.png',
+      body: Image.asset(
+        'assets/IC_MyTV_B2.png',
         fit: BoxFit.cover,
       ),
     );

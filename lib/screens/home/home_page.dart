@@ -174,8 +174,8 @@ class _HomePageState extends State<HomePage> {
               right: 0,
               top: 0,
               bottom: 0,
-              child: Image.network(
-                'https://mytvpocroyal.com/uploads/island.png',
+              child: Image.asset(
+                'assets/island.png',
                 height: height,
               )
                   .animate(target: docked ? 1 : 0)
@@ -436,13 +436,13 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.5),
                       ),
-                      border: TableBorder.symmetric(
-                        inside: const BorderSide(
+                      border: const TableBorder.symmetric(
+                        inside: BorderSide(
                           color: Colors.white,
                           width: 1,
                         ),
                       ),
-                      headingRowColor: MaterialStateColor.resolveWith(
+                      headingRowColor: WidgetStateColor.resolveWith(
                         (states) {
                           return Colors.white.withOpacity(.8);
                         },
@@ -464,7 +464,7 @@ class _HomePageState extends State<HomePage> {
                       rows: [
                         for (int i = 0; i < data['time']!.length; i++)
                           DataRow(
-                            color: MaterialStateColor.resolveWith(
+                            color: WidgetStateColor.resolveWith(
                               (states) {
                                 return Colors.white;
                               },

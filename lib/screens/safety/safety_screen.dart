@@ -21,7 +21,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
 
   Future<void> playAudioFromUrl(String url) async {
     await player.play(
-      UrlSource(url),
+      AssetSource(url),
     );
   }
 
@@ -139,8 +139,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child: Image.network(
-                                      'https://mytvpocroyal.com/uploads/lifejacket_img',
+                                    child: Image.asset(
+                                      'assets/lifejacket_img.jpeg',
                                       height: height / 3,
                                       width: width / 4,
                                     ),
@@ -231,8 +231,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(20),
-                                          child: Image.network(
-                                            'https://mytvpocroyal.com/uploads/Sound.png',
+                                          child: Image.asset(
+                                            'assets/Sound.png',
                                             height: height / 3,
                                             width: width / 4,
                                           ),
@@ -263,7 +263,7 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                             onTap: () async {
                                               try {
                                                 await playAudioFromUrl(
-                                                    "https://mytvpocroyal.com/uploads/LATEST_Emergency%20Signal.mp3");
+                                                    "assets/LATEST_Emergency Signal.mp3");
                                               } catch (e) {
                                                 log("Error playing audio: $e");
                                                 log("Moving onto next");

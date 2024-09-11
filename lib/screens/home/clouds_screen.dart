@@ -6,10 +6,10 @@ import 'package:pocmytv/screens/home/cloud.dart';
 import 'package:vector_math/vector_math_64.dart' as v;
 
 const List<String> cloudImages = [
-  'https://pngimg.com/d/cloud_PNG6.png',
-  'https://static.wixstatic.com/media/c7e869_1f9f35b5fb294ca4b95982c795234695~mv2.png/v1/crop/x_413,y_116,w_1556,h_1587/fill/w_356,h_364,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Cloud_H03_2k%20(1).png',
-  'https://www.pngall.com/wp-content/uploads/14/Sky-PNG-Free-Image.png',
-  'https://pngimg.com/d/cloud_PNG8.png',
+  'assets/pngimg.com - cloud_PNG6.png',
+  'assets/Cloud_H03_2k (1).webp',
+  'assets/Sky-PNG-Free-Image.png',
+  'assets/pngimg.com - cloud_PNG8.png',
 ];
 const bool showClouds = true;
 const Duration cloudSummonDelay = Duration(seconds: 7);
@@ -69,7 +69,7 @@ class _CloudsScreenState extends State<CloudsScreen> {
           Positioned(
             left: cloud.position.x,
             top: cloud.position.y,
-            child: Image.network(
+            child: Image.asset(
               cloud.imageUrl,
               width: cloudWidth,
               height: cloudHeight,

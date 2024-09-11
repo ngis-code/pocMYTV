@@ -24,8 +24,8 @@ class ShorexShipxScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     image: const DecorationImage(
-                      image: NetworkImage(
-                          'https://www.beverlyhillsmagazine.com/wp-content/uploads/Beverly-Hills-Magazine-Celebrity-Cruises-Best-of-Greece-1-1600x755.jpg'),
+                      image: AssetImage(
+                          'assets/Beverly-Hills-Magazine-Celebrity-Cruises-Best-of-Greece-1-1600x755.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -68,8 +68,8 @@ class ShorexShipxScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     image: const DecorationImage(
-                      image: NetworkImage(
-                          'https://hommes.studio/wp-content/uploads/celebritybeyond-2.jpg.webp'),
+                      image: AssetImage(
+                          'assets/celebritybeyond-2.jpg.webp'),
                       fit: BoxFit.cover,
                     ),
                   ),
