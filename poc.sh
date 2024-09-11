@@ -152,7 +152,7 @@ build_images(){
 
     if [[ " ${selected_images[@]} " =~ " Build PocMYTV " ]]; then        
         flutter pub get
-        flutter build web
+        flutter build web --web-renderer html --release --base-href / 
 
         docker build -t televolution_frontend_lite:0.0.1 .
         docker run -d --restart=always -p 8001:8001 --name televolution_frontend_lite televolution_frontend_lite:0.0.1
