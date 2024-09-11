@@ -186,7 +186,7 @@ save_images(){
 load_images(){
     cd "$BUILD_DIR" || error_exit "Directory $BUILD_DIR does not exist."
     options=(
-        "televolution_frontend_lite:0.0.1"
+        "televolution_frontend_lite"
     )
     choose_multiple_menu "Please select the Docker images to load (use arrow keys to navigate and right arrow to select):" selected_images "${options[@]}"
 
