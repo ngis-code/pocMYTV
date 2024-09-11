@@ -75,7 +75,7 @@ class _GenreTileState extends State<GenreTile> {
               alignment: Alignment.center,
               child: Stack(
                 children: [
-                  Image.network(
+                  Image.asset(
                     genreImages[widget.genre]!,
                     fit: BoxFit.cover,
                     width: double.infinity,
