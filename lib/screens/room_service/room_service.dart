@@ -137,7 +137,7 @@ class _RoomServiceState extends State<RoomService> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
-                                                    child: Image.network(
+                                                    child: Image.asset(
                                                       RoomServiceModel
                                                           .roomServices[index]
                                                           .image,
@@ -297,7 +297,7 @@ class _RoomServiceState extends State<RoomService> {
                                               BorderRadius.circular(15),
                                         ),
                                         clipBehavior: Clip.hardEdge,
-                                        child: Image.network(
+                                        child: Image.asset(
                                           RoomServiceModel
                                               .roomServices[index].image,
                                           width: width / 4,
@@ -367,7 +367,7 @@ class _RoomServiceState extends State<RoomService> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
-                                                    child: Image.network(
+                                                    child: Image.asset(
                                                       RoomServiceModel
                                                           .roomServices[index]
                                                           .image,
@@ -526,7 +526,7 @@ class _RoomServiceState extends State<RoomService> {
                                               BorderRadius.circular(15),
                                         ),
                                         clipBehavior: Clip.hardEdge,
-                                        child: Image.network(
+                                        child: Image.asset(
                                           RoomServiceModel
                                               .roomServices[index].image,
                                           width: width / 4,

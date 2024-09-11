@@ -25,7 +25,7 @@ class Movie {
       title: 'CocoCay Island',
       description: 'your details here',
       image:
-          'https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg',
+          'assets/image.png',
       duration: const Duration(hours: 1, minutes: 5),
       rating: 9.3,
       genre: [Genre.action, Genre.drama],
@@ -36,7 +36,7 @@ class Movie {
       title: 'CocoCay Island',
       description: 'your details here',
       image:
-          'https://www.cruisehive.com/wp-content/uploads/2023/12/cococay1.jpg',
+          'assets/image.png',
       duration: const Duration(hours: 1, minutes: 37),
       rating: 6.3,
       genre: [Genre.comedy],

@@ -126,8 +126,8 @@ class _AccountScreenState extends State<AccountScreen> {
                             top: 5, bottom: 20, left: 10, right: 10),
                         child: Column(
                           children: [
-                            Image.network(
-                              'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
+                            Image.asset(
+                              'assets/image copy.png',
                               height: height / 5,
                               width: width / 7.5,
                             ),
@@ -172,8 +172,8 @@ class _AccountScreenState extends State<AccountScreen> {
                             top: 5, bottom: 20, left: 10, right: 10),
                         child: Column(
                           children: [
-                            Image.network(
-                              'https://cdn3d.iconscout.com/3d/premium/thumb/boy-avatar-6299533-5187865.png?f=webp',
+                            Image.asset(
+                              'assets/image copy.png',
                               height: height / 5,
                               width: width / 7.5,
                             ),

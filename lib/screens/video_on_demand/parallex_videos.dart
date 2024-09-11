@@ -53,7 +53,7 @@ class _ParallexVideosState extends State<ParallexVideos> {
                     //   mainVideoUrl: videos[index],
                     // );
                     return AdvertisementScreen(
-                        adUrl: 'https://mytvpocroyal.com/uploads/CELAdds.mp4',
+                        adUrl: 'assets/CELAdds.mp4',
                         onComplete: (controller) async {
                           await Navigator.push(
                             globalContext,
@@ -145,6 +145,6 @@ class _ParallexVideosState extends State<ParallexVideos> {
 }
 
 final videos = [
-  'https://mytvpocroyal.com/uploads/topgunmovie.mp4',
-  'https://mytvpocroyal.com/uploads/topgunmovie.mp4',
+  'assets/topgunmovie.mp4',
+  'assets/topgunmovie.mp4',
 ];

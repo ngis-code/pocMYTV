@@ -52,7 +52,7 @@ class RoomServiceModel {
       id: 0,
       rating: 4.5,
       image:
-          'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800',
+          'assets/pexels-photo-376464.jpeg',
     ),
     RoomServiceModel(
       title: 'Room Service 2',
@@ -61,7 +61,7 @@ class RoomServiceModel {
       rating: 2.2,
       id: 1,
       image:
-          'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800',
+          'assets/pexels-photo-376464.jpeg',
     ),
     RoomServiceModel(
       title: 'Room Service 3',
@@ -70,7 +70,7 @@ class RoomServiceModel {
       id: 2,
       rating: 3.5,
       image:
-          'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800',
+          'assets/pexels-photo-376464.jpeg',
     ),
     RoomServiceModel(
       title: 'Room Service 4',
@@ -79,7 +79,7 @@ class RoomServiceModel {
       id: 3,
       rating: 4.0,
       image:
-          'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800',
+          'assets/pexels-photo-376464.jpeg',
     ),
   ];
 }

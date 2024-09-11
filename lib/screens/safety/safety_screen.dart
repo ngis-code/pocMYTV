@@ -320,8 +320,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            child: Image.network(
-                                              'https://mytvpocroyal.com/uploads/Sound.png',
+                                            child: Image.asset(
+                                              'assets/image copy 2.png',
                                               height: height / 3,
                                               width: width / 4,
                                             ),
@@ -399,8 +399,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Image.network(
-                                            'https://mytvpocroyal.com/uploads/IC_sign_B2.png',
+                                          Image.asset(
+                                            'assets/image copy 3.png',
                                             height: height / 3,
                                             width: width / 4,
                                           ),
@@ -488,8 +488,8 @@ class _SafetyScreenState extends State<SafetyScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Image.network(
-                                              'https://mytvpocroyal.com/uploads/IC_sign_B2.png',
+                                            Image.asset(
+                                              'assets/image copy 4.png',
                                               height: height / 3,
                                               width: width / 4,
                                             ),

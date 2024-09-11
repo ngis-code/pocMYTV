@@ -25,7 +25,7 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
   late VideoPlayerController _controller;
   @override
   void initState() {
-    _controller = VideoPlayerController.network(
+    _controller = VideoPlayerController.asset(
       widget.adUrl,
     )..initialize().then((_) {
         setState(() {});

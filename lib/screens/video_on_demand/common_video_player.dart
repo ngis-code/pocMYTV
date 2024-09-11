@@ -49,7 +49,7 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
     _controller = widget.controller ??
         (widget.asset
             ? VideoPlayerController.asset(widget.videoUrl!)
-            : VideoPlayerController.network(widget.videoUrl!))
+            : VideoPlayerController.asset(widget.videoUrl!))
       ..initialize().then((_) {
         if (disposed) return;
         if (widget.onComplete != null) {
