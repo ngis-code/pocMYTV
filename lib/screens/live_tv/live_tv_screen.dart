@@ -118,7 +118,7 @@ class _Tile extends StatelessWidget {
       onTap: onTap,
       focusGroup: "live_tv",
       child: ListTile(
-        leading: Image.network(image),
+        leading: Image.asset(image),
         title: Text(
           title,
           style: const TextStyle(color: Colors.white),
@@ -161,14 +161,14 @@ class Page1 extends StatelessWidget {
                 requestFocus: requestFocus,
                 onTap: onChannelView,
                 image:
-                    "https://upload.wikimedia.org/wikipedia/commons/8/82/House_Flag_of_Celebrity_Cruises.svg",
+                    "assets/1000_F_277845419_KGENqAUJ1JsiK4e7tNc5N8i1z5fRRwEb.jpg",
                 title: "HDMI 1",
                 subtitle: "HDMI 1",
               ),
               _Tile(
                 onTap: onChannelView,
                 image:
-                    "https://upload.wikimedia.org/wikipedia/commons/8/82/House_Flag_of_Celebrity_Cruises.svg",
+                    "assets/images.png",
                 title: "Celebrity Entertainment",
                 subtitle:
                     "Watch the latest movies and TV shows from Celebrity Entertainment",
@@ -176,21 +176,21 @@ class Page1 extends StatelessWidget {
               _Tile(
                 onTap: onChannelView,
                 image:
-                    "https://as1.ftcdn.net/v2/jpg/02/77/84/54/1000_F_277845419_KGENqAUJ1JsiK4e7tNc5N8i1z5fRRwEb.jpg",
+                    "assets/1000_F_277845419_KGENqAUJ1JsiK4e7tNc5N8i1z5fRRwEb.jpg",
                 title: "Cruise Compass",
                 subtitle: "Stay up to date with what's happening on the ship",
               ),
               _Tile(
                 onTap: onChannelView,
                 image:
-                    "https://static.vecteezy.com/system/resources/thumbnails/016/314/482/small/map-pointer-art-icons-and-graphics-free-png.png",
+                    "assets/map-pointer-art-icons-and-graphics-free-png.webp",
                 title: "On The Map",
                 subtitle: "Explore the ship and find your way around",
               ),
               _Tile(
                 onTap: onChannelView,
                 image:
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmLxUqyCxVBJlR-nxuMCpe2TT1tF17h_NNCR8cqhpVxw&s",
+                    "assets/images.png",
                 title: "Peek-a-boo TV",
                 subtitle:
                     "Watch the latest movies and TV shows from Peek a boo TV",
@@ -222,7 +222,7 @@ class Page2 extends StatelessWidget {
                 requestFocus: true,
                 onTap: onChannelView,
                 image:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/FOX_wordmark-orange.svg/1200px-FOX_wordmark-orange.svg.png",
+                    "assets/FOX_wordmark-orange.svg.png",
                 title: "FOX",
                 subtitle:
                     "Stay informed with the latest celebrity news and gossip from the entertainment industry",
@@ -230,7 +230,7 @@ class Page2 extends StatelessWidget {
               _Tile(
                 onTap: onChannelView,
                 image:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/MTV_International_2009.svg/1200px-MTV_International_2009.svg.png",
+                    "assets/MTV_International_2009.svg.png",
                 title: "MTV",
                 subtitle:
                     "MTV is the leading youth entertainment brand for music videos, artist interviews, bingeworthy reality shows, original series and movies, ...",

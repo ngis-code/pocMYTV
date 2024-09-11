@@ -10,7 +10,7 @@ class ShorexScreen extends StatefulWidget {
       'views': 738,
       'price': 134.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1593634805410-NC149C7M0QCJMMUMLJ3J/colors+01+copy+4.jpg?format=1500w',
+          'assets/colors+01+copy+4.jpg',
     },
     {
       'title': 'Celebrity Shore Excursion',
@@ -18,7 +18,7 @@ class ShorexScreen extends StatefulWidget {
       'views': 387,
       'price': 400.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594317631484-6JNSTCSQZWE8GASE1M5W/Ca_10.jpg?format=1500w',
+          'assets/Ca_10.jpg',
     },
     {
       'title': 'Celebrity Dolphin Encounter',
@@ -26,7 +26,7 @@ class ShorexScreen extends StatefulWidget {
       'views': 3218,
       'price': 34.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594320847160-DSJPBO63J6PLNCXXZ274/Ca_12.jpg?format=1500w',
+          'assets/Ca_12.jpg',
     },
     {
       'title': 'Celebrity',
@@ -34,7 +34,7 @@ class ShorexScreen extends StatefulWidget {
       'views': 465,
       'price': 256.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/1594323275851-08KBXHEHN2F4SIOYUJNB/Ca_18.png?format=1500w',
+          'assets/Ca_18.png',
     },
     {
       'title': 'Celebrity Dolphin Encounter',
@@ -42,7 +42,7 @@ class ShorexScreen extends StatefulWidget {
       'views': 328,
       'price': 134.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/4cd53c9c-585a-408e-accf-bff8dc024332/getty-images-IJOEYzY5sek-unsplash.jpg',
+          'assets/getty-images-IJOEYzY5sek-unsplash.jpg',
     },
     {
       'title': 'Celebrity Shore Excursion',
@@ -50,7 +50,7 @@ class ShorexScreen extends StatefulWidget {
       'views': 8672,
       'price': 123.99,
       'image':
-          'https://images.squarespace-cdn.com/content/v1/5dd44fb4b648a6011c4f6394/2fcfb85b-6f9b-4271-b7b9-68a2ef424a38/Frame+460785.jpg?format=1500w',
+          'assets/Frame+460785.jpg',
     },
   ];
   const ShorexScreen({super.key});
@@ -100,7 +100,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
                         fit: FlexFit.tight,
                         child: SizedBox(
                           height: double.infinity,
-                          child: Image.network(
+                          child: Image.asset(
                             data['image'],
                             fit: BoxFit.cover,
                           ),
@@ -185,7 +185,7 @@ class _ShorexScreenState extends State<ShorexScreen> {
                           Expanded(
                             child: SizedBox(
                               width: double.infinity,
-                              child: Image.network(
+                              child: Image.asset(
                                 data['image'],
                                 fit: BoxFit.cover,
                               ),

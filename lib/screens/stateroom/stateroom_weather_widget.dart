@@ -17,8 +17,8 @@ class StateroomWeatherWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.network(
-              "https://openweathermap.org/img/wn/10d@2x.png",
+            Image.asset(
+              "assets/10d@2x.png",
               width: 64,
               height: 64,
             ),

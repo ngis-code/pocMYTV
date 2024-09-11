@@ -50,3 +50,4 @@ update_all.bat
 server/node_modules/
 server/web/
 server/.env
+docker_image_builds/

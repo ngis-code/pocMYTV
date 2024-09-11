@@ -102,7 +102,7 @@ class LocationListItem extends StatelessWidget {
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        Image.network(
+        Image.asset(
           imageUrl,
           key: _backgroundImageKey,
           fit: BoxFit.cover,
@@ -345,25 +345,16 @@ const locations = [
   Location(
     name: 'Mount Rushmore',
     place: 'U.S.A',
-    imageUrl:
-        'https://plus.unsplash.com/premium_photo-1661855590183-87806182951b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnQlMjBydXNobW9yZXxlbnwwfHwwfHx8MA%3D%3D',
+    imageUrl: 'assets/istockphoto-657200824-612x612.jpg',
   ),
   Location(
     name: 'Gardens By The Bay',
     place: 'Singapore',
-    imageUrl:
-        'https://media.istockphoto.com/id/657200824/photo/gardens-by-the-bay-at-night-singapore.jpg?s=612x612&w=0&k=20&c=ay4ExJRGMXp1ZrFEv471AfllvnVE2OOU3bBPuiHXpqM=',
+    imageUrl: 'assets/istockphoto-657200824-612x612.jpg',
   ),
   Location(
     name: 'Machu Picchu',
     place: 'Peru',
-    imageUrl:
-        'https://images.unsplash.com/photo-1587595742138-7975cf837028?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFjaHUlMjBwaWNjaHV8ZW58MHx8MHx8fDA%3D',
-  ),
-  Location(
-    name: 'Sunderbans',
-    place: 'India',
-    imageUrl:
-        'https://media.istockphoto.com/id/461066105/photo/tiger.jpg?s=612x612&w=0&k=20&c=2PkWEioO-ELaSnD0S7QkuGc10H8iVKFurcBPtkTY1uI=',
+    imageUrl: 'assets/istockphoto-657200824-612x612.jpg',
   ),
 ];

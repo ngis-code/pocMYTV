@@ -104,8 +104,8 @@ class _StateRoomState extends State<StateRoom> {
                                 Radius.circular(20),
                               ),
                               image: DecorationImage(
-                                  image: NetworkImage(
-                                    'https://kobiecomplete.com/wp-content/uploads/2017/07/daikin-ductless-air-conditioning-680.jpg',
+                                  image: AssetImage(
+                                    'assets/daikin-ductless-air-conditioning-680.webp',
                                   ),
                                   fit: BoxFit.cover),
                               gradient: LinearGradient(
@@ -190,8 +190,8 @@ class _StateRoomState extends State<StateRoom> {
                                 Radius.circular(20),
                               ),
                               image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://i.pinimg.com/736x/c3/9a/72/c39a72a101dec9f5d37727e17ed9ef0a.jpg'),
+                                  image: AssetImage(
+                                      'assets/c39a72a101dec9f5d37727e17ed9ef0a.jpg'),
                                   fit: BoxFit.cover),
                               gradient: LinearGradient(
                                 colors: [
@@ -267,8 +267,8 @@ class _StateRoomState extends State<StateRoom> {
                                 Radius.circular(20),
                               ),
                               image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVbufQR5wfU4vNnORX3KB0AUDXuY7wpHG9lEfFqlVjRg&s'),
+                                  image: AssetImage(
+                                      'assets/images.jpeg'),
                                   fit: BoxFit.cover),
                               gradient: LinearGradient(
                                 colors: [
