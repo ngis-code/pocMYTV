@@ -254,7 +254,7 @@ download_image() {
     image=$1
     
     echo "Downloading Image $image..."
-    curl -L -O https://github.com/ngis-code/pocMYTV/releases/download/0.0.1/televolution_frontend_lite.tar || {
+    curl -L -O "$GITHUB_REPO/releases/download/0.0.1/${image}.tar" || {
         error_continue "Failed to download $image."
         return 1
     }
