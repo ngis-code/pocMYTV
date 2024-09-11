@@ -55,8 +55,8 @@ class _MusicPlayerState extends State<MusicPlayer> {
             top: 0,
             bottom: 0,
             right: 0,
-            child: Image.network(
-              'https://im.rediff.com/getahead/2017/dec/11shape-of-you-cover1.jpg?w=670&h=900',
+            child: Image.asset(
+              'assets/image copy 5.png',
               fit: BoxFit.cover,
             ),
           ),
