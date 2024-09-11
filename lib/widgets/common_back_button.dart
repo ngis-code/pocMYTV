@@ -8,6 +8,7 @@ class CommonBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusWidget(
       enabled: true,
+      focusGroup: 'backButton',
       onTap: () {
         Navigator.of(context).pop();
       },

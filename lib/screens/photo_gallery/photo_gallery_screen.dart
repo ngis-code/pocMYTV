@@ -24,17 +24,20 @@ class PhotosGallery extends StatelessWidget {
               )
             : Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: GridView.extent(
-                  maxCrossAxisExtent: 300,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                  children: [
-                    for (var i = 0; i < Photo.allPhotos.length; i++)
-                      _PhotoGalleryTile(
-                        hasFocus: i == 0,
-                        photo: Photo.allPhotos[i],
-                      ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 70.0),
+                  child: GridView.extent(
+                    maxCrossAxisExtent: 300,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    children: [
+                      for (var i = 0; i < Photo.allPhotos.length; i++)
+                        _PhotoGalleryTile(
+                          hasFocus: i == 0,
+                          photo: Photo.allPhotos[i],
+                        ),
+                    ],
+                  ),
                 ),
               ),
       ),
@@ -84,7 +87,7 @@ class _PhotoGalleryTileState extends State<_PhotoGalleryTile> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
-                image: NetworkImage(widget.photo.url),
+                image: AssetImage(widget.photo.url),
                 fit: BoxFit.cover,
               ),
             ),

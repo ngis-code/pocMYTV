@@ -28,27 +28,27 @@ class Photo {
   static List<Photo> allPhotos = [
     Photo(
       price: 29.99,
-      url: 'https://mytvpocroyal.com/uploads/DSC_3234_ES1V.JPG',
+      url: 'assets/DSC_3234_ES1V.jpeg',
     ),
     Photo(
       price: 29.99,
-      url: 'https://mytvpocroyal.com/uploads/DSC_3235_ES1W.JPG',
+      url: 'assets/DSC_3235_ES1W.jpeg',
     ),
     Photo(
       price: 29.99,
-      url: 'https://mytvpocroyal.com/uploads/DSC_3237_ES1Y.JPG',
+      url: 'assets/DSC_3237_ES1Y.jpeg',
     ),
     Photo(
       price: 29.99,
-      url: 'https://mytvpocroyal.com/uploads/DSC_3239_ES20.JPG',
+      url: 'assets/DSC_3239_ES20.jpeg',
     ),
     Photo(
       price: 29.99,
-      url: 'https://mytvpocroyal.com/uploads/DSC_3241_ES22.JPG',
+      url: 'assets/DSC_3241_ES22.jpeg',
     ),
     Photo(
       price: 29.99,
-      url: 'https://mytvpocroyal.com/uploads/DSC_3243_ES24.JPG',
+      url: 'assets/DSC_3243_ES24.jpeg',
     ),
   ];
 }
