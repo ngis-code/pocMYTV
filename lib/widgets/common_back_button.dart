@@ -7,8 +7,10 @@ class CommonBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FocusWidget(
-      enabled: false,
-      onTap: () {},
+      enabled: true,
+      onTap: () {
+        Navigator.of(context).pop();
+      },
       child: Hero(
         tag: 'backButton',
         child: Material(
