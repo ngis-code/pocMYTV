@@ -28,7 +28,13 @@ class KeyBoardService {
       if (handler(event)) return true;
     }
     log("global manager called");
-    if (event.physicalKey.usbHidUsage == 98784247808) {
+    if (event.physicalKey.usbHidUsage == 98784247808 ||
+        event.logicalKey.keyId == 4294967297) {
+      ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+        const SnackBar(
+          content: Text('Back Button Found!'),
+        ),
+      );
       if (navigatorKey.currentState!.canPop()) {
         navigatorKey.currentState!.pop();
       }
