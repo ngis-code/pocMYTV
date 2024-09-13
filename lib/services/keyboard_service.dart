@@ -16,18 +16,6 @@ class KeyBoardService {
 
   static bool globalKeyPressHandler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
-    ScaffoldMessenger.of(navigatorKey.currentContext!).hideCurrentSnackBar();
-    // show a snackbar with the id
-    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
-      SnackBar(
-        content: Text(
-            'logicalKey.keyId: ${event.logicalKey.keyId}, \n physicalKey.usbHidUsage: ${event.physicalKey.usbHidUsage}\nevent.character: ${event.character}\n '),
-      ),
-    );
-    for (final handler in _handlers) {
-      if (handler(event)) return true;
-    }
-    log("global manager called");
     if (event.physicalKey.usbHidUsage == 98784247808 ||
         event.logicalKey.keyId == 4294967297 || event.logicalKey.keyId == 461) {
       ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
@@ -40,6 +28,19 @@ class KeyBoardService {
       }
       return true;
     }
+    ScaffoldMessenger.of(navigatorKey.currentContext!).hideCurrentSnackBar();
+    // show a snackbar with the id
+    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+      SnackBar(
+        content: Text(
+            'logicalKey.keyId: ${event.logicalKey.keyId}, \n physicalKey.usbHidUsage: ${event.physicalKey.usbHidUsage}\nevent.character: ${event.character}\n '),
+      ),
+    );
+    for (final handler in _handlers) {
+      if (handler(event)) return true;
+    }
+    log("global manager called");
+
     switch (event.logicalKey) {
       case LogicalKeyboardKey.escape:
       case LogicalKeyboardKey.backspace:
