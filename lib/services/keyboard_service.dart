@@ -20,7 +20,8 @@ class KeyBoardService {
     // show a snackbar with the id
     ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
       SnackBar(
-        content: Text('keycode: ${event.logicalKey.keyId}'),
+        content: Text(
+            'logicalKey.keyId: ${event.logicalKey.keyId}, \n physicalKey.usbHidUsage: ${event.physicalKey.usbHidUsage}\nevent.character: ${event.character}\n '),
       ),
     );
     for (final handler in _handlers) {
