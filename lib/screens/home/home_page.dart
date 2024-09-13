@@ -436,13 +436,13 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.5),
                       ),
-                      border: const TableBorder.symmetric(
-                        inside: BorderSide(
+                      border: TableBorder.symmetric(
+                        inside: const BorderSide(
                           color: Colors.white,
                           width: 1,
                         ),
                       ),
-                      headingRowColor: WidgetStateColor.resolveWith(
+                      headingRowColor: MaterialStateColor.resolveWith(
                         (states) {
                           return Colors.white.withOpacity(.8);
                         },
@@ -464,7 +464,7 @@ class _HomePageState extends State<HomePage> {
                       rows: [
                         for (int i = 0; i < data['time']!.length; i++)
                           DataRow(
-                            color: WidgetStateColor.resolveWith(
+                            color: MaterialStateColor.resolveWith(
                               (states) {
                                 return Colors.white;
                               },
