@@ -28,7 +28,7 @@ class KeyBoardService {
       if (handler(event)) return true;
     }
     log("global manager called");
-    if (event.logicalKey.keyId == 4294967297) {
+    if (event.physicalKey.usbHidUsage == 98784247808) {
       if (navigatorKey.currentState!.canPop()) {
         navigatorKey.currentState!.pop();
       }
