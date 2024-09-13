@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class PreLoader {
@@ -10,7 +8,7 @@ class PreLoader {
     'assets/ship.png',
   };
   static const Set<String> networkImages = {};
-  static final ValueNotifier<double> loaded = ValueNotifier(0);
+  static final ValueNotifier<double> loaded = ValueNotifier(1);
 
 //   static Future<void> load(BuildContext context) async {
 //     loaded.value = 0;
