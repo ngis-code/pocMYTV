@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 /// Glass Widget
@@ -35,10 +33,11 @@ class GlassWidget extends StatelessWidget {
     if (blur != 0) {
       glassWidget = ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: glassWidget,
-        ),
+        child: glassWidget,
+        // BackdropFilter(
+        //   filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+        //   child: glassWidget,
+        // ),
       );
     }
     return glassWidget;

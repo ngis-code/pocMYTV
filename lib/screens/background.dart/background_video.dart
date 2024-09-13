@@ -16,7 +16,7 @@ class BackgroundVideo extends StatefulWidget {
     super.key,
     required this.child,
     this.showBackButton = true,
-    this.backgroundWidget,
+    this.backgroundWidget = const SizedBox(),
   });
 
   @override
@@ -32,9 +32,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
     super.initState();
     if (widget.backgroundWidget == null) {
       _controller = VideoPlayerController.asset(
-        kIsWeb
-            ? 'assets/H264HD1080.mp4'
-            : 'assets/H264HD1080.mp4',
+        kIsWeb ? 'assets/H264HD1080.mp4' : 'assets/H264HD1080.mp4',
         videoPlayerOptions: VideoPlayerOptions(
           mixWithOthers: true,
           allowBackgroundPlayback: true,
