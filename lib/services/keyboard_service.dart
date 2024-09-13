@@ -27,6 +27,12 @@ class KeyBoardService {
       if (handler(event)) return true;
     }
     log("global manager called");
+    if (event.logicalKey.keyId == 4294967297) {
+      if (navigatorKey.currentState!.canPop()) {
+        navigatorKey.currentState!.pop();
+      }
+      return true;
+    }
     switch (event.logicalKey) {
       case LogicalKeyboardKey.escape:
       case LogicalKeyboardKey.backspace:
