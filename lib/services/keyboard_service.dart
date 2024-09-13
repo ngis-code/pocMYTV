@@ -16,13 +16,13 @@ class KeyBoardService {
 
   static bool globalKeyPressHandler(KeyEvent event) {
     if (event is KeyDownEvent) return false;
-    // ScaffoldMessenger.of(navigatorKey.currentContext!).hideCurrentSnackBar();
-    // // show a snackbar with the id
-    // ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
-    //   SnackBar(
-    //     content: Text('keycode: ${event.logicalKey.keyId}'),
-    //   ),
-    // );
+    ScaffoldMessenger.of(navigatorKey.currentContext!).hideCurrentSnackBar();
+    // show a snackbar with the id
+    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+      SnackBar(
+        content: Text('keycode: ${event.logicalKey.keyId}'),
+      ),
+    );
     for (final handler in _handlers) {
       if (handler(event)) return true;
     }
