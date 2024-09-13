@@ -62,7 +62,8 @@ class _BubbleAnimationState extends State<BubbleAnimation>
     if (KeyBoardService.navigatorKey.currentContext == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _init());
     } else {
-      _init();
+      /// TODO: removed for now
+      // _init();
     }
   }
 
